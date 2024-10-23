@@ -1,4 +1,3 @@
-import { $api } from "@api/instances/instanceAxios.api"
 import { rtkBaseApi } from "@api/instances/rtkBase.api"
 import type { Reducer, ReducersMapObject } from "@reduxjs/toolkit"
 import { configureStore } from "@reduxjs/toolkit"
@@ -8,23 +7,13 @@ import { type appStoreType } from "./storeTypes/appStoreType"
 import { type mainStateMap } from "./storeTypes/mainState.map"
 import { type mainStateAsyncMap } from "./storeTypes/mainStateAsync.map"
 import { type mainStateStaticMap } from "./storeTypes/mainStateStatic.map"
-import { type thunkExtraType } from "./storeTypes/thunks.type"
 
 export const storeCreator = ({ reduce }: reducerManagerType, initialState?: mainStateMap) => {
-	const apiService: thunkExtraType = {
-		api: $api
-	}
-
 	return configureStore({
 		reducer: reduce as Reducer<mainStateMap>,
 		devTools: __IS_DEV__,
 		preloadedState: initialState,
-		middleware: getDefaultMiddleware =>
-			getDefaultMiddleware({
-				thunk: {
-					extraArgument: apiService
-				}
-			}).concat(rtkBaseApi.middleware)
+		middleware: getDefaultMiddleware => getDefaultMiddleware({}).concat(rtkBaseApi.middleware)
 	})
 }
 

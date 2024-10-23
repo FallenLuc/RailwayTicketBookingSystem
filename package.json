@@ -9,7 +9,6 @@
 		"url": "https://github.com/DnD-developer/RailwayTicketBookingSystem"
 	},
 	"scripts": {
-		"build:start": "concurrently \"yarn run build:start:dev\" \"yarn run build:start:backend\"",
 		"build:start:dev": "webpack serve --env port=8081 mode=development",
 		"build:dev": "webpack --env mode=development",
 		"build:prod": "webpack --env mode=production",

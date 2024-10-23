@@ -1,4 +1,3 @@
-import { Star } from "@assets/index"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { memo, useCallback, useState } from "react"
 import { HStack } from "../../../Stack"
@@ -51,19 +50,7 @@ export const RatingStars = memo<RatingStarsProps>(props => {
 		>
 			<HStack gap={"gap16"}>
 				{ratingCount.map(rat => (
-					<Star
-						key={rat}
-						onClick={onChangeRatingHandler(rat)}
-						onMouseEnter={onHoverRatingHandler(rat)}
-						className={classNamesHelp(
-							styles.RatingStar,
-							{
-								[styles.cursorPointer]: !isLocked,
-								[styles.RatingStarFill]: rating >= rat || hoverRating >= rat
-							},
-							[]
-						)}
-					/>
+					<>{rat}</>
 				))}
 			</HStack>
 		</div>

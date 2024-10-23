@@ -1,14 +1,13 @@
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin"
 import CircularPlugin from "circular-dependency-plugin"
-import CopyPlugin from "copy-webpack-plugin"
 import ESLintWebpackPlugin from "eslint-webpack-plugin"
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin"
 import HtmlWebpackPlugin from "html-webpack-plugin"
-import StylelintWebpackPlugin from "stylelint-webpack-plugin"
 import { DefinePlugin, ProgressPlugin, type WebpackPluginInstance } from "webpack"
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer"
 import { type buildOptionsType } from "./types/config"
 import MiniCssExtractPlugin from "mini-css-extract-plugin"
+import StylelintWebpackPlugin from "stylelint-webpack-plugin"
 
 export function pluginsWebpack({
 	paths,
@@ -40,16 +39,6 @@ export function pluginsWebpack({
 				},
 				mode: "write-references"
 			}
-		}),
-		new ESLintWebpackPlugin({
-			extensions: ["ts", "tsx"]
-		}),
-		new StylelintWebpackPlugin({
-			files: ["src/**/*.scss"],
-			fix: true
-		}),
-		new CopyPlugin({
-			patterns: [{ from: paths.locales, to: paths.buildLocales }]
 		})
 	]
 
@@ -61,8 +50,15 @@ export function pluginsWebpack({
 		)
 
 		plugins.push(
-			new CopyPlugin({
-				patterns: [{ from: paths.locales, to: paths.buildLocales }]
+			new ESLintWebpackPlugin({
+				extensions: ["ts", "tsx"]
+			})
+		)
+
+		plugins.push(
+			new StylelintWebpackPlugin({
+				files: ["src/**/*.scss"],
+				fix: true
 			})
 		)
 	}

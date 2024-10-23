@@ -36,8 +36,6 @@ export function createReducerManager(
 				keysToRemove = []
 			}
 
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-expect-error
 			return combinedReducer(state, action)
 		},
 
@@ -46,6 +44,7 @@ export function createReducerManager(
 				return
 			}
 
+			// @ts-ignore
 			reducers[key] = reducer
 
 			combinedReducer = combineReducers(reducers)
