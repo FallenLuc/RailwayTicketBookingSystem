@@ -1,0 +1,33 @@
+{
+	"extends": "./tsconfig.paths.json",
+	"compilerOptions": {
+		"outDir": "./build/",
+		"skipLibCheck": true,
+		"noImplicitAny": true,
+		"module": "ESNext",
+		"target": "es5",
+		"jsx": "react-jsx",
+		"strict": true,
+		"allowJs": true,
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,
+		"isolatedModules": true,
+		"esModuleInterop": true,
+		"types": ["node", "@jest/globals", "@types/jest", "@testing-library/jest-dom"],
+		"resolveJsonModule": true,
+		"plugins": [
+			{
+				"name": "typescript-plugin-css-modules",
+				"options": {
+					"classnameTransform": "camelCase"
+				}
+			}
+		]
+	},
+	"exclude": ["node_modules", ".stylelintrc.js", "backend", ".dependency-cruiser.js"],
+	"ts-node": {
+		"compilerOptions": {
+			"module": "CommonJS"
+		}
+	}
+}

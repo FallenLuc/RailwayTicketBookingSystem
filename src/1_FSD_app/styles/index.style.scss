@@ -1,0 +1,15 @@
+@import "reset";
+@import "vars/globals.var";
+
+.app {
+	min-height: 100vh;
+}
+
+.page-container {
+	display: flex;
+}
+
+.full-height {
+	height: auto !important;
+	min-height: 100vh !important;
+}

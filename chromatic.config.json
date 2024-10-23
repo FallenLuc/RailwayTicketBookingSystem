@@ -1,0 +1,8 @@
+{
+	"projectId": "Project:66296059f390a9c1bf515f7c",
+	"zip": true,
+	"buildScriptName": "storybook build -ci -c config/storybook",
+	"storybookConfigDir": "config/storybook",
+	"onlyChanged": true,
+	"debug": false
+}

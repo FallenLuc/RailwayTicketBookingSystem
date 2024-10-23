@@ -1,0 +1,72 @@
+.TextWrapper {
+	text-align: left;
+}
+
+.title,
+.text {
+	color: inherit;
+}
+
+.text-margin {
+	margin-top: 5px;
+}
+
+.left {
+	text-align: left;
+}
+
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}
+
+.primary {
+	color: var(--primary-color);
+}
+
+.primary.inverted {
+	color: var(--inverted-color);
+}
+
+.error {
+	.title {
+		color: var(--red);
+	}
+
+	.text {
+		color: var(--red-dark);
+	}
+}
+
+.small {
+	.title {
+		font: var(--font-m);
+	}
+
+	.text {
+		font: var(--font-s);
+	}
+}
+
+.normal {
+	.title {
+		font: var(--font-l);
+	}
+
+	.text {
+		font: var(--font-m);
+	}
+}
+
+.big {
+	.title {
+		font: var(--font-xl);
+	}
+
+	.text {
+		font: var(--font-l);
+	}
+}

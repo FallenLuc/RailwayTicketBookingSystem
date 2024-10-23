@@ -1,0 +1,133 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true,
+		"jest": true
+	},
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:@typescript-eslint/strict",
+		"plugin:@typescript-eslint/stylistic",
+		"plugin:react-redux/recommended",
+		"plugin:react-hooks/recommended",
+		"plugin:react/jsx-runtime",
+		"plugin:i18next/recommended",
+		"plugin:jest-dom/recommended",
+		"plugin:storybook/recommended",
+		"prettier"
+	],
+	"parserOptions": {
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"plugins": [
+		"i18next",
+		"react",
+		"jest-dom",
+		"react-hooks",
+		"@typescript-eslint",
+		"react-redux",
+		"react-refresh",
+		"@arthurgeron/react-usememo"
+	],
+	"rules": {
+		"@arthurgeron/react-usememo/require-usememo": [
+			2,
+			{
+				"ignoredPropNames": ["on", "off"]
+			}
+		],
+		"@arthurgeron/react-usememo/require-memo": [
+			2,
+			{ "ignoredComponents": { "RootComponent": true } }
+		],
+		"@typescript-eslint/consistent-type-imports": "error",
+		"react-refresh/only-export-components": "error",
+		"react-hooks/exhaustive-deps": "error",
+		"@typescript-eslint/prefer-nullish-coalescing": "off",
+		"@typescript-eslint/strict-boolean-expressions": "off",
+		"@typescript-eslint/consistent-type-definitions": ["error", "type"],
+		"@typescript-eslint/naming-convention": "off",
+		"@typescript-eslint/ban-ts-comment": "off",
+		"react/display-name": "off",
+		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+		"no-console": ["warn"],
+		"react/prop-types": "off",
+		"@typescript-eslint/no-invalid-void-type": "off",
+		"i18next/no-literal-string": [
+			"error",
+			{
+				"mode": "jsx-only",
+				"makrupOnly": true,
+				"jsx-attributes": {
+					"exclude": [
+						"defaultView",
+						"data-testid",
+						"className",
+						"classNames",
+						"style",
+						"type",
+						"height",
+						"width",
+						"direction",
+						"gap",
+						"justify",
+						"align",
+						"role",
+						"anchor",
+						"as",
+						"name"
+					]
+				},
+				"callees": {
+					"exclude": [
+						"getFeatureFlag",
+						"i18n(ext)?",
+						"t",
+						"require",
+						"addEventListener",
+						"removeEventListener",
+						"postMessage",
+						"getElementById",
+						"dispatch",
+						"commit",
+						"includes",
+						"indexOf",
+						"endsWith",
+						"startsWith"
+					]
+				}
+			}
+		]
+	},
+	"globals": {
+		"__IS_DEV__": true,
+		"__IS_ANALYZE__": true,
+		"__API_URL__": true,
+		"__PROJECT__": true
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"overrides": [
+		{
+			"files": [
+				"**/src/**/*.test.{ts,tsx}",
+				"**/src/**/*.decorator.{ts,tsx}",
+				"**/src/**/*.stories.{ts,tsx}",
+				"**/*.mock.{ts,tsx}"
+			],
+			"rules": {
+				"i18next/no-literal-string": "off",
+				"@arthurgeron/react-usememo/require-usememo": "off",
+				"@arthurgeron/react-usememo/require-memo": "off"
+			}
+		}
+	]
+}
