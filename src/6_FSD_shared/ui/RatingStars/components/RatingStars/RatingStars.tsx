@@ -1,5 +1,5 @@
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { memo, useCallback, useState } from "react"
+import { memo } from "react"
 import { HStack } from "../../../Stack"
 import styles from "./RatingStars.module.scss"
 
@@ -12,42 +12,12 @@ type RatingStarsProps = {
 }
 
 export const RatingStars = memo<RatingStarsProps>(props => {
-	const { className, isLocked = false, rating = 0, onChangeRating } = props
-
-	const [hoverRating, setHoverRating] = useState(0)
+	const { className, isLocked = false } = props
 
 	const ratingCount = [1, 2, 3, 4, 5]
 
-	const onChangeRatingHandler = useCallback(
-		(newRating: number) => () => {
-			if (!isLocked) {
-				setHoverRating(0)
-				onChangeRating?.(newRating)
-			}
-		},
-		[isLocked, onChangeRating]
-	)
-
-	const onHoverRatingHandler = useCallback(
-		(newHoverRating: number) => () => {
-			if (!isLocked) {
-				setHoverRating(newHoverRating)
-			}
-		},
-		[isLocked]
-	)
-
-	const onClearHoverRatingHandler = useCallback(() => {
-		if (!isLocked) {
-			setHoverRating(0)
-		}
-	}, [isLocked])
-
 	return (
-		<div
-			className={classNamesHelp("", { [styles.cursorPointer]: !isLocked }, [className])}
-			onMouseLeave={onClearHoverRatingHandler}
-		>
+		<div className={classNamesHelp("", { [styles.cursorPointer]: !isLocked }, [className])}>
 			<HStack gap={"gap16"}>
 				{ratingCount.map(rat => (
 					<>{rat}</>
