@@ -1,3 +1,3 @@
 import { RoutePaths } from "../constants/routePath.constant"
 
-export const getRouteMain = () => RoutePaths.MAIN
+export const getRouteMain = () => RoutePaths.Main
