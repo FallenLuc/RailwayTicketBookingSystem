@@ -18,7 +18,7 @@ export const RatingStars = memo<RatingStarsProps>(props => {
 
 	return (
 		<div className={classNamesHelp("", { [styles.cursorPointer]: !isLocked }, [className])}>
-			<HStack gap={"gap16"}>
+			<HStack gap={"gapS"}>
 				{ratingCount.map(rat => (
 					<>{rat}</>
 				))}

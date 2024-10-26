@@ -77,7 +77,7 @@ export const Input = TypedMemo(<T extends string | number>(props: InputProps<T>)
 				className={classNamesHelp("", mods, [classNamesLabel])}
 				data-testid={`${dataTestId}.LabelElement`}
 			>
-				<VStack gap={"gap8"}>
+				<VStack gap={"gapXS"}>
 					{label}
 					{inputElement()}
 				</VStack>

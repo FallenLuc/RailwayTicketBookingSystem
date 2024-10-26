@@ -1,8 +1,15 @@
 @import "reset";
 @import "vars/globals.var";
+@import "vars/font.var";
+@import "vars/color.var";
+@import "fonts/Roboto.font";
+@import "vars/gap.var";
+@import "global";
 
 .app {
 	min-height: 100vh;
+
+	font: var(--font-m);
 }
 
 .pageStyle {

@@ -46,22 +46,22 @@
 	width: 100%;
 }
 
-.gap8 {
-	gap: 8px;
+.gapXS {
+	gap: var(--gap-xs);
 }
 
-.gap12 {
-	gap: 12px;
+.gapS {
+	gap: var(--gap-s);
 }
 
-.gap16 {
-	gap: 16px;
+.gapM {
+	gap: var(--gap-m);
 }
 
-.gap24 {
-	gap: 24px;
+.gapL {
+	gap: var(--gap-l);
 }
 
-.gap32 {
-	gap: 32px;
+.gapXL {
+	gap: var(--gap-xl);
 }
