@@ -9,7 +9,9 @@ export function colorMapper(color: appColorType) {
 		case "main-light":
 			return "color-main-light"
 		case "main-gray":
-			return ".color-main-gray"
+			return "color-main-gray"
+		case "light-gray":
+			return "color-light-gray"
 		case "gold":
 			return "color-gold"
 	}

@@ -13,11 +13,11 @@ export const Header = memo<HeaderProps>(props => {
 	const { className } = props
 
 	return (
-		<div className={classNamesHelp(styles.Header, {}, [className])}>
+		<section className={classNamesHelp(styles.Header, {}, [className])}>
 			<Logo />
 			<NavLinks />
 			<Content />
 			<Background typeBackground={"main"} />
-		</div>
+		</section>
 	)
 })

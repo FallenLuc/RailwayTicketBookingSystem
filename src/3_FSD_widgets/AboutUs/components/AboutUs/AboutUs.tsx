@@ -13,11 +13,11 @@ export const AboutUs = memo<AboutUsProps>(props => {
 	const { className } = props
 
 	return (
-		<div className={classNamesHelp(styles.AboutUs, {}, [className])}>
+		<section className={classNamesHelp(styles.AboutUs, {}, [className])}>
 			<ContainerLayout>
 				<VStack
 					widthMax={true}
-					gap={"gapL"}
+					gap={"gapXL"}
 				>
 					<Text
 						classNameTitle={styles.title}
@@ -58,6 +58,6 @@ export const AboutUs = memo<AboutUsProps>(props => {
 					</VStack>
 				</VStack>
 			</ContainerLayout>
-		</div>
+		</section>
 	)
 })

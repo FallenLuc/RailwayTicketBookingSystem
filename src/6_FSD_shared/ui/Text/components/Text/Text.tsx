@@ -8,10 +8,13 @@ import { colorMapper } from "@helpers/styleMappers/colorMapper.helper"
 
 type titleType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 
+type alignType = "left" | "center" | "right"
+
 type TextProps = {
 	className?: string
 	text?: string
 	title?: string
+	align?: alignType
 	TitleType?: titleType
 	fontSizeTitle?: fontSizeType
 	fontWeightTitle?: fontWeightType
@@ -29,6 +32,7 @@ export const Text = memo<TextProps>(props => {
 		text,
 		classNamesText,
 		classNameTitle,
+		align = "left",
 		title,
 		fontSizeText = "m",
 		fontSizeTitle = "l",
@@ -47,8 +51,9 @@ export const Text = memo<TextProps>(props => {
 		<div className={classNamesHelp(styles.TextWrapper, {}, [className])}>
 			{title ?
 				<TitleType
-					className={classNamesHelp(styles.title, {}, [
+					className={classNamesHelp("", {}, [
 						classNameTitle,
+						styles[align],
 						fontSizeMapper(fontSizeTitle),
 						fontWeightMapper(fontWeightTitle),
 						colorMapper(colorTitle)
@@ -59,7 +64,8 @@ export const Text = memo<TextProps>(props => {
 			:	null}
 			{text ?
 				<p
-					className={classNamesHelp(styles.text, modsText, [
+					className={classNamesHelp("", modsText, [
+						styles[align],
 						classNamesText,
 						fontSizeMapper(fontSizeText),
 						fontWeightMapper(fontWeightText),

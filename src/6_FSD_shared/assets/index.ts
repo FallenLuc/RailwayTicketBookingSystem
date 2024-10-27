@@ -21,6 +21,7 @@ import TitleIcon from "./icons/title.svg"
 import BackgroundMainPageImage from "./image/backgroundMainPage.png"
 import ReviewerMan from "./image/reviewerMan.png"
 import ReviewerWoman from "./image/reviewerWoman.png"
+import BackgroundHowItWorks from "./image/backgroundHowItWorks.jpg"
 
 export {
 	CalendarIcon,
@@ -38,6 +39,7 @@ export {
 	TwitterIcon,
 	YouTubeIcon,
 	BackgroundMainPageImage,
+	BackgroundHowItWorks,
 	ReviewerMan,
 	ReviewerWoman,
 	ChangeIcon,
