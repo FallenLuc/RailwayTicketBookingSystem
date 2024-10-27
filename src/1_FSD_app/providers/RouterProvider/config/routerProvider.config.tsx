@@ -26,7 +26,7 @@ export const routerProviderConfig: CustomRouteProps[] = Object.entries(routeConf
 	([routeName, routeInfo]) => {
 		return {
 			...routeInfo,
-			element: mapperPageNameComponent[routeName as unknown as PagesNames]
+			element: mapperPageNameComponent[routeName as PagesNames]
 		}
 	}
 )

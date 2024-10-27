@@ -1,0 +1,17 @@
+.logo {
+	position: relative;
+
+	z-index: var(--zindex-header-routing);
+	width: 80px;
+	height: 27px;
+
+	color: var(--main-light);
+}
+
+.logo-overly {
+	z-index: var(--z-index-overlay);
+
+	height: 64px;
+
+	background-color: var(--overlay);
+}

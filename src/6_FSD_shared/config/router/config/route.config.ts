@@ -20,7 +20,7 @@ export const routeConfig: Record<PagesNames, routeInfoType> = {
 	},
 	[PagesNames.MainHowItWorks]: {
 		name: PagesNames.MainHowItWorks,
-		path: RoutePaths.MainAboutUs,
+		path: RoutePaths.MainHowItWorks,
 		inHeader: true
 	},
 	[PagesNames.MainReviews]: {
