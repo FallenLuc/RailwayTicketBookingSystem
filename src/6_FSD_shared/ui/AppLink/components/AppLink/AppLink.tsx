@@ -49,4 +49,5 @@ const Component = React.forwardRef<HTMLAnchorElement, AppLinkProps>((props, ref)
 	)
 })
 
+// To Feature Hover Color
 export const AppLink = memo<AppLinkProps>(Component)

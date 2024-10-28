@@ -6,7 +6,7 @@ import { TitleIcon } from "@assets/index"
 
 export const Content = memo(() => {
 	return (
-		<VStack // To Feature сделать фичу поиска
+		<VStack
 			className={styles.content}
 			justify={"flexEnd"}
 			widthMax={true}

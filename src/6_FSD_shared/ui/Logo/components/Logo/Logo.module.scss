@@ -1,4 +1,4 @@
-.logo {
+.Logo {
 	position: relative;
 
 	z-index: var(--z-index-header-routing);
@@ -6,12 +6,4 @@
 	height: 27px;
 
 	color: var(--main-light);
-}
-
-.logo-overly {
-	z-index: var(--z-index-overlay);
-
-	height: 64px;
-
-	background-color: var(--overlay);
 }

@@ -4,6 +4,7 @@ import { Header } from "@widgets/Header"
 import { AboutUs } from "@widgets/AboutUs"
 import { HowItWorks } from "@widgets/HowItWorks"
 import { Reviews } from "@widgets/Reviews"
+import { Footer } from "@widgets/Footer"
 
 type MainPageProps = {
 	className?: string
@@ -17,6 +18,7 @@ export const MainPage = memo<MainPageProps>(props => {
 			<AboutUs />
 			<HowItWorks />
 			<Reviews />
+			<Footer />
 		</div>
 	)
 })

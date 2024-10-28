@@ -4,6 +4,7 @@ import { Text } from "@ui/Text"
 import { getRouteNameHowItWorks } from "@config/router/helpers/getterRoutesNames.helper"
 import { AppLink } from "@ui/AppLink"
 import styles from "./Header.module.scss"
+import { LEARN_MORE_LINK } from "@constants/links.constant"
 
 type HeaderProps = {
 	className?: string
@@ -28,9 +29,7 @@ export const Header = memo<HeaderProps>(props => {
 				fontWeight={"ultra-fat"}
 				fontsize={"m"}
 				color={"main-light"}
-				to={
-					"https://github.com/DnD-developer/RailwayTicketBookingSystem/tree/MainPage/layoutMainPageOnComponent-DND-581"
-				}
+				to={LEARN_MORE_LINK}
 				target={"_blank"}
 				className={styles.link}
 			>

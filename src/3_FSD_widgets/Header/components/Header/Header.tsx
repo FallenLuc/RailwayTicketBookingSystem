@@ -1,7 +1,7 @@
 import styles from "./Header.module.scss"
 import { memo } from "react"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { Logo } from "../Logo/Logo"
+import { HeaderLogo } from "../HeaderLogo/HeaderLogo"
 import { Content } from "../Content/Content"
 import { NavLinks } from "../NavLinks/NavLinks"
 import { Background } from "../Background/Background"
@@ -13,11 +13,11 @@ export const Header = memo<HeaderProps>(props => {
 	const { className } = props
 
 	return (
-		<section className={classNamesHelp(styles.Header, {}, [className])}>
-			<Logo />
+		<header className={classNamesHelp(styles.Header, {}, [className])}>
+			<HeaderLogo />
 			<NavLinks />
 			<Content />
 			<Background typeBackground={"main"} />
-		</section>
+		</header>
 	)
 })
