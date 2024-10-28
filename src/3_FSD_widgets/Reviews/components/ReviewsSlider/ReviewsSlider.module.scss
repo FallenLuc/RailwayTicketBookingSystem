@@ -1,0 +1,35 @@
+.Slider {
+	width: 100%;
+}
+
+:global {
+	.slick-dots {
+		bottom: -65px !important;
+		height: 20px !important;
+
+		line-height: 20px !important;
+
+		button {
+			width: 20px !important;
+
+			height: 20px !important;
+			padding: 0 !important;
+
+			border: none;
+
+			border-radius: 50%;
+
+			background-color: var(--light-gray) !important;
+
+			&::before {
+				display: none !important;
+			}
+		}
+
+		.slick-active {
+			button {
+				background-color: var(--main-gray) !important;
+			}
+		}
+	}
+}

@@ -14,7 +14,6 @@
 		"plugin:react-redux/recommended",
 		"plugin:react-hooks/recommended",
 		"plugin:react/jsx-runtime",
-		"plugin:i18next/recommended",
 		"plugin:jest-dom/recommended",
 		"plugin:storybook/recommended",
 		"prettier"
@@ -24,7 +23,6 @@
 		"sourceType": "module"
 	},
 	"plugins": [
-		"i18next",
 		"react",
 		"jest-dom",
 		"react-hooks",
@@ -57,52 +55,7 @@
 		"@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
 		"no-console": ["warn"],
 		"react/prop-types": "off",
-		"@typescript-eslint/no-invalid-void-type": "off",
-		"i18next/no-literal-string": [
-			"error",
-			{
-				"mode": "jsx-only",
-				"makrupOnly": true,
-				"jsx-attributes": {
-					"exclude": [
-						"defaultView",
-						"data-testid",
-						"className",
-						"classNames",
-						"style",
-						"type",
-						"height",
-						"width",
-						"direction",
-						"gap",
-						"justify",
-						"align",
-						"role",
-						"anchor",
-						"as",
-						"name"
-					]
-				},
-				"callees": {
-					"exclude": [
-						"getFeatureFlag",
-						"i18n(ext)?",
-						"t",
-						"require",
-						"addEventListener",
-						"removeEventListener",
-						"postMessage",
-						"getElementById",
-						"dispatch",
-						"commit",
-						"includes",
-						"indexOf",
-						"endsWith",
-						"startsWith"
-					]
-				}
-			}
-		]
+		"@typescript-eslint/no-invalid-void-type": "off"
 	},
 	"globals": {
 		"__IS_DEV__": true,
