@@ -15,6 +15,7 @@ export const Advantages = memo<AdvantagesProps>(props => {
 		<HStack
 			align={"flexStart"}
 			justify={"spaceBetween"}
+			TagType={"ul"}
 			widthMax={true}
 			className={classNamesHelp(styles.Advantages, {}, [className])}
 		>

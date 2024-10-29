@@ -1,1 +1,1 @@
-export { ChooseTrainPage } from "./components/ChooseTrainPage/ChooseTrainPage"
+export { ChooseTrainPage } from "./components/ChooseTrainPage/ChooseTrainPage.lazy"

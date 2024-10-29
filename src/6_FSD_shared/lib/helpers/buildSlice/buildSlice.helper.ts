@@ -25,3 +25,5 @@ export function buildSlice<
 
 	return { ...slice, useActions }
 }
+
+// To Feature Попробовать написать тест

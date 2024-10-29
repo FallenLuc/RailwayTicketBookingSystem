@@ -4,10 +4,9 @@ import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { VStack } from "@ui/Stack"
 import { ContainerLayout } from "@ui/layout"
 import { Advantages } from "../Advantages/Advantages"
-import { Background } from "../Background/Background"
-import { Header } from "../Header/Header"
-
-// To Feature Add Lazy
+import { HeaderHowItWorks } from "../HeaderHowItWorks/HeaderHowItWorks"
+import { Background } from "@ui/Background"
+import { BackgroundHowItWorks } from "@assets/index"
 
 type HowItWorksProps = {
 	className?: string
@@ -19,11 +18,11 @@ export const HowItWorks = memo<HowItWorksProps>(props => {
 		<section className={classNamesHelp(styles.HowItWorks, {}, [className])}>
 			<ContainerLayout>
 				<VStack gap={"gapXL"}>
-					<Header />
+					<HeaderHowItWorks />
 					<Advantages />
 				</VStack>
 			</ContainerLayout>
-			<Background />
+			<Background background={BackgroundHowItWorks} />
 		</section>
 	)
 })

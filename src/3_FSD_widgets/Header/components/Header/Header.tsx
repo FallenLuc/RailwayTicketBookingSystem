@@ -2,9 +2,9 @@ import styles from "./Header.module.scss"
 import { memo } from "react"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { HeaderLogo } from "../HeaderLogo/HeaderLogo"
-import { Content } from "../Content/Content"
+import { HeaderContent } from "../HeaderContent/HeaderContent"
 import { NavLinks } from "../NavLinks/NavLinks"
-import { Background } from "../Background/Background"
+import { HeaderBackground } from "../HeaderBackground/HeaderBackground"
 
 type HeaderProps = {
 	className?: string
@@ -16,8 +16,8 @@ export const Header = memo<HeaderProps>(props => {
 		<header className={classNamesHelp(styles.Header, {}, [className])}>
 			<HeaderLogo />
 			<NavLinks />
-			<Content />
-			<Background typeBackground={"main"} />
+			<HeaderContent />
+			<HeaderBackground typeBackground={"main"} />
 		</header>
 	)
 })

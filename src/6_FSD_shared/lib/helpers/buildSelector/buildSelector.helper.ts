@@ -14,3 +14,5 @@ export function buildSelector<T, Args extends any[]>(
 
 	return [useAppSelector, selector]
 }
+
+// To Feature Попробовать написать тест

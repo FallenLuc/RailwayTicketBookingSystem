@@ -26,3 +26,5 @@ export function buildCreateSelector<T, L, Args extends any[]>(
 
 	return [useAppCreateSelector, generalSelector]
 }
+
+// To Feature Попробовать написать тест
