@@ -18,6 +18,7 @@ export const AdvantageItem = memo<AdvantageItemProps>(props => {
 			className={classNamesHelp(styles.AdvantageItem, {}, [className])}
 			align={"center"}
 			gap={"gapL"}
+			TagType={"li"}
 		>
 			<Icon className={styles.icon} />
 

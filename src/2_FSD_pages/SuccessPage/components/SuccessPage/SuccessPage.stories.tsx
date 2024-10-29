@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from "@storybook/react"
-import { SuccessPage } from "./SuccessPage"
+import { SuccessPage } from "./SuccessPage.lazy"
 
 const meta: Meta<typeof SuccessPage> = {
 	title: "pages/SuccessPage",

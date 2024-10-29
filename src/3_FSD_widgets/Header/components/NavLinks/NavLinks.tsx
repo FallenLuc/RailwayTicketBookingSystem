@@ -13,19 +13,25 @@ export const NavLinks = memo(() => {
 			className={styles.listLinks}
 		>
 			<ContainerLayout>
-				<HStack gap={"gapXL"}>
+				<HStack
+					gap={"gapXL"}
+					TagType={"nav"}
+				>
 					{Object.values(routeConfig).map(link => {
 						if (link.inHeader) {
 							return (
-								<AppLink
-									key={link.path}
-									to={link.path}
-									fontsize="l"
-									color={"main-light"}
-									fontWeight={"think"}
-								>
-									{link.name}
-								</AppLink>
+								<li key={link.path}>
+									<AppLink
+										key={link.path}
+										to={link.path}
+										fontsize="l"
+										colorHover={"gold"}
+										color={"main-light"}
+										fontWeight={"think"}
+									>
+										{link.name}
+									</AppLink>
+								</li>
 							)
 						}
 					})}

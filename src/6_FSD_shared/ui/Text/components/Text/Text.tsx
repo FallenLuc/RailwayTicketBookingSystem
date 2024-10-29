@@ -3,8 +3,8 @@ import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { memo, useMemo } from "react"
 import styles from "./Text.module.scss"
 import type { fontSizeType, fontWeightType, appColorType } from "@customTypes/style.types"
-import { fontSizeMapper, fontWeightMapper } from "@helpers/styleMappers/fontMapper.helper"
-import { colorMapper } from "@helpers/styleMappers/colorMapper.helper"
+import { fontSizeMapper, fontWeightMapper } from "@helpers/fontMapper/fontMapper.helper"
+import { colorMapper } from "@helpers/colorMapper/colorMapper.helper"
 
 type titleType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 

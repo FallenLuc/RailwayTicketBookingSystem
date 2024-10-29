@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from "@storybook/react"
-import { MainPage } from "./MainPage"
+import { MainPage } from "./MainPage.lazy"
 
 const meta: Meta<typeof MainPage> = {
 	title: "pages/MainPage",

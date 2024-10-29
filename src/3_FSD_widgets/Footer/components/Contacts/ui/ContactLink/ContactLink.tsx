@@ -19,8 +19,10 @@ export const ContactLink = memo<ContactLinkProps>(props => {
 			className={classNamesHelp("", {}, [className])}
 			gap={"gapM"}
 			align={"center"}
+			TagType={"li"}
 		>
 			<AppLink
+				colorHover={"gold"}
 				to={link}
 				className={styles.linkIcon}
 			>
@@ -28,6 +30,7 @@ export const ContactLink = memo<ContactLinkProps>(props => {
 			</AppLink>
 
 			<AppLink
+				colorHover={"gold"}
 				to={link}
 				color={"light-gray"}
 				fontsize={"m"}

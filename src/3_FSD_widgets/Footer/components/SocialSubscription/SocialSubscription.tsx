@@ -41,41 +41,62 @@ export const SocialSubscription = memo<SocialSubscriptionProps>(props => {
 			<HStack
 				align={"center"}
 				gap={"gapL"}
+				TagType={"ul"}
 			>
-				<AppLink
-					to={YOUTUBE_LINK}
-					className={styles.link}
-				>
-					<YouTubeIcon className={styles.icon} />
-				</AppLink>
-				<AppLink
-					to={LINKEDIN_LINK}
-					className={styles.link}
-				>
-					<LinkedinIcon className={styles.icon} />
-				</AppLink>
-				<AppLink
-					to={GOOGLE_LINK}
-					className={styles.link}
-				>
-					<GoogleIcon className={styles.icon} />
-				</AppLink>
-				<AppLink
-					to={FACEBOOK_LINK}
-					className={styles.link}
-					style={style}
-				>
-					<FacebookIcon
-						className={styles.icon}
+				<li>
+					<AppLink
+						color={"light-gray"}
+						to={YOUTUBE_LINK}
+						className={styles.link}
+						colorHover={"gold"}
+					>
+						<YouTubeIcon className={styles.icon} />
+					</AppLink>
+				</li>
+				<li>
+					<AppLink
+						color={"light-gray"}
+						to={LINKEDIN_LINK}
+						className={styles.link}
+						colorHover={"gold"}
+					>
+						<LinkedinIcon className={styles.icon} />
+					</AppLink>
+				</li>
+				<li>
+					<AppLink
+						color={"light-gray"}
+						to={GOOGLE_LINK}
+						className={styles.link}
+						colorHover={"gold"}
+					>
+						<GoogleIcon className={styles.icon} />
+					</AppLink>
+				</li>
+				<li>
+					<AppLink
+						color={"light-gray"}
+						to={FACEBOOK_LINK}
+						className={styles.link}
+						colorHover={"gold"}
 						style={style}
-					/>
-				</AppLink>
-				<AppLink
-					to={TWITTER_LINK}
-					className={styles.link}
-				>
-					<TwitterIcon className={styles.icon} />
-				</AppLink>
+					>
+						<FacebookIcon
+							className={styles.icon}
+							style={style}
+						/>
+					</AppLink>
+				</li>
+				<li>
+					<AppLink
+						color={"light-gray"}
+						to={TWITTER_LINK}
+						className={styles.link}
+						colorHover={"gold"}
+					>
+						<TwitterIcon className={styles.icon} />
+					</AppLink>
+				</li>
 			</HStack>
 		</VStack>
 	)

@@ -35,7 +35,10 @@ export const Contacts = memo<ContactsProps>(props => {
 				fontSizeTitle={"l"}
 				fontWeightTitle={"fat"}
 			/>
-			<VStack gap={"gapM"}>
+			<VStack
+				gap={"gapM"}
+				TagType={"ul"}
+			>
 				<ContactLink
 					Icon={PhoneIcon}
 					link={CONTACT_PHONE_LINK}

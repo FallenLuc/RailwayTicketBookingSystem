@@ -8,12 +8,14 @@ type justifyType = "spaceBetween" | "spaceAround" | "flexEnd" | "flexStart" | "c
 type alignType = "center" | "flexEnd" | "flexStart"
 type directionType = "column" | "row"
 type gapType = "gapXS" | "gapS" | "gapM" | "gapL" | "gapXL"
+type tagType = "ul" | "nav" | "header" | "footer" | "section" | "aside" | "article" | "div" | "li"
 
 export type FlexProps = {
 	className?: string
 	justify?: justifyType
 	align?: alignType
 	direction?: directionType
+	TagType?: tagType
 	gap?: gapType
 	widthMax?: boolean
 } & PropsWithChildren &
@@ -54,7 +56,8 @@ export const Flex = memo<FlexProps>(props => {
 		widthMax = true,
 		align = "flexStart",
 		gap,
-		children
+		children,
+		TagType = "div"
 	} = props
 
 	const mods: Mods = {
@@ -69,5 +72,5 @@ export const Flex = memo<FlexProps>(props => {
 		gap ? gapMap[gap] : undefined
 	]
 
-	return <div className={classNamesHelp(styles.Flex, mods, classNames)}>{children}</div>
+	return <TagType className={classNamesHelp(styles.Flex, mods, classNames)}>{children}</TagType>
 })

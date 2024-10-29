@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from "@storybook/react"
-import { ChooseTrainPage } from "./ChooseTrainPage"
+import { ChooseTrainPage } from "./ChooseTrainPage.lazy"
 
 const meta: Meta<typeof ChooseTrainPage> = {
 	title: "pages/ChooseTrainPage",

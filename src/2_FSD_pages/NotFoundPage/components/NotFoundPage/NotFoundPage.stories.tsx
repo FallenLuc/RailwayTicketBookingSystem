@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from "@storybook/react"
-import { NotFoundPage } from "./NotFoundPage"
+import { NotFoundPage } from "./NotFoundPage.lazy"
 
 const meta: Meta<typeof NotFoundPage> = {
 	title: "pages/NotFoundPage",

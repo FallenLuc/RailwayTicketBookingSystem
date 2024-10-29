@@ -4,6 +4,8 @@ import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { ReviewsItem } from "./ui/ReviewsItem/ReviewsItem"
 import { ReviewerWoman, ReviewerMan } from "@assets/index"
 import styles from "./ReviewsSlider.module.scss"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 
 type ReviewsSliderProps = {
 	className?: string
@@ -17,12 +19,10 @@ export const ReviewsSlider = memo<ReviewsSliderProps>(props => {
 			infinite: true,
 			speed: 500,
 			slidesToShow: 2,
-			slidesToScroll: 1
+			slidesToScroll: 1,
+			lazyload: true
 		}
 	}, [])
-
-	// To Feature настроить возможность импорта css webpack
-	// To Feature вынести в отдельный ui
 
 	return (
 		<Slider

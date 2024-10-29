@@ -4,8 +4,8 @@ import React, { memo, useMemo } from "react"
 import { Link, type LinkProps } from "react-router-dom"
 import styles from "./AppLink.module.scss"
 import type { fontSizeType, fontWeightType, appColorType } from "@customTypes/style.types"
-import { fontSizeMapper, fontWeightMapper } from "@helpers/styleMappers/fontMapper.helper"
-import { colorMapper } from "@helpers/styleMappers/colorMapper.helper"
+import { fontSizeMapper, fontWeightMapper } from "@helpers/fontMapper/fontMapper.helper"
+import { colorMapper, colorHoverMapper } from "@helpers/colorMapper/colorMapper.helper"
 
 export type AppLinkProps = {
 	inverted?: boolean
@@ -13,6 +13,7 @@ export type AppLinkProps = {
 	fontsize?: fontSizeType
 	fontWeight?: fontWeightType
 	color?: appColorType
+	colorHover?: appColorType
 } & LinkProps
 
 const Component = React.forwardRef<HTMLAnchorElement, AppLinkProps>((props, ref) => {
@@ -24,6 +25,7 @@ const Component = React.forwardRef<HTMLAnchorElement, AppLinkProps>((props, ref)
 		fontsize = "m",
 		fontWeight = "medium",
 		color = "main-gray",
+		colorHover,
 		...otherProps
 	} = props
 
@@ -40,7 +42,8 @@ const Component = React.forwardRef<HTMLAnchorElement, AppLinkProps>((props, ref)
 				className,
 				fontSizeMapper(fontsize),
 				fontWeightMapper(fontWeight),
-				colorMapper(color)
+				colorMapper(color),
+				colorHoverMapper(colorHover || color)
 			])}
 			{...otherProps}
 		>
@@ -49,5 +52,4 @@ const Component = React.forwardRef<HTMLAnchorElement, AppLinkProps>((props, ref)
 	)
 })
 
-// To Feature Hover Color
 export const AppLink = memo<AppLinkProps>(Component)

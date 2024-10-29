@@ -1,1 +1,1 @@
-export { SuccessPage } from "./components/SuccessPage/SuccessPage"
+export { SuccessPage } from "./components/SuccessPage/SuccessPage.lazy"
