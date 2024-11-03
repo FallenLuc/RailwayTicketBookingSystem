@@ -6,10 +6,6 @@
 	"main": "index.ts",
 	"homepage": "https://dnd-developer.github.io/RailwayTicketBookingSystem",
 	"private": "false",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/DnD-developer/RailwayTicketBookingSystem"
-	},
 	"scripts": {
 		"build:start:dev": "webpack serve --env port=8081 mode=development",
 		"build:dev": "webpack --env mode=development",
@@ -168,8 +164,5 @@
 		"react-spinners": "^0.14.1",
 		"slick-carousel": "^1.8.1",
 		"uid": "^2.0.2"
-	},
-	"bugs": {
-		"url": "https://github.com/DnD-developer/RailwayTicketBookingSystem.git/issues"
 	}
 }
