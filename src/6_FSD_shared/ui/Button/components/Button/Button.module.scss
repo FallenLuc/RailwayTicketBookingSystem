@@ -94,11 +94,11 @@
 }
 
 .transparent-light {
-	border: 1px solid var(--main-light);
+	border: 1px solid var(--main-gray);
 
 	background: transparent;
 
-	color: var(--main-light);
+	color: var(--main-gray);
 
 	&:hover {
 		border: none;

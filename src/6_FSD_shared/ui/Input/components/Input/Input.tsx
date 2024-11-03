@@ -44,12 +44,13 @@ export const Input = TypedMemo(<T extends string | number>(props: InputProps<T>)
 		value,
 		onChange,
 		autoFocus = false,
+		error = false,
 		label = "",
 		classNamesLabel,
 		fontSize = "m",
 		fontWeight = "medium",
 		fontSizeLabel = "m",
-		fontWeightLabel = "medium",
+		fontWeightLabel = "think",
 		colorLabel = "main-dark",
 		type = "text",
 		height = "m",
@@ -76,8 +77,10 @@ export const Input = TypedMemo(<T extends string | number>(props: InputProps<T>)
 	)
 
 	const mods = useMemo<Mods>(() => {
-		return {}
-	}, [])
+		return {
+			[styles.error]: error
+		}
+	}, [error])
 
 	const inputElement = () => (
 		<input
@@ -100,7 +103,7 @@ export const Input = TypedMemo(<T extends string | number>(props: InputProps<T>)
 	if (label) {
 		return (
 			<label
-				className={classNamesHelp("", mods, [
+				className={classNamesHelp(styles.wrapper, mods, [
 					classNamesLabel,
 					fontSizeMapper(fontSizeLabel),
 					fontWeightMapper(fontWeightLabel),
@@ -108,7 +111,7 @@ export const Input = TypedMemo(<T extends string | number>(props: InputProps<T>)
 				])}
 				data-testid={`${dataTestId}.LabelElement`}
 			>
-				<VStack gap={"gapXS"}>
+				<VStack gap={"gapS"}>
 					{label}
 					{inputElement()}
 				</VStack>

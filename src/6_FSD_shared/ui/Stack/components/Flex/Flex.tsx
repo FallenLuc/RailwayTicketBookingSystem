@@ -8,7 +8,17 @@ type justifyType = "spaceBetween" | "spaceAround" | "flexEnd" | "flexStart" | "c
 type alignType = "center" | "flexEnd" | "flexStart"
 type directionType = "column" | "row"
 type gapType = "gapXS" | "gapS" | "gapM" | "gapL" | "gapXL"
-type tagType = "ul" | "nav" | "header" | "footer" | "section" | "aside" | "article" | "div" | "li"
+type tagType =
+	| "ul"
+	| "nav"
+	| "header"
+	| "footer"
+	| "section"
+	| "aside"
+	| "article"
+	| "div"
+	| "li"
+	| "form"
 
 export type FlexProps = {
 	className?: string

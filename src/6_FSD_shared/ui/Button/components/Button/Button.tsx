@@ -1,5 +1,6 @@
 import type { Mods } from "@helpers/classNamesHelp/classNamesHelp"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
+import type React from "react"
 import { type ButtonHTMLAttributes, memo, useMemo, useState, useCallback } from "react"
 import styles from "./Button.module.scss"
 import type { fontWeightType, fontSizeType } from "@customTypes/style.types"
@@ -58,11 +59,16 @@ export const Button = memo<ButtonProps>(props => {
 		}
 	}, [click, disabled, textUppercase])
 
-	const onClickHandler = useCallback(() => {
-		if (!disabled) {
-			onClick()
-		}
-	}, [disabled, onClick])
+	const onClickHandler = useCallback(
+		(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+			event.preventDefault()
+
+			if (!disabled) {
+				onClick()
+			}
+		},
+		[disabled, onClick]
+	)
 
 	const onMouseDownHandler = useCallback(() => {
 		if (!disabled) {
