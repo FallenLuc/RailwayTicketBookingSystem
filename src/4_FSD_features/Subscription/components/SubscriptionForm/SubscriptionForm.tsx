@@ -36,8 +36,6 @@ export const SubscriptionForm = memo<SubscriptionFormProps>(props => {
 		}
 	}, [onSend, value])
 
-	// Todo: validation
-
 	return (
 		<HStack
 			className={classNamesHelp("", {}, [className])}
@@ -55,6 +53,7 @@ export const SubscriptionForm = memo<SubscriptionFormProps>(props => {
 				error={validateError}
 				value={value}
 				onChange={onChangeValue}
+				type={"email"}
 			/>
 			<Button
 				type={"submit"}

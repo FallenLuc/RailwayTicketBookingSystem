@@ -10,7 +10,7 @@ import styles from "./Modal.module.scss"
 export type ModalProps = {
 	classNames?: string
 	isOpen?: boolean
-	onClose?: () => void
+	onClose: () => void
 	lazy?: boolean
 } & PropsWithChildren
 
