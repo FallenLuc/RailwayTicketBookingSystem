@@ -23,7 +23,7 @@ export function pluginsWebpack({
 
 	const plugins = [
 		circularPlugin,
-		new HtmlWebpackPlugin({ template: paths.html }),
+		new HtmlWebpackPlugin({ template: paths.html, publicPath: "." }),
 		new ProgressPlugin({ percentBy: null }),
 		new DefinePlugin({
 			__IS_DEV__: JSON.stringify(isDev),
