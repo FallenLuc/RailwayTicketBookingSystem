@@ -30,6 +30,7 @@ export const UnderFooter = memo<UnderFooterProps>(props => {
 					<AppLink
 						to={getRouteMainHeader().route}
 						className={styles.arrowUp}
+						color={"light-gray"}
 						colorHover={"gold"}
 					>
 						<ArrowUpIcon className={styles.icon} />
