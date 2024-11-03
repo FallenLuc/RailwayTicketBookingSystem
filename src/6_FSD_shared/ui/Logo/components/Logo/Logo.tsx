@@ -13,7 +13,7 @@ export const Logo = memo<LogoProps>(props => {
 
 	return (
 		<AppLink
-			to={getRouteMain()}
+			to={getRouteMain().route}
 			className={classNamesHelp("", {}, [className])}
 		>
 			<LogoIcon className={styles.logo} />

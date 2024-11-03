@@ -13,6 +13,11 @@ export const routeConfig: Record<PagesNames, routeInfoType> = {
 		path: RoutePaths.Main,
 		inHeader: false
 	},
+	[PagesNames.MainHeader]: {
+		name: PagesNames.MainHeader,
+		path: RoutePaths.MainHeader,
+		inHeader: false
+	},
 	[PagesNames.MainAboutUs]: {
 		name: PagesNames.MainAboutUs,
 		path: RoutePaths.MainAboutUs,

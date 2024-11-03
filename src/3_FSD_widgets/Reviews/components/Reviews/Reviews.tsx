@@ -6,6 +6,7 @@ import { getRouteNameReviews } from "@config/router/helpers/getterRoutesNames.he
 import { ContainerLayout } from "@ui/layout"
 import { VStack } from "@ui/Stack"
 import { ReviewsSlider } from "../ReviewsSlider/ReviewsSlider"
+import { getRouteMainReviews } from "@config/router"
 
 type ReviewsProps = {
 	className?: string
@@ -14,7 +15,10 @@ export const Reviews = memo<ReviewsProps>(props => {
 	const { className } = props
 
 	return (
-		<section className={classNamesHelp(styles.Reviews, {}, [className])}>
+		<section
+			className={classNamesHelp(styles.Reviews, {}, [className])}
+			id={getRouteMainReviews().hash}
+		>
 			<ContainerLayout>
 				<VStack
 					gap={"gapXL"}

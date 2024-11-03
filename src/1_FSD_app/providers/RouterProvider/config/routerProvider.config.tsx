@@ -13,6 +13,7 @@ export type CustomRouteProps = routeInfoType & RouteProps
 
 export const mapperPageNameComponent: Record<PagesNames, ReactNode> = {
 	[PagesNames.Main]: <MainPage />,
+	[PagesNames.MainHeader]: <MainPage />,
 	[PagesNames.MainHowItWorks]: <MainPage />,
 	[PagesNames.MainAboutUs]: <MainPage />,
 	[PagesNames.MainReviews]: <MainPage />,

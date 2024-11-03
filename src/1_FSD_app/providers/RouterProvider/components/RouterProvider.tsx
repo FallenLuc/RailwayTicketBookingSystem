@@ -6,6 +6,7 @@ import { PageLoader } from "@widgets/PageLoader"
 
 export const RouterProvider = memo(() => {
 	const fallbackPage = useMemo(() => <PageLoader />, [])
+
 	return (
 		<Suspense fallback={fallbackPage}>
 			<Routes>

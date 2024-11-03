@@ -5,6 +5,7 @@ import { Text } from "@ui/Text"
 import { getRouteNameAboutUs } from "@config/router/helpers/getterRoutesNames.helper"
 import { memo } from "react"
 import { VStack } from "@ui/Stack"
+import { getRouteMainAboutUs } from "@config/router"
 
 type AboutUsProps = {
 	className?: string
@@ -13,7 +14,10 @@ export const AboutUs = memo<AboutUsProps>(props => {
 	const { className } = props
 
 	return (
-		<section className={classNamesHelp(styles.AboutUs, {}, [className])}>
+		<section
+			className={classNamesHelp(styles.AboutUs, {}, [className])}
+			id={getRouteMainAboutUs().hash}
+		>
 			<ContainerLayout>
 				<VStack
 					widthMax={true}

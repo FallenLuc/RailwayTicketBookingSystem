@@ -5,7 +5,7 @@ import { ContainerLayout } from "@ui/layout"
 import { memo, useMemo } from "react"
 import { Logo } from "@ui/Logo"
 import { AppLink } from "@ui/AppLink"
-import { getRouteMain } from "@config/router"
+import { getRouteMainHeader } from "@config/router"
 import { ArrowUpIcon } from "@assets/index"
 import { Text } from "@ui/Text"
 
@@ -28,7 +28,7 @@ export const UnderFooter = memo<UnderFooterProps>(props => {
 				>
 					<Logo />
 					<AppLink
-						to={getRouteMain()}
+						to={getRouteMainHeader().route}
 						className={styles.arrowUp}
 						colorHover={"gold"}
 					>
