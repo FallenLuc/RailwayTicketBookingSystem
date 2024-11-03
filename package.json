@@ -4,7 +4,7 @@
 	"version": "1.0.0",
 	"description": "Diploma of Netology",
 	"main": "index.ts",
-	"homepage": "https://dnd-developer.github.io/RailwayTicketBookingSystem",
+	"homepage": "https://dnd-developer.github.io/",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/DnD-developer/RailwayTicketBookingSystem"
