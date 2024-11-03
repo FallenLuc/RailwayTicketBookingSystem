@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom"
 
 export const RootComponent = () => {
 	return (
-		<BrowserRouter>
+		<BrowserRouter basename="/">
 			<StoreProvider>
 				<App />
 			</StoreProvider>
