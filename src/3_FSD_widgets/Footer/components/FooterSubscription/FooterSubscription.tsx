@@ -1,8 +1,8 @@
 import { memo } from "react"
-import styles from "./FooterSubscription.module.scss"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { VStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
+import { Subscription } from "@features/Subscription"
 
 type FooterSubscriptionProps = {
 	className?: string
@@ -23,7 +23,7 @@ export const FooterSubscription = memo<FooterSubscriptionProps>(props => {
 				fontSizeTitle={"l"}
 				fontWeightTitle={"fat"}
 			/>
-			<div className={styles.fallback}></div>
+			<Subscription />
 		</VStack>
 	)
 })
