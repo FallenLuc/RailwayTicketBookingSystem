@@ -7,6 +7,7 @@ import { FooterSubscription } from "../FooterSubscription/FooterSubscription"
 import { Contacts } from "../Contacts/Contacts"
 import { ContainerLayout } from "@ui/layout"
 import { SocialSubscription } from "../SocialSubscription/SocialSubscription"
+import { getRouteMainContacts } from "@config/router"
 
 type FooterProps = {
 	className?: string
@@ -15,7 +16,10 @@ export const Footer = memo<FooterProps>(props => {
 	const { className } = props
 
 	return (
-		<footer className={classNamesHelp(styles.Footer, {}, [className])}>
+		<footer
+			className={classNamesHelp(styles.Footer, {}, [className])}
+			id={getRouteMainContacts().hash}
+		>
 			<ContainerLayout>
 				<HStack
 					align={"flexStart"}
