@@ -1,13 +1,30 @@
 .Input {
-	display: block;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
 
 	width: 100%;
 
-	padding: 5px 15px;
+	padding: 5px 20px;
 
 	border: none;
 
 	background: none;
 
-	font: var(--font-l);
+	color: var(--main-dark);
+
+	font: var(--font-m);
+
+	&::placeholder {
+		color: var(--main-gray);
+		font: inherit;
+	}
+}
+
+.height-s {
+	height: var(--height-input-s);
+}
+
+.height-m {
+	height: var(--height-input-m);
 }

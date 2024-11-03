@@ -19,6 +19,7 @@ type ButtonProps = {
 	fontWeight?: fontWeightType
 	fontSize?: fontSizeType
 	disabled?: boolean
+	"data-testid"?: string
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 const heightMapper: Record<heightType, string> = {
@@ -40,6 +41,7 @@ export const Button = memo<ButtonProps>(props => {
 		onClick,
 		width,
 		height,
+		"data-testid": dataTestId = "button-ui",
 		fontWeight = "ultra-fat",
 		textUppercase,
 		fontSize = "m",
@@ -79,7 +81,7 @@ export const Button = memo<ButtonProps>(props => {
 			onClick={onClickHandler}
 			onMouseDown={onMouseDownHandler}
 			onMouseUp={onMouseUpHandler}
-			data-testid="button-ui"
+			data-testid={dataTestId}
 			className={classNamesHelp(styles.Button, mods, [
 				className,
 				styles[theme],
