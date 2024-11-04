@@ -17,7 +17,7 @@ export function configWebpack(options: buildOptionsType): Configuration {
 		resolve: resolversWebpack(options),
 		output: {
 			path: paths.build,
-			publicPath: isDev ? "/" : "/RailwayTicketBookingSystem",
+			publicPath: isDev ? "/" : "/RailwayTicketBookingSystem/",
 			filename: "[name].[contenthash].bundle.js",
 			clean: true
 		},
