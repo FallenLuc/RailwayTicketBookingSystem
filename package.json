@@ -4,7 +4,7 @@
 	"version": "1.0.0",
 	"description": "Diploma of Netology",
 	"main": "index.ts",
-	"homepage": "https://dnd-developer.github.io/RailwayTicketBookingSystem",
+	"homepage": "https://dnd-developer.github.io/RailwayTicketBookingSystem/",
 	"private": "false",
 	"scripts": {
 		"build:start:dev": "webpack serve --env port=8081 mode=development",
