@@ -4,7 +4,7 @@ import { HashRouter } from "react-router-dom"
 
 export const RootComponent = () => {
 	return (
-		<HashRouter basename="/">
+		<HashRouter>
 			<StoreProvider>
 				<App />
 			</StoreProvider>
