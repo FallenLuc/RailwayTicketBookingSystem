@@ -23,7 +23,12 @@ export function pluginsWebpack({
 
 	const plugins = [
 		circularPlugin,
-		new HtmlWebpackPlugin({ template: paths.html, publicPath: "." }),
+		new HtmlWebpackPlugin({
+			template: paths.html,
+			base: {
+				href: isDev ? "/" : "https://dnd-developer.github.io/RailwayTicketBookingSystem/"
+			}
+		}),
 		new ProgressPlugin({ percentBy: null }),
 		new DefinePlugin({
 			__IS_DEV__: JSON.stringify(isDev),
