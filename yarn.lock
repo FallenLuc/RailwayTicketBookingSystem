@@ -2135,7 +2135,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@floating-ui/react-dom@npm:^2.1.2":
+"@floating-ui/react-dom@npm:^2.0.1, @floating-ui/react-dom@npm:^2.1.2":
   version: 2.1.2
   resolution: "@floating-ui/react-dom@npm:2.1.2"
   dependencies:
@@ -9539,6 +9539,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"headless-datetimepicker@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "headless-datetimepicker@npm:3.0.4"
+  dependencies:
+    "@floating-ui/react-dom": "npm:^2.0.1"
+    date-fns: "npm:^2.30.0"
+  peerDependencies:
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  checksum: 10c0/12b38851febc180cc6070a5e5892eb304ab8f0618977b05e5e7616649006cb72e599f80508774005e1520ee8e3ae6bcc11ef89bf8f6632aaeeda8beec5bde819
+  languageName: node
+  linkType: hard
+
 "hpack.js@npm:^2.1.6":
   version: 2.1.6
   resolution: "hpack.js@npm:2.1.6"
@@ -13698,6 +13711,7 @@ __metadata:
     file-loader: "npm:^6.2.0"
     fork-ts-checker-webpack-plugin: "npm:^9.0.2"
     gh-pages: "npm:^6.2.0"
+    headless-datetimepicker: "npm:^3.0.4"
     html-webpack-plugin: "npm:^5.6.0"
     husky: "npm:^9.0.11"
     i18next: "npm:^23.10.1"
