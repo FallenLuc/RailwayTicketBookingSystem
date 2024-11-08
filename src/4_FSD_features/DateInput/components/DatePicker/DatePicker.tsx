@@ -1,4 +1,6 @@
+import type { PickerProps } from "headless-datetimepicker"
 import { Datepicker } from "headless-datetimepicker"
+import type { LegacyRef, ElementType, RefObject } from "react"
 import { memo, useCallback } from "react"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import styles from "./DatePicker.module.scss"
@@ -8,11 +10,14 @@ import { whatIsDate } from "../../lib/helpers/whatIsDate/whatIsDate.helper"
 
 type DatePickerProps = {
 	className?: string
-	value?: Date
+	isOpen: boolean
+	value?: Date | null
 	onPick: (value: Date) => void
-}
+	ref?: RefObject<HTMLElement | undefined>
+} & PickerProps
+
 export const DatePicker = memo<DatePickerProps>(props => {
-	const { className, value, onPick } = props
+	const { className, value, onPick, isOpen, ref } = props
 	// To Feature: lazy library
 
 	const onChangeHandler = useCallback(
@@ -29,11 +34,12 @@ export const DatePicker = memo<DatePickerProps>(props => {
 			onChange={onChangeHandler}
 			value={value}
 			startOfWeek={1}
+			ref={ref as LegacyRef<ElementType> | undefined}
 		>
 			<Datepicker.Picker
 				defaultType="day"
 				className={classNamesHelp(styles.DatePicker, {}, [className])}
-				alwaysOpen={true}
+				alwaysOpen={isOpen}
 			>
 				{({ monthName, month, year }) => (
 					<>
