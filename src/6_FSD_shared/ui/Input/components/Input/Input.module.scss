@@ -44,8 +44,14 @@
 	transform: translateY(-50%);
 
 	color: var(--main-gray);
+}
 
+.icon-cursor {
 	cursor: pointer;
+
+	&:hover {
+		opacity: 0.7;
+	}
 }
 
 .error {

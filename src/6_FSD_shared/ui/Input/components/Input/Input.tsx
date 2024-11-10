@@ -17,6 +17,7 @@ type InputCustomProps<T extends number | string> = {
 	value: T
 	height: heightType
 	onChange?: (value: T) => void
+	onClick?: () => void
 	autoFocus?: boolean
 	fontSize?: fontSizeType
 	fontWeight?: fontWeightType
@@ -46,6 +47,7 @@ export const Input = TypedMemo(<T extends string | number>(props: InputProps<T>)
 		onChange,
 		autoFocus = false,
 		error = false,
+		onClick,
 		label = "",
 		classNamesLabel,
 		fontSize = "m",
@@ -62,6 +64,10 @@ export const Input = TypedMemo(<T extends string | number>(props: InputProps<T>)
 	} = props
 
 	const inputRef = useRef<HTMLInputElement>(null)
+
+	const onClickHandler = useCallback(() => {
+		onClick?.()
+	}, [onClick])
 
 	useEffect(() => {
 		if (autoFocus) {
@@ -120,7 +126,14 @@ export const Input = TypedMemo(<T extends string | number>(props: InputProps<T>)
 				{...otherProps}
 			/>
 			{Icon ?
-				<Icon className={styles.icon} />
+				<Icon
+					className={classNamesHelp(
+						styles.icon,
+						{ [styles.iconCursor]: Boolean(onClick) },
+						[className]
+					)}
+					onClick={onClickHandler}
+				/>
 			:	<></>}
 		</div>
 	)

@@ -9,9 +9,10 @@ type LocationInputProps = {
 	className?: string
 	value?: string
 	onInput: (value: string) => void
+	placeholder?: string
 }
 export const LocationInput = memo<LocationInputProps>(props => {
-	const { className, value = "", onInput } = props
+	const { className, value = "", onInput, placeholder } = props
 
 	const [currentValue, setCurrentValue] = useState(value)
 
@@ -19,7 +20,7 @@ export const LocationInput = memo<LocationInputProps>(props => {
 		setCurrentValue(value)
 	}, [value])
 
-	const onInputHandler = useCallback((value: string) => onInput(value), [])
+	const onInputHandler = useCallback((value: string) => onInput(value), [onInput])
 
 	const onDebounceInput = useDebounce(onInputHandler, 400)
 
@@ -34,6 +35,7 @@ export const LocationInput = memo<LocationInputProps>(props => {
 	return (
 		<div className={classNamesHelp(styles.LocationInput, {}, [className])}>
 			<Input
+				placeholder={placeholder}
 				onChange={onChangeHandler}
 				fontSize={"s"}
 				fontWeight={"medium"}

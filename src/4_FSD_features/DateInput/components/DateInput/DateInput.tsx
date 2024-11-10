@@ -42,7 +42,7 @@ export const DateInput = memo<DateInputProps>(props => {
 	)
 
 	const onClickHandler = useCallback(() => {
-		setIsOpenPicker(true)
+		setIsOpenPicker(prev => !prev)
 	}, [])
 
 	const onCloseHandler = useCallback(() => {
@@ -54,7 +54,6 @@ export const DateInput = memo<DateInputProps>(props => {
 	return (
 		<div
 			className={classNamesHelp(styles.DateInput, {}, [className])}
-			onClick={onClickHandler}
 			ref={inputDateRef}
 		>
 			<Input
@@ -65,6 +64,7 @@ export const DateInput = memo<DateInputProps>(props => {
 				height={"m"}
 				value={currentValue}
 				Icon={CalendarIcon}
+				onClick={onClickHandler}
 			/>
 			<DatePicker
 				className={styles.picker}
