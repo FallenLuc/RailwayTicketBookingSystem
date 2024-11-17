@@ -1,4 +1,4 @@
-import styles from "./SearchOfTrainsFull.module.scss"
+import styles from "./LargeView.module.scss"
 import { VStack, HStack } from "@ui/Stack"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { Text } from "@ui/Text"
@@ -7,28 +7,34 @@ import { ChangeButton } from "../../ui/ChangeButton/ChangeButton"
 import { DateInput } from "@features/DateInput"
 import { Button } from "@ui/Button"
 import { memo } from "react"
+import type { directionFormParametres } from "@entities/Direction"
 
-type SearchOfTrainsFullProps = {
+type LargeViewProps = {
 	className?: string
 	onInputLocationFromHandler: (value: string) => void
 	onInputLocationToHandler: (value: string) => void
 	onInputDateFromHandler: (value: string) => void
 	onInputDateToHandler: (value: string) => void
 	onClickHandler: () => void
+	parametres?: directionFormParametres
 }
-export const SearchOfTrainsFull = memo<SearchOfTrainsFullProps>(props => {
+export const LargeView = memo<LargeViewProps>(props => {
 	const {
 		className,
 		onInputDateFromHandler,
 		onInputLocationToHandler,
 		onInputLocationFromHandler,
 		onInputDateToHandler,
-		onClickHandler
+		onClickHandler,
+		parametres
 	} = props
+
+	const dateFrom = parametres?.date_start ? new Date(parametres?.date_start) : undefined
+	const dateTo = parametres?.date_end ? new Date(parametres?.date_end) : undefined
 
 	return (
 		<VStack
-			className={classNamesHelp(styles.SearchOfTrainsFull, {}, [className])}
+			className={classNamesHelp(styles.LargeView, {}, [className])}
 			gap={"gapL"}
 			align={"flexEnd"}
 		>
@@ -48,11 +54,13 @@ export const SearchOfTrainsFull = memo<SearchOfTrainsFullProps>(props => {
 						<LocationInput
 							onInput={onInputLocationFromHandler}
 							placeholder={"Откуда"}
+							value={parametres?.from_city_id}
 						/>
 						<ChangeButton />
 						<LocationInput
 							onInput={onInputLocationToHandler}
 							placeholder={"Куда"}
+							value={parametres?.to_city_id}
 						/>
 					</HStack>
 				</VStack>
@@ -67,10 +75,18 @@ export const SearchOfTrainsFull = memo<SearchOfTrainsFullProps>(props => {
 					<HStack
 						gap={"gapXS"}
 						align={"center"}
+						justify={"spaceBetween"}
 					>
-						<DateInput onInput={onInputDateFromHandler} />
-						<ChangeButton />
-						<DateInput onInput={onInputDateToHandler} />
+						<DateInput
+							placeholder={"Туда"}
+							onInput={onInputDateFromHandler}
+							value={dateFrom}
+						/>
+						<DateInput
+							placeholder={"Обратно"}
+							onInput={onInputDateToHandler}
+							value={dateTo}
+						/>
 					</HStack>
 				</VStack>
 			</HStack>

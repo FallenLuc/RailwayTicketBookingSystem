@@ -1,7 +1,7 @@
 import { memo } from "react"
 import styles from "./HeaderContent.module.scss"
 import { TitleIcon } from "@assets/index"
-import { SearchOfTrains } from "@widgets/SearchOfTrains"
+import { SearchDirections } from "@widgets/SearchDirections"
 import { HStack } from "@ui/Stack"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 
@@ -18,7 +18,7 @@ export const HeaderContent = memo<HeaderContentProps>(props => {
 			className={classNamesHelp("", {}, [className])}
 		>
 			<TitleIcon className={styles.title} />
-			<SearchOfTrains view={"compact"} />
+			<SearchDirections view={"compact"} />
 		</HStack>
 	)
 })

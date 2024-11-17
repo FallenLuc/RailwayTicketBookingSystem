@@ -12,8 +12,7 @@ const toSubscribeRtkq = rtkBaseApi.injectEndpoints({
 				}
 			}
 		})
-	}),
-	overrideExisting: false
+	})
 })
 
 export const { useToSubscribeMutation } = toSubscribeRtkq

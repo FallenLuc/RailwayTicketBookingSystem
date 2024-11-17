@@ -1,5 +1,5 @@
 import styles from "./LocationInput.module.scss"
-import { memo, useCallback, useState, useEffect } from "react"
+import { memo, useCallback, useState } from "react"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { Input } from "@ui/Input"
 import { LocationIcon } from "@assets/index"
@@ -15,10 +15,6 @@ export const LocationInput = memo<LocationInputProps>(props => {
 	const { className, value = "", onInput, placeholder } = props
 
 	const [currentValue, setCurrentValue] = useState(value)
-
-	useEffect(() => {
-		setCurrentValue(value)
-	}, [value])
 
 	const onInputHandler = useCallback((value: string) => onInput(value), [onInput])
 

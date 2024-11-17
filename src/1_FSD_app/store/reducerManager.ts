@@ -36,6 +36,7 @@ export function createReducerManager(
 				keysToRemove = []
 			}
 
+			// @ts-expect-error
 			return combinedReducer(state, action)
 		},
 

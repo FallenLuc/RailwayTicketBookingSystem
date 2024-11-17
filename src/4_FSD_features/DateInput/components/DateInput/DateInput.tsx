@@ -1,10 +1,10 @@
-import { memo, useCallback, useState, useEffect, useRef } from "react"
+import { memo, useCallback, useState, useRef, useEffect } from "react"
 import styles from "./DateInput.module.scss"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { Input } from "@ui/Input"
 import { DatePicker } from "../DatePicker/DatePicker"
 import dayjs from "dayjs"
-import { DATE_FORMAT_STRING } from "@constants/common.constant"
+import { DATE_FORMAT_STRING, REVERSE_FORMAT_STRING } from "@constants/common.constant"
 import { CalendarIcon } from "@assets/index"
 import { useClickOutside } from "@hooks/useClickOutside.hook"
 
@@ -12,10 +12,11 @@ type DateInputProps = {
 	className?: string
 	value?: Date
 	onInput: (value: string) => void
+	placeholder?: string
 }
 
 export const DateInput = memo<DateInputProps>(props => {
-	const { className, value = null, onInput } = props
+	const { className, value = null, onInput, placeholder } = props
 
 	const inputDateRef = useRef<HTMLDivElement>(null)
 
@@ -23,20 +24,17 @@ export const DateInput = memo<DateInputProps>(props => {
 		value ? dayjs(value).format(DATE_FORMAT_STRING) : ""
 	)
 	const [isOpenPicker, setIsOpenPicker] = useState(false)
-	const [pickerDate, setPickerDate] = useState(value)
+
+	const [pickValue, setPickValue] = useState(value)
 
 	useEffect(() => {
-		if (value) {
-			setCurrentValue(dayjs(value).format(DATE_FORMAT_STRING))
-		}
-
-		setPickerDate(value)
+		setPickValue(value)
 	}, [value])
 
-	const onPickValue = useCallback(
+	const onPickValueHandler = useCallback(
 		(value: Date) => {
 			setCurrentValue(dayjs(value).format(DATE_FORMAT_STRING))
-			onInput(dayjs(value).format(DATE_FORMAT_STRING))
+			onInput(dayjs(value).format(REVERSE_FORMAT_STRING))
 		},
 		[onInput]
 	)
@@ -51,6 +49,8 @@ export const DateInput = memo<DateInputProps>(props => {
 
 	useClickOutside(inputDateRef, onCloseHandler)
 
+	// Todo сделать очистку инпута
+
 	return (
 		<div
 			className={classNamesHelp(styles.DateInput, {}, [className])}
@@ -58,7 +58,7 @@ export const DateInput = memo<DateInputProps>(props => {
 		>
 			<Input
 				disabled={true}
-				placeholder={DATE_FORMAT_STRING}
+				placeholder={placeholder}
 				fontSize={"s"}
 				fontWeight={"medium"}
 				height={"m"}
@@ -68,9 +68,9 @@ export const DateInput = memo<DateInputProps>(props => {
 			/>
 			<DatePicker
 				className={styles.picker}
-				onPick={onPickValue}
+				onPick={onPickValueHandler}
 				isOpen={isOpenPicker}
-				value={pickerDate}
+				value={pickValue}
 			/>
 		</div>
 	)
