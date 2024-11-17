@@ -22,6 +22,7 @@ import BackgroundMainPageImage from "./image/backgroundMainPage.png"
 import ReviewerMan from "./image/reviewerMan.png"
 import ReviewerWoman from "./image/reviewerWoman.png"
 import BackgroundHowItWorks from "./image/backgroundHowItWorks.jpg"
+import BackgroundSearchPageImage from "./image/backgroundSearchPage.jpg"
 
 export {
 	CalendarIcon,
@@ -40,6 +41,7 @@ export {
 	YouTubeIcon,
 	BackgroundMainPageImage,
 	BackgroundHowItWorks,
+	BackgroundSearchPageImage,
 	ReviewerMan,
 	ReviewerWoman,
 	ChangeIcon,

@@ -25,8 +25,33 @@
 	}
 }
 
+.Input.withIcon {
+	padding-right: 40px;
+}
+
 .wrapper {
 	width: 100%;
+}
+
+.icon {
+	position: absolute;
+	top: 50%;
+
+	right: 15px;
+	width: auto;
+	height: 30px;
+
+	transform: translateY(-50%);
+
+	color: var(--main-gray);
+}
+
+.icon-cursor {
+	cursor: pointer;
+
+	&:hover {
+		opacity: 0.7;
+	}
 }
 
 .error {
@@ -43,4 +68,8 @@
 
 .height-m {
 	height: var(--height-input-m);
+}
+
+.wrapperIcon {
+	position: relative;
 }

@@ -1,6 +1,6 @@
 import type { Mods } from "@helpers/classNamesHelp/classNamesHelp"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import type { ChangeEvent, InputHTMLAttributes } from "react"
+import type { ChangeEvent, InputHTMLAttributes, FC, SVGProps } from "react"
 import { useCallback, useEffect, useMemo, useRef } from "react"
 import { VStack } from "../../../Stack"
 import styles from "./Input.module.scss"
@@ -16,7 +16,8 @@ type InputCustomProps<T extends number | string> = {
 	error?: boolean
 	value: T
 	height: heightType
-	onChange: (value: T) => void
+	onChange?: (value: T) => void
+	onClick?: () => void
 	autoFocus?: boolean
 	fontSize?: fontSizeType
 	fontWeight?: fontWeightType
@@ -26,6 +27,7 @@ type InputCustomProps<T extends number | string> = {
 	fontWeightLabel?: fontWeightType
 	colorLabel?: appColorType
 	readOnly?: boolean
+	Icon?: FC<SVGProps<SVGSVGElement>>
 	type?: string
 	"data-testid"?: string
 }
@@ -45,6 +47,7 @@ export const Input = TypedMemo(<T extends string | number>(props: InputProps<T>)
 		onChange,
 		autoFocus = false,
 		error = false,
+		onClick,
 		label = "",
 		classNamesLabel,
 		fontSize = "m",
@@ -54,12 +57,17 @@ export const Input = TypedMemo(<T extends string | number>(props: InputProps<T>)
 		colorLabel = "main-dark",
 		type = "text",
 		height = "m",
+		Icon,
 		"data-testid": dataTestId = "input-ui",
 		readOnly = false,
 		...otherProps
 	} = props
 
 	const inputRef = useRef<HTMLInputElement>(null)
+
+	const onClickHandler = useCallback(() => {
+		onClick?.()
+	}, [onClick])
 
 	useEffect(() => {
 		if (autoFocus) {
@@ -78,11 +86,12 @@ export const Input = TypedMemo(<T extends string | number>(props: InputProps<T>)
 
 	const mods = useMemo<Mods>(() => {
 		return {
-			[styles.error]: error
+			[styles.error]: error,
+			[styles.withIcon]: Boolean(Icon)
 		}
-	}, [error])
+	}, [Icon, error])
 
-	const inputElement = () => (
+	const inputElement = (
 		<input
 			data-testid={`${dataTestId}.InputElement`}
 			ref={inputRef}
@@ -100,24 +109,55 @@ export const Input = TypedMemo(<T extends string | number>(props: InputProps<T>)
 		/>
 	)
 
-	if (label) {
-		return (
-			<label
-				className={classNamesHelp(styles.wrapper, mods, [
-					classNamesLabel,
-					fontSizeMapper(fontSizeLabel),
-					fontWeightMapper(fontWeightLabel),
-					colorMapper(colorLabel)
+	const inputElementWithIcon = (
+		<div className={classNamesHelp(styles.wrapperIcon, {}, [className])}>
+			<input
+				data-testid={`${dataTestId}.InputElement`}
+				ref={inputRef}
+				type={type}
+				readOnly={readOnly}
+				className={classNamesHelp(styles.Input, mods, [
+					heightMapper[height],
+					fontSizeMapper(fontSize),
+					fontWeightMapper(fontWeight)
 				])}
-				data-testid={`${dataTestId}.LabelElement`}
-			>
-				<VStack gap={"gapS"}>
-					{label}
-					{inputElement()}
-				</VStack>
-			</label>
-		)
-	}
+				value={value}
+				onChange={onChangeHandler}
+				{...otherProps}
+			/>
+			{Icon ?
+				<Icon
+					className={classNamesHelp(
+						styles.icon,
+						{ [styles.iconCursor]: Boolean(onClick) },
+						[className]
+					)}
+					onClick={onClickHandler}
+				/>
+			:	<></>}
+		</div>
+	)
 
-	return inputElement()
+	const labelElement = (
+		<label
+			className={classNamesHelp(styles.wrapper, mods, [
+				classNamesLabel,
+				fontSizeMapper(fontSizeLabel),
+				fontWeightMapper(fontWeightLabel),
+				colorMapper(colorLabel)
+			])}
+			data-testid={`${dataTestId}.LabelElement`}
+		>
+			<VStack gap={"gapS"}>
+				{label}
+				{Icon ? inputElementWithIcon : inputElement}
+			</VStack>
+		</label>
+	)
+
+	return (
+		label ? labelElement
+		: Icon ? inputElementWithIcon
+		: inputElement
+	)
 })

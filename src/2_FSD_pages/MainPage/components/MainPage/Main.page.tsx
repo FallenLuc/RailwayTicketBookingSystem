@@ -6,6 +6,7 @@ import { HowItWorks } from "@widgets/HowItWorks"
 import { Reviews } from "@widgets/Reviews"
 import { Footer } from "@widgets/Footer"
 import { useScrollToAnchor } from "@providers/RouterProvider/lib/hooks/useScrollToAnchor.hook"
+import { HeaderContent } from "./ui/HeaderContent/HeaderContent"
 
 type MainPageProps = {
 	className?: string
@@ -17,7 +18,9 @@ const MainPage = memo<MainPageProps>(props => {
 
 	return (
 		<div className={classNamesHelp("", {}, [className, "pageStyle"])}>
-			<Header />
+			<Header typeBackground={"main"}>
+				<HeaderContent />
+			</Header>
 			<AboutUs />
 			<HowItWorks />
 			<Reviews />
