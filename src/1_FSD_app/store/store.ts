@@ -1,4 +1,5 @@
 import { rtkBaseApi } from "@api/instances/rtkBase.api"
+import { formForSearchDirectionsReducer } from "@features/FillingFormForSearchOfDirections"
 import type { Reducer, ReducersMapObject } from "@reduxjs/toolkit"
 import { configureStore } from "@reduxjs/toolkit"
 import type { reducerManagerType } from "./reducerManager"
@@ -7,7 +8,6 @@ import { type appStoreType } from "./storeTypes/appStoreType"
 import { type mainStateMap } from "./storeTypes/mainState.map"
 import { type mainStateAsyncMap } from "./storeTypes/mainStateAsync.map"
 import { type mainStateStaticMap } from "./storeTypes/mainStateStatic.map"
-import { formForSearchDirectionsReducer } from "@features/FillingFormForSearchOfDirections"
 
 export const storeCreator = ({ reduce }: reducerManagerType, initialState?: mainStateMap) => {
 	return configureStore({
@@ -24,6 +24,7 @@ export function createReduxStore(
 ) {
 	const staticReducer: ReducersMapObject<mainStateStaticMap> = {
 		formForSearchOfDirectionsStateMap: formForSearchDirectionsReducer,
+
 		[rtkBaseApi.reducerPath]: rtkBaseApi.reducer
 	}
 

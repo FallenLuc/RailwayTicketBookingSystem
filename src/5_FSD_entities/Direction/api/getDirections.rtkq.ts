@@ -1,14 +1,14 @@
 import { rtkBaseApi } from "@api/instances/rtkBase.api"
-import { RequestPaths } from "@api/constants/requestPath.constant"
+import { getDirectionsRequestPaths } from "@api/libs/gettersRequestPaths.helper"
+import { uid } from "uid"
 import type {
-	directionsGeneralDataType,
-	directionsGeneralDataFromServerType
+	directionsGeneralDataFromServerType,
+	directionsGeneralDataType
 } from "../types/directionData.type"
 import type {
 	directionFormParametres,
 	directionsDisplayParametres
 } from "../types/directionFormParametres.type"
-import { uid } from "uid"
 
 const getDirectionsRtkq = rtkBaseApi.injectEndpoints({
 	endpoints: build => ({
@@ -18,7 +18,7 @@ const getDirectionsRtkq = rtkBaseApi.injectEndpoints({
 		>({
 			query: parametres => {
 				return {
-					url: RequestPaths.Directions,
+					url: getDirectionsRequestPaths(),
 					params: {
 						...parametres
 					}

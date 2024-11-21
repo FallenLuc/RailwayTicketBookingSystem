@@ -3,10 +3,11 @@ export { type formForSearchOfDirectionsStateMap } from "./store/storeTypes/formF
 export {
 	formForSearchDirectionsReducer,
 	useFormForSearchDirectionsActions
-} from "./store/slices/formForSearchOfDirections..slice"
+} from "./store/slices/formForSearchOfDirections.slice"
 
 export {
 	useGetFormForSearchOfDirectionsIsValidFormSelector,
 	useGetFormForSearchOfDirectionsDataSelector,
-	useGetFormForSearchOfDirectionsHasDepartureDirectionsSelector
+	useGetFormForSearchOfDirectionsHasDepartureDirectionsSelector,
+	useGetFormForSearchOfDirectionsDataForRequestSelector
 } from "./store/selectors/getFormForSearchOfDirectionsProperty/getFormForSearchOfDirectionsProperty.selector"

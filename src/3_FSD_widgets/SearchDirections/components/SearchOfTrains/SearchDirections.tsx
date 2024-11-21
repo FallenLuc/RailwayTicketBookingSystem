@@ -1,75 +1,89 @@
-import { memo, useCallback } from "react"
-import { CompactView } from "./view/CompactView/CompactView"
-import { LargeView } from "./view/LargeView/LargeView"
+import type { cityDataType } from "@entities/City"
+import type { formForSearchOfDirectionsStateMap } from "@features/FillingFormForSearchOfDirections"
 import {
 	useFormForSearchDirectionsActions,
 	useGetFormForSearchOfDirectionsDataSelector,
 	useGetFormForSearchOfDirectionsIsValidFormSelector
 } from "@features/FillingFormForSearchOfDirections"
-import { useNavigate } from "react-router-dom"
-import { getRouteChooseTrain } from "@config/router"
+import { memo, useCallback } from "react"
+import { CompactView } from "./view/CompactView/CompactView"
+import { LargeView } from "./view/LargeView/LargeView"
 
 type SearchOfTrainsProps = {
 	className?: string
 	view?: "compact" | "large" | "full"
+	onSearch: () => void
+}
+
+export type SearchOfTrainsViewsProps = {
+	className?: string
+	onSaveFromLocation: (city?: cityDataType) => void
+	onSaveToLocation: (city?: cityDataType) => void
+	onSaveArrivalDate: (value: string) => void
+	onSaveDepartureDate: (value: string) => void
+	onSearch: () => void
+	onChangeDirection: () => void
+	parametres?: formForSearchOfDirectionsStateMap["data"]
 }
 
 export const SearchDirections = memo<SearchOfTrainsProps>(props => {
-	const { className, view = "compact" } = props
+	const { className, view = "compact", onSearch } = props
 
-	const { setParametres } = useFormForSearchDirectionsActions()
+	const { setParametres, changeDirection } = useFormForSearchDirectionsActions()
 	const formParametres = useGetFormForSearchOfDirectionsDataSelector()
 	const isValidForm = useGetFormForSearchOfDirectionsIsValidFormSelector()
-	const navigate = useNavigate()
 
-	const onInputLocationFromHandler = useCallback(
-		(value: string) => {
-			console.log(value)
-			setParametres({ from_city_id: "66ac8b69cb563f0052174f45" })
+	const onSaveFromLocationHandler = useCallback(
+		(value?: cityDataType) => {
+			setParametres({ fromCity: value })
 		},
 		[setParametres]
 	)
 
-	const onInputLocationToHandler = useCallback(
-		(value: string) => {
-			console.log(value)
-			setParametres({ to_city_id: "66ac8b69cb563f0052174f46" })
+	const onSaveToLocationHandler = useCallback(
+		(value?: cityDataType) => {
+			setParametres({ toCity: value })
 		},
 		[setParametres]
 	)
-
-	const onInputDateFromHandler = useCallback(
+	const onSaveArrivalDateHandler = useCallback(
 		(value: string) => {
 			setParametres({ date_start: value })
 		},
 		[setParametres]
 	)
 
-	const onInputDateToHandler = useCallback(
+	const onSaveDepartureDateHandler = useCallback(
 		(value: string) => {
 			setParametres({ date_end: value })
 		},
 		[setParametres]
 	)
 
-	const onClickHandler = useCallback(() => {
+	const onChangeDirectionHandler = useCallback(() => {
+		changeDirection()
+	}, [changeDirection])
+
+	const onSearchHandler = useCallback(() => {
 		if (isValidForm && formParametres) {
-			navigate(getRouteChooseTrain().route)
+			onSearch()
 		} else {
-			console.log("не заполнена форма") // To Feature обработть ошибку заполнения формы
+			//eslint-disable-next-line
+			console.log("не заполнена форма") // To Hold обработать ошибку заполнения формы
 		}
-	}, [formParametres, isValidForm, navigate])
+	}, [formParametres, isValidForm, onSearch])
 
 	if (view === "compact") {
 		return (
 			<CompactView
 				className={className}
-				onInputLocationFromHandler={onInputLocationFromHandler}
-				onInputLocationToHandler={onInputLocationToHandler}
-				onInputDateFromHandler={onInputDateFromHandler}
-				onInputDateToHandler={onInputDateToHandler}
-				onClickHandler={onClickHandler}
+				onSaveFromLocation={onSaveFromLocationHandler}
+				onSaveToLocation={onSaveToLocationHandler}
+				onSaveArrivalDate={onSaveArrivalDateHandler}
+				onSaveDepartureDate={onSaveDepartureDateHandler}
+				onSearch={onSearchHandler}
 				parametres={formParametres}
+				onChangeDirection={onChangeDirectionHandler}
 			/>
 		)
 	}
@@ -77,12 +91,14 @@ export const SearchDirections = memo<SearchOfTrainsProps>(props => {
 	if (view === "large") {
 		return (
 			<LargeView
-				onInputLocationFromHandler={onInputLocationFromHandler}
-				onInputLocationToHandler={onInputLocationToHandler}
-				onInputDateFromHandler={onInputDateFromHandler}
-				onInputDateToHandler={onInputDateToHandler}
-				onClickHandler={onClickHandler}
+				className={className}
+				onSaveFromLocation={onSaveFromLocationHandler}
+				onSaveToLocation={onSaveToLocationHandler}
+				onSaveArrivalDate={onSaveArrivalDateHandler}
+				onSaveDepartureDate={onSaveDepartureDateHandler}
+				onSearch={onSearchHandler}
 				parametres={formParametres}
+				onChangeDirection={onChangeDirectionHandler}
 			/>
 		)
 	}

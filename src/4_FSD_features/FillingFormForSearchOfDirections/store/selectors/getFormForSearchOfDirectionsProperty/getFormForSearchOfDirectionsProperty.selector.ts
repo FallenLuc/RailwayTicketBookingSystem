@@ -1,6 +1,8 @@
+import type { directionFormParametres } from "@entities/Direction"
 import { buildCreateSelector } from "@helpers/buildCreateSelector/buildCreateSelector.helper"
-import { getFormForSearchOfDirectionsSelector } from "../getFormForSearchOfDirections/getFormForSearchOfDirections.selector"
+import type { citiesDataForServerType } from "../../../types/formForSearch.type"
 import type { formForSearchOfDirectionsStateMap } from "../../storeTypes/formForSearchOfDirectionsState.map"
+import { getFormForSearchOfDirectionsSelector } from "../getFormForSearchOfDirections/getFormForSearchOfDirections.selector"
 
 export const [
 	useGetFormForSearchOfDirectionsHasDepartureDirectionsSelector,
@@ -24,4 +26,35 @@ export const [
 ] = buildCreateSelector(
 	[getFormForSearchOfDirectionsSelector],
 	(state: formForSearchOfDirectionsStateMap) => state?.data
+)
+
+export const [
+	useGetFormForSearchOfDirectionsDataForRequestSelector,
+	getFormForSearchOfDirectionsDataForRequestSelector
+] = buildCreateSelector(
+	[getFormForSearchOfDirectionsSelector],
+	(state: formForSearchOfDirectionsStateMap) => {
+		let citiesData: citiesDataForServerType | undefined
+
+		if (state?.data) {
+			citiesData = {
+				from_city_id: state.data?.fromCity?.id,
+				to_city_id: state.data?.toCity?.id
+			}
+		}
+
+		const data = Object.fromEntries(
+			Object.entries(state?.data ?? {}).filter(
+				([key]) => key !== "fromCity" && key !== "toCity"
+			)
+		)
+
+		let result: directionFormParametres | undefined
+
+		if (data && citiesData) {
+			result = { ...data, ...citiesData }
+		}
+
+		return result
+	}
 )

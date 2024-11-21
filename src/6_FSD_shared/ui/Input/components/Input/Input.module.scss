@@ -30,6 +30,7 @@
 }
 
 .wrapper {
+	position: relative;
 	width: 100%;
 }
 
@@ -68,8 +69,4 @@
 
 .height-m {
 	height: var(--height-input-m);
-}
-
-.wrapperIcon {
-	position: relative;
 }

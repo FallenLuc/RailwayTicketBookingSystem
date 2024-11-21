@@ -1,18 +1,18 @@
-import { memo, useEffect } from "react"
-import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { Header } from "@widgets/Header"
-import { SearchDirections } from "@widgets/SearchDirections"
 import {
+	directionsListSliceReducers,
+	fetchDirectionsThunk,
 	useGetDirectionsListDataSelector,
-	useGetDirectionsListIsLoadingSelector,
-	useGetDirectionsListErrorSelector
-} from "@entities/Direction/store/selectors/getDirectionsListProperties/getDirectionsListProperties.selector"
+	useGetDirectionsListErrorSelector,
+	useGetDirectionsListIsLoadingSelector
+} from "@entities/Direction"
+import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features/FillingFormForSearchOfDirections"
+import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
+import { useAppDispatch } from "@hooks/useAppDispatch.hook"
 import type { asyncReducersList } from "@hooks/useAsyncReducer.hook"
 import { useAsyncReducer } from "@hooks/useAsyncReducer.hook"
-import { directionsListSliceReducers } from "@entities/Direction/store/slices/directionsList..slice"
-import { fetchDirectionsThunk } from "@entities/Direction"
-import { useGetFormForSearchOfDirectionsDataSelector } from "@features/FillingFormForSearchOfDirections"
-import { useAppDispatch } from "@hooks/useAppDispatch.hook"
+import { Header } from "@widgets/Header"
+import { SearchDirections } from "@widgets/SearchDirections"
+import { memo, useCallback, useEffect } from "react"
 
 type ChooseTrainPageProps = {
 	className?: string
@@ -30,24 +30,31 @@ const ChooseTrainPage = memo<ChooseTrainPageProps>(props => {
 	const data = useGetDirectionsListDataSelector()
 	const isLoading = useGetDirectionsListIsLoadingSelector()
 	const error = useGetDirectionsListErrorSelector()
-	const formParametres = useGetFormForSearchOfDirectionsDataSelector()
+	const formParametres = useGetFormForSearchOfDirectionsDataForRequestSelector()
 
-	useEffect(() => {
+	const onSearchHandler = useCallback(() => {
 		if (formParametres) {
 			dispatch(fetchDirectionsThunk(formParametres))
 		}
+	}, [dispatch, formParametres])
+
+	useEffect(() => {
+		onSearchHandler()
 		//eslint-disable-next-line
-	}, [dispatch])
+	}, [])
 
 	return (
 		<div className={classNamesHelp("", {}, [className, "pageStyle"])}>
 			<Header typeBackground={"search"}>
-				<SearchDirections view={"large"} />
+				<SearchDirections
+					view={"large"}
+					onSearch={onSearchHandler}
+				/>
 			</Header>
 			<div>
 				{isLoading && "Loading..."}
 				{error && "Error"}
-				{data.map(dt => dt.toString())}
+				{!isLoading && !error ? data.map(dt => dt.toString()) : []}
 			</div>
 		</div>
 	)

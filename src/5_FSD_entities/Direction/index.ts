@@ -8,4 +8,10 @@ export { fetchDirectionsThunk } from "./store/thunks/fetchDirections/fetchDirect
 export {
 	directionsListSliceReducers,
 	useDirectionsListSliceUseActions
-} from "./store/slices/directionsList..slice"
+} from "./store/slices/directionsList.slice"
+
+export {
+	useGetDirectionsListErrorSelector,
+	useGetDirectionsListIsLoadingSelector,
+	useGetDirectionsListDataSelector
+} from "./store/selectors/getDirectionsListProperties/getDirectionsListProperties.selector"
