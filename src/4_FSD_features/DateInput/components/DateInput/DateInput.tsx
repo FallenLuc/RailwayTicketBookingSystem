@@ -1,22 +1,22 @@
-import { memo, useCallback, useState, useRef, useEffect } from "react"
-import styles from "./DateInput.module.scss"
-import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { Input } from "@ui/Input"
-import { DatePicker } from "../DatePicker/DatePicker"
-import dayjs from "dayjs"
-import { DATE_FORMAT_STRING, REVERSE_FORMAT_STRING } from "@constants/common.constant"
 import { CalendarIcon } from "@assets/index"
+import { DATE_FORMAT_STRING, REVERSE_FORMAT_STRING } from "@constants/common.constant"
+import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { useClickOutside } from "@hooks/useClickOutside.hook"
+import { Input } from "@ui/Input"
+import dayjs from "dayjs"
+import { memo, useCallback, useEffect, useRef, useState } from "react"
+import { DatePicker } from "../DatePicker/DatePicker"
+import styles from "./DateInput.module.scss"
 
 type DateInputProps = {
 	className?: string
 	value?: Date
-	onInput: (value: string) => void
+	onSaveToForm: (value: string) => void
 	placeholder?: string
 }
 
 export const DateInput = memo<DateInputProps>(props => {
-	const { className, value = null, onInput, placeholder } = props
+	const { className, value = null, onSaveToForm, placeholder } = props
 
 	const inputDateRef = useRef<HTMLDivElement>(null)
 
@@ -34,9 +34,9 @@ export const DateInput = memo<DateInputProps>(props => {
 	const onPickValueHandler = useCallback(
 		(value: Date) => {
 			setCurrentValue(dayjs(value).format(DATE_FORMAT_STRING))
-			onInput(dayjs(value).format(REVERSE_FORMAT_STRING))
+			onSaveToForm(dayjs(value).format(REVERSE_FORMAT_STRING))
 		},
-		[onInput]
+		[onSaveToForm]
 	)
 
 	const onClickHandler = useCallback(() => {
@@ -49,7 +49,7 @@ export const DateInput = memo<DateInputProps>(props => {
 
 	useClickOutside(inputDateRef, onCloseHandler)
 
-	// Todo сделать очистку инпута
+	// To Feature сделать очистку инпута - возможно разблокировать свободный ввод
 
 	return (
 		<div

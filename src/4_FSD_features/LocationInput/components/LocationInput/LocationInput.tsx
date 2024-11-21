@@ -1,35 +1,120 @@
-import styles from "./LocationInput.module.scss"
-import { memo, useCallback, useState } from "react"
-import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { Input } from "@ui/Input"
 import { LocationIcon } from "@assets/index"
+import type { cityDataType } from "@entities/City"
+import { useGetCitiesByPatternQuery } from "@entities/City"
+import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
+import { useClickOutside } from "@hooks/useClickOutside.hook"
 import { useDebounce } from "@hooks/useDebounce.hook"
+import { Input } from "@ui/Input"
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { LocationList } from "../LocationList/LocationList"
+import styles from "./LocationInput.module.scss"
+import { Loader } from "./ui/Loader"
 
 type LocationInputProps = {
 	className?: string
 	value?: string
-	onInput: (value: string) => void
+	onSaveToForm: (city?: cityDataType) => void
 	placeholder?: string
 }
 export const LocationInput = memo<LocationInputProps>(props => {
-	const { className, value = "", onInput, placeholder } = props
+	const { className, value = "", onSaveToForm, placeholder } = props
 
-	const [currentValue, setCurrentValue] = useState(value)
+	const inputLocationRef = useRef<HTMLDivElement>(null)
 
-	const onInputHandler = useCallback((value: string) => onInput(value), [onInput])
+	const [currentValue, setCurrentValue] = useState(value.toUpperCase())
 
-	const onDebounceInput = useDebounce(onInputHandler, 400)
+	const [searchValue, setSearchValue] = useState("")
+
+	const [cities, setCities] = useState<cityDataType[]>([])
+	const [skipRequest, setSkipRequest] = useState(true)
+
+	const saveToFormHelper = useCallback(
+		(city: cityDataType) => {
+			onSaveToForm(city)
+			setCities([])
+		},
+		[onSaveToForm]
+	)
+
+	const resetFormHelper = useCallback(() => {
+		onSaveToForm(undefined)
+	}, [onSaveToForm])
+
+	const autoSave = useCallback(() => {
+		if (currentValue) {
+			const chosenCity = cities.filter(city => city.name === currentValue.toLowerCase())
+
+			if (chosenCity.length === 1) {
+				saveToFormHelper(chosenCity[0])
+			}
+		}
+	}, [currentValue, cities, saveToFormHelper])
+
+	const onAutoSaveDebounce = useDebounce(autoSave, 300)
+
+	const onSearchCities = useCallback((value: string) => {
+		if (value) {
+			setSkipRequest(false)
+			setSearchValue(value)
+		} else {
+			setCities([])
+		}
+	}, [])
+
+	const onSearchCitiesDebounce = useDebounce(onSearchCities, 400)
+
+	const onResetToLastChoice = useCallback(() => {
+		setCities([])
+		setCurrentValue(value.toUpperCase())
+	}, [value])
 
 	const onChangeHandler = useCallback(
 		(value: string) => {
 			setCurrentValue(value)
-			onDebounceInput(value)
+
+			onSearchCitiesDebounce(value)
+
+			if (!value) {
+				resetFormHelper()
+			}
 		},
-		[onDebounceInput]
+		[onSearchCitiesDebounce, resetFormHelper]
 	)
 
+	const onSaveToFormHandler = useCallback(
+		(city: cityDataType) => {
+			saveToFormHelper(city)
+		},
+		[saveToFormHelper]
+	)
+
+	const { data, isFetching } = useGetCitiesByPatternQuery(
+		searchValue,
+		useMemo(() => ({ skip: skipRequest }), [skipRequest])
+	)
+
+	useEffect(() => {
+		if (data) {
+			setCities(data)
+		}
+	}, [data])
+
+	useEffect(() => {
+		setCurrentValue(value.toUpperCase())
+	}, [value])
+
+	useEffect(() => {
+		onAutoSaveDebounce()
+		//eslint-disable-next-line
+	}, [cities])
+
+	useClickOutside(inputLocationRef, onResetToLastChoice)
+
 	return (
-		<div className={classNamesHelp(styles.LocationInput, {}, [className])}>
+		<div
+			className={classNamesHelp(styles.LocationInput, {}, [className])}
+			ref={inputLocationRef}
+		>
 			<Input
 				placeholder={placeholder}
 				onChange={onChangeHandler}
@@ -38,6 +123,13 @@ export const LocationInput = memo<LocationInputProps>(props => {
 				height={"m"}
 				value={currentValue}
 				Icon={LocationIcon}
+			/>
+
+			{isFetching && <Loader />}
+			<LocationList
+				className={styles.list}
+				cities={cities}
+				onClick={onSaveToFormHandler}
 			/>
 		</div>
 	)

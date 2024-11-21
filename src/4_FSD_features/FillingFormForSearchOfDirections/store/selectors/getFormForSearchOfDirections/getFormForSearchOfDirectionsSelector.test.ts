@@ -1,7 +1,7 @@
-import { describe, expect, test } from "@jest/globals"
-import { getFormForSearchOfDirectionsSelector } from "./getFormForSearchOfDirections.selector"
 import type { DeepPartial } from "@customTypes/global.types"
+import { describe, expect, test } from "@jest/globals"
 import type { mainStateMap } from "@store/storeTypes/mainState.map"
+import { getFormForSearchOfDirectionsSelector } from "./getFormForSearchOfDirections.selector"
 
 describe("getFormForSearchOfDirectionsSelector", () => {
 	test("get state", () => {
@@ -10,7 +10,9 @@ describe("getFormForSearchOfDirectionsSelector", () => {
 				isValidForm: true,
 				hasDepartureDirections: true,
 				data: {
-					from_city_id: "1"
+					fromCity: {
+						name: "Москва"
+					}
 				}
 			}
 		}
@@ -18,7 +20,9 @@ describe("getFormForSearchOfDirectionsSelector", () => {
 			isValidForm: true,
 			hasDepartureDirections: true,
 			data: {
-				from_city_id: "1"
+				fromCity: {
+					name: "Москва"
+				}
 			}
 		})
 	})

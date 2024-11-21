@@ -1,9 +1,9 @@
 import { buildCreateSelector } from "@helpers/buildCreateSelector/buildCreateSelector.helper"
-import { getDirectionsListSelector } from "../getDirectionsList/getDirectionsList.selector"
-import type { directionsListStateMap } from "../../storeTypes/directionsListState.map"
-import type { mainStateMap } from "@store/storeTypes/mainState.map"
-import { directionsListAdapter } from "../../slices/directionsList..slice"
 import { buildSelector } from "@helpers/buildSelector/buildSelector.helper"
+import type { mainStateMap } from "@store/storeTypes/mainState.map"
+import { directionsListAdapter } from "../../slices/directionsList.slice"
+import type { directionsListStateMap } from "../../storeTypes/directionsListState.map"
+import { getDirectionsListSelector } from "../getDirectionsList/getDirectionsList.selector"
 
 export const [useGetDirectionsListIsLoadingSelector, getDirectionsListIsLoadingSelector] =
 	buildCreateSelector(
@@ -17,9 +17,9 @@ export const [useGetDirectionsListErrorSelector, getDirectionsListErrorSelector]
 		(state?: directionsListStateMap) => state?.error
 	)
 
+const initialState = directionsListAdapter.getInitialState()
+
 export const { selectAll: getDirectionsListDataSelector } =
-	directionsListAdapter.getSelectors<mainStateMap>(
-		state => state?.directionsList || directionsListAdapter.getInitialState()
-	)
+	directionsListAdapter.getSelectors<mainStateMap>(state => state?.directionsList || initialState)
 
 export const [useGetDirectionsListDataSelector] = buildSelector(getDirectionsListDataSelector)

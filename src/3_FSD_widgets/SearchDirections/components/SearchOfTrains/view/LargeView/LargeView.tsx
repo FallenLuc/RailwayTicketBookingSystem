@@ -1,31 +1,23 @@
-import styles from "./LargeView.module.scss"
-import { VStack, HStack } from "@ui/Stack"
-import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { Text } from "@ui/Text"
-import { LocationInput } from "@features/LocationInput"
-import { ChangeButton } from "../../ui/ChangeButton/ChangeButton"
 import { DateInput } from "@features/DateInput"
+import { LocationInput } from "@features/LocationInput"
+import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { Button } from "@ui/Button"
+import { HStack, VStack } from "@ui/Stack"
+import { Text } from "@ui/Text"
 import { memo } from "react"
-import type { directionFormParametres } from "@entities/Direction"
+import type { SearchOfTrainsViewsProps } from "../../SearchDirections"
+import { ChangeButton } from "../../ui/ChangeButton/ChangeButton"
+import styles from "./LargeView.module.scss"
 
-type LargeViewProps = {
-	className?: string
-	onInputLocationFromHandler: (value: string) => void
-	onInputLocationToHandler: (value: string) => void
-	onInputDateFromHandler: (value: string) => void
-	onInputDateToHandler: (value: string) => void
-	onClickHandler: () => void
-	parametres?: directionFormParametres
-}
-export const LargeView = memo<LargeViewProps>(props => {
+export const LargeView = memo<SearchOfTrainsViewsProps>(props => {
 	const {
 		className,
-		onInputDateFromHandler,
-		onInputLocationToHandler,
-		onInputLocationFromHandler,
-		onInputDateToHandler,
-		onClickHandler,
+		onSaveDepartureDate,
+		onSaveArrivalDate,
+		onSaveFromLocation,
+		onSaveToLocation,
+		onSearch,
+		onChangeDirection,
 		parametres
 	} = props
 
@@ -52,15 +44,15 @@ export const LargeView = memo<LargeViewProps>(props => {
 						align={"center"}
 					>
 						<LocationInput
-							onInput={onInputLocationFromHandler}
+							onSaveToForm={onSaveFromLocation}
 							placeholder={"Откуда"}
-							value={parametres?.from_city_id}
+							value={parametres?.fromCity?.name}
 						/>
-						<ChangeButton />
+						<ChangeButton onClick={onChangeDirection} />
 						<LocationInput
-							onInput={onInputLocationToHandler}
+							onSaveToForm={onSaveToLocation}
 							placeholder={"Куда"}
-							value={parametres?.to_city_id}
+							value={parametres?.toCity?.name}
 						/>
 					</HStack>
 				</VStack>
@@ -79,12 +71,12 @@ export const LargeView = memo<LargeViewProps>(props => {
 					>
 						<DateInput
 							placeholder={"Туда"}
-							onInput={onInputDateFromHandler}
+							onSaveToForm={onSaveArrivalDate}
 							value={dateFrom}
 						/>
 						<DateInput
 							placeholder={"Обратно"}
-							onInput={onInputDateToHandler}
+							onSaveToForm={onSaveDepartureDate}
 							value={dateTo}
 						/>
 					</HStack>
@@ -97,7 +89,7 @@ export const LargeView = memo<LargeViewProps>(props => {
 				width={"m"}
 				height={"m"}
 				textUppercase={true}
-				onClick={onClickHandler}
+				onClick={onSearch}
 			>
 				{"Найти Билеты"}
 			</Button>

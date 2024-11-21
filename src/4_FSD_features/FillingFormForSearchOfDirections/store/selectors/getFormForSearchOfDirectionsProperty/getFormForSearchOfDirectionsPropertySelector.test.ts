@@ -1,10 +1,11 @@
-import { describe, expect, test } from "@jest/globals"
 import type { DeepPartial } from "@customTypes/global.types"
+import { describe, expect, test } from "@jest/globals"
 import type { mainStateMap } from "@store/storeTypes/mainState.map"
 import {
+	getFormForSearchOfDirectionsDataForRequestSelector,
+	getFormForSearchOfDirectionsDataSelector,
 	getFormForSearchOfDirectionsHasDepartureDirectionsSelector,
-	getFormForSearchOfDirectionsIsValidFormSelector,
-	getFormForSearchOfDirectionsDataSelector
+	getFormForSearchOfDirectionsIsValidFormSelector
 } from "./getFormForSearchOfDirectionsProperty.selector"
 
 describe("getFormForSearchOfDirectionsHasDepartureDirectionsSelector", () => {
@@ -52,17 +53,48 @@ describe("getFormForSearchOfDirectionsDataSelector", () => {
 		const state: DeepPartial<mainStateMap> = {
 			formForSearchOfDirectionsStateMap: {
 				data: {
-					from_city_id: "1"
+					fromCity: {
+						name: "Москва"
+					}
 				}
 			}
 		}
 		expect(getFormForSearchOfDirectionsDataSelector()(state as mainStateMap)).toEqual({
-			from_city_id: "1"
+			fromCity: {
+				name: "Москва"
+			}
 		})
 	})
 
 	test("get withOut state", () => {
 		const state: DeepPartial<mainStateMap> = {}
 		expect(getFormForSearchOfDirectionsDataSelector()(state as mainStateMap)).toEqual(undefined)
+	})
+})
+
+describe("getFormForSearchOfDirectionsDataForRequestSelector", () => {
+	test("get state", () => {
+		const state: DeepPartial<mainStateMap> = {
+			formForSearchOfDirectionsStateMap: {
+				data: {
+					fromCity: {
+						name: "Москва",
+						id: "1"
+					}
+				}
+			}
+		}
+		expect(getFormForSearchOfDirectionsDataForRequestSelector()(state as mainStateMap)).toEqual(
+			{
+				from_city_id: "1"
+			}
+		)
+	})
+
+	test("get withOut state", () => {
+		const state: DeepPartial<mainStateMap> = {}
+		expect(getFormForSearchOfDirectionsDataForRequestSelector()(state as mainStateMap)).toEqual(
+			undefined
+		)
 	})
 })

@@ -1,7 +1,8 @@
+import type { cityDataType } from "@entities/City"
 import { buildSlice } from "@helpers/buildSlice/buildSlice.helper"
-import type { formForSearchOfDirectionsStateMap } from "../storeTypes/formForSearchOfDirectionsState.map"
 import type { PayloadAction } from "@reduxjs/toolkit"
-import type { directionFormParametres } from "@entities/Direction"
+import { createEntityAdapter } from "@reduxjs/toolkit"
+import type { formForSearchOfDirectionsStateMap } from "../storeTypes/formForSearchOfDirectionsState.map"
 
 const initialState: formForSearchOfDirectionsStateMap = {
 	hasDepartureDirections: false,
@@ -9,22 +10,38 @@ const initialState: formForSearchOfDirectionsStateMap = {
 	data: undefined
 }
 
+export const citiesAdapter = createEntityAdapter<cityDataType>()
+
 const formForSearchOfDirectionsSlice = buildSlice({
 	name: "formForSearchOfDirections",
 	initialState,
 	reducers: {
-		setParametres: (state, action: PayloadAction<directionFormParametres>) => {
+		setParametres: (
+			state,
+			action: PayloadAction<formForSearchOfDirectionsStateMap["data"]>
+		) => {
 			const parametres = action.payload
 
-			state.hasDepartureDirections = Boolean(parametres.date_end)
+			state.hasDepartureDirections = Boolean(parametres?.date_end)
+
 			state.data = { ...state.data, ...parametres }
 
-			state.isValidForm = Boolean(state.data.from_city_id) && Boolean(state.data.to_city_id)
+			state.isValidForm = Boolean(state?.data?.fromCity) && Boolean(state?.data?.toCity)
 		},
 		clearParametres: state => {
 			state.hasDepartureDirections = false
 			state.data = undefined
 			state.isValidForm = false
+		},
+
+		changeDirection: state => {
+			if (state.data) {
+				const staged = state.data?.toCity
+
+				state.data.toCity = state.data?.fromCity
+
+				state.data.fromCity = staged
+			}
 		}
 	}
 })

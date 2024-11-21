@@ -1,7 +1,7 @@
-import { createEntityAdapter } from "@reduxjs/toolkit"
-import type { directionsListStateMap } from "../storeTypes/directionsListState.map"
-import type { directionsGeneralDataType } from "../../types/directionData.type"
 import { buildSlice } from "@helpers/buildSlice/buildSlice.helper"
+import { createEntityAdapter } from "@reduxjs/toolkit"
+import type { directionsGeneralDataType } from "../../types/directionData.type"
+import type { directionsListStateMap } from "../storeTypes/directionsListState.map"
 import { fetchDirectionsThunk } from "../thunks/fetchDirections/fetchDirections.thunk"
 
 const initialState: directionsListStateMap = {

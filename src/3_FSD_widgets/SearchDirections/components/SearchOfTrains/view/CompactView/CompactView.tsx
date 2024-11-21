@@ -1,31 +1,23 @@
-import { memo } from "react"
-import styles from "./CompactView.module.scss"
-import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { VStack, HStack } from "@ui/Stack"
-import { Text } from "@ui/Text"
-import { LocationInput } from "@features/LocationInput"
-import { ChangeButton } from "../../ui/ChangeButton/ChangeButton"
 import { DateInput } from "@features/DateInput"
+import { LocationInput } from "@features/LocationInput"
+import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { Button } from "@ui/Button"
-import type { directionFormParametres } from "@entities/Direction"
+import { HStack, VStack } from "@ui/Stack"
+import { Text } from "@ui/Text"
+import { memo } from "react"
+import type { SearchOfTrainsViewsProps } from "../../SearchDirections"
+import { ChangeButton } from "../../ui/ChangeButton/ChangeButton"
+import styles from "./CompactView.module.scss"
 
-type CompactViewProps = {
-	className?: string
-	onInputLocationFromHandler: (value: string) => void
-	onInputLocationToHandler: (value: string) => void
-	onInputDateFromHandler: (value: string) => void
-	onInputDateToHandler: (value: string) => void
-	onClickHandler: () => void
-	parametres?: directionFormParametres
-}
-export const CompactView = memo<CompactViewProps>(props => {
+export const CompactView = memo<SearchOfTrainsViewsProps>(props => {
 	const {
 		className,
-		onInputDateToHandler,
-		onInputDateFromHandler,
-		onInputLocationToHandler,
-		onInputLocationFromHandler,
-		onClickHandler,
+		onSaveDepartureDate,
+		onSaveArrivalDate,
+		onSaveFromLocation,
+		onSaveToLocation,
+		onSearch,
+		onChangeDirection,
 		parametres
 	} = props
 
@@ -51,15 +43,15 @@ export const CompactView = memo<CompactViewProps>(props => {
 					justify={"spaceBetween"}
 				>
 					<LocationInput
-						onInput={onInputLocationFromHandler}
+						onSaveToForm={onSaveFromLocation}
 						placeholder={"Откуда"}
-						value={parametres?.from_city_id}
+						value={parametres?.fromCity?.name}
 					/>
-					<ChangeButton />
+					<ChangeButton onClick={onChangeDirection} />
 					<LocationInput
-						onInput={onInputLocationToHandler}
+						onSaveToForm={onSaveToLocation}
 						placeholder={"Куда"}
-						value={parametres?.to_city_id}
+						value={parametres?.toCity?.name}
 					/>
 				</HStack>
 			</VStack>
@@ -79,12 +71,12 @@ export const CompactView = memo<CompactViewProps>(props => {
 					<DateInput
 						placeholder={"Туда"}
 						value={dateFrom}
-						onInput={onInputDateFromHandler}
+						onSaveToForm={onSaveArrivalDate}
 					/>
 					<DateInput
 						placeholder={"Обратно"}
 						value={dateTo}
-						onInput={onInputDateToHandler}
+						onSaveToForm={onSaveDepartureDate}
 					/>
 				</HStack>
 			</VStack>
@@ -94,7 +86,7 @@ export const CompactView = memo<CompactViewProps>(props => {
 				width={"m"}
 				height={"m"}
 				textUppercase={true}
-				onClick={onClickHandler}
+				onClick={onSearch}
 			>
 				{"Найти Билеты"}
 			</Button>
