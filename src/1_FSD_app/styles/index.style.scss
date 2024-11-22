@@ -25,3 +25,12 @@
 	height: auto !important;
 	min-height: 100vh !important;
 }
+
+.center-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: auto;
+	min-height: 100vh;
+	padding: 20px;
+}

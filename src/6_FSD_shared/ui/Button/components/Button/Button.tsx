@@ -1,11 +1,12 @@
+import type { appColorType, fontSizeType, fontWeightType } from "@customTypes/style.types"
 import type { Mods } from "@helpers/classNamesHelp/classNamesHelp"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import type React from "react"
-import { type ButtonHTMLAttributes, memo, useMemo, useState, useCallback } from "react"
-import styles from "./Button.module.scss"
-import type { fontWeightType, fontSizeType, appColorType } from "@customTypes/style.types"
-import { fontWeightMapper, fontSizeMapper } from "@helpers/fontMapper/fontMapper.helper"
 import { colorMapper } from "@helpers/colorMapper/colorMapper.helper"
+import { fontSizeMapper, fontWeightMapper } from "@helpers/fontMapper/fontMapper.helper"
+import { TypedMemo } from "@sharedProviders/TypedMemo"
+import type React from "react"
+import { type ButtonHTMLAttributes, useCallback, useMemo, useState } from "react"
+import styles from "./Button.module.scss"
 
 type themesType = "defaultLight" | "defaultDark" | "transparentDark" | "transparentLight" | "clear"
 
@@ -38,7 +39,7 @@ const widthMapper: Record<widthType, string> = {
 	m: styles.widthM
 }
 
-export const Button = memo<ButtonProps>(props => {
+export const Button = TypedMemo((props: ButtonProps) => {
 	const {
 		children,
 		className,

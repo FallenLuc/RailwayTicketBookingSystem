@@ -13,7 +13,7 @@ const preview: Preview = {
 			disable: true
 		},
 		controls: {
-			exclude: ["className", "classNames"]
+			exclude: ["className", "classNames", "children", "data-testid"]
 		}
 	},
 	decorators: [StyleDecorator, RouterDecorator]

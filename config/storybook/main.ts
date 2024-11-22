@@ -9,12 +9,16 @@ const config: StorybookConfig = {
 		{
 			name: "@storybook/addon-essentials",
 			options: {
-				backgrounds: false
+				backgrounds: {
+					values: [
+						{ name: "Dark", value: "#292929" },
+						{ name: "Light", value: "#e5e5e5" }
+					]
+				}
 			}
 		},
 		"@chromatic-com/storybook",
 		"@storybook/addon-themes",
-		"storybook-react-i18next",
 		"storybook-addon-mock"
 	],
 	framework: {
