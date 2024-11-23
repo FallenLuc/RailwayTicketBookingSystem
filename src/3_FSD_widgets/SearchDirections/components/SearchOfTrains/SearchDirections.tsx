@@ -5,13 +5,14 @@ import {
 	useGetFormForSearchOfDirectionsDataSelector,
 	useGetFormForSearchOfDirectionsIsValidFormSelector
 } from "@features/FillingFormForSearchOfDirections"
-import { memo, useCallback } from "react"
+import { TypedMemo } from "@sharedProviders/TypedMemo"
+import { useCallback } from "react"
 import { CompactView } from "./view/CompactView/CompactView"
 import { LargeView } from "./view/LargeView/LargeView"
 
 type SearchOfTrainsProps = {
 	className?: string
-	view?: "compact" | "large" | "full"
+	view?: "compact" | "large"
 	onSearch: () => void
 }
 
@@ -26,7 +27,7 @@ export type SearchOfTrainsViewsProps = {
 	parametres?: formForSearchOfDirectionsStateMap["data"]
 }
 
-export const SearchDirections = memo<SearchOfTrainsProps>(props => {
+export const SearchDirections = TypedMemo((props: SearchOfTrainsProps) => {
 	const { className, view = "compact", onSearch } = props
 
 	const { setParametres, changeDirection } = useFormForSearchDirectionsActions()

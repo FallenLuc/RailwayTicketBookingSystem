@@ -1,12 +1,14 @@
-import preview from "@_storybook/preview"
-import { getCitiesRequestPaths } from "@api/libs/gettersRequestPaths.helper"
+import {
+	getCitiesRequestPaths,
+	getSubscribeRequestPaths
+} from "@api/libs/gettersRequestPaths.helper"
 import { CenterDecorator } from "@decorators/storybook/Center.decorator"
 import { type Meta, type StoryObj } from "@storybook/react"
-import { LocationInput } from "./LocationInput"
+import { MainPage } from "./MainPage.lazy"
 
-const meta: Meta<typeof LocationInput> = {
-	title: "features/LocationInput",
-	component: LocationInput,
+const meta: Meta<typeof MainPage> = {
+	title: "pages/MainPage",
+	component: MainPage,
 	parameters: {
 		mockData: [
 			{
@@ -24,26 +26,25 @@ const meta: Meta<typeof LocationInput> = {
 						name: "московия"
 					}
 				]
+			},
+			{
+				url: `${__API_URL__}${getSubscribeRequestPaths("df@f.ru")}`,
+				method: "POST",
+				status: 200,
+				delay: 1000,
+				response: {
+					status: true
+				}
 			}
-		],
-		controls: {
-			exclude: [
-				...(preview?.parameters?.controls.exclude ?? undefined),
-				"value",
-				"onSaveToForm"
-			]
-		}
+		]
 	},
 	decorators: [CenterDecorator]
 }
 
 export default meta
 
-type TypeStory = StoryObj<typeof LocationInput>
+type TypeStory = StoryObj<typeof MainPage>
 
 export const Default: TypeStory = {
-	args: {
-		testIsFetching: false,
-		placeholder: "Куда"
-	}
+	args: {}
 }

@@ -6,6 +6,8 @@
 @import "fonts/Roboto.font";
 @import "vars/gap.var";
 @import "global";
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
 
 .app {
 	position: relative;
@@ -33,4 +35,9 @@
 	height: auto;
 	min-height: 100vh;
 	padding: 20px;
+}
+
+.restriction-container {
+	width: 100%;
+	max-width: 700px;
 }
