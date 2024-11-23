@@ -1,18 +1,18 @@
-import styles from "./Header.module.scss"
-import type { PropsWithChildren } from "react"
-import { memo } from "react"
-import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { HeaderLogo } from "../HeaderLogo/HeaderLogo"
-import { HeaderContent } from "../HeaderContent/HeaderContent"
-import { NavLinks } from "../NavLinks/NavLinks"
-import { HeaderBackground } from "../HeaderBackground/HeaderBackground"
 import { getRouteMainHeader } from "@config/router"
+import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
+import { TypedMemo } from "@sharedProviders/TypedMemo"
+import type { PropsWithChildren } from "react"
+import { HeaderBackground } from "../HeaderBackground/HeaderBackground"
+import { HeaderContent } from "../HeaderContent/HeaderContent"
+import { HeaderLogo } from "../HeaderLogo/HeaderLogo"
+import { NavLinks } from "../NavLinks/NavLinks"
+import styles from "./Header.module.scss"
 
 type HeaderProps = {
 	className?: string
 	typeBackground: "main" | "search" | "end"
 } & PropsWithChildren
-export const Header = memo<HeaderProps>(props => {
+export const Header = TypedMemo((props: HeaderProps) => {
 	const { className, typeBackground = "main", children } = props
 
 	return (

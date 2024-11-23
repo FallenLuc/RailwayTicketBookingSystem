@@ -1,7 +1,7 @@
 import type { Mods } from "@helpers/classNamesHelp/classNamesHelp"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
+import { TypedMemo } from "@sharedProviders/TypedMemo"
 import type { DetailedHTMLProps, HTMLAttributes, PropsWithChildren } from "react"
-import { memo } from "react"
 import styles from "./Flex.module.scss"
 
 type justifyType = "spaceBetween" | "spaceAround" | "flexEnd" | "flexStart" | "center"
@@ -58,7 +58,7 @@ const gapMap: Record<gapType, string> = {
 	gapXL: styles.gapXL
 }
 
-export const Flex = memo<FlexProps>(props => {
+export const Flex = TypedMemo((props: FlexProps) => {
 	const {
 		className,
 		justify = "flexStart",

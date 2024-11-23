@@ -4,8 +4,9 @@ import { useGetCitiesByPatternQuery } from "@entities/City"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { useClickOutside } from "@hooks/useClickOutside.hook"
 import { useDebounce } from "@hooks/useDebounce.hook"
+import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { Input } from "@ui/Input"
-import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { LocationList } from "../LocationList/LocationList"
 import styles from "./LocationInput.module.scss"
 import { Loader } from "./ui/Loader"
@@ -15,9 +16,10 @@ type LocationInputProps = {
 	value?: string
 	onSaveToForm: (city?: cityDataType) => void
 	placeholder?: string
+	testIsFetching?: boolean
 }
-export const LocationInput = memo<LocationInputProps>(props => {
-	const { className, value = "", onSaveToForm, placeholder } = props
+export const LocationInput = TypedMemo((props: LocationInputProps) => {
+	const { className, value = "", onSaveToForm, placeholder, testIsFetching = false } = props
 
 	const inputLocationRef = useRef<HTMLDivElement>(null)
 
@@ -123,9 +125,10 @@ export const LocationInput = memo<LocationInputProps>(props => {
 				height={"m"}
 				value={currentValue}
 				Icon={LocationIcon}
+				disabled={testIsFetching}
 			/>
 
-			{isFetching && <Loader />}
+			{(isFetching || testIsFetching) && <Loader />}
 			<LocationList
 				className={styles.list}
 				cities={cities}

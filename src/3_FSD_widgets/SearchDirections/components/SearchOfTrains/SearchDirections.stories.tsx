@@ -2,11 +2,16 @@ import preview from "@_storybook/preview"
 import { getCitiesRequestPaths } from "@api/libs/gettersRequestPaths.helper"
 import { CenterDecorator } from "@decorators/storybook/Center.decorator"
 import { type Meta, type StoryObj } from "@storybook/react"
-import { LocationInput } from "./LocationInput"
+import { SearchDirections } from "./SearchDirections"
 
-const meta: Meta<typeof LocationInput> = {
-	title: "features/LocationInput",
-	component: LocationInput,
+const meta: Meta<typeof SearchDirections> = {
+	title: "widgets/SearchDirections",
+	component: SearchDirections,
+	argTypes: {
+		view: {
+			control: "inline-radio"
+		}
+	},
 	parameters: {
 		mockData: [
 			{
@@ -27,11 +32,7 @@ const meta: Meta<typeof LocationInput> = {
 			}
 		],
 		controls: {
-			exclude: [
-				...(preview?.parameters?.controls.exclude ?? undefined),
-				"value",
-				"onSaveToForm"
-			]
+			exclude: [...(preview?.parameters?.controls.exclude ?? undefined), "onSearch"]
 		}
 	},
 	decorators: [CenterDecorator]
@@ -39,11 +40,8 @@ const meta: Meta<typeof LocationInput> = {
 
 export default meta
 
-type TypeStory = StoryObj<typeof LocationInput>
+type TypeStory = StoryObj<typeof SearchDirections>
 
 export const Default: TypeStory = {
-	args: {
-		testIsFetching: false,
-		placeholder: "Куда"
-	}
+	args: {}
 }

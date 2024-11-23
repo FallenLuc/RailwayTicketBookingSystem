@@ -1,10 +1,11 @@
+import type { appColorType, fontSizeType, fontWeightType } from "@customTypes/style.types"
 import type { Mods } from "@helpers/classNamesHelp/classNamesHelp"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { memo, useMemo } from "react"
-import styles from "./Text.module.scss"
-import type { fontSizeType, fontWeightType, appColorType } from "@customTypes/style.types"
-import { fontSizeMapper, fontWeightMapper } from "@helpers/fontMapper/fontMapper.helper"
 import { colorMapper } from "@helpers/colorMapper/colorMapper.helper"
+import { fontSizeMapper, fontWeightMapper } from "@helpers/fontMapper/fontMapper.helper"
+import { TypedMemo } from "@sharedProviders/TypedMemo"
+import { useMemo } from "react"
+import styles from "./Text.module.scss"
 
 type titleType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 
@@ -26,7 +27,7 @@ type TextProps = {
 	classNameTitle?: string
 }
 
-export const Text = memo<TextProps>(props => {
+export const Text = TypedMemo((props: TextProps) => {
 	const {
 		className,
 		text,

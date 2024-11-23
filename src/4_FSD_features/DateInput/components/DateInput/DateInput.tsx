@@ -2,9 +2,10 @@ import { CalendarIcon } from "@assets/index"
 import { DATE_FORMAT_STRING, REVERSE_FORMAT_STRING } from "@constants/common.constant"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { useClickOutside } from "@hooks/useClickOutside.hook"
+import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { Input } from "@ui/Input"
 import dayjs from "dayjs"
-import { memo, useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { DatePicker } from "../DatePicker/DatePicker"
 import styles from "./DateInput.module.scss"
 
@@ -15,7 +16,7 @@ type DateInputProps = {
 	placeholder?: string
 }
 
-export const DateInput = memo<DateInputProps>(props => {
+export const DateInput = TypedMemo((props: DateInputProps) => {
 	const { className, value = null, onSaveToForm, placeholder } = props
 
 	const inputDateRef = useRef<HTMLDivElement>(null)
