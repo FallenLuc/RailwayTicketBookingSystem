@@ -19,7 +19,8 @@
 		"storybook:start": "storybook dev -c config/storybook --no-open -p 6006 ",
 		"postinstall": "rimraf ./node_modules/.cache",
 		"predeploy": "yarn run build",
-		"deploy": "gh-pages -d build"
+		"deploy": "gh-pages -d build",
+		"prepare": "husky"
 	},
 	"author": {
 		"name": "Lucifer Morningstar"
