@@ -1,1 +1,1 @@
-export {} from "./components/
+export { Switch } from "./components/Switch/Switch"
