@@ -6,17 +6,7 @@ const config: StorybookConfig = {
 	addons: [
 		"@storybook/addon-webpack5-compiler-swc",
 		"@storybook/addon-links",
-		{
-			name: "@storybook/addon-essentials",
-			options: {
-				backgrounds: {
-					values: [
-						{ name: "Dark", value: "#292929" },
-						{ name: "Light", value: "#e5e5e5" }
-					]
-				}
-			}
-		},
+		"@storybook/addon-essentials",
 		"@chromatic-com/storybook",
 		"@storybook/addon-themes",
 		"storybook-addon-mock"
