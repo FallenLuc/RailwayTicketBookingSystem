@@ -1,5 +1,6 @@
+import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import { getTrackBackground, Range as RangeComponent } from "react-range"
 import type { IRenderThumbParams, IRenderTrackParams } from "react-range/lib/types"
 import { HStack, VStack } from "../../../Stack"
@@ -20,7 +21,7 @@ const STEP = 1
 export const Range = TypedMemo((props: RangeProps) => {
 	const { className, min = 0, max = 100000, range, onChange, typeRange = "default" } = props
 
-	const [values, setValues] = useState(range || [min, max])
+	const [values, setValues] = useState(range?.length ? range : [min, max])
 
 	const onFinalChangeHandler = useCallback(
 		(range: number[]) => {
@@ -35,45 +36,62 @@ export const Range = TypedMemo((props: RangeProps) => {
 		}
 	}, [range])
 
-	const Track = ({ props, children }: IRenderTrackParams) => (
-		<div
-			className={styles.track}
-			style={{ ...props.style }}
-			onMouseDown={props.onMouseDown}
-			onTouchStart={props.onTouchStart}
-		>
-			<div
-				ref={props.ref}
-				className={styles.fillTrack}
-				style={{
-					background: getTrackBackground({
-						values,
-						colors: ["transparent", "#ffa800", "transparent"],
-						min: min,
-						max: max
-					})
-				}}
-			>
-				{children}
-			</div>
-		</div>
+	const Track = useMemo(
+		() =>
+			({ props, children }: IRenderTrackParams) => {
+				return (
+					<div
+						className={styles.track}
+						style={{ ...props.style }}
+						onMouseDown={props.onMouseDown}
+						onTouchStart={props.onTouchStart}
+					>
+						<div
+							ref={props.ref}
+							className={styles.fillTrack}
+							style={{
+								background: getTrackBackground({
+									values,
+									colors: ["transparent", "#ffa800", "transparent"],
+									min: min,
+									max: max
+								})
+							}}
+						>
+							{children}
+						</div>
+					</div>
+				)
+			},
+		[max, min, values]
 	)
 
-	const Thumb = ({ props, index }: IRenderThumbParams) => (
-		<div
-			{...props}
-			className={styles.thumb}
-		>
-			<span className={styles.label}>
-				{" "}
-				{typeRange === "default" ? values[index] : convertSecondsToTime(values[index])}
-			</span>
-		</div>
+	const Thumb = useMemo(
+		() =>
+			({ props, index }: IRenderThumbParams) => {
+				return (
+					<div
+						{...props}
+						key={props.key}
+						className={styles.thumb}
+					>
+						<span className={styles.label}>
+							{" "}
+							{typeRange === "default" ?
+								values[index]
+							:	convertSecondsToTime(values[index])}
+						</span>
+					</div>
+				)
+			},
+		[typeRange, values]
 	)
 
 	return (
 		<VStack
-			className={className}
+			align={"center"}
+			justify={"center"}
+			className={classNamesHelp(styles.Range, {}, [className])}
 			gap={"gapXS"}
 		>
 			<HStack

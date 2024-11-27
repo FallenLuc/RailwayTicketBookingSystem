@@ -1,6 +1,11 @@
+.Range {
+	height: 70px;
+}
+
 .track {
 	position: relative;
-	width: 100%;
+
+	width: calc(100% - 20px);
 	height: 9px;
 
 	border: 1px solid var(--main-gray);

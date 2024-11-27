@@ -13488,7 +13488,7 @@ __metadata:
     postcss: "npm:^8.4.38"
     postcss-scss: "npm:^4.0.9"
     prettier: "npm:3.2.5"
-    react: "npm:^18.2.0"
+    react: "npm:18.3.1"
     react-device-detect: "npm:^2.2.3"
     react-dom: "npm:^18.2.0"
     react-headless-rating: "npm:^1.0.3"
@@ -13835,7 +13835,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^16.8.0 || ^17.0.0 || ^18.0.0, react@npm:^18.2.0":
+"react@npm:18.3.1, react@npm:^16.8.0 || ^17.0.0 || ^18.0.0":
   version: 18.3.1
   resolution: "react@npm:18.3.1"
   dependencies:
