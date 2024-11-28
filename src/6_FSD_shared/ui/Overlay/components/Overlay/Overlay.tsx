@@ -1,6 +1,7 @@
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { memo } from "react"
 import styles from "./Overlay.module.scss"
+import { RemoveScroll } from "react-remove-scroll"
 
 type OverlayProps = {
 	className?: string
@@ -10,9 +11,14 @@ export const Overlay = memo<OverlayProps>(props => {
 	const { className, onClose } = props
 
 	return (
-		<div
-			onClick={onClose}
-			className={classNamesHelp(styles.OverLay, {}, [className])}
-		/>
+		<RemoveScroll>
+			<div
+				onClick={onClose}
+				className={classNamesHelp(styles.OverLay, {}, [
+					className,
+					RemoveScroll.classNames.zeroRight
+				])}
+			/>
+		</RemoveScroll>
 	)
 })

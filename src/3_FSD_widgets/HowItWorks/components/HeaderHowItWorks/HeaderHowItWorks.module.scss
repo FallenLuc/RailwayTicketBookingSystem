@@ -1,0 +1,18 @@
+.link {
+	padding: 16px 75px;
+
+	transition: all 0.3s;
+
+	border: 1px solid var(--main-light);
+	border-radius: var(--br-button);
+
+	&:hover {
+		background-color: var(--main-light);
+
+		color: var(--accent-orange);
+	}
+}
+
+.title {
+	text-transform: uppercase;
+}

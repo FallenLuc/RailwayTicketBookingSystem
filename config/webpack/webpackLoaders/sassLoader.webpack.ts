@@ -4,7 +4,6 @@ import { type buildOptionsType } from "../types/config"
 
 export const sassLoader = ({ isDev }: buildOptionsType): RuleSetRule => ({
 	test: /\.s?[ac]ss$/i,
-	exclude: /node_modules/,
 	use: [
 		isDev ? "style-loader" : MiniCssExtractPlugin.loader,
 		{

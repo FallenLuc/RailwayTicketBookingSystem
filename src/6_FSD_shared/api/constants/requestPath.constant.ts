@@ -1,1 +1,3 @@
-export enum RequestPaths {}
+export enum RequestPaths {
+	Subscribe = "/subscribe"
+}

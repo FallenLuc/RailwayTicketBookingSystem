@@ -1,0 +1,18 @@
+.avatar {
+	width: 205px;
+	height: 205px;
+
+	border-radius: 50%;
+}
+
+.avatar-fallback {
+	background-color: var(--main-gray);
+}
+
+.text {
+	font-style: italic;
+}
+
+.wrapper-text {
+	max-width: 400px;
+}

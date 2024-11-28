@@ -6,8 +6,8 @@ export function getApi(mode: buildMode, apiUrl?: buildOptionsType["apiUrl"]) {
 	}
 
 	if (mode === "production") {
-		return "/api"
+		return "https://students.netoservices.ru/fe-diplom"
 	}
 
-	return "http://localhost:8000"
+	return "https://students.netoservices.ru/fe-diplom"
 }

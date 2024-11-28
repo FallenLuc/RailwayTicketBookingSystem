@@ -1,0 +1,29 @@
+.AboutUs {
+	padding-top: 114px;
+	padding-bottom: 100px;
+
+	background-color: var(--main-light);
+}
+
+.title {
+	text-transform: uppercase;
+}
+
+.textArea {
+	position: relative;
+	padding-left: 30px;
+
+	&::before {
+		content: "";
+
+		display: block;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 10px;
+		height: 100%;
+
+		background-color: var(--accent-orange);
+	}
+}
