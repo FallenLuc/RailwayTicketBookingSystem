@@ -15,6 +15,13 @@ const preview: Preview = {
 
 			disable: true
 		},
+		backgrounds: {
+			values: [
+				{ name: "Dark", value: "#292929" },
+				{ name: "Light", value: "#e5e5e5" }
+			],
+			default: "Dark"
+		},
 		controls: {
 			exclude: ["className", "classNames", "children", "data-testid"]
 		}

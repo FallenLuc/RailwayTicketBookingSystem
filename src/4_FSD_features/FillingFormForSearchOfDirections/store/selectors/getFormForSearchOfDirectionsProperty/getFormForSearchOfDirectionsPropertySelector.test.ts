@@ -4,29 +4,8 @@ import type { mainStateMap } from "@store/storeTypes/mainState.map"
 import {
 	getFormForSearchOfDirectionsDataForRequestSelector,
 	getFormForSearchOfDirectionsDataSelector,
-	getFormForSearchOfDirectionsHasDepartureDirectionsSelector,
 	getFormForSearchOfDirectionsIsValidFormSelector
 } from "./getFormForSearchOfDirectionsProperty.selector"
-
-describe("getFormForSearchOfDirectionsHasDepartureDirectionsSelector", () => {
-	test("get state", () => {
-		const state: DeepPartial<mainStateMap> = {
-			formForSearchOfDirectionsStateMap: {
-				hasDepartureDirections: true
-			}
-		}
-		expect(
-			getFormForSearchOfDirectionsHasDepartureDirectionsSelector()(state as mainStateMap)
-		).toEqual(true)
-	})
-
-	test("get withOut state", () => {
-		const state: DeepPartial<mainStateMap> = {}
-		expect(
-			getFormForSearchOfDirectionsHasDepartureDirectionsSelector()(state as mainStateMap)
-		).toEqual(false)
-	})
-})
 
 describe("getFormForSearchOfDirectionsIsValidFormSelector", () => {
 	test("get state", () => {

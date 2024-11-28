@@ -6,6 +6,8 @@ export type directionFormParametres = {
 	to_city_id?: cityDataType["id"]
 	date_start?: string
 	date_end?: string
+	date_start_arrival?: string
+	date_end_arrival?: string
 	have_first_class?: boolean
 	have_second_class?: boolean
 	have_third_class?: boolean

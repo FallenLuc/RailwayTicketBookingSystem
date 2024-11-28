@@ -4,7 +4,7 @@ import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { Button } from "@ui/Button"
 import { HStack, VStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
-import { memo } from "react"
+import { memo, useMemo } from "react"
 import type { SearchOfTrainsViewsProps } from "../../SearchDirections"
 import { ChangeButton } from "../../ui/ChangeButton/ChangeButton"
 import styles from "./CompactView.module.scss"
@@ -21,8 +21,14 @@ export const CompactView = memo<SearchOfTrainsViewsProps>(props => {
 		parametres
 	} = props
 
-	const dateFrom = parametres?.date_start ? new Date(parametres?.date_start) : undefined
-	const dateTo = parametres?.date_end ? new Date(parametres?.date_end) : undefined
+	const dateFrom = useMemo(
+		() => (parametres?.date_start ? new Date(parametres?.date_start) : undefined),
+		[parametres?.date_start]
+	)
+	const dateTo = useMemo(
+		() => (parametres?.date_end ? new Date(parametres?.date_end) : undefined),
+		[parametres?.date_end]
+	)
 
 	return (
 		<VStack
@@ -69,12 +75,10 @@ export const CompactView = memo<SearchOfTrainsViewsProps>(props => {
 					justify={"spaceBetween"}
 				>
 					<DateInput
-						placeholder={"Туда"}
 						value={dateFrom}
 						onSaveToForm={onSaveArrivalDate}
 					/>
 					<DateInput
-						placeholder={"Обратно"}
 						value={dateTo}
 						onSaveToForm={onSaveDepartureDate}
 					/>

@@ -34,3 +34,5 @@ const getDirectionsRtkq = rtkBaseApi.injectEndpoints({
 
 export const getDirections = getDirectionsRtkq.endpoints.getDirections.initiate
 export const { useGetDirectionsQuery } = getDirectionsRtkq
+
+// To Feature параметры сохранять в url  страницы

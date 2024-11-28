@@ -8,6 +8,5 @@ export {
 export {
 	useGetFormForSearchOfDirectionsIsValidFormSelector,
 	useGetFormForSearchOfDirectionsDataSelector,
-	useGetFormForSearchOfDirectionsHasDepartureDirectionsSelector,
 	useGetFormForSearchOfDirectionsDataForRequestSelector
 } from "./store/selectors/getFormForSearchOfDirectionsProperty/getFormForSearchOfDirectionsProperty.selector"

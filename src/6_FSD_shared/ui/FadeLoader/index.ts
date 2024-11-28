@@ -1,1 +1,1 @@
-export {FadeLoader} from "./components/FadeLoader/FadeLoader"
+export { FadeLoader } from "./components/FadeLoader/FadeLoader"

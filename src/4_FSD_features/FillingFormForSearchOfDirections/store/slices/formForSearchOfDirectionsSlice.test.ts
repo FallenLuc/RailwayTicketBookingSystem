@@ -8,7 +8,6 @@ import {
 describe("formForSearchOfDirectionsSliceTest", () => {
 	test("setParametres", () => {
 		const state: formForSearchOfDirectionsStateMap = {
-			hasDepartureDirections: true,
 			isValidForm: false,
 			data: {
 				toCity: {
@@ -28,7 +27,6 @@ describe("formForSearchOfDirectionsSliceTest", () => {
 		)
 
 		expect(newState).toEqual({
-			hasDepartureDirections: false,
 			isValidForm: true,
 			data: {
 				toCity: {
@@ -46,7 +44,6 @@ describe("formForSearchOfDirectionsSliceTest", () => {
 
 	test("clearParametres", () => {
 		const state: formForSearchOfDirectionsStateMap = {
-			hasDepartureDirections: true,
 			isValidForm: false,
 			data: {
 				toCity: {
@@ -66,7 +63,6 @@ describe("formForSearchOfDirectionsSliceTest", () => {
 		)
 
 		expect(newState).toEqual({
-			hasDepartureDirections: false,
 			isValidForm: false,
 			data: undefined
 		})
@@ -74,7 +70,6 @@ describe("formForSearchOfDirectionsSliceTest", () => {
 
 	test("changeDirection", () => {
 		const state: formForSearchOfDirectionsStateMap = {
-			hasDepartureDirections: false,
 			isValidForm: false,
 			data: {
 				toCity: {
@@ -94,7 +89,6 @@ describe("formForSearchOfDirectionsSliceTest", () => {
 		)
 
 		expect(newState).toEqual({
-			hasDepartureDirections: false,
 			isValidForm: false,
 			data: {
 				toCity: {
