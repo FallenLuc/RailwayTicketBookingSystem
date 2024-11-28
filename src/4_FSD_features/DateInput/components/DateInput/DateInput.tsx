@@ -10,14 +10,14 @@ import { DatePicker } from "../DatePicker/DatePicker"
 import styles from "./DateInput.module.scss"
 
 type DateInputProps = {
+	size?: "default" | "think"
 	className?: string
 	value?: Date
 	onSaveToForm: (value: string) => void
-	placeholder?: string
 }
 
 export const DateInput = TypedMemo((props: DateInputProps) => {
-	const { className, value = null, onSaveToForm, placeholder } = props
+	const { className, value = null, onSaveToForm, size = "default" } = props
 
 	const inputDateRef = useRef<HTMLDivElement>(null)
 
@@ -59,10 +59,9 @@ export const DateInput = TypedMemo((props: DateInputProps) => {
 		>
 			<Input
 				disabled={true}
-				placeholder={placeholder}
 				fontSize={"s"}
 				fontWeight={"medium"}
-				height={"m"}
+				height={size === "default" ? "m" : "s"}
 				value={currentValue}
 				Icon={CalendarIcon}
 				onClick={onClickHandler}

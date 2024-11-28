@@ -6,6 +6,11 @@ import { DateInput } from "./DateInput"
 const meta: Meta<typeof DateInput> = {
 	title: "features/DateInput",
 	component: DateInput,
+	argTypes: {
+		size: {
+			control: "inline-radio"
+		}
+	},
 	parameters: {
 		controls: {
 			exclude: [
@@ -23,7 +28,5 @@ export default meta
 type TypeStory = StoryObj<typeof DateInput>
 
 export const Default: TypeStory = {
-	args: {
-		placeholder: "Обратно"
-	}
+	args: {}
 }

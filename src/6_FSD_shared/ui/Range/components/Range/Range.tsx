@@ -1,10 +1,10 @@
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
+import { convertSecondsToTime } from "@helpers/convertSecondsToTime/convertSecondsToTime.helper"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { useCallback, useEffect, useMemo, useState } from "react"
 import { getTrackBackground, Range as RangeComponent } from "react-range"
 import type { IRenderThumbParams, IRenderTrackParams } from "react-range/lib/types"
 import { HStack, VStack } from "../../../Stack"
-import { convertSecondsToTime } from "../../lib/helpers/convertSecondsToTime/convertSecondsToTime.helper"
 import styles from "./Range.module.scss"
 
 type RangeProps = {
@@ -92,7 +92,7 @@ export const Range = TypedMemo((props: RangeProps) => {
 			align={"center"}
 			justify={"center"}
 			className={classNamesHelp(styles.Range, {}, [className])}
-			gap={"gapXS"}
+			gap={"gapS"}
 		>
 			<HStack
 				align={"center"}

@@ -5,7 +5,6 @@ import { createEntityAdapter } from "@reduxjs/toolkit"
 import type { formForSearchOfDirectionsStateMap } from "../storeTypes/formForSearchOfDirectionsState.map"
 
 const initialState: formForSearchOfDirectionsStateMap = {
-	hasDepartureDirections: false,
 	isValidForm: false,
 	data: undefined
 }
@@ -22,14 +21,17 @@ const formForSearchOfDirectionsSlice = buildSlice({
 		) => {
 			const parametres = action.payload
 
-			state.hasDepartureDirections = Boolean(parametres?.date_end)
+			let data: formForSearchOfDirectionsStateMap["data"] = { ...state.data, ...parametres }
 
-			state.data = { ...state.data, ...parametres }
+			data = Object.fromEntries(
+				Object.entries(data).filter(([_, value]) => Boolean(value) || value === 0)
+			)
+
+			state.data = { ...data }
 
 			state.isValidForm = Boolean(state?.data?.fromCity) && Boolean(state?.data?.toCity)
 		},
 		clearParametres: state => {
-			state.hasDepartureDirections = false
 			state.data = undefined
 			state.isValidForm = false
 		},

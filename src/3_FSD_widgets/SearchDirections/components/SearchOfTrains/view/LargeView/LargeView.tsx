@@ -70,12 +70,10 @@ export const LargeView = memo<SearchOfTrainsViewsProps>(props => {
 						justify={"spaceBetween"}
 					>
 						<DateInput
-							placeholder={"Туда"}
 							onSaveToForm={onSaveArrivalDate}
 							value={dateFrom}
 						/>
 						<DateInput
-							placeholder={"Обратно"}
 							onSaveToForm={onSaveDepartureDate}
 							value={dateTo}
 						/>

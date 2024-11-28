@@ -3,6 +3,7 @@ import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { Range } from "@ui/Range"
 import { VStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
+import styles from "./RangeWithTitle.module.scss"
 
 type RangeWithTitleProps = {
 	className?: string
@@ -17,6 +18,7 @@ export const RangeWithTitle = TypedMemo((props: RangeWithTitleProps) => {
 	return (
 		<VStack className={classNamesHelp("", {}, [className])}>
 			<Text
+				className={styles.title}
 				title={title}
 				fontSizeTitle={"m"}
 				TitleType={"h4"}

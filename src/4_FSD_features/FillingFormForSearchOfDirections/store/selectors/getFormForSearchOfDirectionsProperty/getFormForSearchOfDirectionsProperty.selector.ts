@@ -5,14 +5,6 @@ import type { formForSearchOfDirectionsStateMap } from "../../storeTypes/formFor
 import { getFormForSearchOfDirectionsSelector } from "../getFormForSearchOfDirections/getFormForSearchOfDirections.selector"
 
 export const [
-	useGetFormForSearchOfDirectionsHasDepartureDirectionsSelector,
-	getFormForSearchOfDirectionsHasDepartureDirectionsSelector
-] = buildCreateSelector(
-	[getFormForSearchOfDirectionsSelector],
-	(state: formForSearchOfDirectionsStateMap) => state?.hasDepartureDirections || false
-)
-
-export const [
 	useGetFormForSearchOfDirectionsIsValidFormSelector,
 	getFormForSearchOfDirectionsIsValidFormSelector
 ] = buildCreateSelector(

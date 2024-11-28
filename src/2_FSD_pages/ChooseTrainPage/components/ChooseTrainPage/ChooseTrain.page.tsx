@@ -10,9 +10,14 @@ import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { useAppDispatch } from "@hooks/useAppDispatch.hook"
 import type { asyncReducersList } from "@hooks/useAsyncReducer.hook"
 import { useAsyncReducer } from "@hooks/useAsyncReducer.hook"
+import { ContainerLayout } from "@ui/layout"
+import { HStack, VStack } from "@ui/Stack"
+import { Text } from "@ui/Text"
+import { FilterDirections } from "@widgets/FilterDirections"
 import { Header } from "@widgets/Header"
 import { SearchDirections } from "@widgets/SearchDirections"
 import { memo, useCallback, useEffect } from "react"
+import styles from "./ChooseTrain.module.scss"
 
 type ChooseTrainPageProps = {
 	className?: string
@@ -51,10 +56,20 @@ const ChooseTrainPage = memo<ChooseTrainPageProps>(props => {
 					onSearch={onSearchHandler}
 				/>
 			</Header>
-			<div>
-				{isLoading && "Loading..."}
-				{error && "Error"}
-				{!isLoading && !error ? data.map(dt => dt.toString()) : []}
+			<div className={styles.content}>
+				<ContainerLayout>
+					<HStack gap={"gapXL"}>
+						<VStack widthMax={false}>
+							<FilterDirections onSearch={onSearchHandler} />
+						</VStack>
+						<div>
+							<Text title={"Поездки"} />
+							{isLoading && "Loading..."}
+							{error && "Error"}
+							{!isLoading && !error ? data.map(dt => dt.toString()) : []}
+						</div>
+					</HStack>
+				</ContainerLayout>
 			</div>
 		</div>
 	)

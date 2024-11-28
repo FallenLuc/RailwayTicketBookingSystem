@@ -8,7 +8,6 @@ describe("getFormForSearchOfDirectionsSelector", () => {
 		const state: DeepPartial<mainStateMap> = {
 			formForSearchOfDirectionsStateMap: {
 				isValidForm: true,
-				hasDepartureDirections: true,
 				data: {
 					fromCity: {
 						name: "Москва"
@@ -18,7 +17,6 @@ describe("getFormForSearchOfDirectionsSelector", () => {
 		}
 		expect(getFormForSearchOfDirectionsSelector(state as mainStateMap)).toEqual({
 			isValidForm: true,
-			hasDepartureDirections: true,
 			data: {
 				fromCity: {
 					name: "Москва"
