@@ -5,16 +5,26 @@ import { useCallback, useEffect, useMemo, useRef } from "react"
 import { VStack } from "../../../Stack"
 import styles from "./Input.module.scss"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
+import type { fontSizeType, fontWeightType, appColorType } from "@customTypes/style.types"
+import { fontSizeMapper, fontWeightMapper } from "@helpers/fontMapper/fontMapper.helper"
+import { colorMapper } from "@helpers/colorMapper/colorMapper.helper"
+
+type heightType = "s" | "m"
 
 type InputCustomProps<T extends number | string> = {
 	className?: string
-	inverted?: boolean
 	error?: boolean
-	value?: T
-	onChange?: (value: T) => void
+	value: T
+	height: heightType
+	onChange: (value: T) => void
 	autoFocus?: boolean
+	fontSize?: fontSizeType
+	fontWeight?: fontWeightType
 	label?: string
 	classNamesLabel?: string
+	fontSizeLabel?: fontSizeType
+	fontWeightLabel?: fontWeightType
+	colorLabel?: appColorType
 	readOnly?: boolean
 	type?: string
 	"data-testid"?: string
@@ -23,16 +33,28 @@ type InputCustomProps<T extends number | string> = {
 type InputProps<T extends number | string> = InputCustomProps<T> &
 	Omit<InputHTMLAttributes<HTMLInputElement>, keyof InputCustomProps<T>>
 
+const heightMapper: Record<heightType, string> = {
+	s: styles.heightS,
+	m: styles.heightM
+}
+
 export const Input = TypedMemo(<T extends string | number>(props: InputProps<T>) => {
 	const {
 		className,
 		value,
 		onChange,
 		autoFocus = false,
+		error = false,
 		label = "",
 		classNamesLabel,
+		fontSize = "m",
+		fontWeight = "medium",
+		fontSizeLabel = "m",
+		fontWeightLabel = "think",
+		colorLabel = "main-dark",
 		type = "text",
-		"data-testid": dataTestId = "Input",
+		height = "m",
+		"data-testid": dataTestId = "input-ui",
 		readOnly = false,
 		...otherProps
 	} = props
@@ -55,8 +77,10 @@ export const Input = TypedMemo(<T extends string | number>(props: InputProps<T>)
 	)
 
 	const mods = useMemo<Mods>(() => {
-		return {}
-	}, [])
+		return {
+			[styles.error]: error
+		}
+	}, [error])
 
 	const inputElement = () => (
 		<input
@@ -64,7 +88,12 @@ export const Input = TypedMemo(<T extends string | number>(props: InputProps<T>)
 			ref={inputRef}
 			type={type}
 			readOnly={readOnly}
-			className={classNamesHelp(styles.Input, mods, [className])}
+			className={classNamesHelp(styles.Input, mods, [
+				className,
+				heightMapper[height],
+				fontSizeMapper(fontSize),
+				fontWeightMapper(fontWeight)
+			])}
 			value={value}
 			onChange={onChangeHandler}
 			{...otherProps}
@@ -74,10 +103,15 @@ export const Input = TypedMemo(<T extends string | number>(props: InputProps<T>)
 	if (label) {
 		return (
 			<label
-				className={classNamesHelp("", mods, [classNamesLabel])}
+				className={classNamesHelp(styles.wrapper, mods, [
+					classNamesLabel,
+					fontSizeMapper(fontSizeLabel),
+					fontWeightMapper(fontWeightLabel),
+					colorMapper(colorLabel)
+				])}
 				data-testid={`${dataTestId}.LabelElement`}
 			>
-				<VStack gap={"gap8"}>
+				<VStack gap={"gapS"}>
 					{label}
 					{inputElement()}
 				</VStack>

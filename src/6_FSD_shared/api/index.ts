@@ -1,2 +1,2 @@
 export { rtkBaseApi } from "./instances/rtkBase.api"
-export { RequestPaths } from "./constants/requestPath.constant"
+export { getSubscribeRequestPaths } from "./libs/gettersRequestPaths.helper"

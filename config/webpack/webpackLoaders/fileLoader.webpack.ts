@@ -18,7 +18,7 @@ const outPathCallback = (url: string, context: string): string => {
 }
 
 export const fileLoader = ({ isDev }: buildOptionsType): RuleSetRule => ({
-	test: /\.(txt|png|jpe?g|gif|woff|woff2|eot|ttf|otf)$/i,
+	test: /\.(txt|png|jpe?g|gif)$/i,
 	use: [
 		{
 			loader: "file-loader",

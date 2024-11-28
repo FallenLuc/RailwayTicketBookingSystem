@@ -1,3 +1,11 @@
 export enum RoutePaths {
-	MAIN = "/"
+	Main = "/",
+	MainHeader = "/#header",
+	MainAboutUs = "/#about",
+	MainHowItWorks = "/#how-it-works",
+	MainReviews = "/#reviews",
+	MainContacts = "/#contacts",
+	ChooseTrain = "/choose-train",
+	Success = "/success",
+	NotFound = "/*"
 }
