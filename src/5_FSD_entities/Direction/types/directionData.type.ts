@@ -1,42 +1,7 @@
-import type { cityDataType } from "../../City"
-
-export type carriagePriceType = {
-	price: number
-	top_price: number
-	bottom_price: number
-	side_price: number
-	linens_price: number
-	wifi_price: number
-}
-
-export type carriageClassType = "first" | "second" | "third" | "fourth"
-
-export type seatDataType = {
-	index: number
-	available: boolean
-}
-
-export type carriageDataType = {
-	_id: string
-	name: string
-	class_type: carriageClassType
-	have_wifi: boolean
-	have_air_conditioning: boolean
-	avaliable_seats: number
-	is_linens_included: boolean
-	seats: seatDataType[]
-} & carriagePriceType
-
-export type trainDataType = {
-	_id: string
-	name: string
-}
-
-export type stationDataType = {
-	railway_station_name: string
-	city: cityDataType
-	datetime: number
-}
+import type { DeepPartial } from "@customTypes/global.types"
+import type { carriageClassType, carriagePriceType } from "../../Carriage"
+import type { stationDataType } from "../../Station"
+import type { trainDataType } from "../../Train"
 
 export type directionDataType = {
 	_id: string
@@ -47,12 +12,14 @@ export type directionDataType = {
 	have_wifi: boolean
 	have_air_conditioning: boolean
 	duration: number
+	is_express: boolean
 	min_price: number
 	from: stationDataType
 	to: stationDataType
+	available_seats: number
+	available_seats_info: DeepPartial<Record<carriageClassType, number>>
 	train: trainDataType
-	price_info: Record<carriageClassType, carriagePriceType>
-	seats_info: Record<carriageClassType, number>
+	price_info: DeepPartial<Record<carriageClassType, carriagePriceType>>
 }
 
 export type directionsGeneralDataFromServerType = {
@@ -64,8 +31,9 @@ export type directionsGeneralDataFromServerType = {
 	have_air_conditioning: boolean
 	is_express: boolean
 	min_price: number
-	total_avaliable_seats: number
-	arrival: directionDataType
+	available_seats: number
+	available_seats_info: DeepPartial<Record<carriageClassType, number>>
+	arrival?: directionDataType
 	departure: directionDataType
 }
 

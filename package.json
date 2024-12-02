@@ -18,8 +18,6 @@
 		"test:ui": "chromatic --t chpt_4330b52d5d14286",
 		"storybook:start": "storybook dev -c config/storybook --no-open -p 6006 ",
 		"postinstall": "rimraf ./node_modules/.cache",
-		"predeploy": "yarn run build",
-		"deploy": "gh-pages -d build",
 		"prepare": "husky"
 	},
 	"author": {

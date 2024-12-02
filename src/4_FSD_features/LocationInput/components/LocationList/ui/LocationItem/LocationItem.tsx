@@ -25,6 +25,7 @@ export const LocationItem = memo<LocationItemProps>(props => {
 		>
 			<Text
 				text={cityData.name}
+				textTransform={"uppercase"}
 				fontSizeText={"xs"}
 				colorText={"main-dark"}
 				fontWeightText={"medium"}

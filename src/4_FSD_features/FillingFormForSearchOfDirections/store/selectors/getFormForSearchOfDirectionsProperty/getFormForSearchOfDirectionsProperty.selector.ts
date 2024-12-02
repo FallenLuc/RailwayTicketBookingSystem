@@ -30,8 +30,8 @@ export const [
 
 		if (state?.data) {
 			citiesData = {
-				from_city_id: state.data?.fromCity?.id,
-				to_city_id: state.data?.toCity?.id
+				from_city_id: state.data?.fromCity?._id,
+				to_city_id: state.data?.toCity?._id
 			}
 		}
 

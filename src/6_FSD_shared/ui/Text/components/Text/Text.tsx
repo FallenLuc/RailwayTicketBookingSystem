@@ -25,6 +25,7 @@ type TextProps = {
 	colorText?: appColorType
 	classNamesText?: string
 	classNameTitle?: string
+	textTransform?: "capitalize" | "uppercase"
 }
 
 export const Text = TypedMemo((props: TextProps) => {
@@ -41,7 +42,8 @@ export const Text = TypedMemo((props: TextProps) => {
 		fontWeightTitle = "fat",
 		colorText = "main-gray",
 		TitleType = "h2",
-		colorTitle = "main-gray"
+		colorTitle = "main-gray",
+		textTransform = "normal"
 	} = props
 
 	const modsText = useMemo<Mods>(() => {
@@ -55,6 +57,7 @@ export const Text = TypedMemo((props: TextProps) => {
 					className={classNamesHelp("", {}, [
 						classNameTitle,
 						styles[align],
+						styles[textTransform],
 						fontSizeMapper(fontSizeTitle),
 						fontWeightMapper(fontWeightTitle),
 						colorMapper(colorTitle)
@@ -68,6 +71,7 @@ export const Text = TypedMemo((props: TextProps) => {
 					className={classNamesHelp("", modsText, [
 						styles[align],
 						classNamesText,
+						styles[textTransform],
 						fontSizeMapper(fontSizeText),
 						fontWeightMapper(fontWeightText),
 						colorMapper(colorText)

@@ -1,7 +1,6 @@
-import type { cityDataType } from "@entities/City"
+import { SEARCH_FORM } from "@constants/localStorage.constant"
 import { buildSlice } from "@helpers/buildSlice/buildSlice.helper"
 import type { PayloadAction } from "@reduxjs/toolkit"
-import { createEntityAdapter } from "@reduxjs/toolkit"
 import type { formForSearchOfDirectionsStateMap } from "../storeTypes/formForSearchOfDirectionsState.map"
 
 const initialState: formForSearchOfDirectionsStateMap = {
@@ -9,7 +8,7 @@ const initialState: formForSearchOfDirectionsStateMap = {
 	data: undefined
 }
 
-export const citiesAdapter = createEntityAdapter<cityDataType>()
+// To Feature сделать сохранение формы в params страницы
 
 const formForSearchOfDirectionsSlice = buildSlice({
 	name: "formForSearchOfDirections",
@@ -30,10 +29,14 @@ const formForSearchOfDirectionsSlice = buildSlice({
 			state.data = { ...data }
 
 			state.isValidForm = Boolean(state?.data?.fromCity) && Boolean(state?.data?.toCity)
+
+			localStorage.setItem(SEARCH_FORM, JSON.stringify(state.data))
 		},
 		clearParametres: state => {
 			state.data = undefined
 			state.isValidForm = false
+
+			localStorage.removeItem(SEARCH_FORM)
 		},
 
 		changeDirection: state => {
@@ -43,6 +46,8 @@ const formForSearchOfDirectionsSlice = buildSlice({
 				state.data.toCity = state.data?.fromCity
 
 				state.data.fromCity = staged
+
+				localStorage.setItem(SEARCH_FORM, JSON.stringify(state.data))
 			}
 		}
 	}

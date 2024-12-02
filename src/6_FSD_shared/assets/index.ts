@@ -1,9 +1,12 @@
 // icons
+import ArrowClearFromIcon from "./icons/arrow-clear-from.svg"
+import ArrowClearToIcon from "./icons/arrow-clear-to.svg"
 import ArrowFromIcon from "./icons/arrow-from.svg"
 import ArrowToIcon from "./icons/arrow-to.svg"
 import ArrowUpIcon from "./icons/arrow-up.svg"
 import CalendarIcon from "./icons/calendar.svg"
 import ChangeIcon from "./icons/change.svg"
+import ConditionerIcon from "./icons/conditioner.svg"
 import CupeIcon from "./icons/cupe.svg"
 import ExpressIcon from "./icons/express.svg"
 import FacebookIcon from "./icons/facebook.svg"
@@ -23,6 +26,7 @@ import PlusButtonIcon from "./icons/plus-button.svg"
 import SitPlaceIcon from "./icons/sit-place.svg"
 import SkypeIcon from "./icons/skype.svg"
 import TitleIcon from "./icons/title.svg"
+import TrainIcon from "./icons/train.svg"
 import TwitterIcon from "./icons/twitter.svg"
 import WifiIcon from "./icons/wifi.svg"
 import YouTubeIcon from "./icons/youtube.svg"
@@ -66,5 +70,9 @@ export {
 	PlackartIcon,
 	SitPlaceIcon,
 	WifiIcon,
-	ExpressIcon
+	ExpressIcon,
+	TrainIcon,
+	ArrowClearFromIcon,
+	ArrowClearToIcon,
+	ConditionerIcon
 }

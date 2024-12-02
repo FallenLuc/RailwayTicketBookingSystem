@@ -19,7 +19,10 @@ export const [useGetDirectionsListErrorSelector, getDirectionsListErrorSelector]
 
 const initialState = directionsListAdapter.getInitialState()
 
-export const { selectAll: getDirectionsListDataSelector } =
-	directionsListAdapter.getSelectors<mainStateMap>(state => state?.directionsList || initialState)
+export const {
+	selectAll: getDirectionsListDataSelector,
+	selectById: getDirectionsListItemSelector
+} = directionsListAdapter.getSelectors<mainStateMap>(state => state?.directionsList || initialState)
 
 export const [useGetDirectionsListDataSelector] = buildSelector(getDirectionsListDataSelector)
+export const [useGetDirectionsListItemSelector] = buildSelector(getDirectionsListItemSelector)

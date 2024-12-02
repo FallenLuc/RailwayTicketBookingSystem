@@ -1,10 +1,11 @@
-import { describe, expect, test } from "@jest/globals"
 import type { DeepPartial } from "@customTypes/global.types"
+import { describe, expect, test } from "@jest/globals"
 import type { mainStateMap } from "@store/storeTypes/mainState.map"
 import {
-	getDirectionsListIsLoadingSelector,
+	getDirectionsListDataSelector,
 	getDirectionsListErrorSelector,
-	getDirectionsListDataSelector
+	getDirectionsListIsLoadingSelector,
+	getDirectionsListItemSelector
 } from "./getDirectionsListProperties.selector"
 
 describe("getDirectionsListIsLoadingSelector", () => {
@@ -53,5 +54,22 @@ describe("getDirectionsListDataSelector", () => {
 	test("get withOut state", () => {
 		const state: DeepPartial<mainStateMap> = {}
 		expect(getDirectionsListDataSelector(state as mainStateMap)).toEqual([])
+	})
+})
+
+describe("getDirectionsListItemSelector", () => {
+	test("get state", () => {
+		const state: DeepPartial<mainStateMap> = {
+			directionsList: {
+				ids: ["1"],
+				entities: { "1": { id: "1" } }
+			}
+		}
+		expect(getDirectionsListItemSelector(state as mainStateMap, "1")).toEqual({ id: "1" })
+	})
+
+	test("get withOut state", () => {
+		const state: DeepPartial<mainStateMap> = {}
+		expect(getDirectionsListItemSelector(state as mainStateMap, "1")).toEqual(undefined)
 	})
 })

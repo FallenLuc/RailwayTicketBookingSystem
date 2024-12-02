@@ -16,6 +16,8 @@ import { TogglesParametres } from "../TogglesParametres/TogglesParametres"
 import styles from "./FilterDirections.module.scss"
 import { SubmitButton } from "./ui/SubmitButton/SubmitButton"
 
+// To Feature сделать заполнение диапазона стоимости билетов
+
 type FilterDirectionsProps = {
 	className?: string
 	onSearch?: () => void

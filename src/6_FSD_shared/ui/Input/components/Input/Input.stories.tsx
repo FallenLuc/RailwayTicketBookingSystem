@@ -1,6 +1,7 @@
 import preview from "@_storybook/preview"
 import { LocationIcon } from "@assets/index"
 import { CenterDecorator } from "@decorators/storybook/Center.decorator"
+import { RestrictionDecorator } from "@decorators/storybook/Restriction.decorator"
 import { type Meta, type StoryObj } from "@storybook/react"
 import { Input } from "./Input"
 
@@ -40,7 +41,7 @@ const meta: Meta<typeof Input> = {
 			]
 		}
 	},
-	decorators: [CenterDecorator]
+	decorators: [RestrictionDecorator, CenterDecorator]
 }
 
 export default meta

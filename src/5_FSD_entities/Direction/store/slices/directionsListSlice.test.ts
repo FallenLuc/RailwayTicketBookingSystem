@@ -3,9 +3,43 @@ import { describe, expect, test } from "@jest/globals"
 import type { directionsGeneralDataType } from "../../types/directionData.type"
 import type { directionsListStateMap } from "../storeTypes/directionsListState.map"
 import { fetchDirectionsThunk } from "../thunks/fetchDirections/fetchDirections.thunk"
-import { directionsListSliceReducers } from "./directionsList.slice"
+import { directionsListSliceActions, directionsListSliceReducers } from "./directionsList.slice"
 
 describe("directionsListSliceTest", () => {
+	test("directionsListInit init already", () => {
+		const state: DeepPartial<directionsListStateMap> = {
+			_inited: true
+		}
+
+		const { directionsListInit } = directionsListSliceActions
+
+		const newState = directionsListSliceReducers(
+			state as directionsListStateMap,
+			directionsListInit()
+		)
+
+		expect(newState).toEqual({
+			_inited: true
+		})
+	})
+
+	test("directionsListInit not init yet", () => {
+		const state: DeepPartial<directionsListStateMap> = {
+			_inited: false
+		}
+
+		const { directionsListInit } = directionsListSliceActions
+
+		const newState = directionsListSliceReducers(
+			state as directionsListStateMap,
+			directionsListInit()
+		)
+
+		expect(newState).toEqual({
+			_inited: true
+		})
+	})
+
 	test("pending", () => {
 		const state: DeepPartial<directionsListStateMap> = {
 			isLoading: false,
@@ -19,7 +53,9 @@ describe("directionsListSliceTest", () => {
 
 		expect(newState).toEqual({
 			isLoading: true,
-			error: undefined
+			error: undefined,
+			ids: [],
+			entities: {}
 		})
 	})
 
@@ -65,7 +101,9 @@ describe("directionsListSliceTest", () => {
 
 		expect(newState).toEqual({
 			isLoading: false,
-			error: "error with request"
+			error: "error with request",
+			ids: [],
+			entities: {}
 		})
 	})
 })
