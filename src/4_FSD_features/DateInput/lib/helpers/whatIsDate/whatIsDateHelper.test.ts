@@ -4,7 +4,7 @@ import { whatIsDate } from "./whatIsDate.helper"
 describe("whatIsDateHelperTest", () => {
 	test("isWeekend", () => {
 		expect(whatIsDate(new Date("2024-11-10T12:00:00.000"), 11)).toEqual({
-			isPast: false,
+			isPast: true,
 			isWeekend: true,
 			isLastDateCurrentMonth: false,
 			isOtherMonth: false
@@ -14,7 +14,7 @@ describe("whatIsDateHelperTest", () => {
 	test("isLastDate", () => {
 		expect(whatIsDate(new Date("2024-11-07T12:00:00.000"), 11)).toEqual({
 			isWeekend: false,
-			isLastDateCurrentMonth: true,
+			isLastDateCurrentMonth: false,
 			isOtherMonth: false,
 			isPast: true
 		})
@@ -30,11 +30,11 @@ describe("whatIsDateHelperTest", () => {
 	})
 
 	test("isOtherMonth Feature", () => {
-		expect(whatIsDate(new Date("2024-12-01T12:00:00.000"), 11)).toEqual({
-			isWeekend: true,
+		expect(whatIsDate(new Date("2024-10-01T12:00:00.000"), 11)).toEqual({
+			isWeekend: false,
 			isLastDateCurrentMonth: false,
 			isOtherMonth: true,
-			isPast: false
+			isPast: true
 		})
 	})
 })
