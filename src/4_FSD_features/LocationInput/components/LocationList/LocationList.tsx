@@ -24,7 +24,7 @@ export const LocationList = memo<LocationListProps>(props => {
 			className={classNamesHelp(styles.LocationList, {}, [className])}
 		>
 			{cities.map(city => (
-				<li key={city.id}>
+				<li key={city._id}>
 					<LocationItem
 						cityData={city}
 						onClick={onClick}

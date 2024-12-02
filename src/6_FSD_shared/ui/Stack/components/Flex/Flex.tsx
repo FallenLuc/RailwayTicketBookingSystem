@@ -7,7 +7,7 @@ import styles from "./Flex.module.scss"
 type justifyType = "spaceBetween" | "spaceAround" | "flexEnd" | "flexStart" | "center"
 type alignType = "center" | "flexEnd" | "flexStart"
 type directionType = "column" | "row"
-type gapType = "gapXS" | "gapS" | "gapM" | "gapL" | "gapXL"
+type gapType = "gapXXS" | "gapXS" | "gapS" | "gapM" | "gapL" | "gapXL"
 type tagType =
 	| "ul"
 	| "nav"
@@ -51,6 +51,7 @@ const directionMap: Record<directionType, string> = {
 }
 
 const gapMap: Record<gapType, string> = {
+	gapXXS: styles.gapXXS,
 	gapXS: styles.gapXS,
 	gapS: styles.gapS,
 	gapM: styles.gapM,

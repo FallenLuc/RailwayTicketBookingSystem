@@ -1,4 +1,12 @@
-export const convertSecondsToTime = (value: number) => {
+import dayjs from "dayjs"
+
+export const convertSecondsToTime = (value: number, isUnix = false) => {
+	if (isUnix) {
+		const date = dayjs.unix(value)
+
+		return date.format("HH:mm")
+	}
+
 	const hour = Math.trunc(value / (60 * 60))
 	const minutes = Math.round((value % (60 * 60)) / 60)
 

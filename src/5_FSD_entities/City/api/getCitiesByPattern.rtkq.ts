@@ -10,19 +10,19 @@ const getCitiesByPatternRtkq = rtkBaseApi.injectEndpoints({
 					url: getCitiesRequestPaths(name)
 				}
 			},
-			keepUnusedDataFor: 1,
-			transformResponse: (
-				response: {
-					_id: cityDataType["id"]
-					name: cityDataType["name"]
-				}[]
-			) => {
-				if (response.length) {
-					return response.map(city => ({ id: city._id, name: city.name }))
-				}
-
-				return []
-			}
+			keepUnusedDataFor: 1
+			// transformResponse: (
+			// 	response: {
+			// 		_id: cityDataType["_id"]
+			// 		name: cityDataType["name"]
+			// 	}[]
+			// ) => {
+			// 	if (response.length) {
+			// 		return response.map(city => ({ id: city._id, name: city.name }))
+			// 	}
+			//
+			// 	return []
+			// }
 		})
 	})
 })

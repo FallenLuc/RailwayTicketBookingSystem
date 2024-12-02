@@ -13,5 +13,11 @@ export {
 export {
 	useGetDirectionsListErrorSelector,
 	useGetDirectionsListIsLoadingSelector,
-	useGetDirectionsListDataSelector
+	useGetDirectionsListDataSelector,
+	useGetDirectionsListItemSelector
 } from "./store/selectors/getDirectionsListProperties/getDirectionsListProperties.selector"
+
+export { DirectionCard } from "./components/DirectionCard/DirectionCard"
+
+// mocks
+export { directionDataMock } from "./lib/mocks/directionData.mock"

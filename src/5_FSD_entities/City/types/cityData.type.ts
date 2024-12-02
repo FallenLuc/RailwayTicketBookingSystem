@@ -1,4 +1,4 @@
 export type cityDataType = {
-	id: string
+	_id: string
 	name: string
 }

@@ -27,12 +27,16 @@ const getDirectionsRtkq = rtkBaseApi.injectEndpoints({
 			transformResponse: (response: {
 				totalCount: number
 				items: directionsGeneralDataFromServerType[]
-			}) => response.items.map(item => ({ ...item, id: uid() }))
+			}) => {
+				if (response.items) {
+					return response.items.map(item => ({ ...item, id: uid() }))
+				}
+
+				return []
+			}
 		})
 	})
 })
 
 export const getDirections = getDirectionsRtkq.endpoints.getDirections.initiate
 export const { useGetDirectionsQuery } = getDirectionsRtkq
-
-// To Feature параметры сохранять в url  страницы

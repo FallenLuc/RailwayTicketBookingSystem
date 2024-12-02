@@ -58,7 +58,7 @@ describe("getFormForSearchOfDirectionsDataForRequestSelector", () => {
 				data: {
 					fromCity: {
 						name: "Москва",
-						id: "1"
+						_id: "1"
 					}
 				}
 			}

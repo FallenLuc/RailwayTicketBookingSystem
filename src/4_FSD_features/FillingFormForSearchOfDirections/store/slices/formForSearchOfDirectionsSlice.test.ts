@@ -11,11 +11,11 @@ describe("formForSearchOfDirectionsSliceTest", () => {
 			isValidForm: false,
 			data: {
 				toCity: {
-					id: "1",
+					_id: "1",
 					name: "testCity"
 				},
 				fromCity: {
-					id: "1",
+					_id: "1",
 					name: "testCity2"
 				}
 			}
@@ -30,11 +30,11 @@ describe("formForSearchOfDirectionsSliceTest", () => {
 			isValidForm: true,
 			data: {
 				toCity: {
-					id: "1",
+					_id: "1",
 					name: "testCity"
 				},
 				fromCity: {
-					id: "1",
+					_id: "1",
 					name: "testCity2"
 				},
 				date_start: "2024-12-30"
@@ -47,11 +47,11 @@ describe("formForSearchOfDirectionsSliceTest", () => {
 			isValidForm: false,
 			data: {
 				toCity: {
-					id: "1",
+					_id: "1",
 					name: "testCity"
 				},
 				fromCity: {
-					id: "1",
+					_id: "1",
 					name: "testCity2"
 				}
 			}
@@ -73,11 +73,11 @@ describe("formForSearchOfDirectionsSliceTest", () => {
 			isValidForm: false,
 			data: {
 				toCity: {
-					id: "1",
+					_id: "1",
 					name: "testCity"
 				},
 				fromCity: {
-					id: "2",
+					_id: "2",
 					name: "testCity2"
 				}
 			}
@@ -92,11 +92,11 @@ describe("formForSearchOfDirectionsSliceTest", () => {
 			isValidForm: false,
 			data: {
 				toCity: {
-					id: "2",
+					_id: "2",
 					name: "testCity2"
 				},
 				fromCity: {
-					id: "1",
+					_id: "1",
 					name: "testCity"
 				}
 			}
