@@ -1,4 +1,5 @@
 import { useGetDirectionsListItemSelector } from "@entities/Direction"
+import { SugarLine } from "@features/SugarLine"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { ContainerLayout } from "@ui/layout"
@@ -30,6 +31,7 @@ const TicketPage = TypedMemo((props: TicketPageProps) => {
 	return (
 		<div className={classNamesHelp("", {}, [className, "page-style"])}>
 			<Header typeBackground={"search"}></Header>
+			<SugarLine stage={"tickets"} />
 			<div>
 				<ContainerLayout>{content}</ContainerLayout>
 			</div>

@@ -1,0 +1,17 @@
+.fantom-stage {
+	flex-shrink: 10;
+	width: 100%;
+	min-height: 98px;
+
+	background-color: var(--main-dark);
+}
+
+.check-stage {
+	background-color: var(--accent-orange);
+}
+
+.wrapper {
+	display: flex;
+
+	padding: 0;
+}

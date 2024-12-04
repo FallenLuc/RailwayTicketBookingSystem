@@ -20,7 +20,6 @@ export const LastTickets = TypedMemo((props: LastTicketsProps) => {
 
 	if (data) {
 		const directions = data.slice(0, 3)
-		console.log(data)
 		content = directions.map(dir => (
 			<li
 				key={dir.id}
