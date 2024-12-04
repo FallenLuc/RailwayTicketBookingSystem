@@ -5,12 +5,14 @@ import {
 } from "@entities/Direction"
 import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features/FillingFormForSearchOfDirections"
 import { LastTickets } from "@features/LastTickets"
+import { SugarLine } from "@features/SugarLine"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { useAppDispatch } from "@hooks/useAppDispatch.hook"
 import { ContainerLayout } from "@ui/layout"
 import { HStack, VStack } from "@ui/Stack"
 import { DirectionsList } from "@widgets/DirectionsList"
 import { FilterDirections } from "@widgets/FilterDirections"
+import { Footer } from "@widgets/Footer"
 import { Header } from "@widgets/Header"
 import { SearchDirections } from "@widgets/SearchDirections"
 import { memo, useCallback, useEffect } from "react"
@@ -48,6 +50,7 @@ const ChooseTrainPage = memo<ChooseTrainPageProps>(props => {
 					onSearch={onSearchHandler}
 				/>
 			</Header>
+			<SugarLine stage={"tickets"} />
 			<div className={styles.content}>
 				<ContainerLayout>
 					{isLoading ?
@@ -69,6 +72,7 @@ const ChooseTrainPage = memo<ChooseTrainPageProps>(props => {
 					}
 				</ContainerLayout>
 			</div>
+			<Footer />
 		</div>
 	)
 })

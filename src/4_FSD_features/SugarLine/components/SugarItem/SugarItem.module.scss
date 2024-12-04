@@ -1,0 +1,80 @@
+.SugarItem {
+	position: relative;
+	width: 100%;
+	min-height: 98px;
+
+	padding-left: 62px;
+
+	background-color: var(--main-dark);
+
+	&::after {
+		content: "";
+
+		position: absolute;
+		z-index: 3;
+		top: 0;
+		right: 0;
+
+		transform: translateX(100%);
+
+		border: 49.5px solid transparent;
+		border-left: 37px solid var(--main-dark);
+	}
+
+	&::before {
+		content: "";
+
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		right: 0;
+
+		transform: translateX(calc(100% + 1px));
+
+		border: 49.5px solid transparent;
+		border-left: 37px solid var(--main-light);
+	}
+
+	&:first-child {
+		padding-left: 15px;
+	}
+
+	&:last-child {
+		&::before {
+			display: none;
+		}
+
+		&::after {
+			display: none;
+		}
+	}
+}
+
+.SugarItem.checked {
+	background-color: var(--accent-orange);
+
+	&::after {
+		border-left: 37px solid var(--accent-orange);
+	}
+
+	&::before {
+		display: none;
+	}
+}
+
+.number {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 56px;
+	height: 56px;
+
+	border: 3px solid var(--main-light);
+
+	border-radius: 50%;
+
+	color: var(--main-light);
+	font: var(--font-xl);
+	font-weight: var(--font-weight-ultra-fat);
+}
