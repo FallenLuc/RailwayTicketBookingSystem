@@ -1,8 +1,14 @@
 export { type directionsListStateMap } from "./store/storeTypes/directionsListState.map"
-export {
-	type directionFormParametres,
-	type directionsDisplayParametres
+export type {
+	directionFormParametres,
+	directionsDisplayParametres
 } from "./types/directionFormParametres.type"
+
+export type {
+	directionsGeneralDataType,
+	directionsGeneralDataFromServerType
+} from "./types/directionData.type"
+
 export { fetchDirectionsThunk } from "./store/thunks/fetchDirections/fetchDirections.thunk"
 
 export {

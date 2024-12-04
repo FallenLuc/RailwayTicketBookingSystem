@@ -9,3 +9,4 @@ export type appColorType =
 	| "main-gray"
 	| "gold"
 	| "light-gray"
+	| "error"
