@@ -1,5 +1,6 @@
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import type { directionsGeneralDataType } from "../../types/directionData.type"
+import { DirectionCompactCard } from "./view/DirectionCompactCard/DirectionCompactCard"
 import { DirectionFullCard } from "./view/DirectionFullCard/DirectionFullCard"
 
 type DirectionCardProps = {
@@ -19,5 +20,10 @@ export const DirectionCard = TypedMemo((props: DirectionCardProps) => {
 		)
 	}
 
-	return <></>
+	return (
+		<DirectionCompactCard
+			data={data}
+			className={className}
+		/>
+	)
 })

@@ -7,9 +7,14 @@ import { DirectionCard } from "./DirectionCard"
 const meta: Meta<typeof DirectionCard> = {
 	title: "entities/DirectionCard",
 	component: DirectionCard,
+	argTypes: {
+		typeCard: {
+			control: "inline-radio"
+		}
+	},
 	parameters: {
 		controls: {
-			exclude: [...(preview?.parameters?.controls.exclude ?? undefined)]
+			exclude: [...(preview?.parameters?.controls.exclude ?? undefined), "data"]
 		}
 	},
 	decorators: [CenterDecorator]
@@ -21,6 +26,7 @@ type TypeStory = StoryObj<typeof DirectionCard>
 
 export const Default: TypeStory = {
 	args: {
+		typeCard: "full",
 		data: directionDataMock()
 	}
 }

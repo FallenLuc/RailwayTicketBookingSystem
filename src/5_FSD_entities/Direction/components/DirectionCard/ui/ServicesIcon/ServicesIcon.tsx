@@ -9,15 +9,22 @@ type ServicesIconProps = {
 	isWifi?: boolean
 	isExpress?: boolean
 	isConditioner?: boolean
+	justify?: "flexStart" | "flexEnd"
 }
 export const ServicesIcon = TypedMemo((props: ServicesIconProps) => {
-	const { className, isWifi = false, isConditioner = false, isExpress = false } = props
+	const {
+		className,
+		isWifi = false,
+		isConditioner = false,
+		isExpress = false,
+		justify = "flexEnd"
+	} = props
 
 	return (
 		<HStack
 			TagType={"ul"}
 			gap={"gapXS"}
-			justify={"flexEnd"}
+			justify={justify}
 			className={classNamesHelp(styles.ServicesIcon, {}, [className])}
 		>
 			{isWifi && (

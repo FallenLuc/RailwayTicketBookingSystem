@@ -11,6 +11,7 @@ import {
 	mapperCarriageTypeName
 } from "../../../../../../../Carriage"
 import type { directionsGeneralDataType } from "../../../../../../types/directionData.type"
+import { FromSum } from "../../../../ui/FromSum/FromSum"
 import styles from "./CarriageInfoItem.module.scss"
 
 type CarriageInfoItemProps = {
@@ -59,20 +60,10 @@ export const CarriageInfoItem = TypedMemo((props: CarriageInfoItemProps) => {
 				{isOpenDetailedPrice ? detailedPrice : <></>}
 			</div>
 
-			<HStack
-				gap={"gapXS"}
-				widthMax={false}
-				align={"center"}
-			>
-				<span className={styles.spanFrom}>от</span>
-				<Text
-					fontSizeText={"m"}
-					colorText={"main-dark"}
-					fontWeightText={"ultra-fat"}
-					text={`${getMinPriceForSeat(carriagePrice).toString()}`}
-				/>
-				<span className={styles.spanCurrency}>₽</span>
-			</HStack>
+			<FromSum
+				sum={getMinPriceForSeat(carriagePrice)}
+				color={"main-dark"}
+			/>
 		</HStack>
 	)
 })
