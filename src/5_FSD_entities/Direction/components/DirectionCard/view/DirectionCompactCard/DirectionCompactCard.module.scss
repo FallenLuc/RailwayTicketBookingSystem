@@ -3,7 +3,9 @@
 	width: 100%;
 	max-width: 360px;
 
-	box-shadow: var(--shadow-hover);
+	&:hover {
+		box-shadow: var(--shadow-hover);
+	}
 }
 
 .wrapper {

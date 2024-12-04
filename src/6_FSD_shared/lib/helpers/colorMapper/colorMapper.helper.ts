@@ -14,5 +14,7 @@ export function colorMapper(color: appColorType) {
 			return "color-light-gray"
 		case "gold":
 			return "color-gold"
+		case "error":
+			return "color-error"
 	}
 }

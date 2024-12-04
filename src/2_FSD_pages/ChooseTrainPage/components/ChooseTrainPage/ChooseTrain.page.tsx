@@ -4,6 +4,7 @@ import {
 	useGetDirectionsListIsLoadingSelector
 } from "@entities/Direction"
 import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features/FillingFormForSearchOfDirections"
+import { LastTickets } from "@features/LastTickets"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { useAppDispatch } from "@hooks/useAppDispatch.hook"
 import { ContainerLayout } from "@ui/layout"
@@ -52,8 +53,13 @@ const ChooseTrainPage = memo<ChooseTrainPageProps>(props => {
 					{isLoading ?
 						"Loading"
 					:	<HStack gap={"gapXL"}>
-							<VStack widthMax={false}>
+							<VStack
+								widthMax={false}
+								TagType={"aside"}
+								gap={"gapXL"}
+							>
 								<FilterDirections onSearch={onSearchHandler} />
+								<LastTickets />
 							</VStack>
 							<div>
 								{error && "Error"}

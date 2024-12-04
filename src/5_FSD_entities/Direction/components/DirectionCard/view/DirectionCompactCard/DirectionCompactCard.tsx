@@ -1,4 +1,4 @@
-import { getRouteTicket } from "@config/router"
+import { getRouteChooseTrain } from "@config/router"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { AppLink } from "@ui/AppLink"
@@ -18,7 +18,7 @@ export const DirectionCompactCard = TypedMemo((props: DirectionCompactCardProps)
 
 	return (
 		<AppLink
-			to={getRouteTicket(data?.id || "").route}
+			to={getRouteChooseTrain().route}
 			className={classNamesHelp(styles.DirectionCompactCard, {}, [className])}
 		>
 			<VStack
