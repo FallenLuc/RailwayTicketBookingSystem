@@ -3,16 +3,16 @@ import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { FallbackLoader } from "@ui/FallbackLoader/components/FallBackLoader/FallBackLoader"
 import { Overlay } from "@ui/Overlay"
 import { HStack } from "@ui/Stack"
-import styles from "./PageLoader.module.scss"
+import styles from "./OverlayLoader.module.scss"
 
-type PageLoaderProps = {
+type OverlayLoaderProps = {
 	className?: string
 }
-export const PageLoader = TypedMemo((props: PageLoaderProps) => {
+export const OverlayLoader = TypedMemo((props: OverlayLoaderProps) => {
 	const { className } = props
 
 	return (
-		<HStack className={classNamesHelp(styles.PageLoader, {}, [className])}>
+		<HStack className={classNamesHelp(styles.OverlayLoader, {}, [className])}>
 			<Overlay />
 			<FallbackLoader />
 		</HStack>

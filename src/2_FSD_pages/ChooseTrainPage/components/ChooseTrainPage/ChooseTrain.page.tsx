@@ -1,9 +1,5 @@
 import { getRouteChooseTrain } from "@config/router"
-import {
-	fetchDirectionsThunk,
-	useGetDirectionsListErrorSelector,
-	useGetDirectionsListIsLoadingSelector
-} from "@entities/Direction"
+import { fetchDirectionsThunk } from "@entities/Direction"
 import { BreadcrumbsLine } from "@features/BreadcrumbsLine"
 import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features/FillingFormForSearchOfDirections"
 import { LastTickets } from "@features/LastTickets"
@@ -24,8 +20,6 @@ const pagePath = getRouteChooseTrain()
 const ChooseTrainPage = memo(() => {
 	const dispatch = useAppDispatch()
 
-	const isLoading = useGetDirectionsListIsLoadingSelector()
-	const error = useGetDirectionsListErrorSelector()
 	const formParametres = useGetFormForSearchOfDirectionsDataForRequestSelector()
 
 	const onSearchHandler = useCallback(() => {
@@ -53,23 +47,17 @@ const ChooseTrainPage = memo(() => {
 			<BreadcrumbsLine stage={"tickets"} />
 			<div className={styles.content}>
 				<ContainerLayout>
-					{isLoading ?
-						"Loading"
-					:	<HStack gap={"gapXL"}>
-							<VStack
-								widthMax={false}
-								TagType={"aside"}
-								gap={"gapXL"}
-							>
-								<FilterDirections onSearch={onSearchHandler} />
-								<LastTickets />
-							</VStack>
-							<div>
-								{error && "Error"}
-								<DirectionsList />
-							</div>
-						</HStack>
-					}
+					<HStack gap={"gapXL"}>
+						<VStack
+							widthMax={false}
+							TagType={"aside"}
+							gap={"gapXL"}
+						>
+							<FilterDirections onSearch={onSearchHandler} />
+							<LastTickets />
+						</VStack>
+						<DirectionsList />
+					</HStack>
 				</ContainerLayout>
 			</div>
 		</>
