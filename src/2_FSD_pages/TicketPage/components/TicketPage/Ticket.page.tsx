@@ -1,21 +1,22 @@
+import { getRouteTicket } from "@config/router"
 import { useGetDirectionsListItemSelector } from "@entities/Direction"
-import { SugarLine } from "@features/SugarLine"
-import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
+import { BreadcrumbsLine } from "@features/BreadcrumbsLine"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { ContainerLayout } from "@ui/layout"
+import { Page } from "@ui/Page"
+import { VStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
+import { Footer } from "@widgets/Footer"
 import { Header } from "@widgets/Header"
+import { useMemo } from "react"
 import { useParams } from "react-router"
 
-type TicketPageProps = {
-	className?: string
-}
-const TicketPage = TypedMemo((props: TicketPageProps) => {
-	const { className } = props
-
+const TicketPage = TypedMemo(() => {
 	const { id } = useParams<{ id: string }>()
 
 	const ticketData = useGetDirectionsListItemSelector(id || "")
+
+	const pagePath = getRouteTicket(id || "")
 
 	let content = <></>
 
@@ -28,14 +29,26 @@ const TicketPage = TypedMemo((props: TicketPageProps) => {
 		)
 	}
 
-	return (
-		<div className={classNamesHelp("", {}, [className, "page-style"])}>
-			<Header typeBackground={"search"}></Header>
-			<SugarLine stage={"tickets"} />
-			<div>
+	const pageContent = (
+		<>
+			<Header
+				typeBackground={"search"}
+				pagePath={pagePath.route}
+			></Header>
+			<BreadcrumbsLine stage={"tickets"} />
+			<VStack>
 				<ContainerLayout>{content}</ContainerLayout>
-			</div>
-		</div>
+			</VStack>
+		</>
+	)
+
+	const footer = useMemo(() => <Footer pagePath={pagePath.route} />, [pagePath.route])
+
+	return (
+		<Page
+			content={pageContent}
+			footer={footer}
+		/>
 	)
 })
 

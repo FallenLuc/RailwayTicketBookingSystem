@@ -1,11 +1,11 @@
 import preview from "@_storybook/preview"
 import { CenterDecorator } from "@decorators/storybook/Center.decorator"
 import { type Meta, type StoryObj } from "@storybook/react"
-import { SugarLine } from "./SugarLine"
+import { BreadcrumbsLine } from "./BreadcrumbsLine"
 
-const meta: Meta<typeof SugarLine> = {
-	title: "features/SugarLine",
-	component: SugarLine,
+const meta: Meta<typeof BreadcrumbsLine> = {
+	title: "features/BreadcrumbsLine",
+	component: BreadcrumbsLine,
 	argTypes: {
 		stage: {
 			control: "inline-radio"
@@ -21,7 +21,7 @@ const meta: Meta<typeof SugarLine> = {
 
 export default meta
 
-type TypeStory = StoryObj<typeof SugarLine>
+type TypeStory = StoryObj<typeof BreadcrumbsLine>
 
 export const Default: TypeStory = {
 	args: {

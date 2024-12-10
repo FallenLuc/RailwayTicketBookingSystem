@@ -1,5 +1,5 @@
 import { BackgroundHowItWorks } from "@assets/index"
-import { getRouteMainHowItWorks } from "@config/router"
+import { getRouteHowItWorks } from "@config/router"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { Background } from "@ui/Background"
@@ -16,9 +16,10 @@ export const HowItWorks = TypedMemo((props: HowItWorksProps) => {
 	const { className } = props
 
 	return (
-		<section
+		<VStack
+			TagType={"section"}
 			className={classNamesHelp(styles.HowItWorks, {}, [className])}
-			id={getRouteMainHowItWorks().hash}
+			id={getRouteHowItWorks().hash}
 		>
 			<ContainerLayout>
 				<VStack gap={"gapXL"}>
@@ -27,6 +28,6 @@ export const HowItWorks = TypedMemo((props: HowItWorksProps) => {
 				</VStack>
 			</ContainerLayout>
 			<Background background={BackgroundHowItWorks} />
-		</section>
+		</VStack>
 	)
 })

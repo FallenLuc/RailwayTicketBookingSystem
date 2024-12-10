@@ -1,19 +1,20 @@
-import styles from "./UnderFooter.module.scss"
-import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { HStack } from "@ui/Stack"
-import { ContainerLayout } from "@ui/layout"
-import { memo, useMemo } from "react"
-import { Logo } from "@ui/Logo"
-import { AppLink } from "@ui/AppLink"
-import { getRouteMainHeader } from "@config/router"
 import { ArrowUpIcon } from "@assets/index"
+import { getRouteHeader } from "@config/router"
+import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
+import { AppLink } from "@ui/AppLink"
+import { ContainerLayout } from "@ui/layout"
+import { Logo } from "@ui/Logo"
+import { HStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
+import { memo, useMemo } from "react"
+import styles from "./UnderFooter.module.scss"
 
 type UnderFooterProps = {
 	className?: string
+	pagePath: string
 }
 export const UnderFooter = memo<UnderFooterProps>(props => {
-	const { className } = props
+	const { className, pagePath } = props
 
 	const year = useMemo(() => new Date().getFullYear(), [])
 
@@ -28,7 +29,7 @@ export const UnderFooter = memo<UnderFooterProps>(props => {
 				>
 					<Logo />
 					<AppLink
-						to={getRouteMainHeader().route}
+						to={getRouteHeader(pagePath).route}
 						className={styles.arrowUp}
 						color={"light-gray"}
 						colorHover={"gold"}

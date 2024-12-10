@@ -1,4 +1,4 @@
-.SugarItem {
+.BreadcrumbsItem {
 	position: relative;
 	width: 100%;
 	min-height: 98px;
@@ -50,7 +50,7 @@
 	}
 }
 
-.SugarItem.checked {
+.BreadcrumbsItem.checked {
 	background-color: var(--accent-orange);
 
 	&::after {

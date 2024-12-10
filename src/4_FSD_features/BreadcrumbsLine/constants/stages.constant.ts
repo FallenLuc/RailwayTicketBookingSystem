@@ -1,4 +1,4 @@
-import type { stageType } from "../components/SugarLine/SugarLine"
+import type { stageType } from "../types/stageType.type"
 
 export const stages: Record<stageType, string> = {
 	tickets: "Билеты",

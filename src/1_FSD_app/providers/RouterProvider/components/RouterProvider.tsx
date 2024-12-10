@@ -1,11 +1,11 @@
+import { OverlayLoader } from "@features/OverlayLoader"
 import { memo, Suspense, useMemo } from "react"
 import { Route } from "react-router"
 import { Routes } from "react-router-dom"
 import { routerProviderConfig } from "../config/routerProvider.config"
-import { PageLoader } from "@widgets/PageLoader"
 
 export const RouterProvider = memo(() => {
-	const fallbackPage = useMemo(() => <PageLoader />, [])
+	const fallbackPage = useMemo(() => <OverlayLoader />, [])
 
 	return (
 		<Suspense fallback={fallbackPage}>

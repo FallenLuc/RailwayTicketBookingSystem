@@ -1,5 +1,5 @@
+import { useEffect, useRef } from "react"
 import { useLocation } from "react-router"
-import { useRef, useEffect } from "react"
 
 export function useScrollToAnchor() {
 	const location = useLocation()

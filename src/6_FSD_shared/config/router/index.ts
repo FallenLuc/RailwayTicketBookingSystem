@@ -1,15 +1,22 @@
-export { RoutePaths } from "./constants/routePath.constant"
-export { PagesNames } from "./constants/pagesNames.constant"
+export { RoutePaths } from "./constants/routePaths.constant"
+export { RouteNames } from "./constants/routeNames.constant"
 
 export { routeConfig, type routeInfoType } from "./config/route.config"
 export {
 	getRouteMain,
-	getRouteMainAboutUs,
+	getRouteAboutUs,
 	getRouteChooseTrain,
-	getRouteMainReviews,
-	getRouteMainContacts,
-	getRouteMainHeader,
-	getRouteMainHowItWorks,
+	getRouteReviews,
+	getRouteContacts,
+	getRouteHeader,
+	getRouteHowItWorks,
 	getRouteSuccess,
 	getRouteTicket
 } from "./helpers/gettersRoutesPaths.helper"
+
+export {
+	getRouteNameReviews,
+	getRouteNameHowItWorks,
+	getRouteNameContacts,
+	getRouteNameAboutUs
+} from "./helpers/getterRoutesNames.helper"
