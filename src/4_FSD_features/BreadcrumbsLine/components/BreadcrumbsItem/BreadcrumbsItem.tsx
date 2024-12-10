@@ -3,21 +3,21 @@ import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { HStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
 import { stageMapper } from "../../lib/helpers/stageMapper/stageMapper.helper"
-import type { stageType } from "../SugarLine/SugarLine"
-import styles from "./SugarItem.module.scss"
+import type { stageType } from "../../types/stageType.type"
+import styles from "./BreadcrumbsItem.module.scss"
 
-type SugarItemProps = {
+type BreadcrumbsItemProps = {
 	className?: string
 	isChecked?: boolean
 	stage: stageType
 }
-export const SugarItem = TypedMemo((props: SugarItemProps) => {
+export const BreadcrumbsItem = TypedMemo((props: BreadcrumbsItemProps) => {
 	const { className, stage, isChecked = false } = props
 
 	return (
 		<HStack
 			className={classNamesHelp(
-				styles.SugarItem,
+				styles.BreadcrumbsItem,
 				{
 					[styles.checked]: isChecked
 				},

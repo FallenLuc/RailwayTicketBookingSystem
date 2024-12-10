@@ -1,4 +1,4 @@
-import { getRouteMainContacts } from "@config/router"
+import { getRouteContacts } from "@config/router"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { ContainerLayout } from "@ui/layout"
@@ -11,14 +11,16 @@ import styles from "./Footer.module.scss"
 
 type FooterProps = {
 	className?: string
+	pagePath: string
 }
 export const Footer = TypedMemo((props: FooterProps) => {
-	const { className } = props
+	const { className, pagePath } = props
 
 	return (
-		<footer
+		<VStack
+			TagType={"footer"}
 			className={classNamesHelp(styles.Footer, {}, [className])}
-			id={getRouteMainContacts().hash}
+			id={getRouteContacts().hash}
 		>
 			<ContainerLayout>
 				<HStack
@@ -37,7 +39,7 @@ export const Footer = TypedMemo((props: FooterProps) => {
 				</HStack>
 			</ContainerLayout>
 
-			<UnderFooter />
-		</footer>
+			<UnderFooter pagePath={pagePath} />
+		</VStack>
 	)
 })

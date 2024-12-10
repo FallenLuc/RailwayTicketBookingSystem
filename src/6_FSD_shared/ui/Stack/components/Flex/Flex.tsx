@@ -68,7 +68,8 @@ export const Flex = TypedMemo((props: FlexProps) => {
 		align = "flexStart",
 		gap,
 		children,
-		TagType = "div"
+		TagType = "div",
+		id
 	} = props
 
 	const mods: Mods = {
@@ -83,5 +84,12 @@ export const Flex = TypedMemo((props: FlexProps) => {
 		gap ? gapMap[gap] : undefined
 	]
 
-	return <TagType className={classNamesHelp(styles.Flex, mods, classNames)}>{children}</TagType>
+	return (
+		<TagType
+			className={classNamesHelp(styles.Flex, mods, classNames)}
+			id={id}
+		>
+			{children}
+		</TagType>
+	)
 })

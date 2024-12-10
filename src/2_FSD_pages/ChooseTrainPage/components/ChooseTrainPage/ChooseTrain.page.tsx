@@ -1,30 +1,27 @@
+import { getRouteChooseTrain } from "@config/router"
 import {
 	fetchDirectionsThunk,
 	useGetDirectionsListErrorSelector,
 	useGetDirectionsListIsLoadingSelector
 } from "@entities/Direction"
+import { BreadcrumbsLine } from "@features/BreadcrumbsLine"
 import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features/FillingFormForSearchOfDirections"
 import { LastTickets } from "@features/LastTickets"
-import { SugarLine } from "@features/SugarLine"
-import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { useAppDispatch } from "@hooks/useAppDispatch.hook"
 import { ContainerLayout } from "@ui/layout"
+import { Page } from "@ui/Page"
 import { HStack, VStack } from "@ui/Stack"
 import { DirectionsList } from "@widgets/DirectionsList"
 import { FilterDirections } from "@widgets/FilterDirections"
 import { Footer } from "@widgets/Footer"
 import { Header } from "@widgets/Header"
 import { SearchDirections } from "@widgets/SearchDirections"
-import { memo, useCallback, useEffect } from "react"
+import { memo, useCallback, useEffect, useMemo } from "react"
 import styles from "./ChooseTrain.module.scss"
 
-type ChooseTrainPageProps = {
-	className?: string
-}
+const pagePath = getRouteChooseTrain()
 
-const ChooseTrainPage = memo<ChooseTrainPageProps>(props => {
-	const { className } = props
-
+const ChooseTrainPage = memo(() => {
 	const dispatch = useAppDispatch()
 
 	const isLoading = useGetDirectionsListIsLoadingSelector()
@@ -42,15 +39,18 @@ const ChooseTrainPage = memo<ChooseTrainPageProps>(props => {
 		//eslint-disable-next-line
 	}, [])
 
-	return (
-		<div className={classNamesHelp("", {}, [className, "pageStyle"])}>
-			<Header typeBackground={"search"}>
+	const contentPage = (
+		<>
+			<Header
+				typeBackground={"search"}
+				pagePath={pagePath.route}
+			>
 				<SearchDirections
 					view={"large"}
 					onSearch={onSearchHandler}
 				/>
 			</Header>
-			<SugarLine stage={"tickets"} />
+			<BreadcrumbsLine stage={"tickets"} />
 			<div className={styles.content}>
 				<ContainerLayout>
 					{isLoading ?
@@ -72,8 +72,16 @@ const ChooseTrainPage = memo<ChooseTrainPageProps>(props => {
 					}
 				</ContainerLayout>
 			</div>
-			<Footer />
-		</div>
+		</>
+	)
+
+	const footer = useMemo(() => <Footer pagePath={pagePath.route} />, [])
+
+	return (
+		<Page
+			content={contentPage}
+			footer={footer}
+		/>
 	)
 })
 

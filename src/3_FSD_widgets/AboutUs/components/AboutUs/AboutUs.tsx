@@ -1,4 +1,4 @@
-import { getRouteMainAboutUs } from "@config/router"
+import { getRouteAboutUs } from "@config/router"
 import { getRouteNameAboutUs } from "@config/router/helpers/getterRoutesNames.helper"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
@@ -14,9 +14,10 @@ export const AboutUs = TypedMemo((props: AboutUsProps) => {
 	const { className } = props
 
 	return (
-		<section
+		<VStack
+			TagType={"section"}
 			className={classNamesHelp(styles.AboutUs, {}, [className])}
-			id={getRouteMainAboutUs().hash}
+			id={getRouteAboutUs().hash}
 		>
 			<ContainerLayout>
 				<VStack
@@ -62,6 +63,6 @@ export const AboutUs = TypedMemo((props: AboutUsProps) => {
 					</VStack>
 				</VStack>
 			</ContainerLayout>
-		</section>
+		</VStack>
 	)
 })

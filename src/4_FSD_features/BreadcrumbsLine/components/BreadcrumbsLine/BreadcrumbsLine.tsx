@@ -3,17 +3,16 @@ import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { ContainerLayout } from "@ui/layout"
 import { HStack } from "@ui/Stack"
 import { stageMapper } from "../../lib/helpers/stageMapper/stageMapper.helper"
-import { SugarItem } from "../SugarItem/SugarItem"
-import styles from "./SugarLine.module.scss"
+import type { stageType } from "../../types/stageType.type"
+import { BreadcrumbsItem } from "../BreadcrumbsItem/BreadcrumbsItem"
+import styles from "./BreadcrumbsLine.module.scss"
 
-export type stageType = "tickets" | "passengers" | "payment" | "check"
-
-type SugarLineProps = {
+type BreadcrumbsLineProps = {
 	className?: string
 	stage?: stageType
 }
 
-export const SugarLine = TypedMemo((props: SugarLineProps) => {
+export const BreadcrumbsLine = TypedMemo((props: BreadcrumbsLineProps) => {
 	const { className, stage = "tickets" } = props
 
 	return (
@@ -28,19 +27,19 @@ export const SugarLine = TypedMemo((props: SugarLineProps) => {
 				)}
 			/>
 			<ContainerLayout className={styles.wrapper}>
-				<SugarItem
+				<BreadcrumbsItem
 					stage={"tickets"}
 					isChecked={stageMapper(stage).number >= 1}
 				/>
-				<SugarItem
+				<BreadcrumbsItem
 					stage={"passengers"}
 					isChecked={stageMapper(stage).number >= 2}
 				/>
-				<SugarItem
+				<BreadcrumbsItem
 					stage={"payment"}
 					isChecked={stageMapper(stage).number >= 3}
 				/>
-				<SugarItem
+				<BreadcrumbsItem
 					stage={"check"}
 					isChecked={stageMapper(stage).number >= 4}
 				/>
