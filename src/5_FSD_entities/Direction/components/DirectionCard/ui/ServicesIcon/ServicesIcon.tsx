@@ -16,7 +16,7 @@ export const ServicesIcon = TypedMemo((props: ServicesIconProps) => {
 	return (
 		<HStack
 			TagType={"ul"}
-			gap={"gapXS"}
+			gap={"XS"}
 			justify={"flexEnd"}
 			className={classNamesHelp(styles.ServicesIcon, {}, [className])}
 		>

@@ -26,7 +26,7 @@ export const Footer = TypedMemo((props: FooterProps) => {
 	return (
 		<VStack
 			className={classNamesHelp("", {}, [className])}
-			gap={"gapXL"}
+			gap={"XL"}
 		>
 			<RangeWithTitle
 				title={"Время отбытия"}

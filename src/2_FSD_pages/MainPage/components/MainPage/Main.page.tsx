@@ -17,8 +17,8 @@ const MainPage = TypedMemo((props: MainPageProps) => {
 	useScrollToAnchor()
 
 	return (
-		<div className={classNamesHelp("", {}, [className, "pageStyle"])}>
-			<Header typeBackground={"main"}>
+		<div className={classNamesHelp(undefined, undefined, [className, "pageStyle"])}>
+			<Header backgroundType={"main"}>
 				<HeaderContent />
 			</Header>
 			<AboutUs />

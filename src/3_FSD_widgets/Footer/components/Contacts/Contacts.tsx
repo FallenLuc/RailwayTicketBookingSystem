@@ -1,20 +1,20 @@
-import styles from "./Contacts.module.scss"
-import { memo } from "react"
-import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { VStack } from "@ui/Stack"
-import { ContactLink } from "./ui/ContactLink/ContactLink"
-import { PhoneIcon, MailIcon, SkypeIcon, LocationIcon } from "@assets/index"
+import { LocationIcon, MailIcon, PhoneIcon, SkypeIcon } from "@assets/index"
 import {
-	CONTACT_PHONE_LINK,
-	CONTACT_PHONE_TEXT,
+	CONTACT_LOCATION_LINK,
+	CONTACT_LOCATION_TEXT,
 	CONTACT_MAIL_LINK,
 	CONTACT_MAIL_TEXT,
+	CONTACT_PHONE_LINK,
+	CONTACT_PHONE_TEXT,
 	CONTACT_SKYPE_LINK,
-	CONTACT_SKYPE_TEXT,
-	CONTACT_LOCATION_LINK,
-	CONTACT_LOCATION_TEXT
+	CONTACT_SKYPE_TEXT
 } from "@constants/links.constant"
+import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
+import { VStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
+import { memo } from "react"
+import styles from "./Contacts.module.scss"
+import { ContactLink } from "./ui/ContactLink/ContactLink"
 
 type ContactsProps = {
 	className?: string
@@ -25,7 +25,7 @@ export const Contacts = memo<ContactsProps>(props => {
 	return (
 		<VStack
 			className={classNamesHelp(styles.Contacts, {}, [className])}
-			gap={"gapL"}
+			gap={"L"}
 			widthMax={true}
 		>
 			<Text
@@ -36,7 +36,7 @@ export const Contacts = memo<ContactsProps>(props => {
 				fontWeightTitle={"fat"}
 			/>
 			<VStack
-				gap={"gapM"}
+				gap={"M"}
 				TagType={"ul"}
 			>
 				<ContactLink

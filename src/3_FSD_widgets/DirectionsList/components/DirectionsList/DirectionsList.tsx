@@ -15,7 +15,7 @@ export const DirectionsList = TypedMemo((props: DirectionsListProps) => {
 
 	return (
 		<VStack className={classNamesHelp(styles.DirectionsList, {}, [className])}>
-			<VStack gap={"gapXL"}>
+			<VStack gap={"XL"}>
 				{data.map(direction => (
 					<DirectionCard
 						key={direction.id}

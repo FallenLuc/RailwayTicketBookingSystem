@@ -25,7 +25,7 @@ export const ToggleParameter = TypedMemo((props: ToggleParameterProps) => {
 		>
 			<HStack
 				align={"center"}
-				gap={"gapS"}
+				gap={"S"}
 				widthMax={false}
 			>
 				<Icon className={styles.icon} />

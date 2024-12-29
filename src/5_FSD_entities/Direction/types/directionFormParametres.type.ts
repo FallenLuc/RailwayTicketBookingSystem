@@ -1,9 +1,8 @@
 import type { sortType } from "@customTypes/common.types"
-import type { cityDataType } from "../../City"
 
 export type directionFormParametres = {
-	from_city_id?: cityDataType["_id"]
-	to_city_id?: cityDataType["_id"]
+	from_city_id?: string
+	to_city_id?: string
 	date_start?: string
 	date_end?: string
 	date_start_arrival?: string

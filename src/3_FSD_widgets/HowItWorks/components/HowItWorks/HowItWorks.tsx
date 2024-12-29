@@ -21,7 +21,7 @@ export const HowItWorks = TypedMemo((props: HowItWorksProps) => {
 			id={getRouteMainHowItWorks().hash}
 		>
 			<ContainerLayout>
-				<VStack gap={"gapXL"}>
+				<VStack gap={"XL"}>
 					<HeaderHowItWorks />
 					<Advantages />
 				</VStack>
