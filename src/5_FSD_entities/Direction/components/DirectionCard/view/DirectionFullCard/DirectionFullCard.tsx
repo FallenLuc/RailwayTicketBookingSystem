@@ -51,13 +51,13 @@ export const DirectionFullCard = TypedMemo((props: DirectionFullCardProps) => {
 				},
 				[className]
 			)}
-			gap={"gapL"}
+			gap={"L"}
 			justify={"spaceBetween"}
 		>
 			<TrainInfo data={data} />
 			<VStack
 				className={styles.directionsInfo}
-				gap={"gapXL"}
+				gap={"XL"}
 			>
 				<DirectionInfo
 					data={data?.departure}
@@ -73,10 +73,10 @@ export const DirectionFullCard = TypedMemo((props: DirectionFullCardProps) => {
 			<VStack
 				className={styles.priceInfo}
 				align={"flexEnd"}
-				gap={"gapL"}
+				gap={"L"}
 				justify={"spaceBetween"}
 			>
-				<VStack gap={"gapL"}>
+				<VStack gap={"L"}>
 					{Object.entries(data?.departure?.price_info || {}).map(
 						([key, value], index) => {
 							const carriageClass = key as carriageClassType
@@ -97,7 +97,7 @@ export const DirectionFullCard = TypedMemo((props: DirectionFullCardProps) => {
 				</VStack>
 
 				<VStack
-					gap={"gapS"}
+					gap={"S"}
 					align={"flexEnd"}
 				>
 					<ServicesIcon

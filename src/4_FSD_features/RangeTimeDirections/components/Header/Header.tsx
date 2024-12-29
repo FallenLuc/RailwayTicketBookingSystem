@@ -29,7 +29,7 @@ export const Header = TypedMemo((props: HeaderProps) => {
 			justify={"spaceBetween"}
 		>
 			<HStack
-				gap={"gapS"}
+				gap={"S"}
 				align={"center"}
 			>
 				{direction === "arrival" ?

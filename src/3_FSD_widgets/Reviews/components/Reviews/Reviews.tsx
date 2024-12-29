@@ -22,7 +22,7 @@ export const Reviews = TypedMemo((props: ReviewsProps) => {
 		>
 			<ContainerLayout>
 				<VStack
-					gap={"gapXL"}
+					gap={"XL"}
 					widthMax={true}
 				>
 					<Text

@@ -5,7 +5,7 @@ const meta: Meta<typeof Header> = {
 	title: "widgets/Header",
 	component: Header,
 	argTypes: {
-		typeBackground: {
+		backgroundType: {
 			control: "inline-radio"
 		}
 	},
@@ -18,6 +18,6 @@ type TypeStory = StoryObj<typeof Header>
 
 export const Default: TypeStory = {
 	args: {
-		typeBackground: "main"
+		backgroundType: "main"
 	}
 }

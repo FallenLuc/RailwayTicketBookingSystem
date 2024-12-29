@@ -52,7 +52,7 @@ export const Default: TypeStory = {
 		align: "center",
 		justify: "center",
 		direction: "row",
-		gap: "gapS",
+		gap: "S",
 		widthMax: true,
 		className: styles.storyContainer,
 		children: (

@@ -1,0 +1,7 @@
+.listItems {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	grid-template-rows: repeat(auto-fit, 1fr);
+	min-height: 270px;
+	padding: 10px;
+}

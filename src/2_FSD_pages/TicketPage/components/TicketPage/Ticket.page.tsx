@@ -32,7 +32,7 @@ const TicketPage = TypedMemo(() => {
 	const pageContent = (
 		<>
 			<Header
-				typeBackground={"search"}
+				backgroundType={"search"}
 				pagePath={pagePath.route}
 			></Header>
 			<BreadcrumbsLine stage={"tickets"} />

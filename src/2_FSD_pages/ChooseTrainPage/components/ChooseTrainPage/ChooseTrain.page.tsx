@@ -47,11 +47,11 @@ const ChooseTrainPage = memo(() => {
 			<BreadcrumbsLine stage={"tickets"} />
 			<div className={styles.content}>
 				<ContainerLayout>
-					<HStack gap={"gapXL"}>
+					<HStack gap={"XL"}>
 						<VStack
 							widthMax={false}
 							TagType={"aside"}
-							gap={"gapXL"}
+							gap={"XL"}
 						>
 							<FilterDirections onSearch={onSearchHandler} />
 							<LastTickets />

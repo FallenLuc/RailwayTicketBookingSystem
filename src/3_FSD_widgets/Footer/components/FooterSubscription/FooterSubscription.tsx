@@ -1,8 +1,8 @@
-import { memo } from "react"
+import { Subscription } from "@features/Subscription"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { VStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
-import { Subscription } from "@features/Subscription"
+import { memo } from "react"
 
 type FooterSubscriptionProps = {
 	className?: string
@@ -13,7 +13,7 @@ export const FooterSubscription = memo<FooterSubscriptionProps>(props => {
 	return (
 		<VStack
 			className={classNamesHelp("", {}, [className])}
-			gap={"gapL"}
+			gap={"L"}
 			widthMax={true}
 		>
 			<Text

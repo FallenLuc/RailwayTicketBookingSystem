@@ -23,7 +23,7 @@ export const NavLinks = memo(() => {
 		>
 			<ContainerLayout>
 				<HStack
-					gap={"gapXL"}
+					gap={"XL"}
 					TagType={"nav"}
 				>
 					<li>

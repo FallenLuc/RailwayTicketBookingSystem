@@ -17,7 +17,7 @@ export const ContactLink = memo<ContactLinkProps>(props => {
 	return (
 		<HStack
 			className={classNamesHelp("", {}, [className])}
-			gap={"gapM"}
+			gap={"M"}
 			align={"center"}
 			TagType={"li"}
 		>

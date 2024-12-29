@@ -1,10 +1,10 @@
+import type { citiesDataForServerType, citiesDataTypeForFormType } from "@entities/City"
 import type { directionFormParametres } from "@entities/Direction"
-import type {
-	citiesDataForServerType,
+
+type formDataType = Omit<directionFormParametres, keyof citiesDataForServerType> &
 	citiesDataTypeForFormType
-} from "../../types/formForSearch.type"
 
 export type formForSearchOfDirectionsStateMap = {
 	isValidForm: boolean
-	data?: Omit<directionFormParametres, keyof citiesDataForServerType> & citiesDataTypeForFormType
+	data?: formDataType
 }

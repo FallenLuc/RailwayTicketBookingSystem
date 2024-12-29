@@ -1,9 +1,9 @@
+import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
+import { AppImage } from "@ui/AppImage"
+import { HStack, VStack } from "@ui/Stack"
+import { Text } from "@ui/Text"
 import { memo, useMemo } from "react"
 import styles from "./ReviewsItem.module.scss"
-import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { HStack, VStack } from "@ui/Stack"
-import { AppImage } from "@ui/AppImage"
-import { Text } from "@ui/Text"
 
 type ReviewsItemProps = {
 	className?: string
@@ -22,7 +22,7 @@ export const ReviewsItem = memo<ReviewsItemProps>(props => {
 	return (
 		<HStack
 			role={"listitem"}
-			gap={"gapL"}
+			gap={"L"}
 			align={"center"}
 			className={classNamesHelp("", {}, [className])}
 			widthMax={true}
@@ -34,7 +34,7 @@ export const ReviewsItem = memo<ReviewsItemProps>(props => {
 				className={styles.avatar}
 			/>
 			<VStack
-				gap={"gapM"}
+				gap={"M"}
 				className={styles.wrapperText}
 				widthMax={true}
 			>

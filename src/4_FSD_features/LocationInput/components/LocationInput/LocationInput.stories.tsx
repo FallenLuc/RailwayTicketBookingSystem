@@ -37,8 +37,6 @@ const meta: Meta<typeof LocationInput> = {
 	decorators: [CenterDecorator]
 }
 
-export default meta
-
 type TypeStory = StoryObj<typeof LocationInput>
 
 export const Default: TypeStory = {
@@ -47,3 +45,5 @@ export const Default: TypeStory = {
 		placeholder: "Куда"
 	}
 }
+
+export default meta

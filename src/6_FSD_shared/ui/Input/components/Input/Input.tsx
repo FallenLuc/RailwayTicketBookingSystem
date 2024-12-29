@@ -135,7 +135,7 @@ export const Input = TypedMemo(<T extends string | number>(props: InputProps<T>)
 			])}
 			data-testid={`${dataTestId}.LabelElement`}
 		>
-			<VStack gap={"gapS"}>
+			<VStack gap={"S"}>
 				{label}
 				{Icon ? inputElementWithIcon : inputElement}
 			</VStack>

@@ -16,7 +16,7 @@ const SuccessPage = memo<SuccessPageProps>(props => {
 		<div className={classNamesHelp("", {}, [className, "pageStyle"])}>
 			<Header
 				pagePath={pagePath.route}
-				typeBackground={"end"}
+				backgroundType={"end"}
 			/>
 			<h1>Success</h1>
 		</div>

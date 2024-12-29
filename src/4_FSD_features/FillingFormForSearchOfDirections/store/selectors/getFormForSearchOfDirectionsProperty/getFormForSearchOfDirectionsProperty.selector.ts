@@ -1,6 +1,6 @@
+import type { citiesDataForServerType } from "@entities/City"
 import type { directionFormParametres } from "@entities/Direction"
 import { buildCreateSelector } from "@helpers/buildCreateSelector/buildCreateSelector.helper"
-import type { citiesDataForServerType } from "../../../types/formForSearch.type"
 import type { formForSearchOfDirectionsStateMap } from "../../storeTypes/formForSearchOfDirectionsState.map"
 import { getFormForSearchOfDirectionsSelector } from "../getFormForSearchOfDirections/getFormForSearchOfDirections.selector"
 

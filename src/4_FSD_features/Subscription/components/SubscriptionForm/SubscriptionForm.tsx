@@ -1,11 +1,11 @@
-import styles from "./SubscriptionForm.module.scss"
-import { HStack } from "@ui/Stack"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { Input } from "@ui/Input"
-import type { FormEvent } from "react"
-import { useState, useCallback, memo } from "react"
 import { Button } from "@ui/Button"
+import { Input } from "@ui/Input"
+import { HStack } from "@ui/Stack"
+import type { FormEvent } from "react"
+import { memo, useCallback, useState } from "react"
 import { validationEmail } from "../../lib/helpers/validationEmail.helper"
+import styles from "./SubscriptionForm.module.scss"
 
 type SubscriptionFormProps = {
 	className?: string
@@ -39,7 +39,7 @@ export const SubscriptionForm = memo<SubscriptionFormProps>(props => {
 	return (
 		<HStack
 			className={classNamesHelp("", {}, [className])}
-			gap={"gapL"}
+			gap={"L"}
 			TagType={"form"}
 			align={"flexEnd"}
 			onSubmit={preventEvent}
