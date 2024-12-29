@@ -15,7 +15,7 @@ const MainPage = TypedMemo(() => {
 	const content = (
 		<>
 			<Header
-				typeBackground={"main"}
+				backgroundType={"main"}
 				pagePath={pagePath.route}
 			>
 				<HeaderContent />

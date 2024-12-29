@@ -24,7 +24,7 @@ export const BreadcrumbsItem = TypedMemo((props: BreadcrumbsItemProps) => {
 				[className]
 			)}
 			align={"center"}
-			gap={"gapM"}
+			gap={"M"}
 		>
 			<div className={styles.number}>{stageMapper(stage).number}</div>
 			<Text

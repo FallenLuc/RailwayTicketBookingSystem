@@ -15,7 +15,7 @@ export const FromSum = TypedMemo((props: FromSumProps) => {
 
 	return (
 		<HStack
-			gap={"gapXS"}
+			gap={"XS"}
 			widthMax={false}
 			align={"flexEnd"}
 			className={classNamesHelp("", {}, [className])}

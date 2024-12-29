@@ -51,7 +51,7 @@ export const LastTickets = TypedMemo((props: LastTicketsProps) => {
 	return (
 		<VStack
 			className={classNamesHelp(styles.LastTickets, {}, [className])}
-			gap={"gapM"}
+			gap={"M"}
 		>
 			<Text
 				title={"Последние билеты"}
@@ -62,7 +62,7 @@ export const LastTickets = TypedMemo((props: LastTicketsProps) => {
 			/>
 			<VStack
 				TagType={"ul"}
-				gap={"gapS"}
+				gap={"S"}
 			>
 				{content}
 			</VStack>

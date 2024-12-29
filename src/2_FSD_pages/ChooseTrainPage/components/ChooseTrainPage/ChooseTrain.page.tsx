@@ -36,7 +36,7 @@ const ChooseTrainPage = memo(() => {
 	const contentPage = (
 		<>
 			<Header
-				typeBackground={"search"}
+				backgroundType={"search"}
 				pagePath={pagePath.route}
 			>
 				<SearchDirections
