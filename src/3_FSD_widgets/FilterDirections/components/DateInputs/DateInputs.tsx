@@ -25,10 +25,10 @@ export const DateInputs = TypedMemo((props: DateInputsProps) => {
 
 	return (
 		<VStack
-			gap={"gapM"}
+			gap={"M"}
 			className={classNamesHelp(styles.DateInputs, {}, [className])}
 		>
-			<VStack gap="gapXS">
+			<VStack gap="XS">
 				<Text
 					TitleType={"h4"}
 					title={"Дата поездки"}
@@ -42,7 +42,7 @@ export const DateInputs = TypedMemo((props: DateInputsProps) => {
 					value={dateFrom}
 				/>
 			</VStack>
-			<VStack gap={"gapXS"}>
+			<VStack gap={"XS"}>
 				<Text
 					TitleType={"h4"}
 					title={"Дата возвращения"}

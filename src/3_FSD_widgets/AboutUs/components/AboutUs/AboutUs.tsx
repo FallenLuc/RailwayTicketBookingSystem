@@ -21,7 +21,7 @@ export const AboutUs = TypedMemo((props: AboutUsProps) => {
 			<ContainerLayout>
 				<VStack
 					widthMax={true}
-					gap={"gapXL"}
+					gap={"XL"}
 				>
 					<Text
 						classNameTitle={styles.title}
@@ -32,7 +32,7 @@ export const AboutUs = TypedMemo((props: AboutUsProps) => {
 						fontWeightTitle={"fat"}
 					/>
 					<VStack
-						gap={"gapM"}
+						gap={"M"}
 						className={styles.textArea}
 					>
 						<Text

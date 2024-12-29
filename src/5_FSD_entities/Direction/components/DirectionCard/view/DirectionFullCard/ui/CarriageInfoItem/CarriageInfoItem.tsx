@@ -60,7 +60,7 @@ export const CarriageInfoItem = TypedMemo((props: CarriageInfoItemProps) => {
 			</div>
 
 			<HStack
-				gap={"gapXS"}
+				gap={"XS"}
 				widthMax={false}
 				align={"center"}
 			>

@@ -3,6 +3,10 @@ import type { carriageClassType, carriagePriceType } from "../../Carriage"
 import type { stationDataType } from "../../Station"
 import type { trainDataType } from "../../Train"
 
+type priceInfoType = DeepPartial<Record<carriageClassType, carriagePriceType>>
+
+type availableSeatsInfoType = DeepPartial<Record<carriageClassType, number>>
+
 export type directionDataType = {
 	_id: string
 	have_first_class: boolean
@@ -17,9 +21,9 @@ export type directionDataType = {
 	from: stationDataType
 	to: stationDataType
 	available_seats: number
-	available_seats_info: DeepPartial<Record<carriageClassType, number>>
+	available_seats_info: availableSeatsInfoType
 	train: trainDataType
-	price_info: DeepPartial<Record<carriageClassType, carriagePriceType>>
+	price_info: priceInfoType
 }
 
 export type directionsGeneralDataFromServerType = {
@@ -32,7 +36,7 @@ export type directionsGeneralDataFromServerType = {
 	is_express: boolean
 	min_price: number
 	available_seats: number
-	available_seats_info: DeepPartial<Record<carriageClassType, number>>
+	available_seats_info: availableSeatsInfoType
 	arrival?: directionDataType
 	departure: directionDataType
 }

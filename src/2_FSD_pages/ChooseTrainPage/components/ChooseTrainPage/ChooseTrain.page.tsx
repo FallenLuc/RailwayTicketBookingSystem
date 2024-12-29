@@ -40,8 +40,8 @@ const ChooseTrainPage = memo<ChooseTrainPageProps>(props => {
 	}, [])
 
 	return (
-		<div className={classNamesHelp("", {}, [className, "pageStyle"])}>
-			<Header typeBackground={"search"}>
+		<div className={classNamesHelp(undefined, undefined, [className, "pageStyle"])}>
+			<Header backgroundType={"search"}>
 				<SearchDirections
 					view={"large"}
 					onSearch={onSearchHandler}
@@ -51,7 +51,7 @@ const ChooseTrainPage = memo<ChooseTrainPageProps>(props => {
 				<ContainerLayout>
 					{isLoading ?
 						"Loading"
-					:	<HStack gap={"gapXL"}>
+					:	<HStack gap={"XL"}>
 							<VStack widthMax={false}>
 								<FilterDirections onSearch={onSearchHandler} />
 							</VStack>

@@ -29,7 +29,7 @@ const TicketPage = TypedMemo((props: TicketPageProps) => {
 
 	return (
 		<div className={classNamesHelp("", {}, [className, "page-style"])}>
-			<Header typeBackground={"search"}></Header>
+			<Header backgroundType={"search"}></Header>
 			<div>
 				<ContainerLayout>{content}</ContainerLayout>
 			</div>

@@ -93,7 +93,7 @@ export const Range = TypedMemo((props: RangeProps) => {
 			align={"center"}
 			justify={"center"}
 			className={classNamesHelp(styles.Range, {}, [className])}
-			gap={"gapS"}
+			gap={"S"}
 		>
 			<HStack
 				align={"center"}

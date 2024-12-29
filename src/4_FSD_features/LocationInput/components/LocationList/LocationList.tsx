@@ -11,16 +11,16 @@ type LocationListProps = {
 	cities?: cityDataType[]
 }
 export const LocationList = memo<LocationListProps>(props => {
-	const { className, cities, onClick } = props
+	const { className, cities = [], onClick } = props
 
-	if (!cities?.length) {
+	if (!cities.length) {
 		return null
 	}
 
 	return (
 		<VStack
 			TagType={"ul"}
-			gap={"gapM"}
+			gap={"M"}
 			className={classNamesHelp(styles.LocationList, {}, [className])}
 		>
 			{cities.map(city => (

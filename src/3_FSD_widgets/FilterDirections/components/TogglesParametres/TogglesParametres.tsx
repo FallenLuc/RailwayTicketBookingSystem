@@ -40,7 +40,7 @@ export const TogglesParametres = TypedMemo((props: TogglesParametresProps) => {
 	return (
 		<VStack
 			TagType={"ul"}
-			gap={"gapL"}
+			gap={"L"}
 			className={classNamesHelp(styles.TogglesParametres, {}, [className])}
 		>
 			<ToggleParameter

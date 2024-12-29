@@ -18,7 +18,7 @@ export const TrainInfo = TypedMemo((props: TrainInfoProps) => {
 			align={"center"}
 			className={classNamesHelp(styles.TrainInfo, {}, [className])}
 			justify={"center"}
-			gap={"gapM"}
+			gap={"M"}
 		>
 			<TrainIcon className={styles.icon} />
 
@@ -28,7 +28,7 @@ export const TrainInfo = TypedMemo((props: TrainInfoProps) => {
 				colorTitle={"main-dark"}
 				TitleType={"h5"}
 			/>
-			<VStack gap={"gapXXS"}>
+			<VStack gap={"XXS"}>
 				<Text
 					text={`${data?.departure?.from.city.name} →`}
 					fontSizeText={"s"}

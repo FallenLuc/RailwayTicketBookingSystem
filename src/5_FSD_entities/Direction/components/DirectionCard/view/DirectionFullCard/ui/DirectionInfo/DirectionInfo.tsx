@@ -19,11 +19,11 @@ export const DirectionInfo = TypedMemo((props: DirectionInfoProps) => {
 		<HStack
 			align={"flexStart"}
 			justify={"spaceBetween"}
-			gap={"gapM"}
+			gap={"M"}
 			className={classNamesHelp("", {}, [className])}
 		>
 			<VStack
-				gap={"gapXXS"}
+				gap={"XXS"}
 				className={styles.DirectionInfo}
 			>
 				<Text
@@ -46,7 +46,7 @@ export const DirectionInfo = TypedMemo((props: DirectionInfoProps) => {
 			</VStack>
 			<VStack
 				align={"center"}
-				gap={"gapXXS"}
+				gap={"XXS"}
 				widthMax={false}
 			>
 				<Text

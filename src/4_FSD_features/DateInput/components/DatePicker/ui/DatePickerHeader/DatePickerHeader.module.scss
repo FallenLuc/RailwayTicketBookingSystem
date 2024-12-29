@@ -1,0 +1,35 @@
+.DatePickerHeader {
+	position: relative;
+	height: 50px;
+
+	border-bottom: 1px solid var(--light-gray);
+}
+
+.arrow-left,
+.arrow-right {
+	position: absolute;
+
+	top: 50%;
+	width: 0;
+	height: 0;
+
+	transform: translateY(-50%);
+
+	cursor: pointer;
+}
+
+.arrow-left {
+	left: 40px;
+
+	border-top: 5px solid transparent;
+	border-right: 10px solid var(--main-dark);
+	border-bottom: 5px solid transparent;
+}
+
+.arrow-right {
+	right: 40px;
+
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 10px solid var(--main-dark);
+}

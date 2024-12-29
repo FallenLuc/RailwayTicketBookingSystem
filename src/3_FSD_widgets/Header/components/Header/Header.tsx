@@ -10,20 +10,20 @@ import styles from "./Header.module.scss"
 
 type HeaderProps = {
 	className?: string
-	typeBackground: "main" | "search" | "end"
+	backgroundType: "main" | "search" | "end"
 } & PropsWithChildren
 export const Header = TypedMemo((props: HeaderProps) => {
-	const { className, typeBackground = "main", children } = props
+	const { className, backgroundType = "main", children } = props
 
 	return (
 		<header
-			className={classNamesHelp(styles.Header, {}, [className, styles[typeBackground]])}
+			className={classNamesHelp(styles.Header, {}, [className, styles[backgroundType]])}
 			id={getRouteMainHeader().hash}
 		>
 			<HeaderLogo />
 			<NavLinks />
 			<HeaderContent>{children}</HeaderContent>
-			<HeaderBackground typeBackground={typeBackground} />
+			<HeaderBackground typeBackground={backgroundType} />
 		</header>
 	)
 })

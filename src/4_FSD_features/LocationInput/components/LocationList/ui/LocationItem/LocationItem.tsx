@@ -21,7 +21,7 @@ export const LocationItem = memo<LocationItemProps>(props => {
 		<Button
 			theme={"clear"}
 			onClick={onClickHandler}
-			className={classNamesHelp(styles.LocationItem, {}, [className])}
+			className={classNamesHelp(styles.LocationItem, undefined, [className])}
 		>
 			<Text
 				text={cityData.name}

@@ -23,7 +23,7 @@ export const HeaderContent = memo<HeaderContentProps>(props => {
 		<HStack
 			align={"center"}
 			justify={"flexEnd"}
-			className={classNamesHelp("", {}, [className])}
+			className={classNamesHelp(undefined, undefined, [className])}
 		>
 			<TitleIcon className={styles.title} />
 			<SearchDirections

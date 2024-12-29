@@ -28,7 +28,7 @@ export const Footer = TypedMemo((props: FooterProps) => {
 				>
 					<Contacts />
 					<VStack
-						gap={"gapL"}
+						gap={"L"}
 						className={styles.footerSubscriptionWrapper}
 					>
 						<FooterSubscription />

@@ -33,9 +33,9 @@ export const CompactView = memo<SearchOfTrainsViewsProps>(props => {
 	return (
 		<VStack
 			className={classNamesHelp(styles.CompactView, {}, [className])}
-			gap={"gapXL"}
+			gap={"XL"}
 		>
-			<VStack gap={"gapS"}>
+			<VStack gap={"S"}>
 				<Text
 					title={"Направление"}
 					TitleType={"h3"}
@@ -44,7 +44,7 @@ export const CompactView = memo<SearchOfTrainsViewsProps>(props => {
 					colorTitle={"main-light"}
 				/>
 				<HStack
-					gap={"gapXS"}
+					gap={"XS"}
 					align={"center"}
 					justify={"spaceBetween"}
 				>
@@ -61,7 +61,7 @@ export const CompactView = memo<SearchOfTrainsViewsProps>(props => {
 					/>
 				</HStack>
 			</VStack>
-			<VStack gap={"gapS"}>
+			<VStack gap={"S"}>
 				<Text
 					title={"Дата"}
 					TitleType={"h3"}
@@ -70,7 +70,7 @@ export const CompactView = memo<SearchOfTrainsViewsProps>(props => {
 					colorTitle={"main-light"}
 				/>
 				<HStack
-					gap={"gapXS"}
+					gap={"XS"}
 					align={"center"}
 					justify={"spaceBetween"}
 				>

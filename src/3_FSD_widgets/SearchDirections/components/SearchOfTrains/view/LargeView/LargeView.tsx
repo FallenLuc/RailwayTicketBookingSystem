@@ -27,11 +27,11 @@ export const LargeView = memo<SearchOfTrainsViewsProps>(props => {
 	return (
 		<VStack
 			className={classNamesHelp(styles.LargeView, {}, [className])}
-			gap={"gapL"}
+			gap={"L"}
 			align={"flexEnd"}
 		>
-			<HStack gap={"gapS"}>
-				<VStack gap={"gapS"}>
+			<HStack gap={"S"}>
+				<VStack gap={"S"}>
 					<Text
 						title={"Направление"}
 						TitleType={"h3"}
@@ -40,7 +40,7 @@ export const LargeView = memo<SearchOfTrainsViewsProps>(props => {
 						colorTitle={"main-light"}
 					/>
 					<HStack
-						gap={"gapXS"}
+						gap={"XS"}
 						align={"center"}
 					>
 						<LocationInput
@@ -56,7 +56,7 @@ export const LargeView = memo<SearchOfTrainsViewsProps>(props => {
 						/>
 					</HStack>
 				</VStack>
-				<VStack gap={"gapS"}>
+				<VStack gap={"S"}>
 					<Text
 						title={"Дата"}
 						TitleType={"h3"}
@@ -65,7 +65,7 @@ export const LargeView = memo<SearchOfTrainsViewsProps>(props => {
 						colorTitle={"main-light"}
 					/>
 					<HStack
-						gap={"gapXS"}
+						gap={"XS"}
 						align={"center"}
 						justify={"spaceBetween"}
 					>
