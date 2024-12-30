@@ -11,6 +11,8 @@
 
 	color: var(--main-dark);
 
+	font: var(--font-s);
+
 	cursor: pointer;
 
 	appearance: none;
@@ -20,6 +22,8 @@
 	display: block;
 
 	color: var(--main-gray);
+
+	font: var(--font-s);
 }
 
 .readonly {

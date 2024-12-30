@@ -1,4 +1,4 @@
-import type { sortType } from "@customTypes/common.types"
+import type { showLimit, sortType } from "@customTypes/common.types"
 
 export type directionFormParametres = {
 	from_city_id?: string
@@ -26,4 +26,4 @@ export type directionFormParametres = {
 	end_arrival_hour_to?: number
 }
 
-export type directionsDisplayParametres = { limit?: number; offset?: number; sort?: sortType }
+export type directionsDisplayParametres = { limit?: showLimit; offset?: number; sort?: sortType }

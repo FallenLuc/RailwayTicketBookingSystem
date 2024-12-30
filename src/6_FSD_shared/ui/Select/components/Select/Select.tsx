@@ -19,7 +19,7 @@ export type SelectProps<T extends string> = {
 	classNameLabel?: string
 	options: OptionType<T>[]
 	label?: string
-	theme: selectThemes
+	theme?: selectThemes
 	value?: T
 	onChange?: (value: T) => void
 }

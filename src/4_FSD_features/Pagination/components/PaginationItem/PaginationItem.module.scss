@@ -1,0 +1,46 @@
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 84px;
+	height: 75px;
+
+	border-radius: 0;
+
+	background-color: transparent;
+
+	color: var(--main-gray);
+
+	font: var(--font-l);
+}
+
+.PaginationItem {
+	border: 2px solid var(--main-gray);
+	border-radius: 5px;
+
+	&:hover {
+		border: 2px solid var(--accent-orange);
+
+		.button {
+			opacity: 1;
+
+			color: var(--accent-orange);
+		}
+	}
+}
+
+.PaginationItem.active {
+	border: 2px solid var(--accent-orange);
+
+	.button {
+		background-color: var(--accent-orange);
+
+		color: var(--main-light);
+	}
+
+	&:hover {
+		.button {
+			color: var(--main-light);
+		}
+	}
+}
