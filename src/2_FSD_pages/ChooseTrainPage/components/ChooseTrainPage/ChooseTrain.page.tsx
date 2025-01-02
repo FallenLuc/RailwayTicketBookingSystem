@@ -1,13 +1,13 @@
 import { getRouteChooseTrain } from "@config/router"
-import { fetchDirectionsThunk } from "@entities/Direction"
 import { BreadcrumbsLine } from "@features/BreadcrumbsLine"
-import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features/FillingFormForSearchOfDirections"
 import { LastTickets } from "@features/LastTickets"
 import { useAppDispatch } from "@hooks/useAppDispatch.hook"
 import { ContainerLayout } from "@ui/layout"
 import { Page } from "@ui/Page"
 import { HStack, VStack } from "@ui/Stack"
 import { DirectionsList } from "@widgets/DirectionsList"
+import { DisplaySettingsDirectionsList } from "@widgets/DisplaySettingsDirectionsList"
+import { fetchDirectionsListThunk } from "@widgets/DisplaySettingsDirectionsList/store/thunks/fetchDirectionsListThunk/fetchDirectionsList.thunk"
 import { FilterDirections } from "@widgets/FilterDirections"
 import { Footer } from "@widgets/Footer"
 import { Header } from "@widgets/Header"
@@ -20,13 +20,9 @@ const pagePath = getRouteChooseTrain()
 const ChooseTrainPage = memo(() => {
 	const dispatch = useAppDispatch()
 
-	const formParametres = useGetFormForSearchOfDirectionsDataForRequestSelector()
-
 	const onSearchHandler = useCallback(() => {
-		if (formParametres) {
-			dispatch(fetchDirectionsThunk(formParametres))
-		}
-	}, [dispatch, formParametres])
+		dispatch(fetchDirectionsListThunk())
+	}, [dispatch])
 
 	useEffect(() => {
 		onSearchHandler()
@@ -56,7 +52,9 @@ const ChooseTrainPage = memo(() => {
 							<FilterDirections onSearch={onSearchHandler} />
 							<LastTickets />
 						</VStack>
-						<DirectionsList />
+						<DisplaySettingsDirectionsList>
+							<DirectionsList />
+						</DisplaySettingsDirectionsList>
 					</HStack>
 				</ContainerLayout>
 			</div>

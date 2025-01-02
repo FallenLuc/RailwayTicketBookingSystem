@@ -1,33 +1,28 @@
-import { DIRECTIONS } from "@constants/localStorage.constant"
 import { buildSlice } from "@helpers/buildSlice/buildSlice.helper"
 import { createEntityAdapter } from "@reduxjs/toolkit"
-import type { directionsGeneralDataType } from "../../types/directionData.type"
+import { uid } from "uid"
+import type { directionGeneralDataType } from "../../types/directionData.type"
 import type { directionsListStateMap } from "../storeTypes/directionsListState.map"
 import { fetchDirectionsThunk } from "../thunks/fetchDirections/fetchDirections.thunk"
 
 const initialState: directionsListStateMap = {
 	isLoading: false,
 	error: undefined,
+	totalCount: 0,
 	_inited: false,
 	ids: [],
 	entities: {}
 }
 
-export const directionsListAdapter = createEntityAdapter<directionsGeneralDataType>()
+export const directionsListAdapter = createEntityAdapter<directionGeneralDataType>()
 
 const directionsListSlice = buildSlice({
 	name: "directionsList",
 	initialState: directionsListAdapter.getInitialState<directionsListStateMap>(initialState),
 	reducers: {
 		directionsListInit: state => {
-			const storage = localStorage.getItem(DIRECTIONS)
-
 			if (!state._inited) {
 				state._inited = true
-
-				if (storage) {
-					directionsListAdapter.setAll(state, JSON.parse(storage))
-				}
 			}
 		}
 	},
@@ -36,26 +31,26 @@ const directionsListSlice = buildSlice({
 			.addCase(fetchDirectionsThunk.pending, state => {
 				state.isLoading = true
 				state.error = undefined
+				state.totalCount = 0
 				directionsListAdapter.removeAll(state)
 			})
 			.addCase(fetchDirectionsThunk.fulfilled, (state, action) => {
 				state.isLoading = false
 				state.error = undefined
 
-				directionsListAdapter.setAll(state, action.payload)
+				state.totalCount = action.payload.total_count
 
-				localStorage.setItem(
-					DIRECTIONS,
-					JSON.stringify(directionsListAdapter.getSelectors().selectAll(state))
-				)
+				const items = action.payload.items.map(item => ({ ...item, id: uid() }))
+
+				directionsListAdapter.setAll(state, items)
 			})
 			.addCase(fetchDirectionsThunk.rejected, (state, action) => {
 				state.isLoading = false
 				state.error = action.payload
 
-				directionsListAdapter.removeAll(state)
+				state.totalCount = 0
 
-				localStorage.removeItem(DIRECTIONS)
+				directionsListAdapter.removeAll(state)
 			})
 	}
 })

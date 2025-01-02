@@ -5,7 +5,8 @@ import {
 	getDirectionsListDataSelector,
 	getDirectionsListErrorSelector,
 	getDirectionsListIsLoadingSelector,
-	getDirectionsListItemSelector
+	getDirectionsListItemSelector,
+	getDirectionsListTotalCountSelector
 } from "./getDirectionsListProperties.selector"
 
 describe("getDirectionsListIsLoadingSelector", () => {
@@ -71,5 +72,22 @@ describe("getDirectionsListItemSelector", () => {
 	test("get withOut state", () => {
 		const state: DeepPartial<mainStateMap> = {}
 		expect(getDirectionsListItemSelector(state as mainStateMap, "1")).toEqual(undefined)
+	})
+})
+
+describe("getDirectionsListTotalCountSelector", () => {
+	test("get state", () => {
+		const state: DeepPartial<mainStateMap> = {
+			directionsList: {
+				totalCount: 5
+			}
+		}
+
+		expect(getDirectionsListTotalCountSelector()(state as mainStateMap)).toEqual(5)
+	})
+
+	test("get withOut state", () => {
+		const state: DeepPartial<mainStateMap> = {}
+		expect(getDirectionsListTotalCountSelector()(state as mainStateMap)).toEqual(0)
 	})
 })

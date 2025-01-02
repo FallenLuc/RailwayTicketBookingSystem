@@ -4,28 +4,23 @@ import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { HStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
-import { useCallback, useState } from "react"
-import styles from "./ShowLimit.module.scss"
+import { useCallback } from "react"
+import { ShowLimitItem } from "./ui/ShowLimitItem/ShowLimitItem"
 
 type ShowLimitProps = {
 	className?: string
 	value?: showLimit
 	onChange?: (value: showLimit) => void
-	onSubmit?: () => void
 }
 
 export const ShowLimit = TypedMemo((props: ShowLimitProps) => {
-	const { className, onChange, onSubmit, value } = props
-
-	const [limit, setLimit] = useState<showLimit>(value || SHOW_LIMITS[0])
+	const { className, onChange, value = SHOW_LIMITS[0] } = props
 
 	const onChangeHandler = useCallback(
 		(value: showLimit) => {
-			setLimit(value)
-			onChange?.(limit)
-			onSubmit?.()
+			onChange?.(value)
 		},
-		[limit, onChange, onSubmit]
+		[onChange]
 	)
 
 	return (
@@ -45,13 +40,12 @@ export const ShowLimit = TypedMemo((props: ShowLimitProps) => {
 				gap={"XS"}
 			>
 				{SHOW_LIMITS.map(item => (
-					<li
+					<ShowLimitItem
 						key={item}
-						className={classNamesHelp(styles.item, { [styles.active]: item === limit })}
-						onClick={useCallback(() => onChangeHandler(item), [item])}
-					>
-						{item}
-					</li>
+						item={item}
+						isActive={item === value}
+						onChange={onChangeHandler}
+					/>
 				))}
 			</HStack>
 		</HStack>

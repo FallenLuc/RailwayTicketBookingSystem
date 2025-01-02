@@ -1,12 +1,12 @@
 export { type directionsListStateMap } from "./store/storeTypes/directionsListState.map"
 export type {
 	directionFormParametres,
-	directionsDisplayParametres
+	directionDisplayParametres
 } from "./types/directionFormParametres.type"
 
 export type {
-	directionsGeneralDataType,
-	directionsGeneralDataFromServerType
+	directionGeneralDataType,
+	directionGeneralDataFromServerType
 } from "./types/directionData.type"
 
 export { fetchDirectionsThunk } from "./store/thunks/fetchDirections/fetchDirections.thunk"
@@ -20,7 +20,8 @@ export {
 	useGetDirectionsListErrorSelector,
 	useGetDirectionsListIsLoadingSelector,
 	useGetDirectionsListDataSelector,
-	useGetDirectionsListItemSelector
+	useGetDirectionsListItemSelector,
+	useGetDirectionsListTotalCountSelector
 } from "./store/selectors/getDirectionsListProperties/getDirectionsListProperties.selector"
 
 export { DirectionCard } from "./components/DirectionCard/DirectionCard"

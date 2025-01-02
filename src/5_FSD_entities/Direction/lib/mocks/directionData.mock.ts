@@ -1,7 +1,7 @@
 // To Hold -  сделать фабрику моков
-import type { directionsGeneralDataType } from "../../types/directionData.type"
+import type { directionGeneralDataType } from "../../types/directionData.type"
 
-export const directionDataMock = (): directionsGeneralDataType => {
+export const directionDataMock = (): directionGeneralDataType => {
 	return {
 		id: "1",
 		have_first_class: false,

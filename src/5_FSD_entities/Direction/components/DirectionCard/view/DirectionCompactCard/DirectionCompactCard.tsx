@@ -4,14 +4,14 @@ import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { AppLink } from "@ui/AppLink"
 import { HStack, VStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
-import type { directionsGeneralDataType } from "../../../../types/directionData.type"
+import type { directionGeneralDataType } from "../../../../types/directionData.type"
 import { FromSum } from "../../ui/FromSum/FromSum"
 import { ServicesIcon } from "../../ui/ServicesIcon/ServicesIcon"
 import styles from "./DirectionCompactCard.module.scss"
 
 type DirectionCompactCardProps = {
 	className?: string
-	data?: directionsGeneralDataType
+	data?: directionGeneralDataType
 }
 export const DirectionCompactCard = TypedMemo((props: DirectionCompactCardProps) => {
 	const { className, data } = props

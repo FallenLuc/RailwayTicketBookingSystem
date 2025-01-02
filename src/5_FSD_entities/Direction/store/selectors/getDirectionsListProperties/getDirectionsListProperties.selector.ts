@@ -21,8 +21,15 @@ const initialState = directionsListAdapter.getInitialState()
 
 export const {
 	selectAll: getDirectionsListDataSelector,
-	selectById: getDirectionsListItemSelector
+	selectById: getDirectionsListItemSelector,
+	selectTotal: getDirectionsListTotalSelector
 } = directionsListAdapter.getSelectors<mainStateMap>(state => state?.directionsList || initialState)
 
 export const [useGetDirectionsListDataSelector] = buildSelector(getDirectionsListDataSelector)
 export const [useGetDirectionsListItemSelector] = buildSelector(getDirectionsListItemSelector)
+
+export const [useGetDirectionsListTotalCountSelector, getDirectionsListTotalCountSelector] =
+	buildCreateSelector(
+		[getDirectionsListSelector],
+		(state?: directionsListStateMap) => state?.totalCount || 0
+	)

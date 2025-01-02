@@ -3,12 +3,12 @@ import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { VStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
-import type { directionsGeneralDataType } from "../../../../../../types/directionData.type"
+import type { directionGeneralDataType } from "../../../../../../types/directionData.type"
 import styles from "./TrainInfo.module.scss"
 
 type TrainInfoProps = {
 	className?: string
-	data?: directionsGeneralDataType
+	data?: directionGeneralDataType
 }
 export const TrainInfo = TypedMemo((props: TrainInfoProps) => {
 	const { className, data } = props
