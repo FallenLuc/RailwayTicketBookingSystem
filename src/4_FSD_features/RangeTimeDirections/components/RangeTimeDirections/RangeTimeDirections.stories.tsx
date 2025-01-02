@@ -7,12 +7,16 @@ import styles from "./RangeTimeDirections.module.scss"
 const meta: Meta<typeof RangeTimeDirections> = {
 	title: "features/RangeTimeDirections",
 	component: RangeTimeDirections,
+
 	argTypes: {
 		direction: {
 			control: "inline-radio"
 		}
 	},
 	parameters: {
+		backgrounds: {
+			default: "Light"
+		},
 		controls: {
 			exclude: [
 				...(preview?.parameters?.controls.exclude ?? undefined),

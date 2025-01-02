@@ -27,4 +27,6 @@ export {
 export { DirectionCard } from "./components/DirectionCard/DirectionCard"
 
 // mocks
+export { directionGeneralDataMock } from "./lib/mocks/directionGeneralData.mock"
 export { directionDataMock } from "./lib/mocks/directionData.mock"
+export { directionsListDataMock } from "./lib/mocks/directionsListData.mock"

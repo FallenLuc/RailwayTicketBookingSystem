@@ -12,6 +12,9 @@ const meta: Meta<typeof BreadcrumbsLine> = {
 		}
 	},
 	parameters: {
+		backgrounds: {
+			default: "Light"
+		},
 		controls: {
 			exclude: [...(preview?.parameters?.controls.exclude ?? undefined)]
 		}

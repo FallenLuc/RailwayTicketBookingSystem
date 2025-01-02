@@ -16,16 +16,27 @@ export const BreadcrumbsLine = TypedMemo((props: BreadcrumbsLineProps) => {
 	const { className, stage = "tickets" } = props
 
 	return (
-		<HStack className={classNamesHelp("", {}, [className])}>
-			<div
-				className={classNamesHelp(
-					styles.fantomStage,
-					{
-						[styles.checkStage]: stageMapper(stage).number >= 1
-					},
-					[className]
-				)}
-			/>
+		<HStack className={classNamesHelp(styles.BreadcrumbsLine, undefined, [className])}>
+			<HStack className={styles.fantomWrapper}>
+				<div
+					className={classNamesHelp(
+						styles.fantomStage,
+						{
+							[styles.checkStage]: stageMapper(stage).number >= 1
+						},
+						[className]
+					)}
+				></div>
+				<div
+					className={classNamesHelp(
+						styles.fantomStage,
+						{
+							[styles.checkStage]: stageMapper(stage).number >= 4
+						},
+						[className]
+					)}
+				></div>
+			</HStack>
 			<ContainerLayout className={styles.wrapper}>
 				<BreadcrumbsItem
 					stage={"tickets"}
@@ -44,15 +55,6 @@ export const BreadcrumbsLine = TypedMemo((props: BreadcrumbsLineProps) => {
 					isChecked={stageMapper(stage).number >= 4}
 				/>
 			</ContainerLayout>
-			<div
-				className={classNamesHelp(
-					styles.fantomStage,
-					{
-						[styles.checkStage]: stageMapper(stage).number === 4
-					},
-					[className]
-				)}
-			/>
 		</HStack>
 	)
 })

@@ -7,8 +7,11 @@ const meta: Meta<typeof FilterDirections> = {
 	title: "widgets/FilterDirections",
 	component: FilterDirections,
 	parameters: {
+		backgrounds: {
+			default: "Light"
+		},
 		controls: {
-			exclude: [...(preview?.parameters?.controls.exclude ?? undefined)]
+			exclude: [...(preview?.parameters?.controls.exclude ?? undefined), "onSearch"]
 		}
 	},
 	decorators: [CenterDecorator]
@@ -19,5 +22,7 @@ export default meta
 type TypeStory = StoryObj<typeof FilterDirections>
 
 export const Default: TypeStory = {
-	args: {}
+	args: {
+		isTestLoading: false
+	}
 }

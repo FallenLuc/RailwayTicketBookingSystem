@@ -5,7 +5,7 @@ export const getRouteMain = () => {
 }
 export const getRouteHeader = (pagePath: string) => {
 	return {
-		route: `${pagePath}${HashPaths.Header}`,
+		route: `${pagePath == "/" ? "" : pagePath}${HashPaths.Header}`,
 		hash: `${HashPaths.Header.replace(/.*\/#/gm, "")}`
 	}
 }

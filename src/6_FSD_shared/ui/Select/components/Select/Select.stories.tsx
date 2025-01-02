@@ -7,6 +7,9 @@ const meta: Meta<typeof Select> = {
 	title: "shared/Select",
 	component: Select,
 	parameters: {
+		backgrounds: {
+			default: "Light"
+		},
 		controls: {
 			exclude: [
 				...(preview?.parameters?.controls.exclude ?? undefined),
