@@ -10,7 +10,7 @@ import {
 	getMinPriceForSeat,
 	mapperCarriageTypeName
 } from "../../../../../../../Carriage"
-import type { directionsGeneralDataType } from "../../../../../../types/directionData.type"
+import type { directionGeneralDataType } from "../../../../../../types/directionData.type"
 import { FromSum } from "../../../../ui/FromSum/FromSum"
 import styles from "./CarriageInfoItem.module.scss"
 
@@ -19,7 +19,7 @@ type CarriageInfoItemProps = {
 	detailedPrice?: ReactNode
 	onDetailedPriceShow: () => void
 	isOpenDetailedPrice: boolean
-	data?: directionsGeneralDataType
+	data?: directionGeneralDataType
 	carriageClass: carriageClassType
 	carriagePrice: carriagePriceType
 }

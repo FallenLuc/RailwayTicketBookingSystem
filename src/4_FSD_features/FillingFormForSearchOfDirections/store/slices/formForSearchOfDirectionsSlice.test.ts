@@ -1,3 +1,5 @@
+import { SHOW_LIMITS } from "@constants/common.constant"
+import type { DeepPartial } from "@customTypes/global.types"
 import { describe, expect, test } from "@jest/globals"
 import type { formForSearchOfDirectionsStateMap } from "../storeTypes/formForSearchOfDirectionsState.map"
 import {
@@ -7,7 +9,7 @@ import {
 
 describe("formForSearchOfDirectionsSliceTest", () => {
 	test("setParametres", () => {
-		const state: formForSearchOfDirectionsStateMap = {
+		const state: DeepPartial<formForSearchOfDirectionsStateMap> = {
 			isValidForm: false,
 			data: {
 				toCity: {
@@ -22,7 +24,7 @@ describe("formForSearchOfDirectionsSliceTest", () => {
 		}
 
 		const newState = formForSearchDirectionsReducer(
-			state,
+			state as formForSearchOfDirectionsStateMap,
 			formForSearchDirectionsActions.setParametres({ date_start: "2024-12-30" })
 		)
 
@@ -42,8 +44,29 @@ describe("formForSearchOfDirectionsSliceTest", () => {
 		})
 	})
 
+	test("setDisplayParametresParametres", () => {
+		const state: DeepPartial<formForSearchOfDirectionsStateMap> = {
+			displayData: {
+				limit: 10,
+				offset: 6
+			}
+		}
+
+		const newState = formForSearchDirectionsReducer(
+			state as formForSearchOfDirectionsStateMap,
+			formForSearchDirectionsActions.setDisplayParametres({ limit: 20 })
+		)
+
+		expect(newState).toEqual({
+			displayData: {
+				limit: 20,
+				offset: 6
+			}
+		})
+	})
+
 	test("clearParametres", () => {
-		const state: formForSearchOfDirectionsStateMap = {
+		const state: DeepPartial<formForSearchOfDirectionsStateMap> = {
 			isValidForm: false,
 			data: {
 				toCity: {
@@ -58,18 +81,22 @@ describe("formForSearchOfDirectionsSliceTest", () => {
 		}
 
 		const newState = formForSearchDirectionsReducer(
-			state,
+			state as formForSearchOfDirectionsStateMap,
 			formForSearchDirectionsActions.clearParametres()
 		)
 
 		expect(newState).toEqual({
 			isValidForm: false,
-			data: undefined
+			data: undefined,
+			displayData: {
+				limit: SHOW_LIMITS[0],
+				offset: 1
+			}
 		})
 	})
 
 	test("changeDirection", () => {
-		const state: formForSearchOfDirectionsStateMap = {
+		const state: DeepPartial<formForSearchOfDirectionsStateMap> = {
 			isValidForm: false,
 			data: {
 				toCity: {
@@ -84,7 +111,7 @@ describe("formForSearchOfDirectionsSliceTest", () => {
 		}
 
 		const newState = formForSearchDirectionsReducer(
-			state,
+			state as formForSearchOfDirectionsStateMap,
 			formForSearchDirectionsActions.changeDirection()
 		)
 

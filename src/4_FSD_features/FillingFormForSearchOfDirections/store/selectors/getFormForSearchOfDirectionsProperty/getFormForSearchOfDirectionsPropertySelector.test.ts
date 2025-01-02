@@ -1,3 +1,4 @@
+import { SHOW_LIMITS } from "@constants/common.constant"
 import type { DeepPartial } from "@customTypes/global.types"
 import { describe, expect, test } from "@jest/globals"
 import type { mainStateMap } from "@store/storeTypes/mainState.map"
@@ -60,12 +61,18 @@ describe("getFormForSearchOfDirectionsDataForRequestSelector", () => {
 						name: "Москва",
 						_id: "1"
 					}
+				},
+				displayData: {
+					limit: 10,
+					offset: 5
 				}
 			}
 		}
 		expect(getFormForSearchOfDirectionsDataForRequestSelector()(state as mainStateMap)).toEqual(
 			{
-				from_city_id: "1"
+				from_city_id: "1",
+				limit: 10,
+				offset: 5
 			}
 		)
 	})
@@ -73,7 +80,7 @@ describe("getFormForSearchOfDirectionsDataForRequestSelector", () => {
 	test("get withOut state", () => {
 		const state: DeepPartial<mainStateMap> = {}
 		expect(getFormForSearchOfDirectionsDataForRequestSelector()(state as mainStateMap)).toEqual(
-			undefined
+			{ limit: SHOW_LIMITS[0], offset: 1 }
 		)
 	})
 })
