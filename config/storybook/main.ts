@@ -3,12 +3,14 @@ import { webpackStorybookConfig } from "./webpackStorybook.config"
 
 const config: StorybookConfig = {
 	stories: ["../../**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+	core: {
+		disableTelemetry: true
+	},
 	addons: [
 		"@storybook/addon-webpack5-compiler-swc",
 		"@storybook/addon-links",
 		"@storybook/addon-essentials",
 		"@chromatic-com/storybook",
-		"@storybook/addon-themes",
 		"storybook-addon-mock"
 	],
 	framework: {

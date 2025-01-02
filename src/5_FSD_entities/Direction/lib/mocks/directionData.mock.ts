@@ -1,117 +1,36 @@
-// To Hold -  сделать фабрику моков
-import type { directionGeneralDataType } from "../../types/directionData.type"
+import { stationDataMock } from "../../../Station"
+import { trainDataMock } from "../../../Train"
+import type { directionDataType } from "../../types/directionData.type"
 
-export const directionDataMock = (): directionGeneralDataType => {
+export const directionDataMock = (params?: Partial<directionDataType>): directionDataType => {
 	return {
-		id: "1",
-		have_first_class: false,
-		have_second_class: false,
-		have_third_class: false,
-		have_fourth_class: false,
-		have_wifi: true,
-		have_air_conditioning: true,
-		is_express: true,
-		min_price: 2214,
-		available_seats: 254,
-		available_seats_info: {
+		_id: params?._id || "66ac8b84cb563f0052176a18",
+		have_first_class: params?.have_first_class || false,
+		have_second_class: params?.have_second_class || true,
+		have_third_class: params?.have_third_class || true,
+		have_fourth_class: params?.have_fourth_class || false,
+		have_wifi: params?.have_wifi || true,
+		have_air_conditioning: params?.have_air_conditioning || true,
+		is_express: params?.is_express || true,
+		min_price: params?.min_price || 2024,
+		duration: params?.duration || 22254,
+		available_seats: params?.available_seats || 112,
+		available_seats_info: params?.available_seats_info || {
 			second: 32,
 			third: 96
 		},
-		departure: {
-			_id: "66ac8b84cb563f0052176a17",
-			have_first_class: false,
-			have_second_class: true,
-			have_third_class: true,
-			have_fourth_class: false,
-			have_wifi: true,
-			have_air_conditioning: true,
-			is_express: true,
-			min_price: 2214,
-			duration: 254340,
-			available_seats: 127,
-			available_seats_info: {
-				second: 32,
-				third: 96
+		train: params?.train || trainDataMock(),
+		from: params?.from || stationDataMock(undefined, "start"),
+		to: params?.to || stationDataMock(undefined, "end"),
+		price_info: params?.price_info || {
+			second: {
+				top_price: 2652,
+				bottom_price: 2214
 			},
-			train: {
-				_id: "66ac8b6fcb563f00521759ca",
-				name: "Перун - 99"
-			},
-			from: {
-				railway_station_name: "Киевский",
-				city: {
-					_id: "66ac8b69cb563f0052174f45",
-					name: "москва"
-				},
-				datetime: 1672949001
-			},
-			to: {
-				railway_station_name: "Московский",
-				city: {
-					_id: "66ac8b69cb563f0052174f46",
-					name: "санкт-петербург"
-				},
-				datetime: 1673203341
-			},
-			price_info: {
-				second: {
-					top_price: 2652,
-					bottom_price: 2214
-				},
-				third: {
-					top_price: 3455,
-					bottom_price: 2525,
-					side_price: 3855
-				}
-			}
-		},
-		arrival: {
-			_id: "66ac8b84cb563f0052176a18",
-			have_first_class: false,
-			have_second_class: true,
-			have_third_class: true,
-			have_fourth_class: false,
-			have_wifi: true,
-			have_air_conditioning: true,
-			is_express: true,
-			min_price: 2214,
-			duration: 254340,
-			available_seats: 127,
-			available_seats_info: {
-				second: 32,
-				third: 96
-			},
-			train: {
-				_id: "66ac8b6fcb563f00521759ca",
-				name: "Перун - 100"
-			},
-			from: {
-				railway_station_name: "Киевский",
-				city: {
-					_id: "66ac8b69cb563f0052174f46",
-					name: "санкт-петербург"
-				},
-
-				datetime: 1673203341
-			},
-			to: {
-				railway_station_name: "Московский",
-				city: {
-					_id: "66ac8b69cb563f0052174f45",
-					name: "москва"
-				},
-				datetime: 1672949001
-			},
-			price_info: {
-				second: {
-					top_price: 2652,
-					bottom_price: 2214
-				},
-				third: {
-					top_price: 3455,
-					bottom_price: 2525,
-					side_price: 3855
-				}
+			third: {
+				top_price: 3455,
+				bottom_price: 2525,
+				side_price: 3855
 			}
 		}
 	}

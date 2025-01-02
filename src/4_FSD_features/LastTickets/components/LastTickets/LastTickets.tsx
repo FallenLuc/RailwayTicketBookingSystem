@@ -1,3 +1,4 @@
+import type { testingProps } from "@customTypes/testing.types"
 import { DirectionCard } from "@entities/Direction"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
@@ -10,9 +11,9 @@ import styles from "./LastTickets.module.scss"
 
 type LastTicketsProps = {
 	className?: string
-}
+} & testingProps
 export const LastTickets = TypedMemo((props: LastTicketsProps) => {
-	const { className } = props
+	const { className, isTestLoading = false } = props
 
 	const { isLoading, data, isError } = useGetLastDirectionsQuery()
 
@@ -44,7 +45,7 @@ export const LastTickets = TypedMemo((props: LastTicketsProps) => {
 		)
 	}
 
-	if (isLoading) {
+	if (isLoading || isTestLoading) {
 		content = <FallbackLoader />
 	}
 

@@ -1,3 +1,4 @@
+import type { testingProps } from "@customTypes/testing.types"
 import { useGetDirectionsListIsLoadingSelector } from "@entities/Direction"
 import {
 	useFormForSearchDirectionsActions,
@@ -21,9 +22,9 @@ import { SubmitButton } from "./ui/SubmitButton/SubmitButton"
 type FilterDirectionsProps = {
 	className?: string
 	onSearch?: () => void
-}
+} & testingProps
 export const FilterDirections = TypedMemo((props: FilterDirectionsProps) => {
-	const { className, onSearch } = props
+	const { className, onSearch, isTestLoading = false } = props
 
 	const { setParametres } = useFormForSearchDirectionsActions()
 	const formParametres = useGetFormForSearchOfDirectionsDataSelector()
@@ -229,7 +230,7 @@ export const FilterDirections = TypedMemo((props: FilterDirectionsProps) => {
 			/>
 			<SubmitButton
 				onSubmit={onSubmitHandler}
-				isDisabled={isLoading}
+				isDisabled={isLoading || isTestLoading}
 			/>
 		</aside>
 	)
