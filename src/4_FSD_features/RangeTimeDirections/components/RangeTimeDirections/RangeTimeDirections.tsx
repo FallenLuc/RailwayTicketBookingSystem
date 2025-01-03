@@ -7,7 +7,7 @@ import styles from "./RangeTimeDirections.module.scss"
 
 type RangeTimeDirectionsProps = {
 	className?: string
-	direction?: "arrival" | "departure"
+	direction?: "toTrip" | "fromTrip"
 	arrivalRange?: number[]
 	onChangeArrivalRange?: (arrivalRange: number[]) => void
 	departureRange?: number[]
@@ -16,11 +16,11 @@ type RangeTimeDirectionsProps = {
 export const RangeTimeDirections = TypedMemo((props: RangeTimeDirectionsProps) => {
 	const {
 		className,
-		direction = "arrival",
+		direction = "toTrip",
+		departureRange,
 		arrivalRange,
-		onChangeArrivalRange,
 		onChangeDepartureRange,
-		departureRange
+		onChangeArrivalRange
 	} = props
 
 	const [isOpen, setIsOpen] = useState(false)
@@ -42,10 +42,10 @@ export const RangeTimeDirections = TypedMemo((props: RangeTimeDirectionsProps) =
 			/>
 			<Footer
 				isOpen={isOpen}
-				arrivalRange={arrivalRange}
-				onChangeArrivalRange={onChangeArrivalRange}
 				departureRange={departureRange}
+				arrivalRange={arrivalRange}
 				onChangeDepartureRange={onChangeDepartureRange}
+				onChangeArrivalRange={onChangeArrivalRange}
 			/>
 		</div>
 	)

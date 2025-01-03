@@ -8,19 +8,22 @@ import styles from "./DateInputs.module.scss"
 
 type DateInputsProps = {
 	className?: string
-	arrivalDate?: string
-	departureDate?: string
-	onSaveArrivalDate: (value: string) => void
-	onSaveDepartureDate: (value: string) => void
+	fromTripDate?: string
+	toTripDate?: string
+	onSaveToTripDate: (value: string) => void
+	onSaveFromTripDate: (value: string) => void
 }
 export const DateInputs = TypedMemo((props: DateInputsProps) => {
-	const { className, onSaveDepartureDate, onSaveArrivalDate, departureDate, arrivalDate } = props
+	const { className, onSaveFromTripDate, onSaveToTripDate, toTripDate, fromTripDate } = props
 
-	const dateFrom = useMemo(() => (arrivalDate ? new Date(arrivalDate) : undefined), [arrivalDate])
+	const toTripDateLocal = useMemo(
+		() => (toTripDate ? new Date(toTripDate) : undefined),
+		[toTripDate]
+	)
 
-	const dateTo = useMemo(
-		() => (departureDate ? new Date(departureDate) : undefined),
-		[departureDate]
+	const fromTripDateLocal = useMemo(
+		() => (fromTripDate ? new Date(fromTripDate) : undefined),
+		[fromTripDate]
 	)
 
 	return (
@@ -38,8 +41,8 @@ export const DateInputs = TypedMemo((props: DateInputsProps) => {
 				/>
 				<DateInput
 					size={"think"}
-					onSaveToForm={onSaveArrivalDate}
-					value={dateFrom}
+					onSaveToForm={onSaveToTripDate}
+					value={toTripDateLocal}
 				/>
 			</VStack>
 			<VStack gap={"XS"}>
@@ -52,8 +55,8 @@ export const DateInputs = TypedMemo((props: DateInputsProps) => {
 				/>
 				<DateInput
 					size={"think"}
-					onSaveToForm={onSaveDepartureDate}
-					value={dateTo}
+					onSaveToForm={onSaveFromTripDate}
+					value={fromTripDateLocal}
 				/>
 			</VStack>
 		</VStack>
