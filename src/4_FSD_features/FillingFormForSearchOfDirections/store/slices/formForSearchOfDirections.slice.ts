@@ -25,7 +25,7 @@ const formForSearchOfDirectionsSlice = buildSlice({
 		setParametres: (state, action: PayloadAction<formDataType>) => {
 			const parametres = action.payload
 
-			let data: formForSearchOfDirectionsStateMap["data"] = { ...state.data, ...parametres }
+			let data: formDataType = { ...state.data, ...parametres }
 
 			data = Object.fromEntries(
 				Object.entries(data).filter(([_, value]) => Boolean(value) || value === 0)

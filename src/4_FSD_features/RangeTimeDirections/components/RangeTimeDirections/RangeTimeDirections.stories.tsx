@@ -37,6 +37,6 @@ type TypeStory = StoryObj<typeof RangeTimeDirections>
 export const Default: TypeStory = {
 	args: {
 		className: styles.storiesContainer,
-		direction: "arrival"
+		direction: "toTrip"
 	}
 }

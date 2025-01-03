@@ -31,14 +31,14 @@ export const FilterDirections = TypedMemo((props: FilterDirectionsProps) => {
 	const isLoading = useGetDirectionsListIsLoadingSelector()
 	const isValidForm = useGetFormForSearchOfDirectionsIsValidFormSelector()
 
-	const onSaveArrivalDateHandler = useCallback(
+	const onSaveToTripDateHandler = useCallback(
 		(value: string) => {
 			setParametres({ date_start_arrival: value })
 		},
 		[setParametres]
 	)
 
-	const onSaveDepartureDateHandler = useCallback(
+	const onSaveFromTripDateHandler = useCallback(
 		(value: string) => {
 			setParametres({ date_end_arrival: value })
 		},
@@ -82,7 +82,7 @@ export const FilterDirections = TypedMemo((props: FilterDirectionsProps) => {
 		[setParametres]
 	)
 
-	const onChangeRangeArrivalTimeToHandler = useCallback(
+	const onChangeDepartureToTripRangeHandler = useCallback(
 		(value: number[]) => {
 			setParametres({
 				start_departure_hour_from: convertSecondsToHour(value[0]),
@@ -91,7 +91,7 @@ export const FilterDirections = TypedMemo((props: FilterDirectionsProps) => {
 		},
 		[setParametres]
 	)
-	const onChangeRangeDepartureTimeToHandler = useCallback(
+	const onChangeArrivalToTripRangeHandler = useCallback(
 		(value: number[]) => {
 			setParametres({
 				start_arrival_hour_from: convertSecondsToHour(value[0]),
@@ -101,7 +101,7 @@ export const FilterDirections = TypedMemo((props: FilterDirectionsProps) => {
 		[setParametres]
 	)
 
-	const onChangeRangeArrivalTimeFromHandler = useCallback(
+	const onChangeDepartureFromTripRangeHandler = useCallback(
 		(value: number[]) => {
 			setParametres({
 				end_departure_hour_from: convertSecondsToHour(value[0]),
@@ -110,7 +110,7 @@ export const FilterDirections = TypedMemo((props: FilterDirectionsProps) => {
 		},
 		[setParametres]
 	)
-	const onChangeRangeDepartureTimeFromHandler = useCallback(
+	const onChangeArrivalFromTripRangeHandler = useCallback(
 		(value: number[]) => {
 			setParametres({
 				end_arrival_hour_from: convertSecondsToHour(value[0]),
@@ -136,7 +136,7 @@ export const FilterDirections = TypedMemo((props: FilterDirectionsProps) => {
 		return undefined
 	}, [formParametres?.price_from, formParametres?.price_to])
 
-	const rangeArrivalTimeTo = useMemo(() => {
+	const rangeDepartureToTrip = useMemo(() => {
 		if (
 			formParametres?.start_departure_hour_from !== undefined &&
 			formParametres?.start_departure_hour_to !== undefined
@@ -149,7 +149,7 @@ export const FilterDirections = TypedMemo((props: FilterDirectionsProps) => {
 		return undefined
 	}, [formParametres?.start_departure_hour_from, formParametres?.start_departure_hour_to])
 
-	const rangeDepartureTimeTo = useMemo(() => {
+	const rangeArrivalToTrip = useMemo(() => {
 		if (
 			formParametres?.start_arrival_hour_from !== undefined &&
 			formParametres?.start_arrival_hour_to !== undefined
@@ -162,7 +162,7 @@ export const FilterDirections = TypedMemo((props: FilterDirectionsProps) => {
 		return undefined
 	}, [formParametres?.start_arrival_hour_from, formParametres?.start_arrival_hour_to])
 
-	const rangeArrivalTimeFrom = useMemo(() => {
+	const rangeDepartureFromTrip = useMemo(() => {
 		if (
 			formParametres?.end_departure_hour_from !== undefined &&
 			formParametres?.end_departure_hour_to !== undefined
@@ -175,7 +175,7 @@ export const FilterDirections = TypedMemo((props: FilterDirectionsProps) => {
 		return undefined
 	}, [formParametres?.end_departure_hour_from, formParametres?.end_departure_hour_to])
 
-	const rangeDepartureTimeFrom = useMemo(() => {
+	const rangeArrivalFromTrip = useMemo(() => {
 		if (
 			formParametres?.end_arrival_hour_from !== undefined &&
 			formParametres?.end_arrival_hour_to !== undefined
@@ -191,10 +191,10 @@ export const FilterDirections = TypedMemo((props: FilterDirectionsProps) => {
 	return (
 		<aside className={classNamesHelp(styles.FilterDirections, {}, [className])}>
 			<DateInputs
-				onSaveDepartureDate={onSaveDepartureDateHandler}
-				onSaveArrivalDate={onSaveArrivalDateHandler}
-				departureDate={formParametres?.date_end_arrival}
-				arrivalDate={formParametres?.date_start_arrival}
+				onSaveToTripDate={onSaveToTripDateHandler}
+				onSaveFromTripDate={onSaveFromTripDateHandler}
+				toTripDate={formParametres?.date_start_arrival}
+				fromTripDate={formParametres?.date_end_arrival}
 			/>
 			<TogglesParametres
 				isToggleCupe={formParametres?.have_second_class}
@@ -215,18 +215,18 @@ export const FilterDirections = TypedMemo((props: FilterDirectionsProps) => {
 				onChange={onChangeRangeCostHandler}
 			/>
 			<RangeTimeDirections
-				direction={"arrival"}
-				arrivalRange={rangeArrivalTimeTo}
-				departureRange={rangeDepartureTimeTo}
-				onChangeArrivalRange={onChangeRangeArrivalTimeToHandler}
-				onChangeDepartureRange={onChangeRangeDepartureTimeToHandler}
+				direction={"toTrip"}
+				departureRange={rangeDepartureToTrip}
+				arrivalRange={rangeArrivalToTrip}
+				onChangeDepartureRange={onChangeDepartureToTripRangeHandler}
+				onChangeArrivalRange={onChangeArrivalToTripRangeHandler}
 			/>
 			<RangeTimeDirections
-				direction={"departure"}
-				arrivalRange={rangeArrivalTimeFrom}
-				departureRange={rangeDepartureTimeFrom}
-				onChangeArrivalRange={onChangeRangeArrivalTimeFromHandler}
-				onChangeDepartureRange={onChangeRangeDepartureTimeFromHandler}
+				direction={"fromTrip"}
+				departureRange={rangeDepartureFromTrip}
+				arrivalRange={rangeArrivalFromTrip}
+				onChangeDepartureRange={onChangeDepartureFromTripRangeHandler}
+				onChangeArrivalRange={onChangeArrivalFromTripRangeHandler}
 			/>
 			<SubmitButton
 				onSubmit={onSubmitHandler}

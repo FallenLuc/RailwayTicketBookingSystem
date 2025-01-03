@@ -61,12 +61,12 @@ export const DirectionFullCard = TypedMemo((props: DirectionFullCardProps) => {
 			>
 				<DirectionInfo
 					data={data?.departure}
-					direction={"there"}
+					direction={"toTrip"}
 				/>
 				{data?.arrival ?
 					<DirectionInfo
 						data={data?.arrival}
-						direction={"back"}
+						direction={"fromTrip"}
 					/>
 				:	null}
 			</VStack>

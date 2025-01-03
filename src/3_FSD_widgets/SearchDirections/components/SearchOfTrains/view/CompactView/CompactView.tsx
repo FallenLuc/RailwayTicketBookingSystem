@@ -12,8 +12,8 @@ import styles from "./CompactView.module.scss"
 export const CompactView = memo<SearchOfTrainsViewsProps>(props => {
 	const {
 		className,
-		onSaveDepartureDate,
-		onSaveArrivalDate,
+		onSaveToDate,
+		onSaveFromDate,
 		onSaveFromLocation,
 		onSaveToLocation,
 		onSearch,
@@ -76,11 +76,11 @@ export const CompactView = memo<SearchOfTrainsViewsProps>(props => {
 				>
 					<DateInput
 						value={dateFrom}
-						onSaveToForm={onSaveArrivalDate}
+						onSaveToForm={onSaveFromDate}
 					/>
 					<DateInput
 						value={dateTo}
-						onSaveToForm={onSaveDepartureDate}
+						onSaveToForm={onSaveToDate}
 					/>
 				</HStack>
 			</VStack>
