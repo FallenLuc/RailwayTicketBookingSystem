@@ -10,12 +10,15 @@ const config: StorybookConfig = {
 		"@storybook/addon-webpack5-compiler-swc",
 		"@storybook/addon-links",
 		"@storybook/addon-essentials",
-		"@chromatic-com/storybook",
 		"storybook-addon-mock"
 	],
 	framework: {
 		name: "@storybook/react-webpack5",
-		options: {}
+		options: {
+			builder: {
+				fsCache: false
+			}
+		}
 	},
 	swc: () => ({
 		jsc: {
