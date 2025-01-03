@@ -1,3 +1,4 @@
+import { ErrorPage } from "@pages/ErrorPage"
 import React, { type PropsWithChildren, Suspense } from "react"
 
 type ErrorBoundaryStateProps = {
@@ -29,10 +30,14 @@ export class ErrorBoundaryProvider extends React.Component<
 		const { hasError } = this.state
 		const { children } = this.props
 
-		return hasError ?
+		if (hasError) {
+			return (
 				<Suspense>
-					<></>
+					<ErrorPage />
 				</Suspense>
-			:	children
+			)
+		}
+
+		return children
 	}
 }
