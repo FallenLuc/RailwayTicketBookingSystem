@@ -25,5 +25,3 @@ export const Default: TypeStory = {
 		footer: <div className={styles.footerStories}></div>
 	}
 }
-
-// To Hold сделать сторис

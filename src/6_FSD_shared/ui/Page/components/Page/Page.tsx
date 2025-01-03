@@ -7,8 +7,8 @@ import styles from "./Page.module.scss"
 
 type PageProps = {
 	className?: string
-	content: ReactNode
-	footer: ReactNode
+	content?: ReactNode
+	footer?: ReactNode
 }
 export const Page = TypedMemo((props: PageProps) => {
 	const { className, content, footer } = props
