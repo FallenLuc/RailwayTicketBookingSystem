@@ -1,0 +1,29 @@
+.DatePicker {
+	position: relative;
+	width: 366px;
+
+	border-radius: var(--br-button);
+
+	background-color: var(--main-light);
+	box-shadow: var(--box-shadow);
+
+	color: var(--main-light);
+
+	&::before {
+		content: "";
+
+		position: absolute;
+
+		top: 0;
+
+		left: 50%;
+		width: 0;
+		height: 0;
+
+		transform: translate(-50%, -100%);
+
+		border-right: 8px solid transparent;
+		border-bottom: 16px solid var(--main-light);
+		border-left: 8px solid transparent;
+	}
+}
