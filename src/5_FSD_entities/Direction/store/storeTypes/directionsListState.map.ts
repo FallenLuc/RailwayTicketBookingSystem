@@ -1,8 +1,9 @@
 import type { EntityState } from "@reduxjs/toolkit"
-import type { directionsGeneralDataType } from "../../types/directionData.type"
+import type { directionGeneralDataType } from "../../types/directionData.type"
 
 export type directionsListStateMap = {
 	isLoading: boolean
+	totalCount?: number
 	error?: string
 	_inited?: boolean
-} & EntityState<directionsGeneralDataType, directionsGeneralDataType["id"]>
+} & EntityState<directionGeneralDataType, string>

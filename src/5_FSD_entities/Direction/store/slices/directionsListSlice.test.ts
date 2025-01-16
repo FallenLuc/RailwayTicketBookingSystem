@@ -1,9 +1,13 @@
 import type { DeepPartial } from "@customTypes/global.types"
-import { describe, expect, test } from "@jest/globals"
-import type { directionsGeneralDataType } from "../../types/directionData.type"
+import { describe, expect, jest, test } from "@jest/globals"
+import type { directionGeneralDataFromServerType } from "../../types/directionData.type"
 import type { directionsListStateMap } from "../storeTypes/directionsListState.map"
 import { fetchDirectionsThunk } from "../thunks/fetchDirections/fetchDirections.thunk"
 import { directionsListSliceActions, directionsListSliceReducers } from "./directionsList.slice"
+
+jest.mock("uid", () => ({
+	uid: jest.fn().mockReturnValue("testID")
+}))
 
 describe("directionsListSliceTest", () => {
 	test("directionsListInit init already", () => {
@@ -55,7 +59,8 @@ describe("directionsListSliceTest", () => {
 			isLoading: true,
 			error: undefined,
 			ids: [],
-			entities: {}
+			entities: {},
+			totalCount: 0
 		})
 	})
 
@@ -69,17 +74,27 @@ describe("directionsListSliceTest", () => {
 
 		const newState = directionsListSliceReducers(
 			state as directionsListStateMap,
-			fetchDirectionsThunk.fulfilled([{ id: "1" }] as directionsGeneralDataType[], "", {
-				from_city_id: "1",
-				to_city_id: "2"
-			})
+			fetchDirectionsThunk.fulfilled(
+				{
+					total_count: 156,
+					items: [
+						{ from_city_id: "1" }
+					] as unknown as directionGeneralDataFromServerType[]
+				},
+				"",
+				{
+					from_city_id: "1",
+					to_city_id: "2"
+				}
+			)
 		)
 
 		expect(newState).toEqual({
 			isLoading: false,
 			error: undefined,
-			ids: ["1"],
-			entities: { "1": { id: "1" } }
+			totalCount: 156,
+			ids: ["testID"],
+			entities: { testID: { from_city_id: "1", id: "testID" } }
 		})
 	})
 
@@ -103,7 +118,8 @@ describe("directionsListSliceTest", () => {
 			isLoading: false,
 			error: "error with request",
 			ids: [],
-			entities: {}
+			entities: {},
+			totalCount: 0
 		})
 	})
 })

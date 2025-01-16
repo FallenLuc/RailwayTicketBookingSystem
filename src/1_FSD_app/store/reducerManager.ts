@@ -14,7 +14,6 @@ export type reducerManagerType = {
 	remove: (key: mainStateAsyncKeys, reducer: Reducer) => void
 }
 
-// To Feature избавиться от редьюсер менеджер
 export function createReducerManager(
 	initialReducers: ReducersMapObject<mainStateMap>
 ): reducerManagerType {
@@ -37,6 +36,7 @@ export function createReducerManager(
 				keysToRemove = []
 			}
 
+			// @ts-ignore
 			return combinedReducer(state, action)
 		},
 

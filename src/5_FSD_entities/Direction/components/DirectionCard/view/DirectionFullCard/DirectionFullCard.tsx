@@ -7,7 +7,7 @@ import type { ReactNode } from "react"
 import { useCallback, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import type { carriageClassType, carriagePriceType } from "../../../../../Carriage"
-import type { directionsGeneralDataType } from "../../../../types/directionData.type"
+import type { directionGeneralDataType } from "../../../../types/directionData.type"
 import { ServicesIcon } from "../../ui/ServicesIcon/ServicesIcon"
 import styles from "./DirectionFullCard.module.scss"
 import { CarriageInfoItem } from "./ui/CarriageInfoItem/CarriageInfoItem"
@@ -16,7 +16,7 @@ import { TrainInfo } from "./ui/TrainInfo/TrainInfo"
 
 type DirectionFullCardProps = {
 	className?: string
-	data?: directionsGeneralDataType
+	data?: directionGeneralDataType
 	detailedPrice?: ReactNode
 }
 export const DirectionFullCard = TypedMemo((props: DirectionFullCardProps) => {
@@ -61,12 +61,12 @@ export const DirectionFullCard = TypedMemo((props: DirectionFullCardProps) => {
 			>
 				<DirectionInfo
 					data={data?.departure}
-					direction={"there"}
+					direction={"toTrip"}
 				/>
 				{data?.arrival ?
 					<DirectionInfo
 						data={data?.arrival}
-						direction={"back"}
+						direction={"fromTrip"}
 					/>
 				:	null}
 			</VStack>

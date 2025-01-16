@@ -1,0 +1,9 @@
+.item {
+	color: var(--main-gray);
+
+	cursor: pointer;
+}
+
+.active {
+	color: var(--main-dark);
+}

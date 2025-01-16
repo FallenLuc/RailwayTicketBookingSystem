@@ -1,25 +1,31 @@
-import { RoutePaths } from "../constants/routePath.constant"
+import { HashPaths, RoutePaths } from "../constants/routePaths.constant"
 
 export const getRouteMain = () => {
 	return { route: RoutePaths.Main }
 }
-export const getRouteMainHeader = () => {
-	return { route: RoutePaths.MainHeader, hash: RoutePaths.MainHeader.replace(/.*\/#/gm, "") }
-}
-export const getRouteMainAboutUs = () => {
-	return { route: RoutePaths.MainAboutUs, hash: RoutePaths.MainAboutUs.replace(/.*\/#/gm, "") }
-}
-export const getRouteMainHowItWorks = () => {
+export const getRouteHeader = (pagePath: string) => {
 	return {
-		route: RoutePaths.MainHowItWorks,
-		hash: RoutePaths.MainHowItWorks.replace(/.*\/#/gm, "")
+		route: `${pagePath == "/" ? "" : pagePath}${HashPaths.Header}`,
+		hash: `${HashPaths.Header.replace(/.*\/#/gm, "")}`
 	}
 }
-export const getRouteMainReviews = () => {
-	return { route: RoutePaths.MainReviews, hash: RoutePaths.MainReviews.replace(/.*\/#/gm, "") }
+export const getRouteAboutUs = () => {
+	return { route: HashPaths.AboutUs, hash: HashPaths.AboutUs.replace(/.*\/#/gm, "") }
 }
-export const getRouteMainContacts = () => {
-	return { route: RoutePaths.MainContacts, hash: RoutePaths.MainContacts.replace(/.*\/#/gm, "") }
+export const getRouteHowItWorks = () => {
+	return {
+		route: HashPaths.HowItWorks,
+		hash: HashPaths.HowItWorks.replace(/.*\/#/gm, "")
+	}
+}
+export const getRouteReviews = () => {
+	return { route: HashPaths.Reviews, hash: HashPaths.Reviews.replace(/.*\/#/gm, "") }
+}
+export const getRouteContacts = () => {
+	return {
+		route: HashPaths.Contacts,
+		hash: HashPaths.Contacts.replace(/.*\/#/gm, "")
+	}
 }
 export const getRouteChooseTrain = () => {
 	return { route: RoutePaths.ChooseTrain }

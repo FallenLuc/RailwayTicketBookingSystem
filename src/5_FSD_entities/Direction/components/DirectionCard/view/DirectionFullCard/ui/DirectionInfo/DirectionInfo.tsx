@@ -9,11 +9,11 @@ import styles from "./DirectionInfo.module.scss"
 
 type DirectionInfoProps = {
 	className?: string
-	direction?: "there" | "back"
+	direction?: "toTrip" | "fromTrip"
 	data?: directionDataType
 }
 export const DirectionInfo = TypedMemo((props: DirectionInfoProps) => {
-	const { className, data, direction = "there" } = props
+	const { className, data, direction = "toTrip" } = props
 
 	return (
 		<HStack
@@ -55,7 +55,7 @@ export const DirectionInfo = TypedMemo((props: DirectionInfoProps) => {
 					colorText={"main-gray"}
 					fontSizeText={"s"}
 				/>
-				{direction === "there" ?
+				{direction === "toTrip" ?
 					<ArrowClearToIcon className={styles.arrow} />
 				:	<ArrowClearFromIcon className={styles.arrow} />}
 			</VStack>

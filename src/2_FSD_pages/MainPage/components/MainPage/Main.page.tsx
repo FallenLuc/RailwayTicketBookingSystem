@@ -1,31 +1,37 @@
-import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { useScrollToAnchor } from "@providers/RouterProvider/lib/hooks/useScrollToAnchor.hook"
+import { getRouteMain } from "@config/router"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
+import { Page } from "@ui/Page"
 import { AboutUs } from "@widgets/AboutUs"
 import { Footer } from "@widgets/Footer"
 import { Header } from "@widgets/Header"
 import { HowItWorks } from "@widgets/HowItWorks"
 import { Reviews } from "@widgets/Reviews"
+import { useMemo } from "react"
 import { HeaderContent } from "./ui/HeaderContent/HeaderContent"
 
-type MainPageProps = {
-	className?: string
-}
-const MainPage = TypedMemo((props: MainPageProps) => {
-	const { className } = props
+const pagePath = getRouteMain()
 
-	useScrollToAnchor()
-
-	return (
-		<div className={classNamesHelp(undefined, undefined, [className, "pageStyle"])}>
-			<Header backgroundType={"main"}>
+const MainPage = TypedMemo(() => {
+	const content = (
+		<>
+			<Header
+				backgroundType={"main"}
+				pagePath={pagePath.route}
+			>
 				<HeaderContent />
 			</Header>
 			<AboutUs />
 			<HowItWorks />
 			<Reviews />
-			<Footer />
-		</div>
+		</>
+	)
+
+	const footer = useMemo(() => <Footer pagePath={pagePath.route} />, [])
+	return (
+		<Page
+			content={content}
+			footer={footer}
+		/>
 	)
 })
 

@@ -1,15 +1,13 @@
-import {
-	Listbox as HListBox,
-	ListboxButton as HListBoxButton,
-	ListboxOptions as HListBoxOptions
-} from "@headlessui/react"
-import type { AnchorPropsWithSelection } from "@headlessui/react/dist/internal/floating"
-import type { Mods } from "@helpers/classNamesHelp/classNamesHelp"
+import { Field, Label, Select as HSelect } from "@headlessui/react"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
-import { useCallback, useMemo } from "react"
-import { Option } from "../Option/Option"
+import type { ChangeEvent, PropsWithChildren } from "react"
+import { useCallback, useState } from "react"
+import { HStack } from "../../../Stack"
+import { OptionsList } from "../OptionsList/OptionsList"
 import styles from "./Select.module.scss"
+
+type selectThemes = "clear" | "border"
 
 export type OptionType<T extends string> = {
 	value: T
@@ -18,71 +16,61 @@ export type OptionType<T extends string> = {
 
 export type SelectProps<T extends string> = {
 	className?: string
-	classNamesLabel?: string
+	classNameLabel?: string
 	options: OptionType<T>[]
 	label?: string
-	disabled?: boolean
-	defaultValue?: T
+	theme?: selectThemes
 	value?: T
 	onChange?: (value: T) => void
 }
 
 export const Select = TypedMemo(<T extends string>(props: SelectProps<T>) => {
-	const { className, classNamesLabel, options, disabled, defaultValue, value, label, onChange } =
-		props
+	const { className, classNameLabel, options, value, label, onChange, theme = "clear" } = props
+
+	const [optionValue, setOptionValue] = useState(value || options[0].value)
 
 	const onChangeHandler = useCallback(
-		(value: T) => {
-			onChange?.(value)
+		(event: ChangeEvent<HTMLSelectElement>) => {
+			const { value } = event.target
+
+			setOptionValue(value as T)
+
+			onChange?.(value as T)
 		},
 		[onChange]
 	)
 
-	const mods: Mods = useMemo(() => {
-		return {
-			[styles.readonly]: disabled
-		}
-	}, [disabled])
-
-	const anchor: AnchorPropsWithSelection = useMemo(
-		() => ({
-			gap: 8,
-			to: "bottom"
-		}),
-		[]
+	const hSelectComponent = (
+		<div className={classNamesHelp(styles.wrapper, undefined, [className, styles[theme]])}>
+			<HSelect
+				className={classNamesHelp(styles.Select, undefined)}
+				onChange={onChangeHandler}
+				value={optionValue}
+			>
+				<OptionsList options={options} />
+			</HSelect>
+		</div>
 	)
 
-	const triggerContent = options.filter(opt => opt.value == value)[0]?.content || defaultValue
-
-	const hSelectComponent = (
-		<HListBox
-			className={classNamesHelp(styles.Select, mods, [className])}
-			as="div"
-			value={value}
-			disabled={disabled}
-			onChange={onChangeHandler}
+	const Container = (props: PropsWithChildren) => (
+		<HStack
+			gap={"XS"}
+			align={"center"}
+			widthMax={false}
+			className={styles.wrapper}
 		>
-			<HListBoxButton className={styles.trigger}>{triggerContent}</HListBoxButton>
-			<HListBoxOptions
-				className={styles.list}
-				anchor={anchor}
-			>
-				{options.map(opt => (
-					<Option
-						option={opt}
-						key={opt.value}
-					/>
-				))}
-			</HListBoxOptions>
-		</HListBox>
+			{props.children}
+		</HStack>
 	)
 
 	if (label) {
 		return (
-			<label className={classNamesHelp(styles.label, mods, [classNamesLabel])}>
-				{label}
+			<Field as={Container}>
+				<Label className={classNamesHelp(styles.label, undefined, [classNameLabel])}>
+					{label}
+				</Label>
 				{hSelectComponent}
-			</label>
+			</Field>
 		)
 	}
 

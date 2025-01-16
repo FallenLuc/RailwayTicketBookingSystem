@@ -1,5 +1,6 @@
+import { SHOW_LIMITS } from "@constants/common.constant"
 import type { citiesDataForServerType } from "@entities/City"
-import type { directionFormParametres } from "@entities/Direction"
+import type { directionDisplayParametres, directionFormParametres } from "@entities/Direction"
 import { buildCreateSelector } from "@helpers/buildCreateSelector/buildCreateSelector.helper"
 import type { formForSearchOfDirectionsStateMap } from "../../storeTypes/formForSearchOfDirectionsState.map"
 import { getFormForSearchOfDirectionsSelector } from "../getFormForSearchOfDirections/getFormForSearchOfDirections.selector"
@@ -41,10 +42,12 @@ export const [
 			)
 		)
 
-		let result: directionFormParametres | undefined
+		const displayData = state?.displayData ?? { limit: SHOW_LIMITS[0], offset: 1 }
 
-		if (data && citiesData) {
-			result = { ...data, ...citiesData }
+		const result: (directionFormParametres & directionDisplayParametres) | undefined = {
+			...data,
+			...citiesData,
+			...displayData
 		}
 
 		return result

@@ -1,11 +1,19 @@
-import { SEARCH_FORM } from "@constants/localStorage.constant"
+import { SHOW_LIMITS } from "@constants/common.constant"
+import type { directionDisplayParametres } from "@entities/Direction"
 import { buildSlice } from "@helpers/buildSlice/buildSlice.helper"
 import type { PayloadAction } from "@reduxjs/toolkit"
-import type { formForSearchOfDirectionsStateMap } from "../storeTypes/formForSearchOfDirectionsState.map"
+import type {
+	formDataType,
+	formForSearchOfDirectionsStateMap
+} from "../storeTypes/formForSearchOfDirectionsState.map"
 
 const initialState: formForSearchOfDirectionsStateMap = {
 	isValidForm: false,
-	data: undefined
+	data: undefined,
+	displayData: {
+		limit: SHOW_LIMITS[0],
+		offset: 1
+	}
 }
 
 // To Feature сделать сохранение формы в params страницы
@@ -14,13 +22,10 @@ const formForSearchOfDirectionsSlice = buildSlice({
 	name: "formForSearchOfDirections",
 	initialState,
 	reducers: {
-		setParametres: (
-			state,
-			action: PayloadAction<formForSearchOfDirectionsStateMap["data"]>
-		) => {
+		setParametres: (state, action: PayloadAction<formDataType>) => {
 			const parametres = action.payload
 
-			let data: formForSearchOfDirectionsStateMap["data"] = { ...state.data, ...parametres }
+			let data: formDataType = { ...state.data, ...parametres }
 
 			data = Object.fromEntries(
 				Object.entries(data).filter(([_, value]) => Boolean(value) || value === 0)
@@ -29,14 +34,19 @@ const formForSearchOfDirectionsSlice = buildSlice({
 			state.data = { ...data }
 
 			state.isValidForm = Boolean(state?.data?.fromCity) && Boolean(state?.data?.toCity)
+		},
+		setDisplayParametres: (state, action: PayloadAction<directionDisplayParametres>) => {
+			const displayParametres = action.payload
 
-			localStorage.setItem(SEARCH_FORM, JSON.stringify(state.data))
+			state.displayData = { ...state.displayData, ...displayParametres }
 		},
 		clearParametres: state => {
 			state.data = undefined
 			state.isValidForm = false
-
-			localStorage.removeItem(SEARCH_FORM)
+			state.displayData = {
+				limit: SHOW_LIMITS[0],
+				offset: 1
+			}
 		},
 
 		changeDirection: state => {
@@ -46,8 +56,6 @@ const formForSearchOfDirectionsSlice = buildSlice({
 				state.data.toCity = state.data?.fromCity
 
 				state.data.fromCity = staged
-
-				localStorage.setItem(SEARCH_FORM, JSON.stringify(state.data))
 			}
 		}
 	}

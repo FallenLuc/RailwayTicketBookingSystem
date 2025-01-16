@@ -1,7 +1,7 @@
 import { ReviewerMan, ReviewerWoman } from "@assets/index"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { memo, useMemo } from "react"
-import Slider from "react-slick"
+import SlickSlider from "react-slick"
 import styles from "./ReviewsSlider.module.scss"
 import { ReviewsItem } from "./ui/ReviewsItem/ReviewsItem"
 
@@ -24,7 +24,7 @@ export const ReviewsSlider = memo<ReviewsSliderProps>(props => {
 	}, [])
 
 	return (
-		<Slider
+		<SlickSlider
 			{...settings}
 			className={classNamesHelp(styles.Slider, {}, [className])}
 		>
@@ -42,6 +42,6 @@ export const ReviewsSlider = memo<ReviewsSliderProps>(props => {
 				}
 				imageUrl={ReviewerMan}
 			/>
-		</Slider>
+		</SlickSlider>
 	)
 })

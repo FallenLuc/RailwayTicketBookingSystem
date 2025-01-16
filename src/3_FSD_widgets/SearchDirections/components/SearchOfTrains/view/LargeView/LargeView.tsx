@@ -12,8 +12,8 @@ import styles from "./LargeView.module.scss"
 export const LargeView = memo<SearchOfTrainsViewsProps>(props => {
 	const {
 		className,
-		onSaveDepartureDate,
-		onSaveArrivalDate,
+		onSaveToDate,
+		onSaveFromDate,
 		onSaveFromLocation,
 		onSaveToLocation,
 		onSearch,
@@ -70,11 +70,11 @@ export const LargeView = memo<SearchOfTrainsViewsProps>(props => {
 						justify={"spaceBetween"}
 					>
 						<DateInput
-							onSaveToForm={onSaveArrivalDate}
+							onSaveToForm={onSaveFromDate}
 							value={dateFrom}
 						/>
 						<DateInput
-							onSaveToForm={onSaveDepartureDate}
+							onSaveToForm={onSaveToDate}
 							value={dateTo}
 						/>
 					</HStack>

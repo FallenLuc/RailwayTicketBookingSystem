@@ -1,6 +1,7 @@
 import preview from "@_storybook/preview"
 import { getCitiesRequestPaths } from "@api/libs/gettersRequestPaths.helper"
 import { CenterDecorator } from "@decorators/storybook/Center.decorator"
+import { cityDataMock } from "@entities/City"
 import { type Meta, type StoryObj } from "@storybook/react"
 import { SearchDirections } from "./SearchDirections"
 
@@ -19,16 +20,7 @@ const meta: Meta<typeof SearchDirections> = {
 				method: "GET",
 				status: 200,
 				delay: 1000,
-				response: [
-					{
-						_id: "66ac8b69cb563f0052174f45",
-						name: "москва"
-					},
-					{
-						_id: "66ac8b69cb563f0052174f46",
-						name: "московия"
-					}
-				]
+				response: [cityDataMock("москва"), cityDataMock("московия")]
 			}
 		],
 		controls: {

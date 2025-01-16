@@ -16,8 +16,8 @@ const getAnimationsLibs = async () => {
 }
 
 export const AnimationProvider = memo(({ children }: AnimationProviderProps) => {
-	const SpringRef = useRef<SpringType>()
-	const GestureRef = useRef<GestureType>()
+	const SpringRef = useRef<SpringType>(undefined)
+	const GestureRef = useRef<GestureType>(undefined)
 
 	const [isLoading, setIsLoading] = useState(true)
 
