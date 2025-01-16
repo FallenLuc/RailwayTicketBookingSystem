@@ -1,11 +1,11 @@
-@import "reset";
-@import "vars/globals.var";
-@import "vars/font.var";
-@import "vars/color.var";
-@import "vars/size.var";
-@import "fonts/Roboto.font";
-@import "vars/gap.var";
-@import "global";
+@use "reset";
+@use "vars/globals.var";
+@use "vars/font.var";
+@use "vars/color.var";
+@use "vars/size.var";
+@use "fonts/Roboto.font";
+@use "vars/gap.var";
+@use "global";
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
@@ -14,15 +14,15 @@
 	min-height: 100vh;
 }
 
-.pageStyle {
+.page {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	height: auto;
 	min-height: 100vh;
 }
 
-.page-container {
-	display: flex;
-}
-
+// supports (storybook)
 .full-height {
 	height: auto !important;
 	min-height: 100vh !important;
@@ -40,4 +40,9 @@
 .restriction-container {
 	width: 100%;
 	max-width: 700px;
+}
+
+.restriction-container-large {
+	width: 100%;
+	max-width: 1000px;
 }

@@ -1,4 +1,4 @@
-import { getRouteMainReviews } from "@config/router"
+import { getRouteReviews } from "@config/router"
 import { getRouteNameReviews } from "@config/router/helpers/getterRoutesNames.helper"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
@@ -15,9 +15,10 @@ export const Reviews = TypedMemo((props: ReviewsProps) => {
 	const { className } = props
 
 	return (
-		<section
+		<VStack
+			TagType={"section"}
 			className={classNamesHelp(styles.Reviews, {}, [className])}
-			id={getRouteMainReviews().hash}
+			id={getRouteReviews().hash}
 		>
 			<ContainerLayout>
 				<VStack
@@ -34,6 +35,6 @@ export const Reviews = TypedMemo((props: ReviewsProps) => {
 					<ReviewsSlider />
 				</VStack>
 			</ContainerLayout>
-		</section>
+		</VStack>
 	)
 })

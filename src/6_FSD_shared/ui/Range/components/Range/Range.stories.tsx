@@ -17,7 +17,7 @@ const meta: Meta<typeof Range> = {
 			]
 		}
 	},
-	decorators: [RestrictionDecorator, CenterDecorator]
+	decorators: [RestrictionDecorator(), CenterDecorator]
 }
 
 export default meta

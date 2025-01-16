@@ -26,7 +26,7 @@ export type directionDataType = {
 	price_info: priceInfoType
 }
 
-export type directionsGeneralDataFromServerType = {
+export type directionGeneralDataFromServerType = {
 	have_first_class: boolean
 	have_second_class: boolean
 	have_third_class: boolean
@@ -41,6 +41,11 @@ export type directionsGeneralDataFromServerType = {
 	departure: directionDataType
 }
 
-export type directionsGeneralDataType = {
+export type directionGeneralDataType = {
 	id: string
-} & directionsGeneralDataFromServerType
+} & directionGeneralDataFromServerType
+
+export type directionsDataFromServerType = {
+	total_count: number
+	items: directionGeneralDataFromServerType[]
+}

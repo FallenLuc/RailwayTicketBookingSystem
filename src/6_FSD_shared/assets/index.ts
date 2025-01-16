@@ -2,6 +2,8 @@
 import ArrowClearFromIcon from "./icons/arrow-clear-from.svg"
 import ArrowClearToIcon from "./icons/arrow-clear-to.svg"
 import ArrowFromIcon from "./icons/arrow-from.svg"
+import ArrowLeftIcon from "./icons/arrow-left.svg"
+import ArrowRightIcon from "./icons/arrow-right.svg"
 import ArrowToIcon from "./icons/arrow-to.svg"
 import ArrowUpIcon from "./icons/arrow-up.svg"
 import CalendarIcon from "./icons/calendar.svg"
@@ -25,6 +27,7 @@ import PlackartIcon from "./icons/plackart.svg"
 import PlusButtonIcon from "./icons/plus-button.svg"
 import SitPlaceIcon from "./icons/sit-place.svg"
 import SkypeIcon from "./icons/skype.svg"
+import ThreeDotsIcon from "./icons/three-dots.svg"
 import TitleIcon from "./icons/title.svg"
 import TrainIcon from "./icons/train.svg"
 import TwitterIcon from "./icons/twitter.svg"
@@ -74,5 +77,8 @@ export {
 	TrainIcon,
 	ArrowClearFromIcon,
 	ArrowClearToIcon,
-	ConditionerIcon
+	ConditionerIcon,
+	ArrowLeftIcon,
+	ArrowRightIcon,
+	ThreeDotsIcon
 }

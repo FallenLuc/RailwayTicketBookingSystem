@@ -41,7 +41,7 @@ const meta: Meta<typeof Input> = {
 			]
 		}
 	},
-	decorators: [RestrictionDecorator, CenterDecorator]
+	decorators: [RestrictionDecorator(), CenterDecorator]
 }
 
 export default meta

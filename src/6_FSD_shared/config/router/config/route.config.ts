@@ -1,61 +1,50 @@
-import { PagesNames } from "../constants/pagesNames.constant"
-import { RoutePaths } from "../constants/routePath.constant"
+import { RouteNames } from "../constants/routeNames.constant"
+import { HashPaths, RoutePaths } from "../constants/routePaths.constant"
 
 export type routeInfoType = {
-	name: PagesNames
-	path: RoutePaths
-	inHeader: boolean
+	name: RouteNames
+	path: RoutePaths | HashPaths
 }
 
-export const routeConfig: Record<PagesNames, routeInfoType> = {
-	[PagesNames.Main]: {
-		name: PagesNames.Main,
-		path: RoutePaths.Main,
-		inHeader: false
+export const routeConfig: Record<RouteNames, routeInfoType> = {
+	[RouteNames.Main]: {
+		name: RouteNames.Main,
+		path: RoutePaths.Main
 	},
-	[PagesNames.MainHeader]: {
-		name: PagesNames.MainHeader,
-		path: RoutePaths.MainHeader,
-		inHeader: false
+	[RouteNames.Header]: {
+		name: RouteNames.Header,
+		path: HashPaths.Header
 	},
-	[PagesNames.MainAboutUs]: {
-		name: PagesNames.MainAboutUs,
-		path: RoutePaths.MainAboutUs,
-		inHeader: true
+	[RouteNames.AboutUS]: {
+		name: RouteNames.AboutUS,
+		path: HashPaths.AboutUs
 	},
-	[PagesNames.MainHowItWorks]: {
-		name: PagesNames.MainHowItWorks,
-		path: RoutePaths.MainHowItWorks,
-		inHeader: true
+	[RouteNames.HowItWorks]: {
+		name: RouteNames.HowItWorks,
+		path: HashPaths.HowItWorks
 	},
-	[PagesNames.MainReviews]: {
-		name: PagesNames.MainReviews,
-		path: RoutePaths.MainReviews,
-		inHeader: true
+	[RouteNames.Reviews]: {
+		name: RouteNames.Reviews,
+		path: HashPaths.Reviews
 	},
-	[PagesNames.MainContacts]: {
-		name: PagesNames.MainContacts,
-		path: RoutePaths.MainContacts,
-		inHeader: true
+	[RouteNames.Contacts]: {
+		name: RouteNames.Contacts,
+		path: HashPaths.Contacts
 	},
-	[PagesNames.ChooseTrain]: {
-		name: PagesNames.ChooseTrain,
-		path: RoutePaths.ChooseTrain,
-		inHeader: false
+	[RouteNames.ChooseTrain]: {
+		name: RouteNames.ChooseTrain,
+		path: RoutePaths.ChooseTrain
 	},
-	[PagesNames.Ticket]: {
-		name: PagesNames.Ticket,
-		path: RoutePaths.Ticket,
-		inHeader: false
+	[RouteNames.Ticket]: {
+		name: RouteNames.Ticket,
+		path: RoutePaths.Ticket
 	},
-	[PagesNames.Success]: {
-		name: PagesNames.Success,
-		path: RoutePaths.Success,
-		inHeader: false
+	[RouteNames.Success]: {
+		name: RouteNames.Success,
+		path: RoutePaths.Success
 	},
-	[PagesNames.NotFound]: {
-		name: PagesNames.NotFound,
-		path: RoutePaths.NotFound,
-		inHeader: false
+	[RouteNames.NotFound]: {
+		name: RouteNames.NotFound,
+		path: RoutePaths.NotFound
 	}
 }

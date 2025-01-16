@@ -1,0 +1,29 @@
+.BreadcrumbsLine {
+	position: relative;
+}
+
+.fantom-stage {
+	position: relative;
+	width: 100%;
+	min-height: 98px;
+
+	background-color: var(--main-dark);
+}
+
+.check-stage {
+	background-color: var(--accent-orange);
+}
+
+.fantom-wrapper {
+	position: absolute;
+	z-index: 0;
+}
+
+.wrapper {
+	display: flex;
+	flex-shrink: 0;
+	width: 100%;
+	padding: 0;
+
+	background-color: var(--main-dark);
+}

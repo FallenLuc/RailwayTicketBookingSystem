@@ -1,5 +1,6 @@
-import { PagesNames } from "../constants/pagesNames.constant"
+import { RouteNames } from "../constants/routeNames.constant"
 
-export const getRouteNameAboutUs = () => PagesNames.MainAboutUs
-export const getRouteNameHowItWorks = () => PagesNames.MainHowItWorks
-export const getRouteNameReviews = () => PagesNames.MainReviews
+export const getRouteNameAboutUs = () => RouteNames.AboutUS
+export const getRouteNameHowItWorks = () => RouteNames.HowItWorks
+export const getRouteNameReviews = () => RouteNames.Reviews
+export const getRouteNameContacts = () => RouteNames.Contacts

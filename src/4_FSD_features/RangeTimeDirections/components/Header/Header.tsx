@@ -9,7 +9,7 @@ import styles from "./Header.module.scss"
 
 type HeaderProps = {
 	onClick?: () => void
-	direction?: "arrival" | "departure"
+	direction?: "toTrip" | "fromTrip"
 	isOpen: boolean
 	className?: string
 }
@@ -32,11 +32,11 @@ export const Header = TypedMemo((props: HeaderProps) => {
 				gap={"S"}
 				align={"center"}
 			>
-				{direction === "arrival" ?
+				{direction === "toTrip" ?
 					<ArrowToIcon className={styles.arrow} />
 				:	<ArrowFromIcon className={styles.arrow} />}
 				<Text
-					title={direction === "arrival" ? "Туда" : "Обратно"}
+					title={direction === "toTrip" ? "Туда" : "Обратно"}
 					fontSizeTitle={"l"}
 					fontWeightTitle={"ultra-fat"}
 					colorTitle={"main-light"}

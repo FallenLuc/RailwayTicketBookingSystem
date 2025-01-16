@@ -32,7 +32,7 @@ export const LocationInput = TypedMemo((props: LocationInputProps) => {
 
 	const saveToFormHelper = useCallback(
 		(city: cityDataType) => {
-			onSaveToForm(city)
+			onSaveToForm?.(city)
 			setCities([])
 		},
 		[onSaveToForm]

@@ -7,7 +7,7 @@ import { Subscription } from "./Subscription"
 const meta: Meta<typeof Subscription> = {
 	title: "features/Subscription",
 	component: Subscription,
-	decorators: [RestrictionDecorator, CenterDecorator]
+	decorators: [RestrictionDecorator(), CenterDecorator]
 }
 
 export default meta

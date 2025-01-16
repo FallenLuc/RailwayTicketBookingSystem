@@ -6,3 +6,5 @@ export const getSubscribeRequestPaths = (value: string) =>
 export const getDirectionsRequestPaths = () => RequestPaths.Directions
 
 export const getCitiesRequestPaths = (value: string) => `${RequestPaths.Cities}?name=${value}`
+
+export const getLastDirectionsRequestPaths = () => RequestPaths.LastDirections

@@ -20,8 +20,8 @@ export type SearchOfTrainsViewsProps = {
 	className?: string
 	onSaveFromLocation: (city?: cityDataType) => void
 	onSaveToLocation: (city?: cityDataType) => void
-	onSaveArrivalDate: (value: string) => void
-	onSaveDepartureDate: (value: string) => void
+	onSaveFromDate: (value: string) => void
+	onSaveToDate: (value: string) => void
 	onSearch: () => void
 	onChangeDirection: () => void
 	parametres?: formForSearchOfDirectionsStateMap["data"]
@@ -47,14 +47,14 @@ export const SearchDirections = TypedMemo((props: SearchOfTrainsProps) => {
 		},
 		[setParametres]
 	)
-	const onSaveArrivalDateHandler = useCallback(
+	const onSaveFromDateHandler = useCallback(
 		(value: string) => {
 			setParametres({ date_start: value })
 		},
 		[setParametres]
 	)
 
-	const onSaveDepartureDateHandler = useCallback(
+	const onSaveToDateHandler = useCallback(
 		(value: string) => {
 			setParametres({ date_end: value })
 		},
@@ -80,8 +80,8 @@ export const SearchDirections = TypedMemo((props: SearchOfTrainsProps) => {
 				className={className}
 				onSaveFromLocation={onSaveFromLocationHandler}
 				onSaveToLocation={onSaveToLocationHandler}
-				onSaveArrivalDate={onSaveArrivalDateHandler}
-				onSaveDepartureDate={onSaveDepartureDateHandler}
+				onSaveFromDate={onSaveFromDateHandler}
+				onSaveToDate={onSaveToDateHandler}
 				onSearch={onSearchHandler}
 				parametres={formParametres}
 				onChangeDirection={onChangeDirectionHandler}
@@ -95,8 +95,8 @@ export const SearchDirections = TypedMemo((props: SearchOfTrainsProps) => {
 				className={className}
 				onSaveFromLocation={onSaveFromLocationHandler}
 				onSaveToLocation={onSaveToLocationHandler}
-				onSaveArrivalDate={onSaveArrivalDateHandler}
-				onSaveDepartureDate={onSaveDepartureDateHandler}
+				onSaveFromDate={onSaveFromDateHandler}
+				onSaveToDate={onSaveToDateHandler}
 				onSearch={onSearchHandler}
 				parametres={formParametres}
 				onChangeDirection={onChangeDirectionHandler}
