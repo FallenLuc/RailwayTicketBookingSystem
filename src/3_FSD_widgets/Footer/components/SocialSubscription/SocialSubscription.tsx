@@ -1,16 +1,16 @@
-import { memo, useMemo } from "react"
-import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { VStack, HStack } from "@ui/Stack"
-import { Text } from "@ui/Text"
-import { AppLink } from "@ui/AppLink"
-import { YouTubeIcon, LinkedinIcon, GoogleIcon, FacebookIcon, TwitterIcon } from "@assets/index"
+import { FacebookIcon, GoogleIcon, LinkedinIcon, TwitterIcon, YouTubeIcon } from "@assets/index"
 import {
-	YOUTUBE_LINK,
-	LINKEDIN_LINK,
-	GOOGLE_LINK,
 	FACEBOOK_LINK,
-	TWITTER_LINK
+	GOOGLE_LINK,
+	LINKEDIN_LINK,
+	TWITTER_LINK,
+	YOUTUBE_LINK
 } from "@constants/links.constant"
+import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
+import { AppLink } from "@ui/AppLink"
+import { HStack, VStack } from "@ui/Stack"
+import { Text } from "@ui/Text"
+import { memo, useMemo } from "react"
 import styles from "./SocialSubscription.module.scss"
 
 type SocialSubscriptionProps = {
@@ -29,7 +29,7 @@ export const SocialSubscription = memo<SocialSubscriptionProps>(props => {
 	return (
 		<VStack
 			className={classNamesHelp("", {}, [className])}
-			gap={"gapL"}
+			gap={"L"}
 		>
 			<Text
 				TitleType={"h3"}
@@ -40,7 +40,7 @@ export const SocialSubscription = memo<SocialSubscriptionProps>(props => {
 			/>
 			<HStack
 				align={"center"}
-				gap={"gapL"}
+				gap={"L"}
 				TagType={"ul"}
 			>
 				<li>
