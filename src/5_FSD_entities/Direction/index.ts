@@ -12,9 +12,9 @@ export type {
 export { fetchDirectionsThunk } from "./store/thunks/fetchDirections/fetchDirections.thunk"
 
 export {
-	directionsListSliceReducers,
-	directionsListSliceActions,
-	useDirectionsListSliceUseActions
+	directionsListReducers,
+	directionsListActions,
+	useDirectionsListUseActions
 } from "./store/slices/directionsList.slice"
 
 export {

@@ -56,7 +56,7 @@ const directionsListSlice = buildSlice({
 })
 
 export const {
-	actions: directionsListSliceActions,
-	reducer: directionsListSliceReducers,
-	useActions: useDirectionsListSliceUseActions
+	actions: directionsListActions,
+	reducer: directionsListReducers,
+	useActions: useDirectionsListUseActions
 } = directionsListSlice

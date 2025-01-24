@@ -1,11 +1,9 @@
-import { getRouteTicket } from "@config/router"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { Button } from "@ui/Button"
 import { HStack, VStack } from "@ui/Stack"
 import type { ReactNode } from "react"
 import { useCallback, useState } from "react"
-import { useNavigate } from "react-router-dom"
 import type { carriageClassType, carriagePriceType } from "../../../../../Carriage"
 import type { directionGeneralDataType } from "../../../../types/directionData.type"
 import { ServicesIcon } from "../../ui/ServicesIcon/ServicesIcon"
@@ -18,11 +16,10 @@ type DirectionFullCardProps = {
 	className?: string
 	data?: directionGeneralDataType
 	detailedPrice?: ReactNode
+	onClick?: () => void
 }
 export const DirectionFullCard = TypedMemo((props: DirectionFullCardProps) => {
-	const { className, data, detailedPrice } = props
-
-	const navigate = useNavigate()
+	const { className, data, detailedPrice, onClick } = props
 
 	const [isOpenDetailedPrice, setIsOpenDetailedPrice] = useState<boolean>(false)
 
@@ -31,11 +28,9 @@ export const DirectionFullCard = TypedMemo((props: DirectionFullCardProps) => {
 	}, [])
 
 	//eslint-disable-next-line
-	const onClick = useCallback(() => {
-		if (data?.id) {
-			navigate(getRouteTicket(data?.id).route)
-		}
-	}, [data?.id, navigate])
+	const onClickHandler = useCallback(() => {
+		onClick?.()
+	}, [onClick])
 
 	return (
 		<HStack
@@ -109,7 +104,7 @@ export const DirectionFullCard = TypedMemo((props: DirectionFullCardProps) => {
 						theme={"defaultLight"}
 						height={"s"}
 						width={"s"}
-						onClick={onClick}
+						onClick={onClickHandler}
 					>
 						Выбрать места
 					</Button>

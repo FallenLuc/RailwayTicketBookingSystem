@@ -1,7 +1,7 @@
 // To Hold: написать тест
 
 import {
-	directionsListSliceActions,
+	directionsListActions,
 	fetchDirectionsThunk,
 	getDirectionsListIsInitSelector
 } from "@entities/Direction"
@@ -24,7 +24,7 @@ export const fetchDirectionsListThunk = createAsyncThunk<
 	const formParametres = getFormForSearchOfDirectionsDataForRequestSelector()(getState())
 	const isInit = getDirectionsListIsInitSelector()(getState())
 
-	const { directionsListInit } = directionsListSliceActions
+	const { directionsListInit } = directionsListActions
 	if (isValid && formParametres) {
 		if (isInit) {
 			addQueryParams(formParametres)
