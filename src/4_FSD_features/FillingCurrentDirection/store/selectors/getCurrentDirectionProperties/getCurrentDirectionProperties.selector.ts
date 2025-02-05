@@ -7,9 +7,3 @@ export const [useGetCurrentDirectionToTripSelector, getCurrentDirectionToTripSel
 		[getCurrentDirectionSelector],
 		(state: currentDirectionMapState) => state?.toTrip
 	)
-
-export const [useGetCurrentDirectionFromTripSelector, getCurrentDirectionFromTripSelector] =
-	buildCreateSelector(
-		[getCurrentDirectionSelector],
-		(state: currentDirectionMapState) => state?.fromTrip
-	)

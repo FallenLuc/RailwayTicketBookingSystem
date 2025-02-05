@@ -42,8 +42,7 @@ export const DirectionsList = TypedMemo((props: DirectionsListProps) => {
 
 			const params = {
 				...formParametres,
-				toTripId: direction?.departure?._id,
-				fromTripId: direction?.arrival?._id
+				toTripId: direction?.departure?._id
 			}
 
 			navigate(createQueryParams(getRouteTicket(direction?.id).route, params))

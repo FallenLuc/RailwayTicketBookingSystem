@@ -3,7 +3,7 @@ import type { formDataType } from "../../../store/storeTypes/formForSearchOfDire
 
 export function parseFormDataFromUrlHelper<T extends object>(
 	searchParams?: URLSearchParams
-): [formDataType, directionDisplayParametres, T] {
+): { formData: formDataType; displayData: directionDisplayParametres; additionalData: T } {
 	let formData = {}
 	let displayData = {}
 	let additionalData: T = Object.create({})
@@ -69,5 +69,5 @@ export function parseFormDataFromUrlHelper<T extends object>(
 		}
 	})
 
-	return [formData, displayData, additionalData]
+	return { formData, displayData, additionalData }
 }

@@ -9,7 +9,7 @@ import type { directionGeneralDataType } from "../../../../types/directionData.t
 import { ServicesIcon } from "../../ui/ServicesIcon/ServicesIcon"
 import styles from "./DirectionFullCard.module.scss"
 import { CarriageInfoItem } from "./ui/CarriageInfoItem/CarriageInfoItem"
-import { DirectionInfo } from "./ui/DirectionInfo/DirectionInfo"
+import { DirectionTimeInfo } from "./ui/DirectionTimeInfo/DirectionTimeInfo"
 import { TrainInfo } from "./ui/TrainInfo/TrainInfo"
 
 type DirectionFullCardProps = {
@@ -27,7 +27,6 @@ export const DirectionFullCard = TypedMemo((props: DirectionFullCardProps) => {
 		setIsOpenDetailedPrice(prev => !prev)
 	}, [])
 
-	//eslint-disable-next-line
 	const onClickHandler = useCallback(() => {
 		onClick?.()
 	}, [onClick])
@@ -54,12 +53,12 @@ export const DirectionFullCard = TypedMemo((props: DirectionFullCardProps) => {
 				className={styles.directionsInfo}
 				gap={"XL"}
 			>
-				<DirectionInfo
+				<DirectionTimeInfo
 					data={data?.departure}
 					direction={"toTrip"}
 				/>
 				{data?.arrival ?
-					<DirectionInfo
+					<DirectionTimeInfo
 						data={data?.arrival}
 						direction={"fromTrip"}
 					/>

@@ -28,6 +28,7 @@ export {
 } from "./store/selectors/getDirectionsListProperties/getDirectionsListProperties.selector"
 
 export { DirectionCard } from "./components/DirectionCard/DirectionCard"
+export { DirectionInfo } from "./components/DirectionInfo/DirectionInfo"
 
 // mocks
 export { directionGeneralDataMock } from "./lib/mocks/directionGeneralData.mock"

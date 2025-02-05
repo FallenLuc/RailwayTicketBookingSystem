@@ -5,7 +5,4 @@ export {
 	useCurrentDirectionActions
 } from "./store/slices/currentDirection.slice"
 
-export {
-	useGetCurrentDirectionFromTripSelector,
-	useGetCurrentDirectionToTripSelector
-} from "./store/selectors/getCurrentDirectionProperties/getCurrentDirectionProperties.selector"
+export { useGetCurrentDirectionToTripSelector } from "./store/selectors/getCurrentDirectionProperties/getCurrentDirectionProperties.selector"

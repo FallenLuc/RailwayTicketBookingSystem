@@ -38,7 +38,6 @@ const ChooseTrainPage = memo(() => {
 		return () => {
 			clearParametres()
 		}
-
 		//eslint-disable-next-line
 	}, [])
 
