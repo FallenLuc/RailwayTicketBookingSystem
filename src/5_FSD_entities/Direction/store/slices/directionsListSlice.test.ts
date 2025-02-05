@@ -3,7 +3,7 @@ import { describe, expect, jest, test } from "@jest/globals"
 import type { directionGeneralDataFromServerType } from "../../types/directionData.type"
 import type { directionsListStateMap } from "../storeTypes/directionsListState.map"
 import { fetchDirectionsThunk } from "../thunks/fetchDirections/fetchDirections.thunk"
-import { directionsListSliceActions, directionsListSliceReducers } from "./directionsList.slice"
+import { directionsListActions, directionsListReducers } from "./directionsList.slice"
 
 jest.mock("uid", () => ({
 	uid: jest.fn().mockReturnValue("testID")
@@ -15,9 +15,9 @@ describe("directionsListSliceTest", () => {
 			_inited: true
 		}
 
-		const { directionsListInit } = directionsListSliceActions
+		const { directionsListInit } = directionsListActions
 
-		const newState = directionsListSliceReducers(
+		const newState = directionsListReducers(
 			state as directionsListStateMap,
 			directionsListInit()
 		)
@@ -32,9 +32,9 @@ describe("directionsListSliceTest", () => {
 			_inited: false
 		}
 
-		const { directionsListInit } = directionsListSliceActions
+		const { directionsListInit } = directionsListActions
 
-		const newState = directionsListSliceReducers(
+		const newState = directionsListReducers(
 			state as directionsListStateMap,
 			directionsListInit()
 		)
@@ -50,7 +50,7 @@ describe("directionsListSliceTest", () => {
 			error: ""
 		}
 
-		const newState = directionsListSliceReducers(
+		const newState = directionsListReducers(
 			state as directionsListStateMap,
 			fetchDirectionsThunk.pending("", { from_city_id: "1", to_city_id: "2" })
 		)
@@ -72,7 +72,7 @@ describe("directionsListSliceTest", () => {
 			entities: {}
 		}
 
-		const newState = directionsListSliceReducers(
+		const newState = directionsListReducers(
 			state as directionsListStateMap,
 			fetchDirectionsThunk.fulfilled(
 				{
@@ -104,7 +104,7 @@ describe("directionsListSliceTest", () => {
 			error: undefined
 		}
 
-		const newState = directionsListSliceReducers(
+		const newState = directionsListReducers(
 			state as directionsListStateMap,
 			fetchDirectionsThunk.rejected(
 				null,

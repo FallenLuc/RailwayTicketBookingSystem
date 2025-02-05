@@ -17,4 +17,8 @@ describe("convertSecondsToTimeHelperTest", () => {
 	test("0:59", () => {
 		expect(convertSecondsToTime(3540)).toBe("00:59")
 	})
+
+	test("unix", () => {
+		expect(convertSecondsToTime(1672949001, true)).toBe("23:03")
+	})
 })
