@@ -17,7 +17,7 @@ export const fetchInitialDirectionListThunk = createAsyncThunk<
 
 	dispatch(setParametres(formData))
 	dispatch(setDisplayParametres(displayData))
-	dispatch(fetchDirectionsListThunk())
+	dispatch(fetchDirectionsListThunk(false))
 
 	return undefined
 })

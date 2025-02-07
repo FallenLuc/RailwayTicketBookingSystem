@@ -1,7 +1,7 @@
 import type { rtkBaseApi } from "@api/instances/rtkBase.api"
 import type { directionsListStateMap } from "@entities/Direction"
-import type { currentDirectionMapState } from "@features/FillingCurrentDirection"
 import type { formForSearchOfDirectionsStateMap } from "@features/FillingFormForSearchOfDirections"
+import type { currentDirectionMapState } from "src/4_FSD_features/FillingFormCurrentDirection"
 
 export type mainStateStaticMap = {
 	formForSearchOfDirectionsStateMap: formForSearchOfDirectionsStateMap

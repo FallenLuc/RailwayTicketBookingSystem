@@ -7,7 +7,6 @@ import {
 	useGetDirectionsListErrorSelector,
 	useGetDirectionsListIsLoadingSelector
 } from "@entities/Direction"
-import { useCurrentDirectionActions } from "@features/FillingCurrentDirection"
 import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features/FillingFormForSearchOfDirections"
 import { OverlayLoader } from "@features/OverlayLoader"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
@@ -32,22 +31,18 @@ export const DirectionsList = TypedMemo((props: DirectionsListProps) => {
 	const error = useGetDirectionsListErrorSelector()
 	const formParametres = useGetFormForSearchOfDirectionsDataForRequestSelector()
 
-	const { setCurrentDirection } = useCurrentDirectionActions()
-
 	const navigate = useNavigate()
 
 	const onChoiceDirectionHandler = useCallback(
 		(direction: directionGeneralDataType) => {
-			setCurrentDirection(direction)
-
 			const params = {
 				...formParametres,
-				toTripId: direction?.departure?._id
+				directionId: direction?.departure?._id
 			}
 
 			navigate(createQueryParams(getRouteTicket(direction?.id).route, params))
 		},
-		[formParametres, navigate, setCurrentDirection]
+		[formParametres, navigate]
 	)
 
 	let content: ReactNode = (

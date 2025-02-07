@@ -19,13 +19,7 @@ export const directionsListAdapter = createEntityAdapter<directionGeneralDataTyp
 const directionsListSlice = buildSlice({
 	name: "directionsList",
 	initialState: directionsListAdapter.getInitialState<directionsListStateMap>(initialState),
-	reducers: {
-		directionsListInit: state => {
-			if (!state._inited) {
-				state._inited = true
-			}
-		}
-	},
+	reducers: {},
 	extraReducers: builder => {
 		builder
 			.addCase(fetchDirectionsThunk.pending, state => {

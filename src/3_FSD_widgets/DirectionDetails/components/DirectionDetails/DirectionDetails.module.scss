@@ -6,3 +6,14 @@
 	background-color: var(--main-light);
 	box-shadow: var(--shadow-hover);
 }
+
+.summary {
+	padding-top: 50px;
+	padding-right: 30px;
+}
+
+.currency {
+	color: var(--main-gray);
+	font: var(--font-m);
+	font-weight: var(--font-weight-think);
+}

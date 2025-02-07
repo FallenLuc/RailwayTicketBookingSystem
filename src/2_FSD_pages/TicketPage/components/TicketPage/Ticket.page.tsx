@@ -1,8 +1,8 @@
 import { getRouteTicket } from "@config/router"
 import { useGetDirectionsListDataSelector } from "@entities/Direction"
 import { BreadcrumbsLine } from "@features/BreadcrumbsLine"
-import { useCurrentDirectionActions } from "@features/FillingCurrentDirection"
-import { parseFormDataFromUrlHelper } from "@features/FillingFormForSearchOfDirections/lib/helpers/parseFormDataFromUrl/parseFormDataFromUrl.helper"
+import { useCurrentDirectionActions } from "@features/FillingFormCurrentDirection"
+import { parseFormDataFromUrlHelper } from "@features/FillingFormForSearchOfDirections"
 import { useAppDispatch } from "@hooks/useAppDispatch.hook"
 import { useInitialEffect } from "@hooks/useInitialEffect.hook"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
@@ -17,16 +17,16 @@ import { useSearchParams } from "react-router-dom"
 import { PageContent } from "../PageContent/PageContent"
 
 const TicketPage = TypedMemo(() => {
-	const dispatch = useAppDispatch()
-	const [searchParams] = useSearchParams()
-
 	const { id } = useParams<{ id: string }>()
 	const pagePath = getRouteTicket(id || "")
+
+	const dispatch = useAppDispatch()
+	const [searchParams] = useSearchParams()
 
 	const { setCurrentDirection } = useCurrentDirectionActions()
 
 	const { additionalData: dataIds } = parseFormDataFromUrlHelper<{
-		toTripId: string
+		directionId: string
 	}>(searchParams)
 
 	const directions = useGetDirectionsListDataSelector()
@@ -40,14 +40,14 @@ const TicketPage = TypedMemo(() => {
 	useEffect(() => {
 		if (directions?.length) {
 			const currentDirection = directions.filter(
-				direction => direction?.departure?._id === dataIds?.toTripId
+				direction => direction?.departure?._id === dataIds?.directionId
 			)?.[0]
 
 			if (currentDirection) {
 				setCurrentDirection(currentDirection)
 			}
 		}
-	}, [dataIds?.toTripId, directions, setCurrentDirection])
+	}, [dataIds?.directionId, directions, setCurrentDirection])
 
 	const pageContent = (
 		<>

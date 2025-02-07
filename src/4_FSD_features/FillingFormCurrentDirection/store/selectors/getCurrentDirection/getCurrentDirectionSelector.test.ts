@@ -7,7 +7,7 @@ describe("", () => {
 	test("get state", () => {
 		const state: DeepPartial<mainStateMap> = {
 			currentDirection: {
-				toTrip: { _id: "1" }
+				directionInfo: { _id: "1" }
 			}
 		}
 		expect(getCurrentDirectionSelector(state as mainStateMap)).toEqual({
