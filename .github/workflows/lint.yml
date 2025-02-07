@@ -17,30 +17,32 @@ on:
             - webpack.config.ts
 jobs:
     prepare:
-        name: Prepare
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4.1.2
-            - name: Setup Yarn
-              uses: threeal/setup-yarn-action@v2.0.0
-              with:
-                  version: latest
+      name: Prepare
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          node-version: [ 20 ]
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4.1.2
+        - name: Install Pnpm
+          uses: pnpm/action-setup@v4
+          with:
+            version: latest
+        - name: Use Node.js ${{ matrix.node-version }}
+          uses: actions/setup-node@v4
+          with:
+            node-version: ${{ matrix.node-version }}
+            cache: 'pnpm'
     lintTs:
         name: Lint TypeScript
         runs-on: ubuntu-latest
         needs: prepare
         concurrency:
-            group: lint
+          group: lint
         steps:
-            - name: Checkout
-              uses: actions/checkout@v4.1.2
-            - name: Setup Yarn
-              uses: threeal/setup-yarn-action@v2.0.0
-              with:
-                  version: latest
-            - name: Lint TS
-              run: yarn lint:ts
+          - name: Lint TS
+            run: pnpm lint:ts
     lintStyle:
         name: Lint Style
         runs-on: ubuntu-latest
@@ -48,11 +50,5 @@ jobs:
         concurrency:
             group: lint
         steps:
-            - name: Checkout
-              uses: actions/checkout@v4.1.2
-            - name: Setup Yarn
-              uses: threeal/setup-yarn-action@v2.0.0
-              with:
-                  version: latest
-            - name: Lint style
-              run: yarn lint:style
+          - name: Lint style
+            run: pnpm lint:style
