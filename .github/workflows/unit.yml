@@ -1,4 +1,4 @@
-name: Unit Test
+name: Unit
 run-name: ${{ github.workflow }}; Trigger ${{ github.ref_name }}; Runner ${{ github.actor }}
 on:
   workflow_dispatch:
