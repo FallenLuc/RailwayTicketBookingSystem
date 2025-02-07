@@ -1,54 +1,54 @@
 name: Lint
 run-name: ${{ github.workflow }}; Trigger ${{ github.ref_name }}; Runner ${{ github.actor }}
 on:
-    workflow_dispatch:
-    pull_request:
-        paths-ignore:
-            - .github/**/*
-            - ./**/*.json
-            - .stylelintrc.js
-            - .stylelintignore
-            - .eslintignore
-            - .gitignore
-            - .prettierignore
-            - README.md
-            - yarn.lock
-            - config/**/*
-            - webpack.config.ts
+  workflow_dispatch:
+  pull_request:
+    paths-ignore:
+      - .github/**/*
+      - ./**/*.json
+      - .stylelintrc.js
+      - .stylelintignore
+      - .eslintignore
+      - .gitignore
+      - .prettierignore
+      - README.md
+      - yarn.lock
+      - config/**/*
+      - webpack.config.ts
 jobs:
-    prepare:
-      name: Prepare
-      runs-on: ubuntu-latest
-      strategy:
-        matrix:
-          node-version: [ 20 ]
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v4.1.2
-        - name: Install Pnpm
-          uses: pnpm/action-setup@v4
-          with:
-            version: latest
-        - name: Use Node.js ${{ matrix.node-version }}
-          uses: actions/setup-node@v4
-          with:
-            node-version: ${{ matrix.node-version }}
-            cache: 'pnpm'
-    lintTs:
-        name: Lint TypeScript
-        runs-on: ubuntu-latest
-        needs: prepare
-        concurrency:
-          group: lint
-        steps:
-          - name: Lint TS
-            run: pnpm lint:ts
-    lintStyle:
-        name: Lint Style
-        runs-on: ubuntu-latest
-        needs: prepare
-        concurrency:
-            group: lint
-        steps:
-          - name: Lint style
-            run: pnpm lint:style
+  prepare:
+    name: Prepare
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 20 ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.2
+      - name: Install Pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm/
+  lintTs:
+    name: Lint TypeScript
+    runs-on: ubuntu-latest
+    needs: prepare
+    concurrency:
+      group: lint
+    steps:
+      - name: Lint TS
+        run: pnpm lint:ts
+  lintStyle:
+    name: Lint Style
+    runs-on: ubuntu-latest
+    needs: prepare
+    concurrency:
+        group: lint
+    steps:
+      - name: Lint style
+        run: pnpm lint:style
