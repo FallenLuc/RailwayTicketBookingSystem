@@ -1,10 +1,6 @@
 // To Hold: написать тест
 
-import {
-	directionsListSliceActions,
-	fetchDirectionsThunk,
-	getDirectionsListIsInitSelector
-} from "@entities/Direction"
+import { fetchDirectionsThunk } from "@entities/Direction"
 import {
 	getFormForSearchOfDirectionsDataForRequestSelector,
 	getFormForSearchOfDirectionsIsValidFormSelector
@@ -15,25 +11,24 @@ import type { thunkConfigType } from "@store/storeTypes/thunks.type"
 
 export const fetchDirectionsListThunk = createAsyncThunk<
 	undefined,
-	undefined,
+	boolean | undefined,
 	thunkConfigType<undefined>
->("DisplaySettingsDirectionsList/fetchDirectionsList", async (_, thunkAPI) => {
-	const { dispatch, getState } = thunkAPI
+>(
+	"DisplaySettingsDirectionsList/fetchDirectionsList",
+	async (isAllowedUpdateParams = true, thunkAPI) => {
+		const { dispatch, getState } = thunkAPI
 
-	const isValid = getFormForSearchOfDirectionsIsValidFormSelector()(getState())
-	const formParametres = getFormForSearchOfDirectionsDataForRequestSelector()(getState())
-	const isInit = getDirectionsListIsInitSelector()(getState())
+		const isValid = getFormForSearchOfDirectionsIsValidFormSelector()(getState())
+		const formParametres = getFormForSearchOfDirectionsDataForRequestSelector()(getState())
 
-	const { directionsListInit } = directionsListSliceActions
-	if (isValid && formParametres) {
-		if (isInit) {
-			addQueryParams(formParametres)
-		} else {
-			dispatch(directionsListInit())
+		if (isValid && formParametres) {
+			if (isAllowedUpdateParams) {
+				addQueryParams(formParametres)
+			}
+
+			dispatch(fetchDirectionsThunk(formParametres))
 		}
 
-		dispatch(fetchDirectionsThunk(formParametres))
+		return undefined
 	}
-
-	return undefined
-})
+)

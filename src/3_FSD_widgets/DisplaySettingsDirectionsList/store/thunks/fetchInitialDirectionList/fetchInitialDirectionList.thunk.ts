@@ -11,13 +11,13 @@ export const fetchInitialDirectionListThunk = createAsyncThunk<
 >("DisplaySettingsDirectionsList/fetchInitialDirectionList", (searchParams, thunkAPI) => {
 	const { dispatch } = thunkAPI
 
-	const [formData, displayData] = parseFormDataFromUrlHelper(searchParams)
+	const { formData, displayData } = parseFormDataFromUrlHelper(searchParams)
 
 	const { setParametres, setDisplayParametres } = formForSearchDirectionsActions
 
 	dispatch(setParametres(formData))
 	dispatch(setDisplayParametres(displayData))
-	dispatch(fetchDirectionsListThunk())
+	dispatch(fetchDirectionsListThunk(false))
 
 	return undefined
 })
