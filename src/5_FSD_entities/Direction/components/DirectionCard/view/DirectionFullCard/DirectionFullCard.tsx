@@ -2,8 +2,7 @@ import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { Button } from "@ui/Button"
 import { HStack, VStack } from "@ui/Stack"
-import type { ReactNode } from "react"
-import { useCallback, useState } from "react"
+import { useCallback } from "react"
 import type { carriageClassType, carriagePriceType } from "../../../../../Carriage"
 import type { directionGeneralDataType } from "../../../../types/directionData.type"
 import { ServicesIcon } from "../../ui/ServicesIcon/ServicesIcon"
@@ -15,17 +14,10 @@ import { TrainInfo } from "./ui/TrainInfo/TrainInfo"
 type DirectionFullCardProps = {
 	className?: string
 	data?: directionGeneralDataType
-	detailedPrice?: ReactNode
 	onClick?: () => void
 }
 export const DirectionFullCard = TypedMemo((props: DirectionFullCardProps) => {
-	const { className, data, detailedPrice, onClick } = props
-
-	const [isOpenDetailedPrice, setIsOpenDetailedPrice] = useState<boolean>(false)
-
-	const onDetailedPriceShowHandler = useCallback(() => {
-		setIsOpenDetailedPrice(prev => !prev)
-	}, [])
+	const { className, data, onClick } = props
 
 	const onClickHandler = useCallback(() => {
 		onClick?.()
@@ -78,10 +70,7 @@ export const DirectionFullCard = TypedMemo((props: DirectionFullCardProps) => {
 							return (
 								<CarriageInfoItem
 									key={index}
-									detailedPrice={detailedPrice}
 									data={data}
-									onDetailedPriceShow={onDetailedPriceShowHandler}
-									isOpenDetailedPrice={isOpenDetailedPrice}
 									carriageClass={carriageClass}
 									carriagePrice={carriagePrice}
 								/>

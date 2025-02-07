@@ -15,6 +15,7 @@ import ExpressIcon from "./icons/express.svg"
 import FacebookIcon from "./icons/facebook.svg"
 import GlobusIcon from "./icons/globus.svg"
 import GoogleIcon from "./icons/google.svg"
+import LinensIcon from "./icons/linens.svg"
 import LinkedinIcon from "./icons/linkedin.svg"
 import LocationIcon from "./icons/location.svg"
 import LogoIcon from "./icons/logo.svg"
@@ -84,5 +85,6 @@ export {
 	ArrowRightIcon,
 	ThreeDotsIcon,
 	TrainSmallIcon,
-	ClockIcon
+	ClockIcon,
+	LinensIcon
 }

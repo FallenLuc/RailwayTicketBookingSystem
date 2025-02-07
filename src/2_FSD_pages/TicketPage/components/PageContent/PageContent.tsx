@@ -63,7 +63,6 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 			className={classNamesHelp(styles.PageContent, undefined, [className])}
 			gap={"XL"}
 		>
-			<div className={styles.sidebar} />
 			<VStack
 				gap={"XL"}
 				align={"flexEnd"}

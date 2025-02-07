@@ -3,47 +3,13 @@ import { describe, expect, jest, test } from "@jest/globals"
 import type { directionGeneralDataFromServerType } from "../../types/directionData.type"
 import type { directionsListStateMap } from "../storeTypes/directionsListState.map"
 import { fetchDirectionsThunk } from "../thunks/fetchDirections/fetchDirections.thunk"
-import { directionsListActions, directionsListReducers } from "./directionsList.slice"
+import { directionsListReducers } from "./directionsList.slice"
 
 jest.mock("uid", () => ({
 	uid: jest.fn().mockReturnValue("testID")
 }))
 
 describe("directionsListSliceTest", () => {
-	test("directionsListInit init already", () => {
-		const state: DeepPartial<directionsListStateMap> = {
-			_inited: true
-		}
-
-		const { directionsListInit } = directionsListActions
-
-		const newState = directionsListReducers(
-			state as directionsListStateMap,
-			directionsListInit()
-		)
-
-		expect(newState).toEqual({
-			_inited: true
-		})
-	})
-
-	test("directionsListInit not init yet", () => {
-		const state: DeepPartial<directionsListStateMap> = {
-			_inited: false
-		}
-
-		const { directionsListInit } = directionsListActions
-
-		const newState = directionsListReducers(
-			state as directionsListStateMap,
-			directionsListInit()
-		)
-
-		expect(newState).toEqual({
-			_inited: true
-		})
-	})
-
 	test("pending", () => {
 		const state: DeepPartial<directionsListStateMap> = {
 			isLoading: false,
