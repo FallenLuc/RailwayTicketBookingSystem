@@ -11,7 +11,7 @@ describe("", () => {
 			}
 		}
 		expect(getCurrentDirectionSelector(state as mainStateMap)).toEqual({
-			toTrip: { _id: "1" }
+			directionInfo: { _id: "1" }
 		})
 	})
 
