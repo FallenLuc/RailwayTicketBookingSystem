@@ -36,6 +36,12 @@ jobs:
     concurrency:
       group: lint
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.2
+      - name: Install Pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
       - name: Lint TS
         run: pnpm lint:ts
   lintStyle:
@@ -45,5 +51,11 @@ jobs:
     concurrency:
         group: lint
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.2
+      - name: Install Pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
       - name: Lint style
         run: pnpm lint:style
