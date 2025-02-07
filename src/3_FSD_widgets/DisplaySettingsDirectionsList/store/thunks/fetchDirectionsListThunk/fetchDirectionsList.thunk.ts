@@ -26,8 +26,6 @@ export const fetchDirectionsListThunk = createAsyncThunk<
 		const isValid = getFormForSearchOfDirectionsIsValidFormSelector()(getState())
 		const formParametres = getFormForSearchOfDirectionsDataForRequestSelector()(getState())
 
-		console.log(namePage)
-
 		if (isValid && formParametres) {
 			if (isAllowedUpdateParams) {
 				addQueryParams(formParametres, namePage)
