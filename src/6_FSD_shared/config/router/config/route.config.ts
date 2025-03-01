@@ -39,6 +39,10 @@ export const routeConfig: Record<RouteNames, routeInfoType> = {
 		name: RouteNames.Ticket,
 		path: RoutePaths.Ticket
 	},
+	[RouteNames.Passengers]: {
+		name: RouteNames.Passengers,
+		path: RoutePaths.Passengers
+	},
 	[RouteNames.Success]: {
 		name: RouteNames.Success,
 		path: RoutePaths.Success
