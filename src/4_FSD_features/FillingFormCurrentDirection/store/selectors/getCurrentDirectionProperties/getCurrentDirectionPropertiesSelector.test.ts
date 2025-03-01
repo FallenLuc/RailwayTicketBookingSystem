@@ -4,6 +4,7 @@ import type { mainStateMap } from "@store/storeTypes/mainState.map"
 import {
 	getCurrentDirectionCarriageInfoSelector,
 	getCurrentDirectionInfoSelector,
+	getCurrentDirectionPassengersSelector,
 	getCurrentDirectionSeatsInfoSelector,
 	getCurrentDirectionSumSelector
 } from "./getCurrentDirectionProperties.selector"
@@ -77,5 +78,23 @@ describe("getCurrentDirectionSumSelector", () => {
 	test("get withOut state", () => {
 		const state: DeepPartial<mainStateMap> = {}
 		expect(getCurrentDirectionSumSelector()(state as mainStateMap)).toBe(0)
+	})
+})
+
+describe("getCurrentDirectionPassengersSelector", () => {
+	test("get state", () => {
+		const state: DeepPartial<mainStateMap> = {
+			currentDirection: {
+				passengers: [{ surname: "K", firstName: "e" }]
+			}
+		}
+		expect(getCurrentDirectionPassengersSelector()(state as mainStateMap)).toEqual([
+			{ surname: "K", firstName: "e" }
+		])
+	})
+
+	test("get withOut state", () => {
+		const state: DeepPartial<mainStateMap> = {}
+		expect(getCurrentDirectionPassengersSelector()(state as mainStateMap)).toBeUndefined()
 	})
 })

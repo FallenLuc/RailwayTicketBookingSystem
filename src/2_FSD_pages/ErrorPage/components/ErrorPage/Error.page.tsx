@@ -1,3 +1,4 @@
+import { getRouteMain } from "@config/router"
 import type { testingProps } from "@customTypes/testing.types"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
@@ -6,18 +7,25 @@ import { Page } from "@ui/Page"
 import { VStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
 import { useCallback, useMemo } from "react"
+import { useNavigate } from "react-router-dom"
 import styles from "./ErrorPage.module.scss"
 
 type ErrorPageProps = {
 	className?: string
+	typeErrorPage?: "reload" | "toMain"
 } & testingProps
 
 const ErrorPage = TypedMemo((props: ErrorPageProps) => {
-	const { className } = props
+	const { className, typeErrorPage = "reload" } = props
+	const navigate = useNavigate()
 
-	const onLoad = useCallback(() => {
-		location.reload()
-	}, [])
+	const onClickHandler = useCallback(() => {
+		if (typeErrorPage === "reload") {
+			location.reload()
+		} else {
+			navigate(getRouteMain().route)
+		}
+	}, [navigate, typeErrorPage])
 
 	const content = useMemo(
 		() => (
@@ -30,21 +38,25 @@ const ErrorPage = TypedMemo((props: ErrorPageProps) => {
 					colorTitle={"error"}
 					align={"center"}
 					fontSizeTitle={"xl"}
-					title={"Произошла ошибка. Извините."}
+					title={
+						typeErrorPage === "reload" ?
+							"Произошла ошибка. Извините."
+						:	"Нет данных. Начните заново"
+					}
 				/>
 				<Button
 					width={"m"}
 					height={"m"}
-					onClick={onLoad}
+					onClick={onClickHandler}
 					fontWeight={"ultra-fat"}
 					fontSize={"m"}
 					theme={"defaultDark"}
 				>
-					{"Перезагрузить страницу"}
+					{typeErrorPage === "reload" ? "Перезагрузить страницу" : "На главную"}
 				</Button>
 			</VStack>
 		),
-		[onLoad]
+		[onClickHandler, typeErrorPage]
 	)
 
 	return (
