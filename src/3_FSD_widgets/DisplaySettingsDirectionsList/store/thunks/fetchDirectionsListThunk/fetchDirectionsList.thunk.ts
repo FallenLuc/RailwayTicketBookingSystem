@@ -9,13 +9,18 @@ import { addQueryParams } from "@helpers/addQueryParams/addQueryParams.helper"
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import type { thunkConfigType } from "@store/storeTypes/thunks.type"
 
+type settingsType = {
+	isAllowedUpdateParams?: boolean
+	namePage?: string
+}
+
 export const fetchDirectionsListThunk = createAsyncThunk<
 	undefined,
-	boolean | undefined,
+	settingsType | undefined,
 	thunkConfigType<undefined>
 >(
 	"DisplaySettingsDirectionsList/fetchDirectionsList",
-	async (isAllowedUpdateParams = true, thunkAPI) => {
+	async ({ isAllowedUpdateParams = true, namePage = "" } = {}, thunkAPI) => {
 		const { dispatch, getState } = thunkAPI
 
 		const isValid = getFormForSearchOfDirectionsIsValidFormSelector()(getState())
@@ -23,7 +28,7 @@ export const fetchDirectionsListThunk = createAsyncThunk<
 
 		if (isValid && formParametres) {
 			if (isAllowedUpdateParams) {
-				addQueryParams(formParametres)
+				addQueryParams(formParametres, namePage)
 			}
 
 			dispatch(fetchDirectionsThunk(formParametres))

@@ -8,13 +8,37 @@ export function parseFormDataFromUrlHelper<T extends object>(
 	let displayData = {}
 	let additionalData: T = Object.create({})
 
+	const fieldsDefaultFormData = [
+		"date_start",
+		"date_end",
+		"date_start_arrival",
+		"date_end_arrival",
+		"have_first_class",
+		"have_second_class",
+		"have_third_class",
+		"have_fourth_class",
+		"have_wifi",
+		"have_air_conditioning",
+		"have_express",
+		"price_from",
+		"price_to",
+		"start_departure_hour_from",
+		"start_departure_hour_to",
+		"start_arrival_hour_from",
+		"start_arrival_hour_to",
+		"end_departure_hour_from",
+		"end_departure_hour_to",
+		"end_arrival_hour_from",
+		"end_arrival_hour_to"
+	]
+
 	searchParams?.forEach((value, key) => {
 		let formParam = {}
 		const keyCity = key === "from_city_id" ? "fromCity" : "toCity"
 
-		switch (key) {
-			case "from_city_id":
-			case "to_city_id":
+		switch (true) {
+			case key === "from_city_id":
+			case key === "to_city_id":
 				formParam = {
 					[keyCity]: {
 						_id: value,
@@ -24,35 +48,15 @@ export function parseFormDataFromUrlHelper<T extends object>(
 
 				formData = { ...formData, ...formParam }
 				break
-			case "limit":
-			case "offset":
+			case key === "limit":
+			case key === "offset":
 				formParam = {
 					[key]: parseInt(value)
 				}
 
 				displayData = { ...displayData, ...formParam }
 				break
-			case "date_start":
-			case "date_end":
-			case "date_start_arrival":
-			case "date_end_arrival":
-			case "have_first_class":
-			case "have_second_class":
-			case "have_third_class":
-			case "have_fourth_class":
-			case "have_wifi":
-			case "have_air_conditioning":
-			case "have_express":
-			case "price_from":
-			case "price_to":
-			case "start_departure_hour_from":
-			case "start_departure_hour_to":
-			case "start_arrival_hour_from":
-			case "start_arrival_hour_to":
-			case "end_departure_hour_from":
-			case "end_departure_hour_to":
-			case "end_arrival_hour_from":
-			case "end_arrival_hour_to":
+			case fieldsDefaultFormData.includes(key):
 				formParam = {
 					[key]: value
 				}

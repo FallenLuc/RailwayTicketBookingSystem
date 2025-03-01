@@ -33,8 +33,8 @@ const TicketPage = TypedMemo(() => {
 
 	useInitialEffect(
 		useCallback(() => {
-			dispatch(fetchInitialDirectionListThunk(searchParams))
-		}, [dispatch, searchParams])
+			dispatch(fetchInitialDirectionListThunk({ searchParams, namePage: pagePath.route }))
+		}, [dispatch, pagePath.route, searchParams])
 	)
 
 	useEffect(() => {
