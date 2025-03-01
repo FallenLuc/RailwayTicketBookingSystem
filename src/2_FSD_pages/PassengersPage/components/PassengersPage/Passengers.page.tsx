@@ -1,5 +1,7 @@
 import { getRoutePassengers } from "@config/router/helpers/gettersRoutesPaths.helper"
+import type { universalPageProps } from "@customTypes/common.types"
 import { BreadcrumbsLine } from "@features/BreadcrumbsLine"
+import { useGetCurrentDirectionInfoSelector } from "@features/FillingFormCurrentDirection"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { ContainerLayout } from "@ui/layout"
 import { Page } from "@ui/Page"
@@ -10,7 +12,16 @@ import { PageContent } from "../PageContent/PageContent"
 
 const pagePath = getRoutePassengers()
 
-const PassengersPage = TypedMemo(() => {
+type PassengersPageProps = universalPageProps
+
+const PassengersPage = TypedMemo((props: PassengersPageProps) => {
+	const { ErrorPage } = props
+	const currentDirection = useGetCurrentDirectionInfoSelector()
+
+	if (!currentDirection) {
+		return ErrorPage
+	}
+
 	const content = useMemo(
 		() => (
 			<>

@@ -1,4 +1,5 @@
 import { getRouteChooseTrain } from "@config/router"
+import { getRoutePassengers } from "@config/router/helpers/gettersRoutesPaths.helper"
 import type { testingProps } from "@customTypes/testing.types"
 import {
 	useGetDirectionsListErrorSelector,
@@ -55,8 +56,8 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 	}, [formParametres, navigate])
 
 	const onClickForwardHandler = useCallback(() => {
-		navigate(createQueryParams(getRouteChooseTrain().route, formParametres))
-	}, [formParametres, navigate])
+		navigate(getRoutePassengers().route)
+	}, [navigate])
 
 	return (
 		<HStack
