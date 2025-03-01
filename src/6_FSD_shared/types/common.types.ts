@@ -7,3 +7,5 @@ export type paramsType<T extends string | number | boolean | undefined> = Record
 export type universalPageProps = {
 	ErrorPage?: ReactNode
 }
+
+export type sexType = "male" | "female"
