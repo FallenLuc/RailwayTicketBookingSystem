@@ -8,6 +8,6 @@ export type passengerDataType = {
 	sex: sexType
 	dateBirth: string
 	isLimitedMobility: boolean
-	seriesPassport?: number
-	numberPassport?: number
+	seriesPassport?: string
+	numberPassport?: string
 }

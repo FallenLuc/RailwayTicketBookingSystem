@@ -1,0 +1,25 @@
+.Header {
+	padding: 23px 30px;
+
+	border-bottom: 1px solid var(--main-gray);
+
+	background-color: var(--light-gray);
+
+	.title {
+		font: var(--font-l);
+		font-weight: var(--font-weight-medium);
+	}
+
+	.icon {
+		width: auto;
+		height: 32px;
+	}
+
+	.icon-minus {
+		color: var(--main-gray);
+	}
+
+	.icon-plus {
+		color: var(--accent-orange);
+	}
+}

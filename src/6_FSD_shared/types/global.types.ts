@@ -7,6 +7,8 @@ export type DeepPartial<T> =
 		}
 	:	T
 
+export type ValueTypes<T> = T extends object ? NonNullable<T[keyof T]> : never
+
 export type OptionalRecord<K extends keyof any, T> = Partial<Record<K, T>>
 
 export type AsyncThunkConfig = {
