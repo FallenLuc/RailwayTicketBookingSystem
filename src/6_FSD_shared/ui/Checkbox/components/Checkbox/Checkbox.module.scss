@@ -1,0 +1,22 @@
+.Checkbox {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+
+	border: 1px solid var(--main-gray);
+
+	border-radius: var(--br-button);
+}
+
+.icon {
+	width: auto;
+	height: 80%;
+
+	fill: var(--accent-orange);
+}
+
+.active-checkbox {
+	border: 1px solid var(--accent-orange);
+}

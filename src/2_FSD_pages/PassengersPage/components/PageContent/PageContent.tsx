@@ -36,6 +36,7 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 		<VStack
 			className={classNamesHelp(styles.PageContent, {}, [className])}
 			gap={"XL"}
+			justify={"flexEnd"}
 		>
 			<HStack></HStack>
 			<Button
