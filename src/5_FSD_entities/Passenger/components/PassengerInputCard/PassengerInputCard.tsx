@@ -64,12 +64,12 @@ export const PassengerInputCard = TypedMemo((props: PassengerInputCardProps) => 
 		[onChange]
 	)
 
-	// const onChangeHandlerIsLimitedMobility = useCallback(
-	// 	(value: boolean) => {
-	// 		onChange?.("isLimitedMobility", value)
-	// 	},
-	// 	[onChange]
-	// )
+	const onChangeHandlerIsLimitedMobility = useCallback(
+		(value: boolean) => {
+			onChange?.("isLimitedMobility", value)
+		},
+		[onChange]
+	)
 	const onChangeHandlerSeriesPassport = useCallback(
 		(value: string) => {
 			onChange?.("seriesPassport", value)
@@ -101,6 +101,7 @@ export const PassengerInputCard = TypedMemo((props: PassengerInputCardProps) => 
 						onChangeHandlerFirstName={onChangeHandlerFirstName}
 						onChangeHandlerLastName={onChangeHandlerLastName}
 						onChangeHandlerDateBirth={onChangeHandlerDateBirth}
+						onChangeHandlerIsLimitedMobility={onChangeHandlerIsLimitedMobility}
 						onChangeHandlerSex={onChangeHandlerSex}
 					/>
 					<DocumentsInfo

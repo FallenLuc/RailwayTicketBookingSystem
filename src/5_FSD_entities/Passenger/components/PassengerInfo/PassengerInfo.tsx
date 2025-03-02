@@ -2,6 +2,7 @@ import type { sexType } from "@customTypes/common.types"
 import type { testingProps } from "@customTypes/testing.types"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
+import { Checkbox } from "@ui/Checkbox"
 import { Input } from "@ui/Input"
 import { HStack, VStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
@@ -18,6 +19,7 @@ type PassengerInfoProps = {
 	onChangeHandlerLastName: (value: string) => void
 	onChangeHandlerDateBirth: (value: string) => void
 	onChangeHandlerSex: (value: sexType) => void
+	onChangeHandlerIsLimitedMobility: (value: boolean) => void
 } & testingProps
 
 export const PassengerInfo = TypedMemo((props: PassengerInfoProps) => {
@@ -27,6 +29,7 @@ export const PassengerInfo = TypedMemo((props: PassengerInfoProps) => {
 		onChangeHandlerSex,
 		onChangeHandlerSurName,
 		onChangeHandlerDateBirth,
+		onChangeHandlerIsLimitedMobility,
 		value,
 		onChangeHandlerLastName
 	} = props
@@ -85,7 +88,10 @@ export const PassengerInfo = TypedMemo((props: PassengerInfoProps) => {
 				/>
 			</HStack>
 			<HStack gap={"S"}>
-				<div>чекбокс</div>
+				<Checkbox
+					isChecked={value?.isLimitedMobility}
+					onChange={onChangeHandlerIsLimitedMobility}
+				/>
 				<Text
 					text={"ограниченная подвижность"}
 					fontSizeText={"s"}

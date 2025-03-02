@@ -8,6 +8,7 @@ import ArrowToIcon from "./icons/arrow-to.svg"
 import ArrowUpIcon from "./icons/arrow-up.svg"
 import CalendarIcon from "./icons/calendar.svg"
 import ChangeIcon from "./icons/change.svg"
+import CheckIcon from "./icons/check.svg"
 import ClockIcon from "./icons/clock.svg"
 import ConditionerIcon from "./icons/conditioner.svg"
 import CupeIcon from "./icons/cupe.svg"
@@ -86,5 +87,6 @@ export {
 	ThreeDotsIcon,
 	TrainSmallIcon,
 	ClockIcon,
-	LinensIcon
+	LinensIcon,
+	CheckIcon
 }

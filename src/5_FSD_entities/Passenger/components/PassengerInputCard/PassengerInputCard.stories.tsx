@@ -29,7 +29,7 @@ type TypeStory = StoryObj<typeof PassengerInputCard>
 
 export const Default: TypeStory = {
 	args: {
-		value: passengerDataMock(),
+		value: passengerDataMock({ isLimitedMobility: true }),
 		count: 1
 	}
 }
