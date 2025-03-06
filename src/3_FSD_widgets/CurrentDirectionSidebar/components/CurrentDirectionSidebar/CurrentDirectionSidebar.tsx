@@ -1,7 +1,8 @@
 import type { testingProps } from "@customTypes/testing.types"
 import {
 	useGetCurrentDirectionInfoSelector,
-	useGetCurrentDirectionSeatsInfoSelector
+	useGetCurrentDirectionSeatsInfoSelector,
+	useGetCurrentDirectionSumSelector
 } from "@features/FillingFormCurrentDirection"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
@@ -21,7 +22,7 @@ export const CurrentDirectionSidebar = TypedMemo((props: CurrentDirectionSidebar
 
 	const directionInfo = useGetCurrentDirectionInfoSelector()
 	const seatsInfo = useGetCurrentDirectionSeatsInfoSelector()
-	const sum = useGetCurrentDirectionSeatsInfoSelector()
+	const sum = useGetCurrentDirectionSumSelector()
 
 	return (
 		<VStack
