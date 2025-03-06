@@ -7,6 +7,7 @@ import { createQueryParams } from "@helpers/createLinkWithParams/createLinkWithP
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { Button } from "@ui/Button"
 import { HStack, VStack } from "@ui/Stack"
+import { CurrentDirectionSidebar } from "@widgets/CurrentDirectionSidebar"
 import { useCallback } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./PageContent.module.scss"
@@ -36,17 +37,32 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 		<VStack
 			className={classNamesHelp(styles.PageContent, {}, [className])}
 			gap={"XL"}
-			justify={"flexEnd"}
 		>
-			<HStack></HStack>
-			<Button
-				theme={"defaultLight"}
-				width={"s"}
-				height={"m"}
-				onClick={onBackHandler}
+			<HStack gap={"XL"}>
+				<CurrentDirectionSidebar />
+				<HStack>{"контект"}</HStack>
+			</HStack>
+			<HStack
+				align={"center"}
+				justify={"spaceBetween"}
 			>
-				Назад
-			</Button>
+				<Button
+					theme={"defaultLight"}
+					width={"s"}
+					height={"m"}
+					onClick={onBackHandler}
+				>
+					Назад
+				</Button>
+				<Button
+					theme={"defaultLight"}
+					width={"s"}
+					height={"m"}
+					onClick={onBackHandler}
+				>
+					Далее
+				</Button>
+			</HStack>
 		</VStack>
 	)
 })

@@ -1,0 +1,24 @@
+.icon {
+	width: auto;
+	height: 26px;
+
+	color: var(--accent-orange);
+}
+
+.iconButton {
+	width: 20px;
+	height: 20px;
+
+	color: var(--light-gray);
+}
+
+.activeIcon {
+	color: var(--accent-orange);
+}
+
+.Dropdown {
+	padding-top: 16px;
+	padding-bottom: 26px;
+
+	border-top: 1px solid var(--light-gray);
+}
