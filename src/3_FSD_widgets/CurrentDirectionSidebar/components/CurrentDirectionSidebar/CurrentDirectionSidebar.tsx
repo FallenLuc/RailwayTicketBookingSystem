@@ -1,10 +1,15 @@
 import type { testingProps } from "@customTypes/testing.types"
-import { useGetCurrentDirectionInfoSelector } from "@features/FillingFormCurrentDirection"
+import {
+	useGetCurrentDirectionInfoSelector,
+	useGetCurrentDirectionSeatsInfoSelector
+} from "@features/FillingFormCurrentDirection"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { VStack } from "@ui/Stack"
+import { SumInfo } from "../../ui/SumInfo/SumInfo"
+import { Title } from "../../ui/Title/Title"
 import { DirectionInfo } from "../DirectionInfo/DirectionInfo"
-import { Title } from "../ui/Title/Title"
+import { PassengerInfo } from "../PassengerInfo/PassengerInfo"
 import styles from "./CurrentDirectionSidebar.module.scss"
 
 type CurrentDirectionSidebarProps = {
@@ -15,6 +20,8 @@ export const CurrentDirectionSidebar = TypedMemo((props: CurrentDirectionSidebar
 	const { className } = props
 
 	const directionInfo = useGetCurrentDirectionInfoSelector()
+	const seatsInfo = useGetCurrentDirectionSeatsInfoSelector()
+	const sum = useGetCurrentDirectionSeatsInfoSelector()
 
 	return (
 		<VStack
@@ -23,6 +30,11 @@ export const CurrentDirectionSidebar = TypedMemo((props: CurrentDirectionSidebar
 		>
 			<Title />
 			<DirectionInfo directionInfo={directionInfo} />
+			<PassengerInfo
+				countPassenger={seatsInfo}
+				sum={sum}
+			/>
+			<SumInfo sum={sum} />
 		</VStack>
 	)
 })

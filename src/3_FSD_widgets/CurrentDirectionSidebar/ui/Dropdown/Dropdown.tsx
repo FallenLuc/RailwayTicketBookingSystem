@@ -21,7 +21,7 @@ type DropdownProps = {
 export const Dropdown = TypedMemo((props: DropdownProps) => {
 	const { className, additionalTitle, title, Icon, children } = props
 
-	const [isOpen, setIsOpen] = useState(false)
+	const [isOpen, setIsOpen] = useState(true)
 
 	const onToggleHandler = useCallback(() => {
 		setIsOpen(prev => !prev)
@@ -42,20 +42,26 @@ export const Dropdown = TypedMemo((props: DropdownProps) => {
 					align={"center"}
 				>
 					<Icon className={styles.icon} />
-					<Text
-						title={title}
-						fontSizeTitle={"l"}
-						colorTitle={"main-light"}
-						fontWeightTitle={"ultra-fat"}
-					/>
-					{additionalTitle && (
+					<HStack
+						widthMax={false}
+						align={"flexEnd"}
+						gap={"S"}
+					>
 						<Text
-							text={additionalTitle}
-							fontSizeText={"s"}
-							fontWeightText={"medium"}
-							colorText={"light-gray"}
+							title={title}
+							fontSizeTitle={"l"}
+							colorTitle={"main-light"}
+							fontWeightTitle={"ultra-fat"}
 						/>
-					)}
+						{additionalTitle && (
+							<Text
+								text={additionalTitle}
+								fontSizeText={"s"}
+								fontWeightText={"medium"}
+								colorText={"light-gray"}
+							/>
+						)}
+					</HStack>
 				</HStack>
 				<Button
 					theme={"clear"}

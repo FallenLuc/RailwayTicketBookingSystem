@@ -7,7 +7,7 @@ import { convertUnixToDate } from "@helpers/convertUnixToDate/convertUnixToDate.
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { HStack, VStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
-import { Dropdown } from "../ui/Dropdown/Dropdown"
+import { Dropdown } from "../../ui/Dropdown/Dropdown"
 import styles from "./DirectionInfo.module.scss"
 
 type DirectionInfoProps = {

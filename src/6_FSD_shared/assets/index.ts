@@ -25,6 +25,7 @@ import MailIcon from "./icons/mail.svg"
 import MinusButtonIcon from "./icons/minus-button.svg"
 import MonitorIcon from "./icons/monitor.svg"
 import OfficesIcon from "./icons/offices.svg"
+import PassengerIcon from "./icons/passenger.svg"
 import PhoneIcon from "./icons/phone.svg"
 import PlackartIcon from "./icons/plackart.svg"
 import PlusButtonIcon from "./icons/plus-button.svg"
@@ -88,5 +89,6 @@ export {
 	TrainSmallIcon,
 	ClockIcon,
 	LinensIcon,
-	CheckIcon
+	CheckIcon,
+	PassengerIcon
 }
