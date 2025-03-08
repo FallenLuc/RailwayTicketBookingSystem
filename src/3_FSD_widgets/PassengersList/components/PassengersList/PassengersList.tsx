@@ -2,8 +2,11 @@ import type { sexType } from "@customTypes/common.types"
 import type { testingProps } from "@customTypes/testing.types"
 import type { passengerDataType } from "@entities/Passenger"
 import { PassengerInputCard } from "@entities/Passenger/components/PassengerInputCard/PassengerInputCard"
-import { useCurrentDirectionActions } from "@features/FillingFormCurrentDirection"
-import { useGetCurrentDirectionPassengersSelector } from "@features/FillingFormCurrentDirection/store/selectors/getCurrentDirectionProperties/getCurrentDirectionProperties.selector"
+import {
+	useCurrentDirectionActions,
+	useGetCurrentDirectionsPassengersSelector
+} from "@features/FillingFormCurrentDirection"
+
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { VStack } from "@ui/Stack"
@@ -17,7 +20,7 @@ export const PassengersList = TypedMemo((props: PassengersListProps) => {
 
 	const { setPassengersInfo } = useCurrentDirectionActions()
 
-	const passengers = useGetCurrentDirectionPassengersSelector()
+	const passengers = useGetCurrentDirectionsPassengersSelector()
 
 	const onChangeFormHandler = <T extends keyof passengerDataType>(
 		id: string,

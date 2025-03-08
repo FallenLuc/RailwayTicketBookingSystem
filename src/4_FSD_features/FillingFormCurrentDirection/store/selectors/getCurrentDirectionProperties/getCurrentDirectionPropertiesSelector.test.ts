@@ -85,16 +85,29 @@ describe("getCurrentDirectionPassengersSelector", () => {
 	test("get state", () => {
 		const state: DeepPartial<mainStateMap> = {
 			currentDirection: {
-				passengers: [{ surname: "K", firstName: "e" }]
+				passengers: {
+					ids: ["1", "2"],
+					entities: {
+						"1": {
+							id: "1",
+							firstName: "Luc"
+						},
+						"2": {
+							id: "2",
+							firstName: "Lucifer"
+						}
+					}
+				}
 			}
 		}
-		expect(getCurrentDirectionPassengersSelector()(state as mainStateMap)).toEqual([
-			{ surname: "K", firstName: "e" }
+		expect(getCurrentDirectionPassengersSelector(state as mainStateMap)).toEqual([
+			{ id: "1", firstName: "Luc" },
+			{ id: "2", firstName: "Lucifer" }
 		])
 	})
 
 	test("get withOut state", () => {
 		const state: DeepPartial<mainStateMap> = {}
-		expect(getCurrentDirectionPassengersSelector()(state as mainStateMap)).toBeUndefined()
+		expect(getCurrentDirectionPassengersSelector(state as mainStateMap)).toEqual([])
 	})
 })

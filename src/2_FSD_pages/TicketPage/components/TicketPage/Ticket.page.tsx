@@ -1,5 +1,5 @@
 import { getRouteTicket } from "@config/router"
-import { useGetDirectionsListDataSelector } from "@entities/Direction"
+import { useGetDirectionsListItemSelector } from "@entities/Direction"
 import { BreadcrumbsLine } from "@features/BreadcrumbsLine"
 import { useCurrentDirectionActions } from "@features/FillingFormCurrentDirection"
 import { parseFormDataFromUrlHelper } from "@features/FillingFormForSearchOfDirections"
@@ -29,7 +29,7 @@ const TicketPage = TypedMemo(() => {
 		directionId: string
 	}>(searchParams)
 
-	const directions = useGetDirectionsListDataSelector()
+	const currentDirection = useGetDirectionsListItemSelector(dataIds.directionId)
 
 	useInitialEffect(
 		useCallback(() => {
@@ -38,16 +38,10 @@ const TicketPage = TypedMemo(() => {
 	)
 
 	useEffect(() => {
-		if (directions?.length) {
-			const currentDirection = directions.filter(
-				direction => direction?.departure?._id === dataIds?.directionId
-			)?.[0]
-
-			if (currentDirection) {
-				setCurrentDirection(currentDirection)
-			}
+		if (currentDirection) {
+			setCurrentDirection(currentDirection)
 		}
-	}, [dataIds?.directionId, directions, setCurrentDirection])
+	}, [currentDirection, dataIds.directionId, setCurrentDirection])
 
 	const pageContent = (
 		<>

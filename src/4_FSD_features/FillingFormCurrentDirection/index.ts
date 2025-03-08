@@ -9,5 +9,6 @@ export {
 	useGetCurrentDirectionInfoSelector,
 	useGetCurrentDirectionCarriageInfoSelector,
 	useGetCurrentDirectionSeatsInfoSelector,
-	useGetCurrentDirectionSumSelector
+	useGetCurrentDirectionSumSelector,
+	useGetCurrentDirectionsPassengersSelector
 } from "./store/selectors/getCurrentDirectionProperties/getCurrentDirectionProperties.selector"
