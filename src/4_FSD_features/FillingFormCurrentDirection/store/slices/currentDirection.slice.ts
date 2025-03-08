@@ -79,7 +79,7 @@ const currentDirectionSlice = buildSlice({
 
 			const newPassengers = state?.passengers?.map(passenger => {
 				if (passenger.id === action.payload.id) {
-					return { ...passenger, newParametres }
+					return { ...passenger, ...newParametres }
 				}
 
 				return passenger

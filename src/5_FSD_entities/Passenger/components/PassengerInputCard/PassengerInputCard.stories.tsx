@@ -2,6 +2,7 @@ import preview from "@_storybook/preview"
 import { CenterDecorator } from "@decorators/storybook/Center.decorator"
 import { RestrictionDecorator } from "@decorators/storybook/Restriction.decorator"
 import { type Meta, type StoryObj } from "@storybook/react"
+import { uid } from "uid"
 import { passengerDataMock } from "../../lib/mocks/passengerData.mock"
 import { PassengerInputCard } from "./PassengerInputCard"
 
@@ -29,6 +30,7 @@ type TypeStory = StoryObj<typeof PassengerInputCard>
 
 export const Default: TypeStory = {
 	args: {
+		id: uid(),
 		value: passengerDataMock({ isLimitedMobility: true }),
 		count: 1
 	}
