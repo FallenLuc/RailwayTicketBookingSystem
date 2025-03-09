@@ -24,19 +24,23 @@ export const DocumentsInfo = TypedMemo((props: DocumentsInfoProps) => {
 		>
 			<Input
 				className={generalStyles.input}
-				label={"Серия паспорта"}
-				value={value.seriesPassport?.toString() || ""}
+				label={value.seriesPassport.isValid ? "Серия паспорта" : "Неверный формат 0000"}
+				placeholder={"0000"}
+				value={value.seriesPassport.value.toString() || ""}
 				classNamesLabel={generalStyles.label}
+				error={!value.seriesPassport.isValid}
 				onChange={onChangeHandlerSeriesPassport}
 				height={"s"}
 			/>
 
 			<Input
 				className={generalStyles.input}
-				label={"Номер паспорта"}
-				value={value.numberPassport?.toString() || ""}
+				label={value.numberPassport.isValid ? "Номер паспорта" : "Неверный формат 000000"}
+				placeholder={"000000"}
+				value={value.numberPassport.value.toString() || ""}
 				classNamesLabel={generalStyles.label}
 				onChange={onChangeHandlerNumberPassport}
+				error={!value.numberPassport.isValid}
 				height={"s"}
 			/>
 		</HStack>

@@ -14,16 +14,18 @@ type PassengerInputCardProps = {
 	className?: string
 	count: number
 	value: passengerDataType
+	id: string
 	onChange?: <T extends keyof passengerDataType>(
+		id: string,
 		typeChange: T,
 		value: passengerDataType[T]
 	) => void
 } & testingProps
 
 export const PassengerInputCard = TypedMemo((props: PassengerInputCardProps) => {
-	const { className, count = 1, onChange, value } = props
+	const { className, count = 1, onChange, value, id } = props
 
-	const [isOpen, setIsOpen] = useState(false)
+	const [isOpen, setIsOpen] = useState(count === 1)
 
 	const onOpenHandler = useCallback(() => {
 		setIsOpen(prev => !prev)
@@ -31,56 +33,56 @@ export const PassengerInputCard = TypedMemo((props: PassengerInputCardProps) => 
 
 	const onChangeHandlerSurName = useCallback(
 		(value: string) => {
-			onChange?.("surname", value)
+			onChange?.(id, "surname", { isValid: true, value })
 		},
-		[onChange]
+		[id, onChange]
 	)
 
 	const onChangeHandlerFirstName = useCallback(
 		(value: string) => {
-			onChange?.("firstName", value)
+			onChange?.(id, "firstName", { isValid: true, value })
 		},
-		[onChange]
+		[id, onChange]
 	)
 
 	const onChangeHandlerLastName = useCallback(
 		(value: string) => {
-			onChange?.("lastName", value)
+			onChange?.(id, "lastName", { isValid: true, value })
 		},
-		[onChange]
+		[id, onChange]
 	)
 
 	const onChangeHandlerSex = useCallback(
 		(value: sexType) => {
-			onChange?.("sex", value)
+			onChange?.(id, "sex", value)
 		},
-		[onChange]
+		[id, onChange]
 	)
 
 	const onChangeHandlerDateBirth = useCallback(
 		(value: string) => {
-			onChange?.("dateBirth", value)
+			onChange?.(id, "dateBirth", { isValid: true, value })
 		},
-		[onChange]
+		[id, onChange]
 	)
 
 	const onChangeHandlerIsLimitedMobility = useCallback(
 		(value: boolean) => {
-			onChange?.("isLimitedMobility", value)
+			onChange?.(id, "isLimitedMobility", value)
 		},
-		[onChange]
+		[id, onChange]
 	)
 	const onChangeHandlerSeriesPassport = useCallback(
 		(value: string) => {
-			onChange?.("seriesPassport", value)
+			onChange?.(id, "seriesPassport", { isValid: true, value })
 		},
-		[onChange]
+		[id, onChange]
 	)
 	const onChangeHandlerNumberPassport = useCallback(
 		(value: string) => {
-			onChange?.("numberPassport", value)
+			onChange?.(id, "numberPassport", { isValid: true, value })
 		},
-		[onChange]
+		[id, onChange]
 	)
 
 	return (

@@ -5,3 +5,26 @@
 .title {
 	padding: 0 35px;
 }
+
+.carriage-changer-stories {
+	height: 30px;
+
+	padding: 0 20px;
+
+	background-color: var(--gold);
+}
+
+.seats-map-stories {
+	height: 145px;
+
+	border: 1px solid var(--main-gray);
+
+	background-color: var(--main-light);
+}
+
+.total-sum-stories {
+	width: 200px;
+	height: 60px;
+
+	background-color: var(--gold);
+}

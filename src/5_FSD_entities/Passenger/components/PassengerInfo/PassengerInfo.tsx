@@ -45,28 +45,31 @@ export const PassengerInfo = TypedMemo((props: PassengerInfoProps) => {
 			>
 				<Input
 					className={generalStyles.input}
-					label={"Фамилия"}
+					label={value.surname.isValid ? "Фамилия" : "Напишите верную фамилию"}
 					classNamesLabel={generalStyles.label}
-					value={value.surname}
+					value={value.surname.value}
 					height={"s"}
+					error={!value.surname.isValid}
 					onChange={onChangeHandlerSurName}
 				/>
 
 				<Input
 					className={generalStyles.input}
-					label={"Имя"}
+					label={value.firstName.isValid ? "Имя" : "Напишите верное имя"}
 					height={"s"}
 					classNamesLabel={generalStyles.label}
-					value={value.firstName}
+					value={value.firstName.value}
+					error={!value.firstName.isValid}
 					onChange={onChangeHandlerFirstName}
 				/>
 
 				<Input
 					className={generalStyles.input}
-					label={"Отчество"}
+					label={value.lastName.isValid ? "Отчество" : "Напишите верное отчество"}
 					height={"s"}
 					classNamesLabel={generalStyles.label}
-					value={value.lastName || ""}
+					value={value.lastName.value || ""}
+					error={!value.lastName.isValid}
 					onChange={onChangeHandlerLastName}
 				/>
 			</HStack>
@@ -80,16 +83,18 @@ export const PassengerInfo = TypedMemo((props: PassengerInfoProps) => {
 				/>
 				<Input
 					className={generalStyles.input}
-					label={"Дата рождения"}
+					label={value.dateBirth.isValid ? "Дата рождения" : "Неверный формат ДД.ММ.ГГГГ"}
+					placeholder={"ДД.ММ.ГГГГ"}
 					height={"s"}
 					classNamesLabel={generalStyles.label}
-					value={value.dateBirth}
+					value={value.dateBirth.value}
+					error={!value.dateBirth.isValid}
 					onChange={onChangeHandlerDateBirth}
 				/>
 			</HStack>
 			<HStack gap={"S"}>
 				<Checkbox
-					isChecked={value?.isLimitedMobility}
+					isChecked={value.isLimitedMobility}
 					onChange={onChangeHandlerIsLimitedMobility}
 				/>
 				<Text
