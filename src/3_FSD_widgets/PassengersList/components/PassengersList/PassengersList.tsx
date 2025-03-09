@@ -2,11 +2,10 @@ import type { sexType } from "@customTypes/common.types"
 import type { testingProps } from "@customTypes/testing.types"
 import type { fieldWithValidationType, passengerDataType } from "@entities/Passenger"
 import { PassengerInputCard } from "@entities/Passenger"
-
 import {
-	useCurrentDirectionActions,
-	useGetCurrentDirectionsPassengersSelector
-} from "@features/FillingFormCurrentDirection"
+	useFormPassengersActions,
+	useGetFormPassengersDataSelector
+} from "@features/FillingFormPassengers"
 
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
@@ -19,9 +18,9 @@ type PassengersListProps = {
 export const PassengersList = TypedMemo((props: PassengersListProps) => {
 	const { className } = props
 
-	const { setPassengersInfo } = useCurrentDirectionActions()
+	const { setPassengersInfo } = useFormPassengersActions()
 
-	const passengers = useGetCurrentDirectionsPassengersSelector()
+	const passengers = useGetFormPassengersDataSelector()
 
 	const onChangeFormHandler = <T extends keyof passengerDataType>(
 		id: string,

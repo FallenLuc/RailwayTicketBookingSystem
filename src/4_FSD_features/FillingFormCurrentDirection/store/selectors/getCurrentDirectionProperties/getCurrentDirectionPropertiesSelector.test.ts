@@ -4,7 +4,7 @@ import type { mainStateMap } from "@store/storeTypes/mainState.map"
 import {
 	getCurrentDirectionCarriageInfoSelector,
 	getCurrentDirectionInfoSelector,
-	getCurrentDirectionPassengersSelector,
+	getCurrentDirectionInitedSelector,
 	getCurrentDirectionSeatsInfoSelector,
 	getCurrentDirectionSumSelector
 } from "./getCurrentDirectionProperties.selector"
@@ -81,33 +81,18 @@ describe("getCurrentDirectionSumSelector", () => {
 	})
 })
 
-describe("getCurrentDirectionPassengersSelector", () => {
+describe("getCurrentDirectionInitedSelector", () => {
 	test("get state", () => {
 		const state: DeepPartial<mainStateMap> = {
 			currentDirection: {
-				passengers: {
-					ids: ["1", "2"],
-					entities: {
-						"1": {
-							id: "1",
-							firstName: { value: "Luc" }
-						},
-						"2": {
-							id: "2",
-							firstName: { value: "Lucifer" }
-						}
-					}
-				}
+				_inited: true
 			}
 		}
-		expect(getCurrentDirectionPassengersSelector(state as mainStateMap)).toEqual([
-			{ id: "1", firstName: { value: "Luc" } },
-			{ id: "2", firstName: { value: "Lucifer" } }
-		])
+		expect(getCurrentDirectionInitedSelector()(state as mainStateMap)).toBe(true)
 	})
 
 	test("get withOut state", () => {
 		const state: DeepPartial<mainStateMap> = {}
-		expect(getCurrentDirectionPassengersSelector(state as mainStateMap)).toEqual([])
+		expect(getCurrentDirectionInitedSelector()(state as mainStateMap)).toBe(false)
 	})
 })

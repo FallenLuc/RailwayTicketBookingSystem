@@ -25,7 +25,7 @@ type PassengerInputCardProps = {
 export const PassengerInputCard = TypedMemo((props: PassengerInputCardProps) => {
 	const { className, count = 1, onChange, value, id } = props
 
-	const [isOpen, setIsOpen] = useState(count === 1)
+	const [isOpen, setIsOpen] = useState(true)
 
 	const onOpenHandler = useCallback(() => {
 		setIsOpen(prev => !prev)

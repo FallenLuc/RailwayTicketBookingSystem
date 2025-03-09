@@ -30,9 +30,10 @@ export const DirectionDetails = TypedMemo((props: DirectionDetailsProps) => {
 	const seatsCount = useGetCurrentDirectionSeatsInfoSelector()
 	const sum = useGetCurrentDirectionSumSelector()
 
-	const { setCurrentCarriage, setChosenSeatsInfo, calculateSum } = useCurrentDirectionActions()
+	const { setCurrentCarriage, setChosenSeatsInfo, calculateSum, resetSeatsInfo } =
+		useCurrentDirectionActions()
 
-	const { isLoading, data, error } = useGetCarriageInfoQuery(
+	const { isLoading, data, error, isSuccess } = useGetCarriageInfoQuery(
 		currentDirection?._id,
 		useMemo(
 			() => ({
@@ -43,14 +44,23 @@ export const DirectionDetails = TypedMemo((props: DirectionDetailsProps) => {
 	)
 
 	useEffect(() => {
-		if (data?.length) {
-			setCurrentCarriage(data?.[0].coach)
+		if (isSuccess) {
+			const newCurrentCarriage = data?.find(car => car?.coach?._id === currentCarriage?._id)
+
+			if (data?.length) {
+				setCurrentCarriage(newCurrentCarriage?.coach || data?.[0].coach)
+			}
+
+			if (!newCurrentCarriage?.coach) {
+				resetSeatsInfo()
+			}
 		}
-	}, [data, setCurrentCarriage])
+		//eslint-disable-next-line
+	}, [isSuccess, currentCarriage?._id])
 
 	useEffect(() => {
 		calculateSum()
-	}, [calculateSum, currentCarriage, seatsCount])
+	}, [calculateSum, currentCarriage?._id, seatsCount])
 
 	const onClickHandler = useCallback(
 		(id: string) => {
