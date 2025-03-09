@@ -17,14 +17,19 @@ const formPassengersSlice = buildSlice({
 	initialState: passengersAdapter.getInitialState(initialState),
 	reducers: {
 		initPassengers: (state, action: PayloadAction<number>) => {
-			const arrayPassengers = []
-
 			const seatsCount = action.payload
 
-			if (!state._initedPassengers) {
-				state._initedPassengers = true
+			const savedPassengers = localStorage.getItem("passengers") || "[]"
+
+			let arrayPassengers =
+				JSON.parse(savedPassengers) || passengersAdapter.getSelectors().selectAll(state)
+
+			if (!arrayPassengers.length || arrayPassengers.length !== seatsCount) {
+				const passengers = []
+				localStorage.removeItem("passengers")
+
 				for (let count = 0; count < seatsCount; count++) {
-					const passenger: passengerDataType = {
+					const defaultPassenger: passengerDataType = {
 						id: uid(),
 						surname: { isValid: true, value: "" },
 						firstName: { isValid: true, value: "" },
@@ -36,11 +41,15 @@ const formPassengersSlice = buildSlice({
 						numberPassport: { isValid: true, value: "" }
 					}
 
-					arrayPassengers.push(passenger)
+					passengers.push(defaultPassenger)
 				}
 
-				passengersAdapter.setAll(state, arrayPassengers)
+				arrayPassengers = [...passengers]
+
+				console.log(arrayPassengers)
 			}
+
+			passengersAdapter.setAll(state, arrayPassengers)
 		},
 		setPassengersInfo: (
 			state,
@@ -50,6 +59,9 @@ const formPassengersSlice = buildSlice({
 				id: action.payload.id,
 				changes: action.payload
 			})
+
+			const passengers = passengersAdapter.getSelectors().selectAll(state)
+			localStorage.setItem("passengers", JSON.stringify(passengers))
 		},
 		verifyFields: (
 			state,
@@ -61,6 +73,9 @@ const formPassengersSlice = buildSlice({
 			const { validatedPassengers, isAllValid } = action.payload
 			if (!isAllValid) {
 				passengersAdapter.updateMany(state, validatedPassengers)
+
+				const passengers = passengersAdapter.getSelectors().selectAll(state)
+				localStorage.setItem("passengers", JSON.stringify(passengers))
 			}
 		}
 	}
