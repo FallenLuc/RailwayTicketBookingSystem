@@ -2,9 +2,10 @@ import { getRoutePassengers } from "@config/router/helpers/gettersRoutesPaths.he
 import type { universalPageProps } from "@customTypes/common.types"
 import { BreadcrumbsLine } from "@features/BreadcrumbsLine"
 import {
-	useCurrentDirectionActions,
-	useGetCurrentDirectionInfoSelector
+	useGetCurrentDirectionInfoSelector,
+	useGetCurrentDirectionSeatsInfoSelector
 } from "@features/FillingFormCurrentDirection"
+import { useFormPassengersActions } from "@features/FillingFormPassengers"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { ContainerLayout } from "@ui/layout"
 import { Page } from "@ui/Page"
@@ -25,9 +26,10 @@ const PassengersPage = TypedMemo((props: PassengersPageProps) => {
 		return ErrorPage
 	}
 
-	const { initPassengers } = useCurrentDirectionActions()
+	const { initPassengers } = useFormPassengersActions()
+	const seatsInfo = useGetCurrentDirectionSeatsInfoSelector()
 
-	initPassengers()
+	initPassengers(seatsInfo)
 
 	const content = useMemo(
 		() => (

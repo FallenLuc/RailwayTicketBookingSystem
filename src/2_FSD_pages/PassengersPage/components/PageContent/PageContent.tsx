@@ -1,12 +1,12 @@
 import { getRouteTicket } from "@config/router"
 import type { testingProps } from "@customTypes/testing.types"
 import { validatePassengerForm } from "@entities/Passenger/lib/helpers/validatePassengerForm.helper"
-import {
-	useCurrentDirectionActions,
-	useGetCurrentDirectionInfoSelector,
-	useGetCurrentDirectionsPassengersSelector
-} from "@features/FillingFormCurrentDirection"
+import { useGetCurrentDirectionInfoSelector } from "@features/FillingFormCurrentDirection"
 import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features/FillingFormForSearchOfDirections"
+import {
+	useFormPassengersActions,
+	useGetFormPassengersDataSelector
+} from "@features/FillingFormPassengers"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { createQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
@@ -27,9 +27,9 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 
 	const formParametres = useGetFormForSearchOfDirectionsDataForRequestSelector()
 	const currentDirection = useGetCurrentDirectionInfoSelector()
-	const passengers = useGetCurrentDirectionsPassengersSelector()
+	const passengers = useGetFormPassengersDataSelector()
 
-	const { verifyFields } = useCurrentDirectionActions()
+	const { verifyFields } = useFormPassengersActions()
 
 	const navigate = useNavigate()
 

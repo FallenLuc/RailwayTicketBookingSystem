@@ -1,22 +1,15 @@
 import type { carriageDataType } from "@entities/Carriage"
 import type { directionGeneralDataType } from "@entities/Direction"
-import type { passengerDataType } from "@entities/Passenger"
 import { buildSlice } from "@helpers/buildSlice/buildSlice.helper"
 import type { PayloadAction } from "@reduxjs/toolkit"
-import { createEntityAdapter } from "@reduxjs/toolkit"
-import { uid } from "uid"
 import type { currentDirectionMapState } from "../storeTypes/currentDirectionMapState.map"
-
-export const passengersAdapter = createEntityAdapter<passengerDataType>()
 
 const initialState: currentDirectionMapState = {
 	directionInfo: undefined,
 	carriageInfo: undefined,
 	seatsInfo: 1,
-	_initedPassenger: false,
 	_inited: false,
-	sum: 0,
-	passengers: passengersAdapter.getInitialState()
+	sum: 0
 }
 
 const currentDirectionSlice = buildSlice({
@@ -40,30 +33,7 @@ const currentDirectionSlice = buildSlice({
 				state.directionInfo = action.payload?.departure
 			}
 		},
-		initPassengers: state => {
-			const arrayPassengers = []
 
-			if (!state._initedPassenger) {
-				state._initedPassenger = true
-				for (let count = 0; count < state.seatsInfo; count++) {
-					const passenger: passengerDataType = {
-						id: uid(),
-						surname: { isValid: true, value: "" },
-						firstName: { isValid: true, value: "" },
-						lastName: { isValid: true, value: "" },
-						sex: "male",
-						dateBirth: { isValid: true, value: "" },
-						isLimitedMobility: false,
-						seriesPassport: { isValid: true, value: "" },
-						numberPassport: { isValid: true, value: "" }
-					}
-
-					arrayPassengers.push(passenger)
-				}
-
-				passengersAdapter.setAll(state.passengers, arrayPassengers)
-			}
-		},
 		setCurrentDirection: (state, action: PayloadAction<directionGeneralDataType>) => {
 			state.directionInfo = action.payload?.departure
 		},
@@ -99,27 +69,6 @@ const currentDirectionSlice = buildSlice({
 			}
 
 			state.sum = sum
-		},
-		setPassengersInfo: (
-			state,
-			action: PayloadAction<Omit<Partial<passengerDataType>, "id"> & { id: string }>
-		) => {
-			passengersAdapter.updateOne(state.passengers, {
-				id: action.payload.id,
-				changes: action.payload
-			})
-		},
-		verifyFields: (
-			state,
-			action: PayloadAction<{
-				isAllValid: boolean
-				validatedPassengers: { id: string; changes: passengerDataType }[]
-			}>
-		) => {
-			const { validatedPassengers, isAllValid } = action.payload
-			if (!isAllValid) {
-				passengersAdapter.updateMany(state.passengers, validatedPassengers)
-			}
 		}
 	}
 })
