@@ -1,8 +1,10 @@
 import { getRouteTicket } from "@config/router"
 import type { testingProps } from "@customTypes/testing.types"
+import { validatePassengerForm } from "@entities/Passenger/lib/helpers/validatePassengerForm.helper"
 import {
 	useCurrentDirectionActions,
-	useGetCurrentDirectionInfoSelector
+	useGetCurrentDirectionInfoSelector,
+	useGetCurrentDirectionsPassengersSelector
 } from "@features/FillingFormCurrentDirection"
 import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features/FillingFormForSearchOfDirections"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
@@ -25,7 +27,9 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 
 	const formParametres = useGetFormForSearchOfDirectionsDataForRequestSelector()
 	const currentDirection = useGetCurrentDirectionInfoSelector()
-	const { initPassengers } = useCurrentDirectionActions()
+	const passengers = useGetCurrentDirectionsPassengersSelector()
+
+	const { verifyFields } = useCurrentDirectionActions()
 
 	const navigate = useNavigate()
 
@@ -38,7 +42,30 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 		navigate(createQueryParams(getRouteTicket(currentDirection?._id || "").route, params))
 	}, [currentDirection?._id, formParametres, navigate])
 
-	initPassengers()
+	const onNextHandler = useCallback(() => {
+		let isAllValid = true
+
+		const validatedPassengers = passengers.map(passenger => {
+			const { validatedPassenger, isValid } = validatePassengerForm(passenger)
+
+			if (!isValid) {
+				isAllValid = false
+			}
+
+			return { id: passenger.id, changes: validatedPassenger }
+		})
+
+		verifyFields({ isAllValid, validatedPassengers })
+
+		if (isAllValid) {
+			const params = {
+				...formParametres,
+				directionId: currentDirection?._id
+			}
+
+			navigate(createQueryParams(getRouteTicket(currentDirection?._id || "").route, params))
+		}
+	}, [currentDirection?._id, formParametres, navigate, passengers, verifyFields])
 
 	return (
 		<VStack
@@ -65,7 +92,7 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 					theme={"defaultLight"}
 					width={"s"}
 					height={"m"}
-					onClick={onBackHandler}
+					onClick={onNextHandler}
 				>
 					Далее
 				</Button>

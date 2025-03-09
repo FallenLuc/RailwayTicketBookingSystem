@@ -1,19 +1,16 @@
-import type { DeepPartial } from "@customTypes/global.types"
 import { uid } from "uid"
 import type { passengerDataType } from "../../types/passengerData.type"
 
-export const passengerDataMock = (
-	passenger?: DeepPartial<passengerDataType>
-): passengerDataType => {
+export const passengerDataMock = (passenger?: Partial<passengerDataType>): passengerDataType => {
 	return {
 		id: passenger?.id || uid(),
-		surname: passenger?.surname || "Meridian",
-		firstName: passenger?.firstName || "Lucifer",
-		lastName: passenger?.lastName || "",
-		dateBirth: passenger?.dateBirth || "21.06.1998",
+		surname: passenger?.surname || { isValid: true, value: "Meridian" },
+		firstName: passenger?.firstName || { isValid: true, value: "Lucifer" },
+		lastName: passenger?.lastName || { isValid: true, value: "" },
+		dateBirth: passenger?.dateBirth || { isValid: true, value: "21.06.1998" },
 		sex: passenger?.sex || "male",
 		isLimitedMobility: passenger?.isLimitedMobility ?? false,
-		numberPassport: passenger?.numberPassport ?? "015016",
-		seriesPassport: passenger?.seriesPassport ?? "4619"
+		numberPassport: passenger?.numberPassport || { isValid: true, value: "015016" },
+		seriesPassport: passenger?.seriesPassport ?? { isValid: true, value: "4619" }
 	}
 }

@@ -1,4 +1,3 @@
-import type { DeepPartial } from "@customTypes/global.types"
 import type { carriageDataType } from "@entities/Carriage"
 import type { directionGeneralDataType } from "@entities/Direction"
 import type { passengerDataType } from "@entities/Passenger"
@@ -14,9 +13,9 @@ const initialState: currentDirectionMapState = {
 	directionInfo: undefined,
 	carriageInfo: undefined,
 	seatsInfo: 1,
+	_initedPassenger: false,
 	sum: 0,
-	passengers: passengersAdapter.getInitialState(),
-	isValidPassengers: false
+	passengers: passengersAdapter.getInitialState()
 }
 
 const currentDirectionSlice = buildSlice({
@@ -54,32 +53,47 @@ const currentDirectionSlice = buildSlice({
 		initPassengers: state => {
 			const arrayPassengers = []
 
-			for (let count = 0; count < state.seatsInfo; count++) {
-				const passenger: passengerDataType = {
-					id: uid(),
-					surname: "",
-					firstName: "",
-					lastName: "",
-					sex: "male",
-					dateBirth: "",
-					isLimitedMobility: false,
-					seriesPassport: undefined,
-					numberPassport: undefined
+			if (!state._initedPassenger) {
+				state._initedPassenger = true
+				for (let count = 0; count < state.seatsInfo; count++) {
+					const passenger: passengerDataType = {
+						id: uid(),
+						surname: { isValid: true, value: "" },
+						firstName: { isValid: true, value: "" },
+						lastName: { isValid: true, value: "" },
+						sex: "male",
+						dateBirth: { isValid: true, value: "" },
+						isLimitedMobility: false,
+						seriesPassport: { isValid: true, value: "" },
+						numberPassport: { isValid: true, value: "" }
+					}
+
+					arrayPassengers.push(passenger)
 				}
 
-				arrayPassengers.push(passenger)
+				passengersAdapter.setAll(state.passengers, arrayPassengers)
 			}
-
-			passengersAdapter.setAll(state.passengers, arrayPassengers)
 		},
 		setPassengersInfo: (
 			state,
-			action: PayloadAction<Omit<DeepPartial<passengerDataType>, "id"> & { id: string }>
+			action: PayloadAction<Omit<Partial<passengerDataType>, "id"> & { id: string }>
 		) => {
 			passengersAdapter.updateOne(state.passengers, {
 				id: action.payload.id,
 				changes: action.payload
 			})
+		},
+		verifyFields: (
+			state,
+			action: PayloadAction<{
+				isAllValid: boolean
+				validatedPassengers: { id: string; changes: passengerDataType }[]
+			}>
+		) => {
+			const { validatedPassengers, isAllValid } = action.payload
+			if (!isAllValid) {
+				passengersAdapter.updateMany(state.passengers, validatedPassengers)
+			}
 		}
 	}
 })

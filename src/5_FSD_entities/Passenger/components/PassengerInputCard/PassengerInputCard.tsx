@@ -33,21 +33,21 @@ export const PassengerInputCard = TypedMemo((props: PassengerInputCardProps) => 
 
 	const onChangeHandlerSurName = useCallback(
 		(value: string) => {
-			onChange?.(id, "surname", value)
+			onChange?.(id, "surname", { isValid: true, value })
 		},
 		[id, onChange]
 	)
 
 	const onChangeHandlerFirstName = useCallback(
 		(value: string) => {
-			onChange?.(id, "firstName", value)
+			onChange?.(id, "firstName", { isValid: true, value })
 		},
 		[id, onChange]
 	)
 
 	const onChangeHandlerLastName = useCallback(
 		(value: string) => {
-			onChange?.(id, "lastName", value)
+			onChange?.(id, "lastName", { isValid: true, value })
 		},
 		[id, onChange]
 	)
@@ -61,7 +61,7 @@ export const PassengerInputCard = TypedMemo((props: PassengerInputCardProps) => 
 
 	const onChangeHandlerDateBirth = useCallback(
 		(value: string) => {
-			onChange?.(id, "dateBirth", value)
+			onChange?.(id, "dateBirth", { isValid: true, value })
 		},
 		[id, onChange]
 	)
@@ -74,13 +74,13 @@ export const PassengerInputCard = TypedMemo((props: PassengerInputCardProps) => 
 	)
 	const onChangeHandlerSeriesPassport = useCallback(
 		(value: string) => {
-			onChange?.(id, "seriesPassport", value)
+			onChange?.(id, "seriesPassport", { isValid: true, value })
 		},
 		[id, onChange]
 	)
 	const onChangeHandlerNumberPassport = useCallback(
 		(value: string) => {
-			onChange?.(id, "numberPassport", value)
+			onChange?.(id, "numberPassport", { isValid: true, value })
 		},
 		[id, onChange]
 	)

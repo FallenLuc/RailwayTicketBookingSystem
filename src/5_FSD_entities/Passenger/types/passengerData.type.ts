@@ -2,12 +2,17 @@ import type { sexType } from "@customTypes/common.types"
 
 export type passengerDataType = {
 	id: string
-	surname: string
-	firstName: string
-	lastName?: string
+	surname: fieldWithValidationType
+	firstName: fieldWithValidationType
+	lastName: fieldWithValidationType
 	sex: sexType
-	dateBirth: string
+	dateBirth: fieldWithValidationType
 	isLimitedMobility: boolean
-	seriesPassport?: string
-	numberPassport?: string
+	seriesPassport: fieldWithValidationType
+	numberPassport: fieldWithValidationType
+}
+
+export type fieldWithValidationType = {
+	isValid: boolean
+	value: string
 }

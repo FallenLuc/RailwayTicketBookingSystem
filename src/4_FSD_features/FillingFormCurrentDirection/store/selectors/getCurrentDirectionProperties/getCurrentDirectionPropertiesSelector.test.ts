@@ -90,19 +90,19 @@ describe("getCurrentDirectionPassengersSelector", () => {
 					entities: {
 						"1": {
 							id: "1",
-							firstName: "Luc"
+							firstName: { value: "Luc" }
 						},
 						"2": {
 							id: "2",
-							firstName: "Lucifer"
+							firstName: { value: "Lucifer" }
 						}
 					}
 				}
 			}
 		}
 		expect(getCurrentDirectionPassengersSelector(state as mainStateMap)).toEqual([
-			{ id: "1", firstName: "Luc" },
-			{ id: "2", firstName: "Lucifer" }
+			{ id: "1", firstName: { value: "Luc" } },
+			{ id: "2", firstName: { value: "Lucifer" } }
 		])
 	})
 

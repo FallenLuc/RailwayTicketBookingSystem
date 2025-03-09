@@ -1,7 +1,8 @@
 import type { sexType } from "@customTypes/common.types"
 import type { testingProps } from "@customTypes/testing.types"
-import type { passengerDataType } from "@entities/Passenger"
-import { PassengerInputCard } from "@entities/Passenger/components/PassengerInputCard/PassengerInputCard"
+import type { fieldWithValidationType, passengerDataType } from "@entities/Passenger"
+import { PassengerInputCard } from "@entities/Passenger"
+
 import {
 	useCurrentDirectionActions,
 	useGetCurrentDirectionsPassengersSelector
@@ -29,16 +30,16 @@ export const PassengersList = TypedMemo((props: PassengersListProps) => {
 	) => {
 		switch (typeChange) {
 			case "surname":
-				setPassengersInfo({ id, surname: value as string })
+				setPassengersInfo({ id, surname: value as fieldWithValidationType })
 				break
 			case "firstName":
-				setPassengersInfo({ id, firstName: value as string })
+				setPassengersInfo({ id, firstName: value as fieldWithValidationType })
 				break
 			case "lastName":
-				setPassengersInfo({ id, lastName: value as string })
+				setPassengersInfo({ id, lastName: value as fieldWithValidationType })
 				break
 			case "dateBirth":
-				setPassengersInfo({ id, dateBirth: value as string })
+				setPassengersInfo({ id, dateBirth: value as fieldWithValidationType })
 				break
 			case "isLimitedMobility":
 				setPassengersInfo({ id, isLimitedMobility: value as boolean })
@@ -47,10 +48,10 @@ export const PassengersList = TypedMemo((props: PassengersListProps) => {
 				setPassengersInfo({ id, sex: value as sexType })
 				break
 			case "numberPassport":
-				setPassengersInfo({ id, numberPassport: value as string })
+				setPassengersInfo({ id, numberPassport: value as fieldWithValidationType })
 				break
 			case "seriesPassport":
-				setPassengersInfo({ id, seriesPassport: value as string })
+				setPassengersInfo({ id, seriesPassport: value as fieldWithValidationType })
 				break
 		}
 	}
