@@ -14,6 +14,7 @@ const initialState: currentDirectionMapState = {
 	carriageInfo: undefined,
 	seatsInfo: 1,
 	_initedPassenger: false,
+	_inited: false,
 	sum: 0,
 	passengers: passengersAdapter.getInitialState()
 }
@@ -22,33 +23,22 @@ const currentDirectionSlice = buildSlice({
 	name: "currentDirection",
 	initialState,
 	reducers: {
-		setCurrentDirection: (state, action: PayloadAction<directionGeneralDataType>) => {
-			state.directionInfo = action.payload?.departure
-		},
-		setCurrentCarriage: (state, action: PayloadAction<carriageDataType>) => {
-			state.carriageInfo = action.payload
-		},
-		setChosenSeatsInfo: (state, action: PayloadAction<number>) => {
-			state.seatsInfo = action.payload
-		},
-		calculateSum: state => {
-			let sum = 0
+		initCurrentDirection: (state, action: PayloadAction<directionGeneralDataType>) => {
+			if (!state._inited) {
+				state._inited = true
+				const savedSeatsInfo = localStorage.getItem("seatsInfo")
+				const savedCarriageInfo = localStorage.getItem("carriageInfo")
 
-			if (state.carriageInfo) {
-				if (state.seatsInfo && state.carriageInfo.top_price) {
-					sum = state.carriageInfo.top_price * state.seatsInfo
+				if (savedSeatsInfo) {
+					state.seatsInfo = parseInt(savedSeatsInfo)
 				}
 
-				if (state.carriageInfo.have_wifi) {
-					sum += state.carriageInfo.wifi_price || 0
+				if (savedCarriageInfo) {
+					state.carriageInfo = JSON.parse(savedCarriageInfo)
 				}
 
-				if (state.carriageInfo.is_linens_included) {
-					sum += state.carriageInfo.linens_price || 0
-				}
+				state.directionInfo = action.payload?.departure
 			}
-
-			state.sum = sum
 		},
 		initPassengers: state => {
 			const arrayPassengers = []
@@ -73,6 +63,42 @@ const currentDirectionSlice = buildSlice({
 
 				passengersAdapter.setAll(state.passengers, arrayPassengers)
 			}
+		},
+		setCurrentDirection: (state, action: PayloadAction<directionGeneralDataType>) => {
+			state.directionInfo = action.payload?.departure
+		},
+		setCurrentCarriage: (state, action: PayloadAction<carriageDataType>) => {
+			localStorage.setItem("carriageInfo", JSON.stringify(state.carriageInfo))
+
+			state.carriageInfo = action.payload
+		},
+		setChosenSeatsInfo: (state, action: PayloadAction<number>) => {
+			localStorage.setItem("seatsInfo", action.payload.toString())
+
+			state.seatsInfo = action.payload
+		},
+		resetSeatsInfo: state => {
+			localStorage.removeItem("seatsInfo")
+			state.seatsInfo = 1
+		},
+		calculateSum: state => {
+			let sum = 0
+
+			if (state.carriageInfo) {
+				if (state.seatsInfo && state.carriageInfo.top_price) {
+					sum = state.carriageInfo.top_price * state.seatsInfo
+				}
+
+				if (state.carriageInfo.have_wifi) {
+					sum += state.carriageInfo.wifi_price || 0
+				}
+
+				if (state.carriageInfo.is_linens_included) {
+					sum += state.carriageInfo.linens_price || 0
+				}
+			}
+
+			state.sum = sum
 		},
 		setPassengersInfo: (
 			state,

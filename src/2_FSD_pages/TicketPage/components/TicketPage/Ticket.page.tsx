@@ -1,7 +1,10 @@
 import { getRouteTicket } from "@config/router"
 import { useGetDirectionsListItemSelector } from "@entities/Direction"
 import { BreadcrumbsLine } from "@features/BreadcrumbsLine"
-import { useCurrentDirectionActions } from "@features/FillingFormCurrentDirection"
+import {
+	useCurrentDirectionActions,
+	useGetCurrentDirectionInitedSelector
+} from "@features/FillingFormCurrentDirection"
 import { parseFormDataFromUrlHelper } from "@features/FillingFormForSearchOfDirections"
 import { useAppDispatch } from "@hooks/useAppDispatch.hook"
 import { useInitialEffect } from "@hooks/useInitialEffect.hook"
@@ -23,13 +26,14 @@ const TicketPage = TypedMemo(() => {
 	const dispatch = useAppDispatch()
 	const [searchParams] = useSearchParams()
 
-	const { setCurrentDirection } = useCurrentDirectionActions()
+	const { setCurrentDirection, initCurrentDirection } = useCurrentDirectionActions()
 
 	const { additionalData: dataIds } = parseFormDataFromUrlHelper<{
 		directionId: string
 	}>(searchParams)
 
 	const currentDirection = useGetDirectionsListItemSelector(dataIds.directionId)
+	const initedCurrentDirection = useGetCurrentDirectionInitedSelector()
 
 	useInitialEffect(
 		useCallback(() => {
@@ -38,10 +42,14 @@ const TicketPage = TypedMemo(() => {
 	)
 
 	useEffect(() => {
-		if (currentDirection) {
+		if (currentDirection && !initedCurrentDirection) {
+			initCurrentDirection(currentDirection)
+		} else if (currentDirection) {
 			setCurrentDirection(currentDirection)
 		}
-	}, [currentDirection, dataIds.directionId, setCurrentDirection])
+
+		//eslint-disable-next-line
+	}, [currentDirection?.departure?._id])
 
 	const pageContent = (
 		<>

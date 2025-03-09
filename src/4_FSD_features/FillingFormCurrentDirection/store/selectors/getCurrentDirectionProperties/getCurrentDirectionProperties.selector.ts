@@ -29,6 +29,12 @@ export const [useGetCurrentDirectionSumSelector, getCurrentDirectionSumSelector]
 		(state: currentDirectionMapState) => state?.sum || 0
 	)
 
+export const [useGetCurrentDirectionInitedSelector, getCurrentDirectionInitedSelector] =
+	buildCreateSelector(
+		[getCurrentDirectionSelector],
+		(state: currentDirectionMapState) => state?._inited ?? false
+	)
+
 const initialState = passengersAdapter.getInitialState()
 
 export const { selectAll: getCurrentDirectionPassengersSelector } =

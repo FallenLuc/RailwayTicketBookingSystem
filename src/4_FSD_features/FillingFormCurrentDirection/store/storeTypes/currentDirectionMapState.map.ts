@@ -8,6 +8,7 @@ export type currentDirectionMapState = {
 	carriageInfo?: carriageDataType
 	seatsInfo: number
 	sum: number
+	_inited: boolean
 	_initedPassenger: boolean
 	passengers: EntityState<passengerDataType, string>
 }
