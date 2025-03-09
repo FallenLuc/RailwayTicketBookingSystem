@@ -1,5 +1,5 @@
-import { parseFormDataFromUrlHelper } from "@features/FillingFormForSearchOfDirections/lib/helpers/parseFormDataFromUrl/parseFormDataFromUrl.helper"
 import { formForSearchDirectionsActions } from "@features/FillingFormForSearchOfDirections/store/slices/formForSearchOfDirections.slice"
+import { parseFormDataFromUrlHelper } from "@helpers/parseFormDataFromUrl/parseFormDataFromUrl.helper"
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import type { thunkConfigType } from "@store/storeTypes/thunks.type"
 import { fetchDirectionsListThunk } from "../fetchDirectionsListThunk/fetchDirectionsList.thunk"

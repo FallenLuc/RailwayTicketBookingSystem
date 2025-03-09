@@ -1,5 +1,5 @@
 import type { directionDisplayParametres } from "@entities/Direction"
-import type { formDataType } from "../../../store/storeTypes/formForSearchOfDirectionsState.map"
+import type { formDataType } from "@features/FillingFormForSearchOfDirections/store/storeTypes/formForSearchOfDirectionsState.map"
 
 export function parseFormDataFromUrlHelper<T extends object>(
 	searchParams?: URLSearchParams

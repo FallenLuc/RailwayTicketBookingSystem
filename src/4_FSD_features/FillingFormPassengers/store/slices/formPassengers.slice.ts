@@ -21,7 +21,7 @@ const formPassengersSlice = buildSlice({
 
 			const savedPassengers = localStorage.getItem("passengers") || "[]"
 
-			let arrayPassengers =
+			let arrayPassengers: passengerDataType[] =
 				JSON.parse(savedPassengers) || passengersAdapter.getSelectors().selectAll(state)
 
 			if (!arrayPassengers.length || arrayPassengers.length !== seatsCount) {
@@ -45,8 +45,6 @@ const formPassengersSlice = buildSlice({
 				}
 
 				arrayPassengers = [...passengers]
-
-				console.log(arrayPassengers)
 			}
 
 			passengersAdapter.setAll(state, arrayPassengers)

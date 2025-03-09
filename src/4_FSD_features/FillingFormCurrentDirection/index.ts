@@ -12,3 +12,5 @@ export {
 	useGetCurrentDirectionSumSelector,
 	useGetCurrentDirectionInitedSelector
 } from "./store/selectors/getCurrentDirectionProperties/getCurrentDirectionProperties.selector"
+
+export { useSetCurrentDirectionByUrl } from "./lib/hooks/useSetCurrentDirectionByUrl.hook"
