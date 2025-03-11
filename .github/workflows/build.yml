@@ -61,7 +61,7 @@ jobs:
         id-token: write
 
     environment:
-        name: github-pages
+        name: production
         url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
