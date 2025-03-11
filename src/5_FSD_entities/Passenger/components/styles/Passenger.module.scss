@@ -1,0 +1,13 @@
+.input {
+	width: 100%;
+	max-width: 280px;
+
+	border: 1px solid var(--main-gray);
+}
+
+.label {
+	width: auto;
+
+	color: var(--main-gray);
+	font: var(--font-xs);
+}

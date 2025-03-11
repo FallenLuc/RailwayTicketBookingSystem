@@ -29,7 +29,7 @@ export const CarriageSeatsMap = TypedMemo((props: CarriageSeatsMapProps) => {
 		<div className={classNamesHelp(styles.CarriageSeatsMap, undefined, [className])}>
 			{countSeatsData?.length && (
 				<Select
-					label={"Выберите места:"}
+					label={"Выберите количество мест:"}
 					options={countSeatsData}
 					theme={"border"}
 					onChange={onChange}

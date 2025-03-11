@@ -8,6 +8,7 @@ import ArrowToIcon from "./icons/arrow-to.svg"
 import ArrowUpIcon from "./icons/arrow-up.svg"
 import CalendarIcon from "./icons/calendar.svg"
 import ChangeIcon from "./icons/change.svg"
+import CheckIcon from "./icons/check.svg"
 import ClockIcon from "./icons/clock.svg"
 import ConditionerIcon from "./icons/conditioner.svg"
 import CupeIcon from "./icons/cupe.svg"
@@ -24,6 +25,7 @@ import MailIcon from "./icons/mail.svg"
 import MinusButtonIcon from "./icons/minus-button.svg"
 import MonitorIcon from "./icons/monitor.svg"
 import OfficesIcon from "./icons/offices.svg"
+import PassengerIcon from "./icons/passenger.svg"
 import PhoneIcon from "./icons/phone.svg"
 import PlackartIcon from "./icons/plackart.svg"
 import PlusButtonIcon from "./icons/plus-button.svg"
@@ -86,5 +88,7 @@ export {
 	ThreeDotsIcon,
 	TrainSmallIcon,
 	ClockIcon,
-	LinensIcon
+	LinensIcon,
+	CheckIcon,
+	PassengerIcon
 }

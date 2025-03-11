@@ -4,7 +4,7 @@ import { type Meta, type StoryObj } from "@storybook/react"
 import { CarriageChanger } from "./CarriageChanger"
 
 const meta: Meta<typeof CarriageChanger> = {
-	title: "feature/CarriageChanger",
+	title: "features/CarriageChanger",
 	component: CarriageChanger,
 	parameters: {
 		controls: {

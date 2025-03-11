@@ -6,4 +6,5 @@ export type currentDirectionMapState = {
 	carriageInfo?: carriageDataType
 	seatsInfo: number
 	sum: number
+	_inited: boolean
 }
