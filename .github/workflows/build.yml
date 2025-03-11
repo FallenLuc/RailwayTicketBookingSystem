@@ -64,7 +64,6 @@ jobs:
         name: testing
         url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-
     steps:
       - name: Deploy to GitHub Page
         id: deployment
