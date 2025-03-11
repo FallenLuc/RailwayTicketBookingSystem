@@ -54,10 +54,10 @@
 }
 
 .error {
-	color: var(--error);
+	color: var(--error) !important;
 
 	.Input {
-		border: 1px solid var(--error);
+		border: 1px solid var(--error) !important;
 	}
 }
 

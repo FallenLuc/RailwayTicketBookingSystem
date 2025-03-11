@@ -8,6 +8,7 @@ const initialState: currentDirectionMapState = {
 	directionInfo: undefined,
 	carriageInfo: undefined,
 	seatsInfo: 1,
+	_inited: false,
 	sum: 0
 }
 
@@ -15,14 +16,40 @@ const currentDirectionSlice = buildSlice({
 	name: "currentDirection",
 	initialState,
 	reducers: {
+		initCurrentDirection: (state, action: PayloadAction<directionGeneralDataType>) => {
+			if (!state._inited) {
+				state._inited = true
+				const savedSeatsInfo = localStorage.getItem("seatsInfo")
+				const savedCarriageInfo = localStorage.getItem("carriageInfo")
+
+				if (savedSeatsInfo) {
+					state.seatsInfo = parseInt(savedSeatsInfo)
+				}
+
+				if (savedCarriageInfo) {
+					state.carriageInfo = JSON.parse(savedCarriageInfo)
+				}
+
+				state.directionInfo = action.payload?.departure
+			}
+		},
+
 		setCurrentDirection: (state, action: PayloadAction<directionGeneralDataType>) => {
 			state.directionInfo = action.payload?.departure
 		},
 		setCurrentCarriage: (state, action: PayloadAction<carriageDataType>) => {
+			localStorage.setItem("carriageInfo", JSON.stringify(state.carriageInfo))
+
 			state.carriageInfo = action.payload
 		},
 		setChosenSeatsInfo: (state, action: PayloadAction<number>) => {
+			localStorage.setItem("seatsInfo", action.payload.toString())
+
 			state.seatsInfo = action.payload
+		},
+		resetSeatsInfo: state => {
+			localStorage.removeItem("seatsInfo")
+			state.seatsInfo = 1
 		},
 		calculateSum: state => {
 			let sum = 0
@@ -53,3 +80,4 @@ export const {
 } = currentDirectionSlice
 
 // To Hold написать тест
+// To Feature вынести passengers в отдельную фичу FillingFormPassengers

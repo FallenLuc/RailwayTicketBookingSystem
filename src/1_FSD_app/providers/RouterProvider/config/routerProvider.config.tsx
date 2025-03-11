@@ -4,6 +4,7 @@ import { routeConfig } from "@config/router/config/route.config"
 import { ChooseTrainPage } from "@pages/ChooseTrainPage"
 import { MainPage } from "@pages/MainPage"
 import { NotFoundPage } from "@pages/NotFoundPage"
+import { PassengersPage } from "@pages/PassengersPage"
 import { SuccessPage } from "@pages/SuccessPage"
 import { TicketPage } from "@pages/TicketPage"
 import type { ReactNode } from "react"
@@ -19,6 +20,7 @@ export const mapperPageNameComponent: Record<RouteNames, ReactNode> = {
 	[RouteNames.Reviews]: <MainPage />,
 	[RouteNames.Contacts]: <MainPage />,
 	[RouteNames.ChooseTrain]: <ChooseTrainPage />,
+	[RouteNames.Passengers]: <PassengersPage />,
 	[RouteNames.Success]: <SuccessPage />,
 	[RouteNames.NotFound]: <NotFoundPage />,
 	[RouteNames.Ticket]: <TicketPage />

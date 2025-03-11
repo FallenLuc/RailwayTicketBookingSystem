@@ -7,6 +7,7 @@ export enum RouteNames {
 	Contacts = "Контакты",
 	ChooseTrain = "ChooseTrain",
 	Ticket = "Ticket",
+	Passengers = "Passengers",
 	Success = "Success",
 	NotFound = "NotFound"
 }

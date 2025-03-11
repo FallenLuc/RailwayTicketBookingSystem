@@ -3,7 +3,7 @@ import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { HStack, VStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
-import type { PropsWithChildren, ReactNode } from "react"
+import type { PropsWithChildren } from "react"
 import { Children } from "react"
 import type { carriageDataType } from "../../types/carrriageData.type"
 import { CarriageParametres } from "../CarriageParametres/CarriageParametres"
@@ -13,7 +13,6 @@ import styles from "./CarriageInfo.module.scss"
 type CarriageInfoProps = {
 	className?: string
 	data?: carriageDataType
-	optionChanger?: ReactNode
 } & testingProps &
 	PropsWithChildren
 
@@ -60,5 +59,3 @@ export const CarriageInfo = TypedMemo((props: CarriageInfoProps) => {
 		</VStack>
 	)
 })
-
-// Todo сделать фабрику моков

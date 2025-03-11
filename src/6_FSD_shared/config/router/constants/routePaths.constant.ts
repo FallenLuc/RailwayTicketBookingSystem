@@ -3,7 +3,8 @@ export enum RoutePaths {
 	ChooseTrain = "/choose-train",
 	Ticket = "/ticket/:id",
 	Success = "/success",
-	NotFound = "/*"
+	NotFound = "/*",
+	Passengers = "/passengers"
 }
 
 export enum HashPaths {

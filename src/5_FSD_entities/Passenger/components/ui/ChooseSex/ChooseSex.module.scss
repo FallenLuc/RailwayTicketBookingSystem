@@ -1,0 +1,29 @@
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 100px;
+	height: 50px;
+
+	border: 1px solid var(--main-gray);
+
+	border-radius: 0;
+
+	background-color: transparent;
+}
+
+.female-button {
+	border-left: none;
+	border-top-right-radius: var(--br-button);
+	border-bottom-right-radius: var(--br-button);
+}
+
+.male-button {
+	border-top-left-radius: var(--br-button);
+	border-bottom-left-radius: var(--br-button);
+}
+
+.active {
+	background-color: var(--accent-orange);
+}

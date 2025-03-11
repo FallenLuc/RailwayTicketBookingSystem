@@ -1,4 +1,4 @@
-import { ErrorPage } from "@pages/ErrorPage"
+import { ErrorScreen } from "@ui/ErrorScreen"
 import React, { type PropsWithChildren, Suspense } from "react"
 
 type ErrorBoundaryStateProps = {
@@ -33,7 +33,7 @@ export class ErrorBoundaryProvider extends React.Component<
 		if (hasError) {
 			return (
 				<Suspense>
-					<ErrorPage />
+					<ErrorScreen type={"reload"} />
 				</Suspense>
 			)
 		}
