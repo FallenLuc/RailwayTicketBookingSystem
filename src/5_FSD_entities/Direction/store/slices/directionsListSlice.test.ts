@@ -1,13 +1,9 @@
 import type { DeepPartial } from "@customTypes/global.types"
-import { describe, expect, jest, test } from "@jest/globals"
+import { describe, expect, test } from "@jest/globals"
 import type { directionGeneralDataFromServerType } from "../../types/directionData.type"
 import type { directionsListStateMap } from "../storeTypes/directionsListState.map"
 import { fetchDirectionsThunk } from "../thunks/fetchDirections/fetchDirections.thunk"
 import { directionsListReducers } from "./directionsList.slice"
-
-jest.mock("uid", () => ({
-	uid: jest.fn().mockReturnValue("testID")
-}))
 
 describe("directionsListSliceTest", () => {
 	test("pending", () => {
@@ -44,7 +40,7 @@ describe("directionsListSliceTest", () => {
 				{
 					total_count: 156,
 					items: [
-						{ from_city_id: "1" }
+						{ from_city_id: "1", departure: { _id: "testID" } }
 					] as unknown as directionGeneralDataFromServerType[]
 				},
 				"",
@@ -60,7 +56,7 @@ describe("directionsListSliceTest", () => {
 			error: undefined,
 			totalCount: 156,
 			ids: ["testID"],
-			entities: { testID: { from_city_id: "1", id: "testID" } }
+			entities: { testID: { from_city_id: "1", id: "testID", departure: { _id: "testID" } } }
 		})
 	})
 

@@ -35,7 +35,7 @@ const directionsListSlice = buildSlice({
 
 				const items = action.payload.items.map(item => ({
 					...item,
-					id: item.departure._id
+					id: item.departure?._id
 				}))
 
 				directionsListAdapter.setAll(state, items)
