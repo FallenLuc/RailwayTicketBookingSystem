@@ -11,7 +11,7 @@ export const CONTACT_LOCATION_TEXT = "г. Москва ул. Московска�
 export const CONTACT_LOCATION_LINK = "https://yandex.ru/maps/-/CDhy5OO~"
 
 export const LEARN_MORE_LINK =
-	"https://github.com/DnD-developer/RailwayTicketBookingSystem/tree/MainPage/layoutMainPageOnComponent-DND-581"
+	"https://github.com/FallenLuc/RailwayTicketBookingSystem/tree/MainPage/layoutMainPageOnComponent-DND-581"
 
 export const YOUTUBE_LINK = "https://www.youtube.com/"
 export const LINKEDIN_LINK =
