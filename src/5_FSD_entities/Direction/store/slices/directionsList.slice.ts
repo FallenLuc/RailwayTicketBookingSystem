@@ -1,6 +1,5 @@
 import { buildSlice } from "@helpers/buildSlice/buildSlice.helper"
 import { createEntityAdapter } from "@reduxjs/toolkit"
-import { uid } from "uid"
 import type { directionGeneralDataType } from "../../types/directionData.type"
 import type { directionsListStateMap } from "../storeTypes/directionsListState.map"
 import { fetchDirectionsThunk } from "../thunks/fetchDirections/fetchDirections.thunk"
@@ -34,7 +33,10 @@ const directionsListSlice = buildSlice({
 
 				state.totalCount = action.payload.total_count
 
-				const items = action.payload.items.map(item => ({ ...item, id: uid() }))
+				const items = action.payload.items.map(item => ({
+					...item,
+					id: item.departure?._id
+				}))
 
 				directionsListAdapter.setAll(state, items)
 			})

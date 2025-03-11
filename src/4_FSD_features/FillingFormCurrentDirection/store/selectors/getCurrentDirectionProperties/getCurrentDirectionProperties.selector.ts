@@ -25,3 +25,9 @@ export const [useGetCurrentDirectionSumSelector, getCurrentDirectionSumSelector]
 		[getCurrentDirectionSelector],
 		(state: currentDirectionMapState) => state?.sum || 0
 	)
+
+export const [useGetCurrentDirectionInitedSelector, getCurrentDirectionInitedSelector] =
+	buildCreateSelector(
+		[getCurrentDirectionSelector],
+		(state: currentDirectionMapState) => state?._inited ?? false
+	)
