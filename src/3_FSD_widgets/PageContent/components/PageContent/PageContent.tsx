@@ -1,16 +1,11 @@
-import { getRouteChooseTrain, getRoutePay, getRouteTicket } from "@config/router"
+import { getRouteChooseTrain } from "@config/router"
 import type { testingProps } from "@customTypes/testing.types"
 import {
 	useGetDirectionsListErrorSelector,
 	useGetDirectionsListIsLoadingSelector
 } from "@entities/Direction"
-import { validatePassengerForm } from "@entities/Passenger/lib/helpers/validatePassengerForm.helper"
 import { useGetCurrentDirectionInfoSelector } from "@features/FillingFormCurrentDirection"
 import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features/FillingFormForSearchOfDirections"
-import {
-	useFormPassengersActions,
-	useGetFormPassengersDataSelector
-} from "@features/FillingFormPassengers"
 import { OverlayLoader } from "@features/OverlayLoader"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { createQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
@@ -18,28 +13,38 @@ import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { Button } from "@ui/Button"
 import { ErrorScreen } from "@ui/ErrorScreen"
 import { HStack, VStack } from "@ui/Stack"
-import { CurrentDirectionSidebar } from "@widgets/CurrentDirectionSidebar"
-import { PassengersList } from "@widgets/PassengersList"
-import { useCallback, useMemo } from "react"
+import type { ReactNode } from "react"
+import { Children, useCallback, useMemo } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./PageContent.module.scss"
 
 type PageContentProps = {
+	nextLink?: string
+	backLink?: string
+	onNextCustomHandler?: () => void
+	onBackCustomHandler?: () => void
 	className?: string
+	children?: ReactNode
 } & testingProps
 
 export const PageContent = TypedMemo((props: PageContentProps) => {
-	const { className } = props
-
-	const isLoading = useGetDirectionsListIsLoadingSelector()
-	const error = useGetDirectionsListErrorSelector()
-	const formParametres = useGetFormForSearchOfDirectionsDataForRequestSelector()
-	const currentDirection = useGetCurrentDirectionInfoSelector()
-	const passengers = useGetFormPassengersDataSelector()
-
-	const { verifyFields } = useFormPassengersActions()
+	const {
+		className,
+		nextLink = "",
+		backLink = "",
+		children,
+		onNextCustomHandler,
+		onBackCustomHandler
+	} = props
 
 	const navigate = useNavigate()
+
+	const childrenArray = Children.toArray(children)
+
+	const formParametres = useGetFormForSearchOfDirectionsDataForRequestSelector()
+	const currentDirection = useGetCurrentDirectionInfoSelector()
+	const isLoading = useGetDirectionsListIsLoadingSelector()
+	const error = useGetDirectionsListErrorSelector()
 
 	const params = useMemo(() => {
 		return {
@@ -49,28 +54,12 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 	}, [currentDirection?._id, formParametres])
 
 	const onBackHandler = useCallback(() => {
-		navigate(createQueryParams(getRouteTicket(currentDirection?._id || "").route, params))
-	}, [currentDirection?._id, navigate, params])
+		navigate(createQueryParams(backLink, params))
+	}, [backLink, navigate, params])
 
 	const onNextHandler = useCallback(() => {
-		let isAllValid = true
-
-		const validatedPassengers = passengers.map(passenger => {
-			const { validatedPassenger, isValid } = validatePassengerForm(passenger)
-
-			if (!isValid) {
-				isAllValid = false
-			}
-
-			return { id: passenger.id, changes: validatedPassenger }
-		})
-
-		verifyFields({ isAllValid, validatedPassengers })
-
-		if (isAllValid) {
-			navigate(createQueryParams(getRoutePay().route, params))
-		}
-	}, [navigate, params, passengers, verifyFields])
+		navigate(createQueryParams(nextLink, params))
+	}, [navigate, nextLink, params])
 
 	if (isLoading) {
 		return <OverlayLoader />
@@ -88,12 +77,12 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 
 	return (
 		<VStack
-			className={classNamesHelp(styles.PageContent, {}, [className])}
+			className={classNamesHelp(styles.PageContent, undefined, [className])}
 			gap={"XL"}
 		>
 			<HStack gap={"XL"}>
-				<CurrentDirectionSidebar />
-				<PassengersList />
+				{childrenArray[0]}
+				{childrenArray[1]}
 			</HStack>
 			<HStack
 				align={"center"}
@@ -103,7 +92,7 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 					theme={"defaultLight"}
 					width={"s"}
 					height={"m"}
-					onClick={onBackHandler}
+					onClick={onBackCustomHandler || onBackHandler}
 				>
 					Назад
 				</Button>
@@ -111,7 +100,7 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 					theme={"defaultLight"}
 					width={"s"}
 					height={"m"}
-					onClick={onNextHandler}
+					onClick={onNextCustomHandler || onNextHandler}
 				>
 					Далее
 				</Button>

@@ -1,4 +1,4 @@
-import { getRoutePay } from "@config/router"
+import { getRoutePassengers, getRoutePay } from "@config/router"
 import type { testingProps } from "@customTypes/testing.types"
 import { BreadcrumbsLine } from "@features/BreadcrumbsLine"
 import {
@@ -11,9 +11,11 @@ import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { ContainerLayout } from "@ui/layout"
 import { Page } from "@ui/Page"
+import { VStack } from "@ui/Stack"
+import { CurrentDirectionSidebar } from "@widgets/CurrentDirectionSidebar"
 import { Footer } from "@widgets/Footer"
 import { Header } from "@widgets/Header"
-import { PageContent } from "../PageContent/PageContent"
+import { PageContent } from "@widgets/PageContent"
 
 type PayPageProps = {
 	className?: string
@@ -38,7 +40,13 @@ const PayPage = TypedMemo((props: PayPageProps) => {
 			/>
 			<BreadcrumbsLine stage={"payment"} />
 			<ContainerLayout>
-				<PageContent />
+				<PageContent
+					nextLink={getRoutePassengers().route}
+					backLink={getRoutePassengers().route}
+				>
+					<CurrentDirectionSidebar />
+					<VStack>{"контент"}</VStack>
+				</PageContent>
 			</ContainerLayout>
 			<Footer pagePath={pagePath.route} />
 		</Page>
