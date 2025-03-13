@@ -4,7 +4,8 @@ export enum RoutePaths {
 	Ticket = "/ticket/:id",
 	Success = "/success",
 	NotFound = "/*",
-	Passengers = "/passengers"
+	Passengers = "/passengers",
+	Pay = "/pay"
 }
 
 export enum HashPaths {
