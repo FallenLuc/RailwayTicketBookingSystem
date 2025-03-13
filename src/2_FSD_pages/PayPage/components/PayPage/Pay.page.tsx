@@ -1,4 +1,5 @@
-import { getRoutePassengers } from "@config/router"
+import { getRoutePay } from "@config/router"
+import type { testingProps } from "@customTypes/testing.types"
 import { BreadcrumbsLine } from "@features/BreadcrumbsLine"
 import {
 	useGetCurrentDirectionInfoSelector,
@@ -6,6 +7,7 @@ import {
 	useSetCurrentDirectionByUrl
 } from "@features/FillingFormCurrentDirection"
 import { useSetInitialPassengers } from "@features/FillingFormPassengers"
+import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { ContainerLayout } from "@ui/layout"
 import { Page } from "@ui/Page"
@@ -13,9 +15,15 @@ import { Footer } from "@widgets/Footer"
 import { Header } from "@widgets/Header"
 import { PageContent } from "../PageContent/PageContent"
 
-const pagePath = getRoutePassengers()
+type PayPageProps = {
+	className?: string
+} & testingProps
 
-const PassengersPage = TypedMemo(() => {
+const pagePath = getRoutePay()
+
+const PayPage = TypedMemo((props: PayPageProps) => {
+	const { className } = props
+
 	const currentDirection = useGetCurrentDirectionInfoSelector()
 	const seatsInfo = useGetCurrentDirectionSeatsInfoSelector()
 
@@ -23,12 +31,12 @@ const PassengersPage = TypedMemo(() => {
 	useSetInitialPassengers(seatsInfo, currentDirection)
 
 	return (
-		<Page>
+		<Page className={classNamesHelp(undefined, undefined, [className])}>
 			<Header
 				backgroundType={"search"}
 				pagePath={pagePath.route}
 			/>
-			<BreadcrumbsLine stage={"passengers"} />
+			<BreadcrumbsLine stage={"payment"} />
 			<ContainerLayout>
 				<PageContent />
 			</ContainerLayout>
@@ -37,4 +45,4 @@ const PassengersPage = TypedMemo(() => {
 	)
 })
 
-export default PassengersPage
+export default PayPage
