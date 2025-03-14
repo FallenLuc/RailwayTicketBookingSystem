@@ -1,15 +1,15 @@
 import type { payMethodType } from "@customTypes/common.types"
 
 export type clientDataType = {
-	firstName: fieldWithValidationType
-	surName: fieldWithValidationType
-	lastName: fieldWithValidationType
-	email: fieldWithValidationType
-	phoneNumber: fieldWithValidationType
+	firstName: fieldClientDataWithValidationType
+	surName: fieldClientDataWithValidationType
+	lastName: fieldClientDataWithValidationType
+	email: fieldClientDataWithValidationType
+	phoneNumber: fieldClientDataWithValidationType
 	payMethod: payMethodType
 }
 
-export type fieldWithValidationType = {
+export type fieldClientDataWithValidationType = {
 	isValid: boolean
 	value: string
 }

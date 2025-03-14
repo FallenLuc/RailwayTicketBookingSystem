@@ -1,2 +1,5 @@
 export { ClientInputCard } from "./components/ClientInputCard/ClientInputCard"
-export { type clientDataType } from "./types/clientData.type"
+export {
+	type clientDataType,
+	type fieldClientDataWithValidationType
+} from "./types/clientData.type"

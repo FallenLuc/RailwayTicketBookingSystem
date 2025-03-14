@@ -40,7 +40,7 @@ const clientDataSlice = buildSlice({
 				state.info = savedClientData
 			}
 		},
-		setClientData: (state, action: PayloadAction<clientDataType>) => {
+		setClientData: (state, action: PayloadAction<Partial<clientDataType>>) => {
 			state.info = { ...state.info, ...action.payload }
 		}
 	}
