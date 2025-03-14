@@ -1,1 +1,2 @@
-export { Client } from "./components/Client/Client"
+export { ClientInputCard } from "./components/ClientInputCard/ClientInputCard"
+export { type clientDataType } from "./types/clientData.type"
