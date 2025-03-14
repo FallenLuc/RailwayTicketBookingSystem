@@ -1,7 +1,7 @@
 import preview from "@_storybook/preview"
 import { CenterDecorator } from "@decorators/storybook/Center.decorator"
 import { type Meta, type StoryObj } from "@storybook/react"
-import { PayPage } from "./PayPage"
+import { PayPage } from "./PayPage.lazy"
 
 const meta: Meta<typeof PayPage> = {
 	title: "pages/PayPage",
