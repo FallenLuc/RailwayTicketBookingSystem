@@ -47,6 +47,10 @@ export const routeConfig: Record<RouteNames, routeInfoType> = {
 		name: RouteNames.Pay,
 		path: RoutePaths.Pay
 	},
+	[RouteNames.Check]: {
+		name: RouteNames.Check,
+		path: RoutePaths.Check
+	},
 	[RouteNames.Success]: {
 		name: RouteNames.Success,
 		path: RoutePaths.Success

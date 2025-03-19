@@ -43,7 +43,7 @@ export const PersonalDataInputCard = TypedMemo((props: PersonalDataInputCardProp
 					<Input
 						value={value?.surName.value}
 						error={!value?.surName.isValid}
-						label={"Фаимлия"}
+						label={value?.surName?.isValid ? "Фамилия" : "Напишите Фамилию корректно"}
 						onChange={onChangeSurNameHandler}
 						height={"s"}
 						className={styles.input}
@@ -51,7 +51,7 @@ export const PersonalDataInputCard = TypedMemo((props: PersonalDataInputCardProp
 					<Input
 						value={value?.firstName.value}
 						error={!value?.firstName.isValid}
-						label={"Имя"}
+						label={value?.firstName?.isValid ? "Имя" : "Напишите Имя корректно"}
 						onChange={onChangeFirstNameHandler}
 						height={"s"}
 						className={styles.input}
@@ -68,7 +68,9 @@ export const PersonalDataInputCard = TypedMemo((props: PersonalDataInputCardProp
 				<Input
 					value={value?.phoneNumber.value}
 					error={!value?.phoneNumber.isValid}
-					label={"Контактный телефон"}
+					label={
+						value?.phoneNumber?.isValid ? "Контактный телефон" : "Формат +70000000000"
+					}
 					onChange={onChangePhoneHandler}
 					height={"s"}
 					className={styles.inputLarge}
@@ -76,7 +78,7 @@ export const PersonalDataInputCard = TypedMemo((props: PersonalDataInputCardProp
 				<Input
 					value={value?.email.value}
 					error={!value?.email.isValid}
-					label={"E-mail"}
+					label={value?.email?.isValid ? "E-mail" : "Формат email@domain.com"}
 					onChange={onChangeEmailHandler}
 					height={"s"}
 					className={styles.inputLarge}

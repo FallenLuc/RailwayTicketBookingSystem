@@ -9,6 +9,7 @@ export enum RouteNames {
 	Ticket = "Ticket",
 	Passengers = "Passengers",
 	Pay = "Pay",
+	Check = "Check",
 	Success = "Success",
 	NotFound = "NotFound"
 }

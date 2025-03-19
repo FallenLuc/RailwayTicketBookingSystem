@@ -69,7 +69,7 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 		return <OverlayLoader />
 	}
 
-	if (error) {
+	if (error || !currentDirection) {
 		return (
 			<ErrorScreen
 				type={"link"}

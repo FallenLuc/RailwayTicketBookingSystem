@@ -5,7 +5,8 @@ export enum RoutePaths {
 	Success = "/success",
 	NotFound = "/*",
 	Passengers = "/passengers",
-	Pay = "/pay"
+	Pay = "/pay",
+	Check = "/check"
 }
 
 export enum HashPaths {

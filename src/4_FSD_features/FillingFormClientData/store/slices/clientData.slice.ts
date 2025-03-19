@@ -42,6 +42,7 @@ const clientDataSlice = buildSlice({
 		},
 		setClientData: (state, action: PayloadAction<Partial<clientDataType>>) => {
 			state.info = { ...state.info, ...action.payload }
+			localStorage.setItem("clientData", JSON.stringify(state.info))
 		}
 	}
 })
