@@ -1,17 +1,30 @@
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { useCallback } from "react"
 import type { directionGeneralDataType } from "../../types/directionData.type"
-import { DirectionCompactCard } from "./view/DirectionCompactCard/DirectionCompactCard"
-import { DirectionFullCard } from "./view/DirectionFullCard/DirectionFullCard"
+import { DirectionCompactCard } from "../DirectionCompactCard/DirectionCompactCard"
+import { DirectionFullCard } from "../DirectionFullCard/DirectionFullCard"
 
 type DirectionCardProps = {
 	className?: string
 	typeCard?: "full" | "compact"
+	typeButton?: "default" | "clear"
+	buttonText?: string
 	data?: directionGeneralDataType
 	onClick?: (direction: directionGeneralDataType) => void
+	isTitle?: boolean
+	onClickCustomHandler?: () => void
 }
 export const DirectionCard = TypedMemo((props: DirectionCardProps) => {
-	const { className, data, typeCard = "full", onClick } = props
+	const {
+		className,
+		data,
+		typeCard = "full",
+		onClick,
+		onClickCustomHandler,
+		typeButton,
+		buttonText,
+		isTitle
+	} = props
 
 	const onClickHandler = useCallback(() => {
 		if (data) {
@@ -22,9 +35,12 @@ export const DirectionCard = TypedMemo((props: DirectionCardProps) => {
 	if (typeCard === "full") {
 		return (
 			<DirectionFullCard
+				isTitle={isTitle}
 				className={className}
 				data={data}
-				onClick={onClickHandler}
+				typeButton={typeButton}
+				buttonText={buttonText}
+				onClick={onClickCustomHandler || onClickHandler}
 			/>
 		)
 	}

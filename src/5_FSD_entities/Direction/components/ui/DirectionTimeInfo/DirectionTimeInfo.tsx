@@ -4,7 +4,7 @@ import { convertSecondsToTime } from "@helpers/convertSecondsToTime/convertSecon
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { HStack, VStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
-import type { directionDataType } from "../../../../../../types/directionData.type"
+import type { directionDataType } from "../../../types/directionData.type"
 import styles from "./DirectionTimeInfo.module.scss"
 
 type DirectionTimeInfoProps = {

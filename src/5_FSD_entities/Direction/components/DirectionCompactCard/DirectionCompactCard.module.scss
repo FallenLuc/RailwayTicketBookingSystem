@@ -1,14 +1,6 @@
 .DirectionCompactCard {
-	display: block;
 	width: 100%;
 	max-width: 360px;
-
-	&:hover {
-		box-shadow: var(--shadow-hover);
-	}
-}
-
-.wrapper {
 	min-height: 161px;
 
 	padding: 18px;

@@ -5,8 +5,8 @@ import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { HStack, VStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
 import type { directionDataType } from "../../types/directionData.type"
+import { TimeInfoItem } from "../ui/TimeInfoItem/TimeInfoItem"
 import styles from "./DirectionInfo.module.scss"
-import { TimeInfoItem } from "./ui/TimeInfoItem/TimeInfoItem"
 
 type DirectionInfoProps = {
 	className?: string

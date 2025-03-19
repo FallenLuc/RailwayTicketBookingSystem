@@ -7,9 +7,9 @@ import {
 	type carriagePriceType,
 	getMinPriceForSeat,
 	mapperCarriageTypeName
-} from "../../../../../../../Carriage"
-import type { directionGeneralDataType } from "../../../../../../types/directionData.type"
-import { FromSum } from "../../../../ui/FromSum/FromSum"
+} from "../../../../Carriage"
+import type { directionGeneralDataType } from "../../../types/directionData.type"
+import { FromSum } from "../FromSum/FromSum"
 import styles from "./CarriageInfoItem.module.scss"
 
 type CarriageInfoItemProps = {

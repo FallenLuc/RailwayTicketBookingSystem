@@ -34,7 +34,9 @@ export const directionGeneralDataMock = (
 		available_seats: generalParams?.available_seats || 24,
 		available_seats_info: generalParams?.available_seats_info || {
 			second: 32,
-			third: 96
+			third: 96,
+			first: 65,
+			fourth: 66
 		},
 		departure: departure,
 		arrival: arrival

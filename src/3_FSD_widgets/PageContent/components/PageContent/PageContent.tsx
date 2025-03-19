@@ -23,6 +23,8 @@ type PageContentProps = {
 	backLink?: string
 	textNextButton?: string
 	textBackButton?: string
+	isNextButton?: boolean
+	isBackButton?: boolean
 	onNextCustomHandler?: () => void
 	onBackCustomHandler?: () => void
 	className?: string
@@ -37,6 +39,8 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 		children,
 		textBackButton,
 		textNextButton,
+		isBackButton = true,
+		isNextButton = true,
 		onNextCustomHandler,
 		onBackCustomHandler
 	} = props
@@ -65,6 +69,11 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 		navigate(createQueryParams(nextLink, params))
 	}, [navigate, nextLink, params])
 
+	const justifyButtons =
+		isNextButton && isBackButton ? "spaceBetween"
+		: isBackButton ? "flexStart"
+		: "flexEnd"
+
 	if (isLoading) {
 		return <OverlayLoader />
 	}
@@ -89,25 +98,29 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 				{childrenArray[1]}
 			</HStack>
 			<HStack
-				align={"center"}
-				justify={"spaceBetween"}
+				align={"flexEnd"}
+				justify={justifyButtons}
 			>
-				<Button
-					theme={"defaultLight"}
-					width={"s"}
-					height={"m"}
-					onClick={onBackCustomHandler || onBackHandler}
-				>
-					{textBackButton || "Назад"}
-				</Button>
-				<Button
-					theme={"defaultLight"}
-					width={"s"}
-					height={"m"}
-					onClick={onNextCustomHandler || onNextHandler}
-				>
-					{textNextButton || "Далее"}
-				</Button>
+				{isBackButton && (
+					<Button
+						theme={"defaultLight"}
+						width={"s"}
+						height={"m"}
+						onClick={onBackCustomHandler || onBackHandler}
+					>
+						{textBackButton || "Назад"}
+					</Button>
+				)}
+				{isNextButton && (
+					<Button
+						theme={"defaultLight"}
+						width={"s"}
+						height={"m"}
+						onClick={onNextCustomHandler || onNextHandler}
+					>
+						{textNextButton || "Далее"}
+					</Button>
+				)}
 			</HStack>
 		</VStack>
 	)

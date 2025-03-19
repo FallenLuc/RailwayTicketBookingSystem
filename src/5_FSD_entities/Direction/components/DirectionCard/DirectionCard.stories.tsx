@@ -11,14 +11,22 @@ const meta: Meta<typeof DirectionCard> = {
 	argTypes: {
 		typeCard: {
 			control: "inline-radio"
+		},
+		typeButton: {
+			control: "inline-radio"
 		}
 	},
 	parameters: {
 		controls: {
-			exclude: [...(preview?.parameters?.controls.exclude ?? undefined), "data"]
+			exclude: [
+				...(preview?.parameters?.controls.exclude ?? undefined),
+				"data",
+				"onClick",
+				"onClickCustomHandler"
+			]
 		}
 	},
-	decorators: [RestrictionDecorator("large"), CenterDecorator]
+	decorators: [CenterDecorator, RestrictionDecorator("large")]
 }
 
 export default meta
@@ -28,6 +36,9 @@ type TypeStory = StoryObj<typeof DirectionCard>
 export const Default: TypeStory = {
 	args: {
 		typeCard: "full",
+		typeButton: "default",
+		buttonText: "Выбрать места",
+		isTitle: false,
 		data: directionGeneralDataMock()
 	}
 }
