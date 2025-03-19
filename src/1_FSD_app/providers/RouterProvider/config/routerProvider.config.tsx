@@ -1,6 +1,7 @@
 import { RouteNames } from "@config/router"
 import type { routeInfoType } from "@config/router/config/route.config"
 import { routeConfig } from "@config/router/config/route.config"
+import { CheckPage } from "@pages/CheckPage"
 import { ChooseTrainPage } from "@pages/ChooseTrainPage"
 import { MainPage } from "@pages/MainPage"
 import { NotFoundPage } from "@pages/NotFoundPage"
@@ -23,7 +24,7 @@ export const mapperPageNameComponent: Record<RouteNames, ReactNode> = {
 	[RouteNames.ChooseTrain]: <ChooseTrainPage />,
 	[RouteNames.Passengers]: <PassengersPage />,
 	[RouteNames.Pay]: <PayPage />,
-	[RouteNames.Check]: <></>,
+	[RouteNames.Check]: <CheckPage />,
 	[RouteNames.Success]: <SuccessPage />,
 	[RouteNames.NotFound]: <NotFoundPage />,
 	[RouteNames.Ticket]: <TicketPage />

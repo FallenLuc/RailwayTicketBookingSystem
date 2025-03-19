@@ -6,7 +6,7 @@ export function validateClientDataForm(clientData: clientDataType) {
 	const isValidSurName = /^[А-Яа-я\s-]+$/.test(clientData.surName.value)
 	const isValidFirstName = /^[А-Яа-я\s-]+$/.test(clientData.firstName.value)
 	const isValidPhoneNumber = /^\+\d\d\d\d\d\d\d\d\d\d\d$/.test(clientData.phoneNumber.value)
-	const isValidEmail = /^[A-Za-z\\.-]@[A-Za-z\\.-]\.[A-Za-z\\.-]/.test(clientData.email.value)
+	const isValidEmail = /^[A-Za-z\\.-]+@[A-Za-z\\.-]+\.[A-Za-z\\.-]+/.test(clientData.email.value)
 
 	validatedClientData.surName = { ...clientData.surName, isValid: isValidSurName }
 	validatedClientData.firstName = { ...clientData.firstName, isValid: isValidFirstName }
