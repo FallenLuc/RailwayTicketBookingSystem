@@ -1,4 +1,4 @@
-import type { passengerDataType } from "../../types/passengerData.type"
+import type { passengerDataType } from "@entities/Passenger/types/passengerData.type"
 
 export function validatePassengerForm(passenger: passengerDataType) {
 	const validatedPassenger = { ...passenger }

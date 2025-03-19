@@ -23,6 +23,7 @@ export const mapperPageNameComponent: Record<RouteNames, ReactNode> = {
 	[RouteNames.ChooseTrain]: <ChooseTrainPage />,
 	[RouteNames.Passengers]: <PassengersPage />,
 	[RouteNames.Pay]: <PayPage />,
+	[RouteNames.Check]: <></>,
 	[RouteNames.Success]: <SuccessPage />,
 	[RouteNames.NotFound]: <NotFoundPage />,
 	[RouteNames.Ticket]: <TicketPage />

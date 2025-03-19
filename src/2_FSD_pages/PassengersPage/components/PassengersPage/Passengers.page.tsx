@@ -1,5 +1,4 @@
 import { getRoutePassengers, getRoutePay, getRouteTicket } from "@config/router"
-import { validatePassengerForm } from "@entities/Passenger/lib/helpers/validatePassengerForm.helper"
 import { BreadcrumbsLine } from "@features/BreadcrumbsLine"
 import {
 	useGetCurrentDirectionInfoSelector,
@@ -10,7 +9,8 @@ import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features
 import {
 	useFormPassengersActions,
 	useGetFormPassengersDataSelector,
-	useSetInitialPassengers
+	useSetInitialPassengers,
+	validatePassengerForm
 } from "@features/FillingFormPassengers"
 import { createQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
 import { TypedMemo } from "@sharedProviders/TypedMemo"

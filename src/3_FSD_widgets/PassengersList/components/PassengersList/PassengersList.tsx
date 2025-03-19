@@ -1,6 +1,6 @@
 import type { sexType } from "@customTypes/common.types"
 import type { testingProps } from "@customTypes/testing.types"
-import type { fieldWithValidationType, passengerDataType } from "@entities/Passenger"
+import type { fieldPassengerDataWithValidationType, passengerDataType } from "@entities/Passenger"
 import { PassengerInputCard } from "@entities/Passenger"
 import {
 	useFormPassengersActions,
@@ -29,16 +29,16 @@ export const PassengersList = TypedMemo((props: PassengersListProps) => {
 	) => {
 		switch (typeChange) {
 			case "surname":
-				setPassengersInfo({ id, surname: value as fieldWithValidationType })
+				setPassengersInfo({ id, surname: value as fieldPassengerDataWithValidationType })
 				break
 			case "firstName":
-				setPassengersInfo({ id, firstName: value as fieldWithValidationType })
+				setPassengersInfo({ id, firstName: value as fieldPassengerDataWithValidationType })
 				break
 			case "lastName":
-				setPassengersInfo({ id, lastName: value as fieldWithValidationType })
+				setPassengersInfo({ id, lastName: value as fieldPassengerDataWithValidationType })
 				break
 			case "dateBirth":
-				setPassengersInfo({ id, dateBirth: value as fieldWithValidationType })
+				setPassengersInfo({ id, dateBirth: value as fieldPassengerDataWithValidationType })
 				break
 			case "isLimitedMobility":
 				setPassengersInfo({ id, isLimitedMobility: value as boolean })
@@ -47,10 +47,16 @@ export const PassengersList = TypedMemo((props: PassengersListProps) => {
 				setPassengersInfo({ id, sex: value as sexType })
 				break
 			case "numberPassport":
-				setPassengersInfo({ id, numberPassport: value as fieldWithValidationType })
+				setPassengersInfo({
+					id,
+					numberPassport: value as fieldPassengerDataWithValidationType
+				})
 				break
 			case "seriesPassport":
-				setPassengersInfo({ id, seriesPassport: value as fieldWithValidationType })
+				setPassengersInfo({
+					id,
+					seriesPassport: value as fieldPassengerDataWithValidationType
+				})
 				break
 		}
 	}

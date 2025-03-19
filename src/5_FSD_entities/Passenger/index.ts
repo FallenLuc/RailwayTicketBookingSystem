@@ -1,4 +1,7 @@
-export { type passengerDataType, type fieldWithValidationType } from "./types/passengerData.type"
+export {
+	type passengerDataType,
+	type fieldPassengerDataWithValidationType
+} from "./types/passengerData.type"
 
 export { PassengerInputCard } from "./components/PassengerInputCard/PassengerInputCard"
 

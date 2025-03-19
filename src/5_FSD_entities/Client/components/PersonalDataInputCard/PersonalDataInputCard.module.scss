@@ -1,0 +1,24 @@
+.PersonalDataInputCard {
+	padding: 30px;
+	padding-bottom: 90px;
+
+	border-right: 1px solid var(--main-gray);
+	border-left: 1px solid var(--main-gray);
+
+	background-color: var(--main-light);
+}
+
+.input,
+.input-large {
+	border: 1px solid var(--main-gray);
+}
+
+.input {
+	width: 100%;
+	max-width: 280px;
+}
+
+.input-large {
+	width: 100%;
+	max-width: 360px;
+}

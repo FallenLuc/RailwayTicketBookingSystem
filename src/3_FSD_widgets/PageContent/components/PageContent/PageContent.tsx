@@ -21,6 +21,8 @@ import styles from "./PageContent.module.scss"
 type PageContentProps = {
 	nextLink?: string
 	backLink?: string
+	textNextButton?: string
+	textBackButton?: string
 	onNextCustomHandler?: () => void
 	onBackCustomHandler?: () => void
 	className?: string
@@ -33,6 +35,8 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 		nextLink = "",
 		backLink = "",
 		children,
+		textBackButton,
+		textNextButton,
 		onNextCustomHandler,
 		onBackCustomHandler
 	} = props
@@ -65,7 +69,7 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 		return <OverlayLoader />
 	}
 
-	if (error) {
+	if (error || !currentDirection) {
 		return (
 			<ErrorScreen
 				type={"link"}
@@ -94,7 +98,7 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 					height={"m"}
 					onClick={onBackCustomHandler || onBackHandler}
 				>
-					Назад
+					{textBackButton || "Назад"}
 				</Button>
 				<Button
 					theme={"defaultLight"}
@@ -102,7 +106,7 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 					height={"m"}
 					onClick={onNextCustomHandler || onNextHandler}
 				>
-					Далее
+					{textNextButton || "Далее"}
 				</Button>
 			</HStack>
 		</VStack>

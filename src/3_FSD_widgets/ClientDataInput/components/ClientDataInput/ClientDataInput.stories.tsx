@@ -1,11 +1,11 @@
 import preview from "@_storybook/preview"
 import { CenterDecorator } from "@decorators/storybook/Center.decorator"
 import { type Meta, type StoryObj } from "@storybook/react"
-import { PayPage } from "./PayPage.lazy"
+import { ClientDataInput } from "./ClientDataInput"
 
-const meta: Meta<typeof PayPage> = {
-	title: "pages/PayPage",
-	component: PayPage,
+const meta: Meta<typeof ClientDataInput> = {
+	title: "widgets/ClientDataInput",
+	component: ClientDataInput,
 	parameters: {
 		controls: {
 			exclude: [...(preview?.parameters?.controls.exclude ?? undefined)]
@@ -14,7 +14,7 @@ const meta: Meta<typeof PayPage> = {
 	decorators: [CenterDecorator]
 }
 
-type TypeStory = StoryObj<typeof PayPage>
+type TypeStory = StoryObj<typeof ClientDataInput>
 
 export const Default: TypeStory = {
 	args: {}
