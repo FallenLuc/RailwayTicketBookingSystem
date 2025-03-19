@@ -13,6 +13,7 @@ import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { ContainerLayout } from "@ui/layout"
 import { Page } from "@ui/Page"
 import { VStack } from "@ui/Stack"
+import { AllData } from "@widgets/AllData"
 import { CurrentDirectionSidebar } from "@widgets/CurrentDirectionSidebar"
 import { Footer } from "@widgets/Footer"
 import { Header } from "@widgets/Header"
@@ -42,9 +43,14 @@ const CheckPage = TypedMemo((props: CheckPageProps) => {
 			/>
 			<BreadcrumbsLine stage={"check"} />
 			<ContainerLayout>
-				<PageContent>
+				<PageContent
+					textNextButton={"Подтвердить"}
+					isBackButton={false}
+				>
 					<CurrentDirectionSidebar />
-					<VStack>{"контент"}</VStack>
+					<VStack>
+						<AllData />
+					</VStack>
 				</PageContent>
 			</ContainerLayout>
 			<Footer pagePath={pagePath.route} />

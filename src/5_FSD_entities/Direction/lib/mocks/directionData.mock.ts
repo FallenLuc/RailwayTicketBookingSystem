@@ -17,7 +17,9 @@ export const directionDataMock = (params?: Partial<directionDataType>): directio
 		available_seats: params?.available_seats || 112,
 		available_seats_info: params?.available_seats_info || {
 			second: 32,
-			third: 96
+			third: 96,
+			fourth: 48,
+			first: 34
 		},
 		train: params?.train || trainDataMock(),
 		from: params?.from || stationDataMock(undefined, "start"),
@@ -30,6 +32,16 @@ export const directionDataMock = (params?: Partial<directionDataType>): directio
 			third: {
 				top_price: 3455,
 				bottom_price: 2525,
+				side_price: 3855
+			},
+			first: {
+				top_price: 3455,
+				bottom_price: 2400,
+				side_price: 3855
+			},
+			fourth: {
+				top_price: 3455,
+				bottom_price: 1400,
 				side_price: 3855
 			}
 		}

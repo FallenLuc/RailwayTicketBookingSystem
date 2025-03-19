@@ -1,28 +1,37 @@
 .DirectionFullCard {
+	display: grid;
 	position: relative;
+	grid-template-columns: 0.7fr 1.6fr 0.9fr;
+	gap: var(--gap-s);
+
+	grid-template-rows: 1fr;
+	width: 100%;
 
 	background-color: var(--main-light);
 
 	box-shadow: var(--shadow-hover);
 }
 
-.s-height {
-	height: 270px;
-}
+.title {
+	padding: 30px;
 
-.m-height {
-	height: 360px;
+	border: 1px solid var(--main-gray);
+
+	background-color: var(--main-light);
 }
 
 .directions-info {
 	height: 100%;
 	padding-top: 50px;
+	justify-self: center;
 }
 
 .price-info {
+	position: relative;
 	max-width: 250px;
 	height: 100%;
 	padding-top: 41px;
 	padding-right: 22px;
 	padding-bottom: 30px;
+	justify-self: end;
 }

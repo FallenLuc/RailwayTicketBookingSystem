@@ -3,7 +3,7 @@ import { convertSecondsToTime } from "@helpers/convertSecondsToTime/convertSecon
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { VStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
-import type { stationDataType } from "../../../../../Station"
+import type { stationDataType } from "../../../../Station"
 
 type TimeInfoItemProps = {
 	className?: string
