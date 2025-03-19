@@ -42,3 +42,6 @@ export const getRoutePassengers = () => {
 export const getRoutePay = () => {
 	return { route: RoutePaths.Pay }
 }
+export const getRouteCheck = () => {
+	return { route: RoutePaths.Check }
+}

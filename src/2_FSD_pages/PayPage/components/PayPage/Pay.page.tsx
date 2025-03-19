@@ -1,4 +1,5 @@
 import { getRoutePassengers, getRoutePay } from "@config/router"
+import { getRouteCheck } from "@config/router/helpers/gettersRoutesPaths.helper"
 import type { testingProps } from "@customTypes/testing.types"
 import { BreadcrumbsLine } from "@features/BreadcrumbsLine"
 import {
@@ -59,7 +60,7 @@ const PayPage = TypedMemo((props: PayPageProps) => {
 		setClientData(validatedClientData)
 
 		if (isValid) {
-			navigate(createQueryParams(getRoutePay().route, params))
+			navigate(createQueryParams(getRouteCheck().route, params))
 		}
 	}, [clientData, currentDirection?._id, formParametres, navigate, setClientData])
 
