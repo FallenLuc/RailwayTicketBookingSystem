@@ -29,6 +29,7 @@ import PassengerIcon from "./icons/passenger.svg"
 import PhoneIcon from "./icons/phone.svg"
 import PlackartIcon from "./icons/plackart.svg"
 import PlusButtonIcon from "./icons/plus-button.svg"
+import ProfileIcon from "./icons/profile.svg"
 import SitPlaceIcon from "./icons/sit-place.svg"
 import SkypeIcon from "./icons/skype.svg"
 import ThreeDotsIcon from "./icons/three-dots.svg"
@@ -90,5 +91,6 @@ export {
 	ClockIcon,
 	LinensIcon,
 	CheckIcon,
-	PassengerIcon
+	PassengerIcon,
+	ProfileIcon
 }

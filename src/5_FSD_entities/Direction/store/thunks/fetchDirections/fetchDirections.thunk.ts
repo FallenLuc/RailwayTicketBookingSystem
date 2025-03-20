@@ -17,7 +17,7 @@ export const fetchDirectionsThunk = createAsyncThunk<
 		const data = await dispatch(getDirections(parametres)).unwrap()
 
 		if (data.items.length === 0) {
-			return rejectWithValue("no data")
+			return rejectWithValue("no passenger")
 		}
 
 		return data

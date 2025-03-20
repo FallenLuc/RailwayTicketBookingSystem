@@ -1,11 +1,11 @@
 import preview from "@_storybook/preview"
 import { CenterDecorator } from "@decorators/storybook/Center.decorator"
 import { type Meta, type StoryObj } from "@storybook/react"
-import { PassengersList } from "./PassengersList"
+import { PassengersInputList } from "./PassengersInputList"
 
-const meta: Meta<typeof PassengersList> = {
-	title: "widgets/PassengersList",
-	component: PassengersList,
+const meta: Meta<typeof PassengersInputList> = {
+	title: "widgets/PassengersInputList",
+	component: PassengersInputList,
 	parameters: {
 		controls: {
 			exclude: [...(preview?.parameters?.controls.exclude ?? undefined)]
@@ -14,7 +14,7 @@ const meta: Meta<typeof PassengersList> = {
 	decorators: [CenterDecorator]
 }
 
-type TypeStory = StoryObj<typeof PassengersList>
+type TypeStory = StoryObj<typeof PassengersInputList>
 
 export const Default: TypeStory = {
 	args: {}
