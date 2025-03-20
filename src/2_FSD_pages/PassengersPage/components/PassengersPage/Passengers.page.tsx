@@ -20,7 +20,7 @@ import { CurrentDirectionSidebar } from "@widgets/CurrentDirectionSidebar"
 import { Footer } from "@widgets/Footer"
 import { Header } from "@widgets/Header"
 import { PageContent } from "@widgets/PageContent"
-import { PassengersList } from "@widgets/PassengersList"
+import { PassengersInputList } from "@widgets/PassengersInputList"
 import { useCallback } from "react"
 import { useNavigate } from "react-router-dom"
 
@@ -75,7 +75,7 @@ const PassengersPage = TypedMemo(() => {
 					backLink={getRouteTicket(currentDirection?._id || "").route}
 				>
 					<CurrentDirectionSidebar />
-					<PassengersList />
+					<PassengersInputList />
 				</PageContent>
 			</ContainerLayout>
 			<Footer pagePath={pagePath.route} />

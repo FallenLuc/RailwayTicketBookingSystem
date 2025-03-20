@@ -1,8 +1,10 @@
-import { getRouteChooseTrain } from "@config/router"
+import { getRouteChooseTrain, getRoutePassengers } from "@config/router"
 import type { testingProps } from "@customTypes/testing.types"
 import { DirectionCard, useGetDirectionsListDataSelector } from "@entities/Direction"
+import { PassengersList } from "@entities/Passenger/components/PassengersList/PassengersList"
 import { useGetCurrentDirectionInfoSelector } from "@features/FillingFormCurrentDirection"
 import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features/FillingFormForSearchOfDirections"
+import { useGetFormPassengersDataSelector } from "@features/FillingFormPassengers"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { createQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
@@ -22,6 +24,7 @@ export const AllData = TypedMemo((props: AllDataProps) => {
 	const formParametres = useGetFormForSearchOfDirectionsDataForRequestSelector()
 	const currentDirection = useGetCurrentDirectionInfoSelector()
 	const directions = useGetDirectionsListDataSelector()
+	const passengers = useGetFormPassengersDataSelector()
 
 	const currentFullDirection = useMemo(
 		() => directions.filter(direction => direction?.departure._id === currentDirection?._id)[0],
@@ -29,9 +32,18 @@ export const AllData = TypedMemo((props: AllDataProps) => {
 		[currentDirection?._id]
 	)
 
-	const onClickHandler = useCallback(() => {
+	const params = useMemo(
+		() => ({ ...formParametres, directionId: currentDirection?._id }),
+		[currentDirection?._id, formParametres]
+	)
+
+	const onChangeDirectionHandler = useCallback(() => {
 		navigate(createQueryParams(getRouteChooseTrain().route, formParametres))
 	}, [formParametres, navigate])
+
+	const onChangePassengerHandler = useCallback(() => {
+		navigate(createQueryParams(getRoutePassengers().route, params))
+	}, [navigate, params])
 
 	return (
 		<VStack
@@ -39,12 +51,16 @@ export const AllData = TypedMemo((props: AllDataProps) => {
 			gap={"L"}
 		>
 			<DirectionCard
-				onClickCustomHandler={onClickHandler}
+				onClickCustomHandler={onChangeDirectionHandler}
 				data={currentFullDirection}
 				typeCard={"full"}
 				isTitle={true}
 				typeButton={"clear"}
 				buttonText={"Изменить"}
+			/>
+			<PassengersList
+				passengers={passengers}
+				onClick={onChangePassengerHandler}
 			/>
 		</VStack>
 	)

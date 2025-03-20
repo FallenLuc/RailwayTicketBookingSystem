@@ -11,11 +11,11 @@ import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { VStack } from "@ui/Stack"
 
-type PassengersListProps = {
+type PassengersInputListProps = {
 	className?: string
 } & testingProps
 
-export const PassengersList = TypedMemo((props: PassengersListProps) => {
+export const PassengersInputList = TypedMemo((props: PassengersInputListProps) => {
 	const { className } = props
 
 	const { setPassengersInfo } = useFormPassengersActions()
