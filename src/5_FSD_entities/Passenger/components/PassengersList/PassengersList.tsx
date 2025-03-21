@@ -23,10 +23,7 @@ export const PassengersList = TypedMemo((props: PassengersListProps) => {
 	}, [onClick])
 
 	return (
-		<VStack
-			className={classNamesHelp(styles.PassengersList, {}, [className])}
-			align={"flexEnd"}
-		>
+		<VStack className={classNamesHelp(styles.PassengersList, {}, [className])}>
 			<Text
 				className={styles.title}
 				widthMax={true}
@@ -41,14 +38,19 @@ export const PassengersList = TypedMemo((props: PassengersListProps) => {
 					passenger={passenger}
 				/>
 			))}
-			<Button
-				theme={"transparentDark"}
-				onClick={onClickHandler}
-				height={"s"}
-				width={"s"}
+			<VStack
+				className={styles.buttonWrapper}
+				align="flexEnd"
 			>
-				Изменить
-			</Button>
+				<Button
+					theme={"transparentDark"}
+					onClick={onClickHandler}
+					height={"s"}
+					width={"s"}
+				>
+					Изменить
+				</Button>
+			</VStack>
 		</VStack>
 	)
 })

@@ -40,6 +40,7 @@ export const DirectionFullCard = TypedMemo((props: DirectionFullCardProps) => {
 				<Text
 					title={"Поезд"}
 					fontSizeTitle={"l"}
+					fontWeightTitle={"medium"}
 					colorTitle={"main-dark"}
 					widthMax={true}
 					className={styles.title}

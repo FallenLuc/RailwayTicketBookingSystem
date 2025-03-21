@@ -2,20 +2,24 @@
 	display: grid;
 	position: relative;
 	grid-template-columns: 0.7fr 1.6fr 0.9fr;
-	gap: var(--gap-s);
 
 	grid-template-rows: 1fr;
 	width: 100%;
 
+	border: 1px solid var(--main-gray);
+
 	background-color: var(--main-light);
 
 	box-shadow: var(--shadow-hover);
+	gap: var(--gap-s);
 }
 
 .title {
 	padding: 30px;
 
 	border: 1px solid var(--main-gray);
+
+	border-bottom: none;
 
 	background-color: var(--main-light);
 }
