@@ -6,7 +6,7 @@ import { directionGeneralDataMock } from "../../lib/mocks/directionGeneralData.m
 import { DirectionCard } from "./DirectionCard"
 
 const meta: Meta<typeof DirectionCard> = {
-	title: "entities/DirectionCard",
+	title: "entities/Direction/DirectionCard",
 	component: DirectionCard,
 	argTypes: {
 		typeCard: {

@@ -1,7 +1,9 @@
-import { getRouteChooseTrain, getRoutePassengers } from "@config/router"
+import { getRouteChooseTrain, getRoutePassengers, getRoutePay } from "@config/router"
 import type { testingProps } from "@customTypes/testing.types"
+import { PayMethod } from "@entities/Client/components/PayMethod/PayMethod"
 import { DirectionCard, useGetDirectionsListDataSelector } from "@entities/Direction"
-import { PassengersList } from "@entities/Passenger/components/PassengersList/PassengersList"
+import { PassengersList } from "@entities/Passenger"
+import { useGetClientDataInfoSelector } from "@features/FillingFormClientData"
 import { useGetCurrentDirectionInfoSelector } from "@features/FillingFormCurrentDirection"
 import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features/FillingFormForSearchOfDirections"
 import { useGetFormPassengersDataSelector } from "@features/FillingFormPassengers"
@@ -25,6 +27,7 @@ export const AllData = TypedMemo((props: AllDataProps) => {
 	const currentDirection = useGetCurrentDirectionInfoSelector()
 	const directions = useGetDirectionsListDataSelector()
 	const passengers = useGetFormPassengersDataSelector()
+	const client = useGetClientDataInfoSelector()
 
 	const currentFullDirection = useMemo(
 		() => directions.filter(direction => direction?.departure._id === currentDirection?._id)[0],
@@ -45,6 +48,10 @@ export const AllData = TypedMemo((props: AllDataProps) => {
 		navigate(createQueryParams(getRoutePassengers().route, params))
 	}, [navigate, params])
 
+	const onChangePayMethodHandler = useCallback(() => {
+		navigate(createQueryParams(getRoutePay().route, params))
+	}, [navigate, params])
+
 	return (
 		<VStack
 			className={classNamesHelp(undefined, undefined, [className])}
@@ -61,6 +68,10 @@ export const AllData = TypedMemo((props: AllDataProps) => {
 			<PassengersList
 				passengers={passengers}
 				onClick={onChangePassengerHandler}
+			/>
+			<PayMethod
+				payMethod={client?.payMethod}
+				onClick={onChangePayMethodHandler}
 			/>
 		</VStack>
 	)

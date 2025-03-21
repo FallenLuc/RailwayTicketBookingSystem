@@ -6,7 +6,7 @@ import { passengerListDataMock } from "../../lib/mocks/passengersListData.mock"
 import { PassengersList } from "./PassengersList"
 
 const meta: Meta<typeof PassengersList> = {
-	title: "entities/PassengersList",
+	title: "entities/Passenger/PassengersList",
 	component: PassengersList,
 	parameters: {
 		backgrounds: {

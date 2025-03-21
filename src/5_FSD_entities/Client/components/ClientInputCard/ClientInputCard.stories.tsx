@@ -6,7 +6,7 @@ import { clientDataMock } from "../../lib/mocks/cliendData.mock"
 import { ClientInputCard } from "./ClientInputCard"
 
 const meta: Meta<typeof ClientInputCard> = {
-	title: "entities/ClientInputCard",
+	title: "entities/Client/ClientInputCard",
 	component: ClientInputCard,
 	parameters: {
 		controls: {
