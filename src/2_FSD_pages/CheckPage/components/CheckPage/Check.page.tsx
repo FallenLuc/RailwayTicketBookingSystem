@@ -1,15 +1,30 @@
-import { getRouteCheck } from "@config/router/helpers/gettersRoutesPaths.helper"
+import {
+	getRouteCheck,
+	getRouteChooseTrain
+} from "@config/router/helpers/gettersRoutesPaths.helper"
 import type { testingProps } from "@customTypes/testing.types"
 import { BreadcrumbsLine } from "@features/BreadcrumbsLine"
-import { useSetInitialClientData } from "@features/FillingFormClientData"
 import {
+	useGetClientDataInfoSelector,
+	useSetInitialClientData
+} from "@features/FillingFormClientData"
+import {
+	useGetCurrentDirectionCarriageInfoSelector,
 	useGetCurrentDirectionInfoSelector,
 	useGetCurrentDirectionSeatsInfoSelector,
 	useSetCurrentDirectionByUrl
 } from "@features/FillingFormCurrentDirection"
-import { useSetInitialPassengers } from "@features/FillingFormPassengers"
+import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features/FillingFormForSearchOfDirections"
+import {
+	useGetFormPassengersDataSelector,
+	useSetInitialPassengers
+} from "@features/FillingFormPassengers"
+import { OverlayLoader } from "@features/OverlayLoader"
+import { useToPayMutation } from "@features/PayOrder"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
+import { createQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
+import { ErrorScreen } from "@ui/ErrorScreen"
 import { ContainerLayout } from "@ui/layout"
 import { Page } from "@ui/Page"
 import { VStack } from "@ui/Stack"
@@ -18,6 +33,8 @@ import { CurrentDirectionSidebar } from "@widgets/CurrentDirectionSidebar"
 import { Footer } from "@widgets/Footer"
 import { Header } from "@widgets/Header"
 import { PageContent } from "@widgets/PageContent"
+import { useCallback } from "react"
+import { useNavigate } from "react-router-dom"
 
 type CheckPageProps = {
 	className?: string
@@ -29,11 +46,42 @@ const CheckPage = TypedMemo((props: CheckPageProps) => {
 	const { className } = props
 
 	const currentDirection = useGetCurrentDirectionInfoSelector()
+	const passengers = useGetFormPassengersDataSelector()
+	const client = useGetClientDataInfoSelector()
+	const carriageInfo = useGetCurrentDirectionCarriageInfoSelector()
+	const formParametres = useGetFormForSearchOfDirectionsDataForRequestSelector()
+
 	const seatsInfo = useGetCurrentDirectionSeatsInfoSelector()
 
 	useSetCurrentDirectionByUrl(pagePath.route)
 	useSetInitialPassengers(seatsInfo, currentDirection)
 	useSetInitialClientData()
+
+	const navigate = useNavigate()
+	const [toPay, response] = useToPayMutation()
+
+	const onPayHandler = useCallback(() => {
+		if (currentDirection?._id && passengers.length && client && carriageInfo) {
+			toPay({ directionId: currentDirection?._id, carriageInfo, client, passengers }).then(
+				() => navigate("/")
+			)
+		}
+	}, [carriageInfo, client, currentDirection?._id, navigate, passengers, toPay])
+
+	if (response.isLoading) {
+		return <OverlayLoader />
+	}
+
+	if (response.isError) {
+		return (
+			<ErrorScreen
+				type={"link"}
+				text={"К поездам"}
+				title={"При оплате произошла ошибка, попробуйте снова"}
+				linkTo={createQueryParams(getRouteChooseTrain().route, formParametres)}
+			/>
+		)
+	}
 
 	return (
 		<Page className={classNamesHelp(undefined, undefined, [className])}>
@@ -45,6 +93,7 @@ const CheckPage = TypedMemo((props: CheckPageProps) => {
 			<ContainerLayout>
 				<PageContent
 					textNextButton={"Подтвердить"}
+					onNextCustomHandler={onPayHandler}
 					isBackButton={false}
 				>
 					<CurrentDirectionSidebar />

@@ -1,6 +1,7 @@
 export {
 	type passengerDataType,
-	type fieldPassengerDataWithValidationType
+	type fieldPassengerDataWithValidationType,
+	type passengerDataForPayType
 } from "./types/passengerData.type"
 
 export { PassengerInputCard } from "./components/PassengerInputCard/PassengerInputCard"

@@ -4,5 +4,6 @@ export {
 	getCitiesRequestPaths,
 	getDirectionsRequestPaths,
 	getLastDirectionsRequestPaths,
-	getCarriageInfoRequestPaths
+	getCarriageInfoRequestPaths,
+	getPayRequestPaths
 } from "./libs/gettersRequestPaths.helper"

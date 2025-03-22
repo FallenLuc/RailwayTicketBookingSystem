@@ -3,7 +3,7 @@ export {
 	type carriagePriceType,
 	type carriageDataType
 } from "./types/carrriageData.type"
-export { type seatDataType } from "./types/seatData.type"
+export { type seatDataType, type seatForPayType } from "./types/seatData.type"
 
 //helpers
 export { mapperCarriageTypeName } from "./lib/helpers/mapperCarriageTypeName/mapperCarriageTypeName.helper"
