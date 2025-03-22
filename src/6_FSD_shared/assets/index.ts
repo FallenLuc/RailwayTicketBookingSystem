@@ -39,11 +39,15 @@ import TrainIcon from "./icons/train.svg"
 import TwitterIcon from "./icons/twitter.svg"
 import WifiIcon from "./icons/wifi.svg"
 import YouTubeIcon from "./icons/youtube.svg"
-import BackgroundHowItWorks from "./image/backgroundHowItWorks.jpg"
 
 // images
+import BackgroundHowItWorks from "./image/backgroundHowItWorks.jpg"
 import BackgroundMainPageImage from "./image/backgroundMainPage.png"
 import BackgroundSearchPageImage from "./image/backgroundSearchPage.jpg"
+import BackgroundSuccessPageImage from "./image/BackgroundSuccessPageImage.jpg"
+import ConductorStepImage from "./image/conductor-step.png"
+import EmailStepImage from "./image/e-mail-step.png"
+import PrintStepImage from "./image/print-step.png"
 import ReviewerMan from "./image/reviewerMan.png"
 import ReviewerWoman from "./image/reviewerWoman.png"
 
@@ -65,6 +69,7 @@ export {
 	BackgroundMainPageImage,
 	BackgroundHowItWorks,
 	BackgroundSearchPageImage,
+	BackgroundSuccessPageImage,
 	ReviewerMan,
 	ReviewerWoman,
 	ChangeIcon,
@@ -92,5 +97,8 @@ export {
 	LinensIcon,
 	CheckIcon,
 	PassengerIcon,
-	ProfileIcon
+	ProfileIcon,
+	EmailStepImage,
+	PrintStepImage,
+	ConductorStepImage
 }
