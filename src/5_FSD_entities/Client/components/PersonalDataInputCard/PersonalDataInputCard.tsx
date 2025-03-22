@@ -41,24 +41,24 @@ export const PersonalDataInputCard = TypedMemo((props: PersonalDataInputCardProp
 					justify={"spaceBetween"}
 				>
 					<Input
-						value={value?.surName.value}
-						error={!value?.surName.isValid}
+						value={value?.surName?.value}
+						error={!value?.surName?.isValid}
 						label={value?.surName?.isValid ? "Фамилия" : "Напишите Фамилию корректно"}
 						onChange={onChangeSurNameHandler}
 						height={"s"}
 						className={styles.input}
 					/>
 					<Input
-						value={value?.firstName.value}
-						error={!value?.firstName.isValid}
+						value={value?.firstName?.value}
+						error={!value?.firstName?.isValid}
 						label={value?.firstName?.isValid ? "Имя" : "Напишите Имя корректно"}
 						onChange={onChangeFirstNameHandler}
 						height={"s"}
 						className={styles.input}
 					/>
 					<Input
-						value={value?.lastName.value}
-						error={!value?.lastName.isValid}
+						value={value?.lastName?.value}
+						error={!value?.lastName?.isValid}
 						label={"Отчетство"}
 						onChange={onChangeLastNameHandler}
 						height={"s"}
@@ -66,8 +66,8 @@ export const PersonalDataInputCard = TypedMemo((props: PersonalDataInputCardProp
 					/>
 				</HStack>
 				<Input
-					value={value?.phoneNumber.value}
-					error={!value?.phoneNumber.isValid}
+					value={value?.phoneNumber?.value}
+					error={!value?.phoneNumber?.isValid}
 					label={
 						value?.phoneNumber?.isValid ? "Контактный телефон" : "Формат +70000000000"
 					}
@@ -76,8 +76,8 @@ export const PersonalDataInputCard = TypedMemo((props: PersonalDataInputCardProp
 					className={styles.inputLarge}
 				/>
 				<Input
-					value={value?.email.value}
-					error={!value?.email.isValid}
+					value={value?.email?.value}
+					error={!value?.email?.isValid}
 					label={value?.email?.isValid ? "E-mail" : "Формат email@domain.com"}
 					onChange={onChangeEmailHandler}
 					height={"s"}
