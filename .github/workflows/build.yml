@@ -61,7 +61,7 @@ jobs:
         id-token: write
 
     environment:
-        name: testing
+        name: staging
         url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
