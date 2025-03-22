@@ -5,7 +5,6 @@ import { uid } from "uid"
 import type { formPassengersStateMap } from "../storeTypes/formPassengersState.map"
 
 const initialState: formPassengersStateMap = {
-	_initedPassengers: false,
 	ids: [],
 	entities: {}
 }

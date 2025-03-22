@@ -5,7 +5,7 @@ import { directionDataMock } from "../../lib/mocks/directionData.mock"
 import { DirectionInfo } from "./DirectionInfo"
 
 const meta: Meta<typeof DirectionInfo> = {
-	title: "entities/DirectionInfo",
+	title: "entities/Direction/DirectionInfo",
 	component: DirectionInfo,
 	parameters: {
 		controls: {

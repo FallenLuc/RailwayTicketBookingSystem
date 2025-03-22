@@ -10,7 +10,7 @@ import { CarriageInfo } from "./CarriageInfo"
 import styles from "./CarriageInfo.module.scss"
 
 const meta: Meta<typeof CarriageInfo> = {
-	title: "entities/CarriageInfo",
+	title: "entities/Carriage/CarriageInfo",
 	component: CarriageInfo,
 	parameters: {
 		backgrounds: {

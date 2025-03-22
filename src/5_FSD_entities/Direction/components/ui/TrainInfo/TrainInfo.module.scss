@@ -1,0 +1,19 @@
+.TrainInfo {
+	position: relative;
+
+	z-index: 2;
+	max-width: 200px;
+	height: 100%;
+	padding: 35px 20px;
+	padding-bottom: 30px;
+	justify-self: start;
+
+	background-color: var(--main-gray);
+}
+
+.icon {
+	width: auto;
+	height: 86px;
+
+	color: var(--main-light);
+}
