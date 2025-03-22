@@ -1,6 +1,7 @@
 import {
 	getRouteCheck,
-	getRouteChooseTrain
+	getRouteChooseTrain,
+	getRouteSuccess
 } from "@config/router/helpers/gettersRoutesPaths.helper"
 import type { testingProps } from "@customTypes/testing.types"
 import { BreadcrumbsLine } from "@features/BreadcrumbsLine"
@@ -63,7 +64,7 @@ const CheckPage = TypedMemo((props: CheckPageProps) => {
 	const onPayHandler = useCallback(() => {
 		if (currentDirection?._id && passengers.length && client && carriageInfo) {
 			toPay({ directionId: currentDirection?._id, carriageInfo, client, passengers }).then(
-				() => navigate("/")
+				() => navigate(getRouteSuccess().route)
 			)
 		}
 	}, [carriageInfo, client, currentDirection?._id, navigate, passengers, toPay])

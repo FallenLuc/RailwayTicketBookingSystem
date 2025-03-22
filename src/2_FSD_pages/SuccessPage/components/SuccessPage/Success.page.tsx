@@ -1,25 +1,39 @@
 import { getRouteSuccess } from "@config/router"
-import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
+import { useGetCurrentDirectionInfoSelector } from "@features/FillingFormCurrentDirection"
+import { ErrorScreen } from "@ui/ErrorScreen"
+import { Page } from "@ui/Page"
+import { Footer } from "@widgets/Footer"
 import { Header } from "@widgets/Header"
 import { memo } from "react"
-
-type SuccessPageProps = {
-	className?: string
-}
+import { SuccessModal } from "../SuccessModal/SuccessModal"
+import styles from "./SuccessPage.module.scss"
 
 const pagePath = getRouteSuccess()
 
-const SuccessPage = memo<SuccessPageProps>(props => {
-	const { className } = props
+const SuccessPage = memo(() => {
+	const currentDirection = useGetCurrentDirectionInfoSelector()
+
+	if (!currentDirection?._id) {
+		return (
+			<ErrorScreen
+				type={"link"}
+				title={"Нет данных"}
+				text={"На главную"}
+				linkTo={"/"}
+			/>
+		)
+	}
 
 	return (
-		<div className={classNamesHelp("", {}, [className, "pageStyle"])}>
+		<Page className={styles.SuccessPage}>
 			<Header
 				pagePath={pagePath.route}
 				backgroundType={"end"}
 			/>
-			<h1>Success</h1>
-		</div>
+			<SuccessModal />
+			<div className={styles.pageContent}></div>
+			<Footer pagePath={pagePath.route} />
+		</Page>
 	)
 })
 

@@ -1,6 +1,10 @@
-import { memo } from "react"
-import { BackgroundMainPageImage, BackgroundSearchPageImage } from "@assets/index"
+import {
+	BackgroundMainPageImage,
+	BackgroundSearchPageImage,
+	BackgroundSuccessPageImage
+} from "@assets/index"
 import { Background as BackgroundUi } from "@ui/Background"
+import { memo } from "react"
 
 type HeaderBackgroundProps = {
 	className?: string
@@ -17,6 +21,10 @@ export const HeaderBackground = memo<HeaderBackgroundProps>(props => {
 
 	if (typeBackground === "search") {
 		srcBack = BackgroundSearchPageImage
+	}
+
+	if (typeBackground === "end") {
+		srcBack = BackgroundSuccessPageImage
 	}
 
 	return <BackgroundUi background={srcBack} />
