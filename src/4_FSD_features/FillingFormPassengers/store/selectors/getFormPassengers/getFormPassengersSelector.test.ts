@@ -7,11 +7,11 @@ describe("getFormPassengersSelector", () => {
 	test("get state", () => {
 		const state: DeepPartial<mainStateMap> = {
 			formPassengers: {
-				_initedPassengers: true
+				ids: ["1"]
 			}
 		}
 		expect(getFormPassengersSelector(state as mainStateMap)).toEqual({
-			_initedPassengers: true
+			ids: ["1"]
 		})
 	})
 

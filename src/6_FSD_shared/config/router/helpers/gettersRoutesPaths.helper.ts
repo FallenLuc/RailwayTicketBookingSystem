@@ -36,7 +36,12 @@ export const getRouteSuccess = () => {
 export const getRouteTicket = (id: string) => {
 	return { route: RoutePaths.Ticket.replace(/:id/, id) }
 }
-
 export const getRoutePassengers = () => {
 	return { route: RoutePaths.Passengers }
+}
+export const getRoutePay = () => {
+	return { route: RoutePaths.Pay }
+}
+export const getRouteCheck = () => {
+	return { route: RoutePaths.Check }
 }

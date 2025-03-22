@@ -16,6 +16,7 @@ const config: JestConfigWithTsJest = {
 	testMatch: ["<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)"],
 	moduleNameMapper: {
 		"\\.svg$": "<rootDir>/config/jest/mocks/jestSvg.mock.tsx",
+		"(\\.jpg|\\.png)$": "<rootDir>/config/jest/mocks/jestImage.mock.tsx",
 		"\\.(s?css|less)$": "identity-obj-proxy",
 		...pathsToModuleNameMapper(compilerOptions.paths, {
 			prefix: "<rootDir>/"

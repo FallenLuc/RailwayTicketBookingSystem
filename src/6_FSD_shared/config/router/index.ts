@@ -11,7 +11,9 @@ export {
 	getRouteHeader,
 	getRouteHowItWorks,
 	getRouteSuccess,
-	getRouteTicket
+	getRouteTicket,
+	getRoutePay,
+	getRoutePassengers
 } from "./helpers/gettersRoutesPaths.helper"
 
 export {

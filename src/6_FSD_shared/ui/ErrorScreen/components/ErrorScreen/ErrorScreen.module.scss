@@ -1,6 +1,8 @@
 .ErrorScreen {
 	position: absolute;
-	inset: 0;
 
 	z-index: var(--z-index-modal);
+
+	background-color: var(--main-dark);
+	inset: 0;
 }

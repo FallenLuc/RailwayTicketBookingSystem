@@ -9,3 +9,5 @@ export type universalPageProps = {
 }
 
 export type sexType = "male" | "female"
+
+export type payMethodType = "online" | "offline"
