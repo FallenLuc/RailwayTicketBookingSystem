@@ -3,5 +3,6 @@ export enum RequestPaths {
 	Directions = "/routes",
 	LastDirections = "/routes/last",
 	Cities = "/routes/cities",
-	Carriage = "/routes/:id/seats"
+	Carriage = "/routes/:id/seats",
+	Pay = "/order"
 }

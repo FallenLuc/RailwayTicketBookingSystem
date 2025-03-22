@@ -9,4 +9,6 @@ export const getCitiesRequestPaths = (value: string) => `${RequestPaths.Cities}?
 
 export const getLastDirectionsRequestPaths = () => RequestPaths.LastDirections
 
+export const getPayRequestPaths = () => RequestPaths.Pay
+
 export const getCarriageInfoRequestPaths = (id = "") => RequestPaths.Carriage.replace(":id", id)
