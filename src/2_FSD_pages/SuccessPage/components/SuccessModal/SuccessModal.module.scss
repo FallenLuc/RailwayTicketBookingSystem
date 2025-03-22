@@ -1,0 +1,43 @@
+.SuccessModal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	width: 100%;
+	max-width: 1400px;
+
+	transform: translate(-50%, -50%);
+
+	background-color: var(--main-light);
+
+	box-shadow: var(--shadow-hover);
+}
+
+.title {
+	position: absolute;
+	top: 0;
+
+	transform: translateY(-150%);
+}
+
+.fz-title {
+	font-size: 72px;
+	line-height: 78px;
+}
+
+.footer-modal {
+	height: 160px;
+	padding: 0 90px;
+
+	background-color: var(--accent-orange);
+}
+
+.button {
+	padding: 15px;
+
+	border: 1px solid var(--main-dark);
+
+	&:hover {
+		box-shadow: var(--shadow-hover);
+	}
+}

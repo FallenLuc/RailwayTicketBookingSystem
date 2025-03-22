@@ -7,7 +7,7 @@ import { passengerDataMock } from "../../lib/mocks/passengerData.mock"
 import { PassengerInputCard } from "./PassengerInputCard"
 
 const meta: Meta<typeof PassengerInputCard> = {
-	title: "entities/PassengerInputCard",
+	title: "entities/Passenger/PassengerInputCard",
 	component: PassengerInputCard,
 	parameters: {
 		controls: {

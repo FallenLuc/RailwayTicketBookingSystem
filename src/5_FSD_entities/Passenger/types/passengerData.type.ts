@@ -2,17 +2,28 @@ import type { sexType } from "@customTypes/common.types"
 
 export type passengerDataType = {
 	id: string
-	surname: fieldWithValidationType
-	firstName: fieldWithValidationType
-	lastName: fieldWithValidationType
+	surname: fieldPassengerDataWithValidationType
+	firstName: fieldPassengerDataWithValidationType
+	lastName: fieldPassengerDataWithValidationType
 	sex: sexType
-	dateBirth: fieldWithValidationType
+	dateBirth: fieldPassengerDataWithValidationType
 	isLimitedMobility: boolean
-	seriesPassport: fieldWithValidationType
-	numberPassport: fieldWithValidationType
+	seriesPassport: fieldPassengerDataWithValidationType
+	numberPassport: fieldPassengerDataWithValidationType
 }
 
-export type fieldWithValidationType = {
+export type fieldPassengerDataWithValidationType = {
 	isValid: boolean
 	value: string
+}
+
+export type passengerDataForPayType = {
+	is_adult: true //нужно для запроса, не используется в логике
+	first_name: string
+	last_name: string
+	patronymic: string
+	gender: boolean
+	birthday: string
+	document_type: "паспорт" //нужно для запроса, не используется в логике
+	document_data: string
 }

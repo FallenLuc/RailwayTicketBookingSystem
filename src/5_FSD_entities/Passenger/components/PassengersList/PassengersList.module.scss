@@ -1,0 +1,20 @@
+.PassengersList {
+	border: 1px solid var(--main-gray);
+
+	background-color: var(--main-light);
+
+	box-shadow: var(--shadow-hover);
+}
+
+.title {
+	padding: 30px;
+
+	border-bottom: 1px solid var(--main-gray);
+
+	background-color: var(--main-light);
+}
+
+.button-wrapper {
+	padding-right: 30px;
+	padding-bottom: 30px;
+}

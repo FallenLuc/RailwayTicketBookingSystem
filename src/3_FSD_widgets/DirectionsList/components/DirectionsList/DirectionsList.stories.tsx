@@ -44,5 +44,7 @@ export const Default: TypeStory = {
 }
 
 export const Error: TypeStory = {
-	decorators: [StoreDecorator({ directionsList: { ...directionsListState, error: "no data" } })]
+	decorators: [
+		StoreDecorator({ directionsList: { ...directionsListState, error: "no passenger" } })
+	]
 }
