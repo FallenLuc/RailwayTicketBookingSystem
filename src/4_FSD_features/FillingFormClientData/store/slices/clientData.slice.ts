@@ -35,7 +35,6 @@ const clientDataSlice = buildSlice({
 	reducers: {
 		initClientData: state => {
 			const savedClientData = localStorage.getItem("clientData")
-
 			if (savedClientData) {
 				state.info = JSON.parse(savedClientData)
 			}
