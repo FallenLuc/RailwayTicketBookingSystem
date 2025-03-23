@@ -34,10 +34,9 @@ const clientDataSlice = buildSlice({
 	initialState,
 	reducers: {
 		initClientData: state => {
-			const savedClientData = JSON.parse(localStorage.getItem("clientData") || "{}")
-
+			const savedClientData = localStorage.getItem("clientData")
 			if (savedClientData) {
-				state.info = savedClientData
+				state.info = JSON.parse(savedClientData)
 			}
 		},
 		setClientData: (state, action: PayloadAction<Partial<clientDataType>>) => {
