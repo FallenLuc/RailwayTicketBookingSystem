@@ -3,9 +3,11 @@ import { HashPaths, RoutePaths } from "../constants/routePaths.constant"
 export const getRouteMain = () => {
 	return { route: RoutePaths.Main }
 }
-export const getRouteHeader = (pagePath: string) => {
+export const getRouteHeader = (pagePath: string, params?: string) => {
+	const route = `${pagePath == "/" ? "" : pagePath}${params || ""}${params ? HashPaths.Header.replace(/.*\//gm, "") : HashPaths.Header}`
+
 	return {
-		route: `${pagePath == "/" ? "" : pagePath}${HashPaths.Header}`,
+		route,
 		hash: `${HashPaths.Header.replace(/.*\/#/gm, "")}`
 	}
 }
@@ -21,9 +23,11 @@ export const getRouteHowItWorks = () => {
 export const getRouteReviews = () => {
 	return { route: HashPaths.Reviews, hash: HashPaths.Reviews.replace(/.*\/#/gm, "") }
 }
-export const getRouteContacts = () => {
+export const getRouteContacts = (pagePath: string, params?: string) => {
+	const route = `${pagePath == "/" ? "" : pagePath}${params || ""}${params ? HashPaths.Contacts.replace(/.*\//gm, "") : HashPaths.Contacts}`
+
 	return {
-		route: HashPaths.Contacts,
+		route: route,
 		hash: HashPaths.Contacts.replace(/.*\/#/gm, "")
 	}
 }

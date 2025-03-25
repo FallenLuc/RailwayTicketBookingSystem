@@ -10,7 +10,7 @@ import {
 import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features/FillingFormForSearchOfDirections"
 import { OverlayLoader } from "@features/OverlayLoader"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { createQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
+import { createLinkWithQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { VStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
@@ -40,7 +40,9 @@ export const DirectionsList = TypedMemo((props: DirectionsListProps) => {
 				directionId: direction?.departure?._id
 			}
 
-			navigate(createQueryParams(getRouteTicket(direction?.departure?._id).route, params))
+			navigate(
+				createLinkWithQueryParams(getRouteTicket(direction?.departure?._id).route, params)
+			)
 		},
 		[formParametres, navigate]
 	)

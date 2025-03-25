@@ -7,6 +7,7 @@ import { Logo } from "@ui/Logo"
 import { HStack } from "@ui/Stack"
 import { Text } from "@ui/Text"
 import { memo, useMemo } from "react"
+import { useSearchParams } from "react-router-dom"
 import styles from "./UnderFooter.module.scss"
 
 type UnderFooterProps = {
@@ -17,6 +18,10 @@ export const UnderFooter = memo<UnderFooterProps>(props => {
 	const { className, pagePath } = props
 
 	const year = useMemo(() => new Date().getFullYear(), [])
+
+	const [searchParams] = useSearchParams()
+
+	const params = searchParams.size ? `?${searchParams}` : ""
 
 	return (
 		<div className={classNamesHelp(styles.UnderFooter, {}, [className])}>
@@ -29,7 +34,7 @@ export const UnderFooter = memo<UnderFooterProps>(props => {
 				>
 					<Logo />
 					<AppLink
-						to={getRouteHeader(pagePath).route}
+						to={getRouteHeader(pagePath, params).route}
 						className={styles.arrowUp}
 						color={"light-gray"}
 						colorHover={"gold"}

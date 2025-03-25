@@ -24,7 +24,7 @@ export const Header = TypedMemo((props: HeaderProps) => {
 			id={getRouteHeader(pagePath).hash}
 		>
 			<HeaderLogo />
-			<NavLinks />
+			<NavLinks pagePath={pagePath} />
 			<HeaderContent>{children}</HeaderContent>
 			<HeaderBackground typeBackground={backgroundType} />
 		</VStack>
