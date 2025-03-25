@@ -1,5 +1,5 @@
-import { useScrollToAnchor } from "@config/router/lib/hooks/useScrollToAnchor.hook"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
+import { useScrollToAnchor } from "@hooks/useScrollToAnchor.hook"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import type { ReactNode } from "react"
 import { Children } from "react"

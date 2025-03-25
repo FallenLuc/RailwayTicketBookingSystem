@@ -4,7 +4,13 @@ export const getRouteMain = () => {
 	return { route: RoutePaths.Main }
 }
 export const getRouteHeader = (pagePath: string, params?: string) => {
-	const route = `${pagePath == "/" ? "" : pagePath}${params || ""}${params ? HashPaths.Header.replace(/.*\//gm, "") : HashPaths.Header}`
+	let route = ""
+
+	if (params && pagePath !== RoutePaths.Main && pagePath !== RoutePaths.Success) {
+		route = `${pagePath === RoutePaths.Main ? "" : pagePath}${params}${HashPaths.Header.replace(/.*\//gm, "")}`
+	} else {
+		route = `${pagePath === RoutePaths.Main ? "" : pagePath}${HashPaths.Header}`
+	}
 
 	return {
 		route,
@@ -24,7 +30,13 @@ export const getRouteReviews = () => {
 	return { route: HashPaths.Reviews, hash: HashPaths.Reviews.replace(/.*\/#/gm, "") }
 }
 export const getRouteContacts = (pagePath: string, params?: string) => {
-	const route = `${pagePath == "/" ? "" : pagePath}${params || ""}${params ? HashPaths.Contacts.replace(/.*\//gm, "") : HashPaths.Contacts}`
+	let route = ""
+
+	if (params && pagePath !== RoutePaths.Main && pagePath !== RoutePaths.Success) {
+		route = `${pagePath === RoutePaths.Main ? "" : pagePath}${params}${HashPaths.Contacts.replace(/.*\//gm, "")}`
+	} else {
+		route = `${pagePath === RoutePaths.Main ? "" : pagePath}${HashPaths.Contacts}`
+	}
 
 	return {
 		route: route,
