@@ -28,5 +28,7 @@ export default meta
 type TypeStory = StoryObj<typeof DateInput>
 
 export const Default: TypeStory = {
-	args: {}
+	args: {
+		size: "default"
+	}
 }
