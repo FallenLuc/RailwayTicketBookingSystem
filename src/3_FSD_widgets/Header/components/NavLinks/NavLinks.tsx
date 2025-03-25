@@ -8,13 +8,23 @@ import {
 	getRouteNameReviews,
 	getRouteReviews
 } from "@config/router"
+import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { AppLink } from "@ui/AppLink"
 import { ContainerLayout } from "@ui/layout"
 import { HStack } from "@ui/Stack"
-import { memo } from "react"
+import { useSearchParams } from "react-router-dom"
 import styles from "./NavLinks.module.scss"
 
-export const NavLinks = memo(() => {
+type NavLinksProps = {
+	pagePath: string
+}
+
+export const NavLinks = TypedMemo((props: NavLinksProps) => {
+	const { pagePath } = props
+
+	const [searchParams] = useSearchParams()
+
+	const params = searchParams.size ? `?${searchParams}` : ""
 	return (
 		<HStack
 			align={"center"}
@@ -61,7 +71,7 @@ export const NavLinks = memo(() => {
 					</li>
 					<li>
 						<AppLink
-							to={getRouteContacts().route}
+							to={getRouteContacts(pagePath, params).route}
 							fontSize="l"
 							colorHover={"gold"}
 							color={"main-light"}

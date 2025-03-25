@@ -20,7 +20,7 @@ export const Footer = TypedMemo((props: FooterProps) => {
 		<VStack
 			TagType={"footer"}
 			className={classNamesHelp(styles.Footer, {}, [className])}
-			id={getRouteContacts().hash}
+			id={getRouteContacts(pagePath).hash}
 		>
 			<ContainerLayout>
 				<HStack

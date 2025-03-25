@@ -8,7 +8,7 @@ import { useGetCurrentDirectionInfoSelector } from "@features/FillingFormCurrent
 import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features/FillingFormForSearchOfDirections"
 import { useGetFormPassengersDataSelector } from "@features/FillingFormPassengers"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { createQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
+import { createLinkWithQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { VStack } from "@ui/Stack"
 import { useCallback, useMemo } from "react"
@@ -41,15 +41,15 @@ export const AllData = TypedMemo((props: AllDataProps) => {
 	)
 
 	const onChangeDirectionHandler = useCallback(() => {
-		navigate(createQueryParams(getRouteChooseTrain().route, formParametres))
+		navigate(createLinkWithQueryParams(getRouteChooseTrain().route, formParametres))
 	}, [formParametres, navigate])
 
 	const onChangePassengerHandler = useCallback(() => {
-		navigate(createQueryParams(getRoutePassengers().route, params))
+		navigate(createLinkWithQueryParams(getRoutePassengers().route, params))
 	}, [navigate, params])
 
 	const onChangePayMethodHandler = useCallback(() => {
-		navigate(createQueryParams(getRoutePay().route, params))
+		navigate(createLinkWithQueryParams(getRoutePay().route, params))
 	}, [navigate, params])
 
 	return (

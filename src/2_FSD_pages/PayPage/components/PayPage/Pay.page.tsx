@@ -16,7 +16,7 @@ import {
 import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features/FillingFormForSearchOfDirections"
 import { useSetInitialPassengers } from "@features/FillingFormPassengers"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { createQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
+import { createLinkWithQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { ContainerLayout } from "@ui/layout"
 import { Page } from "@ui/Page"
@@ -60,7 +60,7 @@ const PayPage = TypedMemo((props: PayPageProps) => {
 		setClientData(validatedClientData)
 
 		if (isValid) {
-			navigate(createQueryParams(getRouteCheck().route, params))
+			navigate(createLinkWithQueryParams(getRouteCheck().route, params))
 		}
 	}, [clientData, currentDirection?._id, formParametres, navigate, setClientData])
 
