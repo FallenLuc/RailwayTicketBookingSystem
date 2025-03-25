@@ -21,8 +21,8 @@ export function clientDataMock(data?: DeepPartial<clientDataType>): clientDataTy
 		},
 		email: {
 			isValid: data?.email?.isValid ?? true,
-			value: data?.email?.value || "fallen.luc.private@meridiansteam.com"
+			value: data?.email?.value || "fallen.luc.public@meridiansteam.com"
 		},
-		payMethod: data?.payMethod || "offline"
+		payMethod: data?.payMethod || "online"
 	}
 }

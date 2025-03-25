@@ -23,7 +23,7 @@ export function carriageDataMock(data?: DeepPartial<carriageDataType>): carriage
 }
 
 export function carriageDataFromServerMock(
-	data: DeepPartial<carriageDataType>,
+	data?: DeepPartial<carriageDataType>,
 	countSeats = 5
 ): carriageDataFromServerType {
 	return {

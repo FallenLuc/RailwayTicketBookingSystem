@@ -35,5 +35,7 @@ export default meta
 type TypeStory = StoryObj<typeof SearchDirections>
 
 export const Default: TypeStory = {
-	args: {}
+	args: {
+		view: "compact"
+	}
 }
