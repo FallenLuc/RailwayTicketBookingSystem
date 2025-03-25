@@ -23,7 +23,7 @@ const meta: Meta<typeof AllData> = {
 
 type TypeStory = StoryObj<typeof AllData>
 
-const directionsMock = directionsListDataMock()
+const directionsListMock = directionsListDataMock()
 
 const state: DeepPartial<mainStateMap> = {
 	currentDirection: {
@@ -34,8 +34,8 @@ const state: DeepPartial<mainStateMap> = {
 		carriageInfo: carriageDataMock()
 	},
 	directionsList: {
-		ids: directionsMock.entityAdapter.ids,
-		entities: directionsMock.entityAdapter.entities
+		ids: directionsListMock.entityAdapter.ids,
+		entities: directionsListMock.entityAdapter.entities
 	},
 	formPassengers: {
 		ids: ["1", "2"],
