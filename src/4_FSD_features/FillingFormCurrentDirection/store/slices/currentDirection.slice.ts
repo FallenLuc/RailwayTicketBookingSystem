@@ -78,6 +78,3 @@ export const {
 	reducer: currentDirectionReducer,
 	useActions: useCurrentDirectionActions
 } = currentDirectionSlice
-
-// To Hold написать тест
-// To Feature вынести passengers в отдельную фичу FillingFormPassengers

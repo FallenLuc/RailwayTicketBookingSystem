@@ -17,8 +17,6 @@ import { TogglesParametres } from "../TogglesParametres/TogglesParametres"
 import styles from "./FilterDirections.module.scss"
 import { SubmitButton } from "./ui/SubmitButton/SubmitButton"
 
-// To Feature сделать заполнение диапазона стоимости билетов
-
 type FilterDirectionsProps = {
 	className?: string
 	onSearch?: () => void
@@ -125,7 +123,7 @@ export const FilterDirections = TypedMemo((props: FilterDirectionsProps) => {
 			onSearch?.()
 		} else {
 			//eslint-disable-next-line
-			console.log("не заполнена форма") // To Hold обработать ошибку заполнения формы
+			console.log("не заполнена форма")
 		}
 	}, [formParametres, isValidForm, onSearch])
 
