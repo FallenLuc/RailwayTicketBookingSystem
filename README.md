@@ -8,4 +8,4 @@
 
 ![Ui Test](https://github.com/FallenLuc/RailwayTicketBookingSystem/actions/workflows/testUi.yml/badge.svg?branch=dev)
 
-![Storybook](https://dev--67c5d5923b070e7bf5bb63e1.chromatic.com)
+[Storybook](https://dev--67c5d5923b070e7bf5bb63e1.chromatic.com)

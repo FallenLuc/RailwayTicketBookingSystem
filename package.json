@@ -14,7 +14,7 @@
 		"lint:style:fix": "stylelint '**/*{.css,.scss}' --fix",
 		"lint:prettier": "prettier --write **/*{.ts,.tsx,.json,.html,.css,.scss}",
 		"test:unit": "jest --config ./config/jest/jest.config.ts",
-		"test:ui": "chromatic --t chpt_c009882e46137e8 --build-script-name storybook:build",
+		"test:ui": "chromatic --t chpt_c009882e46137e8",
 		"storybook:start": "storybook dev -c config/storybook -p 6006 --no-open",
 		"storybook:build": "storybook build -ci -c config/storybook",
 		"prepare": "husky"
@@ -31,6 +31,7 @@
 		"@babel/preset-env": "^7.24.3",
 		"@babel/preset-react": "^7.24.1",
 		"@babel/preset-typescript": "^7.24.1",
+		"@chromatic-com/storybook": "^3.2.6",
 		"@jest/globals": "^29.7.0",
 		"@pmmmwh/react-refresh-webpack-plugin": "^0.5.13",
 		"@storybook/addon-essentials": "^8.6.10",
