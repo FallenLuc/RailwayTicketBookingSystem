@@ -30,7 +30,7 @@ export const NavLinks = TypedMemo((props: NavLinksProps) => {
 		>
 			<ContainerLayout>
 				<HStack
-					gap={"XL"}
+					gap={"L"}
 					TagType={"nav"}
 				>
 					<li>
