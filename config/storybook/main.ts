@@ -29,9 +29,7 @@ const config: StorybookConfig = {
 			}
 		}
 	}),
-	docs: {
-		autodocs: "tag"
-	},
+	docs: {},
 	webpackFinal: async config => webpackStorybookConfig(config)
 }
 export default config
