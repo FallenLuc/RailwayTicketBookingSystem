@@ -1,7 +1,8 @@
 name: UI
 run-name: ${{ github.workflow }}; Trigger ${{ github.ref_name }}; Runner ${{ github.actor }}
 on:
-  push
+  workflow_dispatch:
+  push:
 jobs:
   prepare:
     name: Prepare
@@ -25,6 +26,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.2
+        with:
+          fetch-depth: 0
       - name: Install Pnpm
         uses: pnpm/action-setup@v4
         with:
