@@ -1,4 +1,4 @@
-name: Build
+name: Deploy
 run-name: ${{ github.workflow }}; Trigger ${{ github.ref_name }}; Runner ${{ github.actor }}
 on:
   workflow_dispatch:
