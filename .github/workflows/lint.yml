@@ -19,8 +19,6 @@ jobs:
   lintTs:
     name: Lint TypeScript
     runs-on: ubuntu-latest
-    concurrency:
-      group: lint
     steps:
       - name: Use common setup
         uses: ./.github/workflows/prepare.yml
@@ -29,8 +27,6 @@ jobs:
   lintStyle:
     name: Lint Style
     runs-on: ubuntu-latest
-    concurrency:
-        group: lint
     steps:
       - name: Use common setup
         uses: ./.github/workflows/prepare.yml
