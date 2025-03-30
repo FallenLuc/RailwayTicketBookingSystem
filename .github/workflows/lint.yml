@@ -18,8 +18,6 @@ on:
 jobs:
   prepare:
     uses: ./.github/workflows/prepare.yml
-    with:
-      secrets: inherit
   lintTs:
     name: Lint TypeScript
     runs-on: ubuntu-latest
