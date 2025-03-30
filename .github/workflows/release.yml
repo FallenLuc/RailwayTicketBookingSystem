@@ -1,4 +1,4 @@
-name: Deploy
+name: Release
 run-name: ${{ github.workflow }}; Trigger ${{ github.ref_name }}; Runner ${{ github.actor }}
 on:
   workflow_dispatch:
@@ -20,19 +20,23 @@ jobs:
         id: build
         run: pnpm build:prod
         shell: bash
+
+      - name: Create ZIP artifact
+        run: |
+          zip -r build.zip build/
+
       - name: Upload build artifact for release
         uses: actions/upload-artifact@v4
         with:
           name: release-artifact
-          path: build/
+          path: build.zip
+
   create-release:
     name: Create Release
-    needs: deploy
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    if: github.ref == 'refs/heads/master'
-
     steps:
       - name: Download build artifact
         uses: actions/download-artifact@v4
@@ -50,8 +54,10 @@ jobs:
           release_name: Release ${{ github.ref_name }}
           body: |
             Automated release from GitHub Actions
+            - Jira-Version: ${{ github.ref_name }}
             - Build: #${{ github.run_number }}
             - Commit: ${{ github.sha }}
+            - Deploy URL: [deploy](https://fallenluc.github.io/${{ github.event.repository.name }}/)
           draft: false
           prerelease: false
 
@@ -61,6 +67,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./release-files/
-          asset_name: build-assets
+          asset_path: ./release-files/build.zip
+          asset_name: build-${{ github.ref_name }}.zip
           asset_content_type: application/zip
