@@ -20,6 +20,8 @@ jobs:
     name: Lint TypeScript
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Use common setup
         uses: ./.github/workflows/prepare.yml
       - name: Lint TS
@@ -28,6 +30,8 @@ jobs:
     name: Lint Style
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Use common setup
         uses: ./.github/workflows/prepare.yml
       - name: Lint style
