@@ -15,28 +15,26 @@ on:
       - yarn.lock
       - config/**/*
       - webpack.config.ts
+
 jobs:
-  prepare:
-    uses: ./.github/workflows/prepare.yml
   lintTs:
     name: Lint TypeScript
     runs-on: ubuntu-latest
-    needs: prepare
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Use common setup
+      - name: Use common setup (Prepare Environment)
         uses: ./.github/workflows/prepare.yml
-      - name: Lint TS
+      - name: Lint TypeScript
         run: pnpm lint:ts
+
   lintStyle:
     name: Lint Style
     runs-on: ubuntu-latest
-    needs: prepare
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Use common setup
+      - name: Use common setup (Prepare Environment)
         uses: ./.github/workflows/prepare.yml
-      - name: Lint style
+      - name: Lint Style
         run: pnpm lint:style
