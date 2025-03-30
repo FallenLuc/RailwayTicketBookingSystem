@@ -21,6 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Use common setup
-        uses: ./.github/workflows/prepare.yml
+        uses: ./.github/workflows/action.yml
       - name: test
         run: pnpm test:unit
