@@ -20,11 +20,17 @@ jobs:
         id: build
         run: pnpm build:prod
         shell: bash
+
+      - name: Create ZIP artifact
+        run: |
+          zip -r build.zip build/
+
       - name: Upload build artifact for release
         uses: actions/upload-artifact@v4
         with:
           name: release-artifact
-          path: build/
+          path: build.zip
+
   create-release:
     name: Create Release
     needs: build
@@ -48,6 +54,7 @@ jobs:
           release_name: Release ${{ github.ref_name }}
           body: |
             Automated release from GitHub Actions
+            - Jira-Version: ${{ github.ref_name }}
             - Build: #${{ github.run_number }}
             - Commit: ${{ github.sha }}
           draft: false
@@ -59,6 +66,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./release-files/
-          asset_name: build-assets
+          asset_path: ./release-files/build.zip
+          asset_name: build-${{ github.ref_name }}.zip
           asset_content_type: application/zip
