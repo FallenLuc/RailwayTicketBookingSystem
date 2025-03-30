@@ -16,9 +16,14 @@ on:
       - config/**/*
       - webpack.config.ts
 jobs:
+  prepare:
+    uses: ./.github/workflows/prepare.yml
+    with:
+      secrets: inherit
   lintTs:
     name: Lint TypeScript
     runs-on: ubuntu-latest
+    needs: prepare
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -29,6 +34,7 @@ jobs:
   lintStyle:
     name: Lint Style
     runs-on: ubuntu-latest
+    needs: prepare
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
