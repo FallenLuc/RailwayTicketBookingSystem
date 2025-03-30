@@ -3,7 +3,6 @@ run-name: ${{ github.workflow }}; Trigger ${{ github.ref_name }}; Runner ${{ git
 on:
   workflow_dispatch:
   pull_request:
-  push:
     paths-ignore:
       - ./**/*.json
       - .stylelintrc.js
