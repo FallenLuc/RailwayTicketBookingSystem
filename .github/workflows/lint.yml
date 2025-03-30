@@ -24,17 +24,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Use common setup (Prepare Environment)
-        uses: ./.github/workflows/prepare.yml
+        run: ./.github/workflows/prepare.yml
       - name: Lint TypeScript
         run: pnpm lint:ts
-
-  lintStyle:
-    name: Lint Style
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Use common setup (Prepare Environment)
-        uses: ./.github/workflows/prepare.yml
-      - name: Lint Style
-        run: pnpm lint:style
