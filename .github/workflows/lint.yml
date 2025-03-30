@@ -20,6 +20,9 @@ jobs:
   lintTs:
     name: Lint TypeScript
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 20 ]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -34,6 +37,9 @@ jobs:
   lintStyle:
     name: Lint Style
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 20 ]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

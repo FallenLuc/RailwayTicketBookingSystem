@@ -19,8 +19,16 @@ jobs:
   unitTest:
     name: Unit Test
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 20 ]
     steps:
-      - name: Use common setup
-        uses: ./.github/workflows/action.yml
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare environment
+        uses: ./.github/actions/prepare
+
       - name: test
         run: pnpm test:unit
+        shell: bash
