@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Prepare environment
-        uses: ./.github/actions/prepare
+        uses: ./.github/actions/prepare/prepare.yml
 
       - name: Lint TypeScript
         run: pnpm lint:ts
@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Prepare environment
-        uses: ./.github/actions/prepare
+        uses: ./.github/actions/prepare/prepare.yml
 
       - name: Lint Style
         run: pnpm lint:style
