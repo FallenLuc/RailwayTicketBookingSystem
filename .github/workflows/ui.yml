@@ -1,4 +1,4 @@
-name: Unit
+name: UI
 run-name: ${{ github.workflow }}; Trigger ${{ github.ref_name }}; Runner ${{ github.actor }}
 on:
   workflow_dispatch:
@@ -15,8 +15,8 @@ on:
       - config/**/*
       - webpack.config.ts
 jobs:
-  unitTest:
-    name: Unit Test
+  chromatic:
+    name: UI Tests
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,6 +28,7 @@ jobs:
       - name: Prepare environment
         uses: ./.github/actions/prepare
 
-      - name: test
-        run: pnpm test:unit
-        shell: bash
+      - name: Run Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

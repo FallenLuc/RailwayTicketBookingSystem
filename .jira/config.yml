@@ -3,9 +3,9 @@ deployments:
     development:
       - "dev*"
     testing:
-      - "github-pages"
     staging:
       - "Pre-Prod"
       - "staging"
     production:
       - "PROD-*"
+      - "github-pages"

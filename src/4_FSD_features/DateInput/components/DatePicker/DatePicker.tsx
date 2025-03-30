@@ -15,7 +15,6 @@ type DatePickerProps = {
 
 export const DatePicker = memo<DatePickerProps>(props => {
 	const { className, value, onPick, isOpen } = props
-	// To Feature: lazy library
 
 	const onChangeHandler = useCallback(
 		(value: Date | null) => {

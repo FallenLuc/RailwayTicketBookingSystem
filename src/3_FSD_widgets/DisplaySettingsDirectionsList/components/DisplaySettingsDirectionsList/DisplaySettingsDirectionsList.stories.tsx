@@ -14,7 +14,7 @@ const meta: Meta<typeof DisplaySettingsDirectionsList> = {
 			default: "Light"
 		},
 		controls: {
-			exclude: [...(preview?.parameters?.controls.exclude ?? undefined), "pagePath"]
+			exclude: [...(preview?.parameters?.controls.exclude ?? undefined), "namePage"]
 		}
 	},
 	decorators: [CenterDecorator]

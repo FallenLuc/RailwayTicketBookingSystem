@@ -44,6 +44,11 @@ export const Default: TypeStory = {
 }
 
 export const Error: TypeStory = {
+	parameters: {
+		controls: {
+			exclude: [...(preview?.parameters?.controls.exclude ?? undefined), "isTestLoading"]
+		}
+	},
 	decorators: [
 		StoreDecorator({ directionsList: { ...directionsListState, error: "no passenger" } })
 	]

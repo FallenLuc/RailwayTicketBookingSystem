@@ -1,5 +1,3 @@
-// To Hold: написать тест
-
 import { fetchDirectionsThunk } from "@entities/Direction"
 import {
 	getFormForSearchOfDirectionsDataForRequestSelector,

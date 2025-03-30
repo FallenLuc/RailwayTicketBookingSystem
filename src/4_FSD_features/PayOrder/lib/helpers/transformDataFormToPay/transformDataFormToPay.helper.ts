@@ -5,8 +5,6 @@ import dayjs from "dayjs"
 import customParseFormat from "dayjs/plugin/customParseFormat"
 import type { payOrderBodyType } from "../../../types/payOrderBodyType"
 
-// To Feature добавить обработку мест по номеру. Связано с созданием карты вагона
-
 dayjs.extend(customParseFormat)
 
 export function transformDataFormToPay(

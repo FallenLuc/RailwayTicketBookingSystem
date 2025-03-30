@@ -25,6 +25,3 @@ export const fetchDirectionsThunk = createAsyncThunk<
 		return rejectWithValue("error with request directions")
 	}
 })
-
-// To Feature сделать обертку с bind dispatch на async Thunk
-// To Hold: написать тест

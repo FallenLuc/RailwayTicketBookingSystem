@@ -1,5 +1,5 @@
-import { useCallback } from "react"
 import type { mainStateMap } from "@store/storeTypes/mainState.map"
+import { useCallback } from "react"
 import { useSelector } from "react-redux"
 
 type selectorType<T, Args extends any[]> = (state: mainStateMap, ...args: Args) => T
@@ -14,5 +14,3 @@ export function buildSelector<T, Args extends any[]>(
 
 	return [useAppSelector, selector]
 }
-
-// To Feature Попробовать написать тест

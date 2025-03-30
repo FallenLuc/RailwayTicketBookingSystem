@@ -13,7 +13,7 @@ export function useSetInitialPassengers(seatsInfo: number, currentDirection?: di
 	const { initPassengers } = useFormPassengersActions()
 
 	useEffect(() => {
-		if (!isLoading && !error && currentDirection) {
+		if (!isLoading && !error && currentDirection && __PROJECT__ !== "storybook") {
 			initPassengers(seatsInfo)
 		}
 		//eslint-disable-next-line

@@ -8,7 +8,7 @@ import { useGetCurrentDirectionInfoSelector } from "@features/FillingFormCurrent
 import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features/FillingFormForSearchOfDirections"
 import { OverlayLoader } from "@features/OverlayLoader"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { createQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
+import { createLinkWithQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { Button } from "@ui/Button"
 import { ErrorScreen } from "@ui/ErrorScreen"
@@ -62,11 +62,11 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 	}, [currentDirection?._id, formParametres])
 
 	const onBackHandler = useCallback(() => {
-		navigate(createQueryParams(backLink, params))
+		navigate(createLinkWithQueryParams(backLink, params))
 	}, [backLink, navigate, params])
 
 	const onNextHandler = useCallback(() => {
-		navigate(createQueryParams(nextLink, params))
+		navigate(createLinkWithQueryParams(nextLink, params))
 	}, [navigate, nextLink, params])
 
 	const justifyButtons =
@@ -83,7 +83,7 @@ export const PageContent = TypedMemo((props: PageContentProps) => {
 			<ErrorScreen
 				type={"link"}
 				text={"К поездам"}
-				linkTo={createQueryParams(getRouteChooseTrain().route, formParametres)}
+				linkTo={createLinkWithQueryParams(getRouteChooseTrain().route, formParametres)}
 			/>
 		)
 	}
