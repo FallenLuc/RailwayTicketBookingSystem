@@ -21,23 +21,20 @@ jobs:
     name: Lint TypeScript
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
       - name: Prepare environment
-        uses: ./.github/actions/prepare/
+        uses: ./.github/actions/prepare
 
       - name: Lint TypeScript
         run: pnpm lint:ts
+        shell: bash
 
   lintStyle:
     name: Lint Style
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Prepare environment
-        uses: ./.github/actions/prepare/
+        uses: ./.github/actions/prepare
 
       - name: Lint Style
         run: pnpm lint:style
+        shell: bash

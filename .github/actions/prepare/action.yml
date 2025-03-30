@@ -16,15 +16,15 @@ runs:
         node-version: '20'
         cache: 'pnpm'
 
-    - name: Cache node_modules
-      id: cache-node-modules
+    - name: Cache pnpm store
+      id: cache-pnpm
       uses: actions/cache@v4
       with:
-        path: node_modules
-        key: ${{ runner.os }}-pnpm-${{ hashFiles('package.json', 'pnpm-lock.yaml') }}
+        path: ~/.pnpm-store
+        key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
         restore-keys: |
           ${{ runner.os }}-pnpm-
 
     - name: Install dependencies
       run: pnpm install
-    - shell: bash
+      shell: bash
