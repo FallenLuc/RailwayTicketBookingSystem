@@ -17,7 +17,11 @@ export const babelLoader = ({ isDev, isTsx }: buildOptionBabelType): RuleSetRule
 				isDev && reactRefreshBabel,
 				"@babel/plugin-transform-runtime",
 				["@babel/plugin-transform-typescript", { isTsx }],
-				isTsx && isDev && [removeAttributePluginBabel, { props: ["data-testid"] }]
+				isTsx &&
+					isDev && [
+						removeAttributePluginBabel,
+						{ props: ["data-testid", "isTestLoading"] }
+					]
 			].filter(Boolean)
 		}
 	}

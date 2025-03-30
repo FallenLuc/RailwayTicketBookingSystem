@@ -17,7 +17,7 @@ const meta: Meta<typeof LastTickets> = {
 			exclude: [...(preview?.parameters?.controls.exclude ?? undefined), "isTestLoading"]
 		}
 	},
-	decorators: [RestrictionDecorator(), CenterDecorator]
+	decorators: [CenterDecorator, RestrictionDecorator()]
 }
 
 export default meta
@@ -47,7 +47,7 @@ export const Error: TypeStory = {
 			{
 				url: `${__API_URL__}${getLastDirectionsRequestPaths()}`,
 				method: "GET",
-				status: 200,
+				status: 500,
 				delay: 0,
 				response: directionsListDataMock(2, true).directions
 			}

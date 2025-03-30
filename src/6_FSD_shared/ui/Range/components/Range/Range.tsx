@@ -17,7 +17,6 @@ type RangeProps = {
 }
 
 const STEP = 1
-// To Feature сделать сдвиг лейблов, чтобы не налазили друг на друга
 
 export const Range = TypedMemo((props: RangeProps) => {
 	const { className, min = 0, max = 10000, range, onChange, typeRange = "default" } = props

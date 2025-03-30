@@ -16,7 +16,8 @@ const meta: Meta<typeof PassengerInputCard> = {
 				"value",
 				"count",
 				"onChange",
-				"isTestLoading"
+				"isTestLoading",
+				"id"
 			]
 		},
 		backgrounds: {

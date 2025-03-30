@@ -50,8 +50,6 @@ export const DateInput = TypedMemo((props: DateInputProps) => {
 
 	useClickOutside(inputDateRef, onCloseHandler)
 
-	// To Feature сделать очистку инпута - возможно разблокировать свободный ввод
-
 	return (
 		<div
 			className={classNamesHelp(styles.DateInput, {}, [className])}

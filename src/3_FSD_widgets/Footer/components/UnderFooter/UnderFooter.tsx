@@ -12,9 +12,10 @@ import styles from "./UnderFooter.module.scss"
 type UnderFooterProps = {
 	className?: string
 	pagePath: string
+	params?: string
 }
 export const UnderFooter = memo<UnderFooterProps>(props => {
-	const { className, pagePath } = props
+	const { className, pagePath, params } = props
 
 	const year = useMemo(() => new Date().getFullYear(), [])
 
@@ -29,7 +30,7 @@ export const UnderFooter = memo<UnderFooterProps>(props => {
 				>
 					<Logo />
 					<AppLink
-						to={getRouteHeader(pagePath).route}
+						to={getRouteHeader(pagePath, params).route}
 						className={styles.arrowUp}
 						color={"light-gray"}
 						colorHover={"gold"}

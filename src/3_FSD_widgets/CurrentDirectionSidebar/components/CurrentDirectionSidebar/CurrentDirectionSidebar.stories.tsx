@@ -9,7 +9,8 @@ import { CurrentDirectionSidebar } from "./CurrentDirectionSidebar"
 
 const initialState: DeepPartial<mainStateMap> = {
 	currentDirection: {
-		directionInfo: directionDataMock()
+		directionInfo: directionDataMock(),
+		sum: 2000
 	}
 }
 

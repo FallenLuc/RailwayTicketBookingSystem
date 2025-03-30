@@ -2,7 +2,7 @@ import { getRouteChooseTrain, getRoutePassengers, getRouteTicket } from "@config
 import { BreadcrumbsLine } from "@features/BreadcrumbsLine"
 import { useSetCurrentDirectionByUrl } from "@features/FillingFormCurrentDirection"
 import { useGetFormForSearchOfDirectionsDataForRequestSelector } from "@features/FillingFormForSearchOfDirections"
-import { createQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
+import { createLinkWithQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { ContainerLayout } from "@ui/layout"
 import { Page } from "@ui/Page"
@@ -24,7 +24,7 @@ const TicketPage = TypedMemo(() => {
 	const formParametres = useGetFormForSearchOfDirectionsDataForRequestSelector()
 
 	const onBackHandler = useCallback(() => {
-		navigate(createQueryParams(getRouteChooseTrain().route, formParametres))
+		navigate(createLinkWithQueryParams(getRouteChooseTrain().route, formParametres))
 	}, [formParametres, navigate])
 
 	return (

@@ -17,5 +17,3 @@ const getCitiesByPatternRtkq = rtkBaseApi.injectEndpoints({
 
 export const { useGetCitiesByPatternQuery } = getCitiesByPatternRtkq
 export const getCitiesByPattern = getCitiesByPatternRtkq.endpoints.getCitiesByPattern.initiate
-
-// To Feature оптимизировать запрос. Удаление неактуальных.

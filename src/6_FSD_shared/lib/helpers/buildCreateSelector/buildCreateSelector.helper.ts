@@ -1,5 +1,5 @@
-import type { mainStateMap } from "@store/storeTypes/mainState.map"
 import { createSelector } from "@reduxjs/toolkit"
+import type { mainStateMap } from "@store/storeTypes/mainState.map"
 import { useSelector } from "react-redux"
 
 type selectorType<T> = (state: mainStateMap) => T
@@ -26,5 +26,3 @@ export function buildCreateSelector<T, L, Args extends any[]>(
 
 	return [useAppCreateSelector, generalSelector]
 }
-
-// To Feature Попробовать написать тест
