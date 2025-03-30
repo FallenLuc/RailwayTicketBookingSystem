@@ -5,7 +5,6 @@ on:
   pull_request:
   push:
     paths-ignore:
-      - .github/**/*
       - ./**/*.json
       - .stylelintrc.js
       - .stylelintignore
@@ -17,25 +16,6 @@ on:
       - config/**/*
       - webpack.config.ts
 jobs:
-  prepare:
-    name: Prepare
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 20 ]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4.1.2
-      - name: Install Pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: latest
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'pnpm'
-      - name: Install dependencies
-        run: pnpm install
   lintTs:
     name: Lint TypeScript
     runs-on: ubuntu-latest
@@ -43,6 +23,8 @@ jobs:
     concurrency:
       group: lint
     steps:
+      - name: Use common setup
+        uses: ./.github/workflows/prepare.yml
       - name: Lint TS
         run: pnpm lint:ts
   lintStyle:
@@ -52,5 +34,7 @@ jobs:
     concurrency:
         group: lint
     steps:
+      - name: Use common setup
+        uses: ./.github/workflows/prepare.yml
       - name: Lint style
         run: pnpm lint:style

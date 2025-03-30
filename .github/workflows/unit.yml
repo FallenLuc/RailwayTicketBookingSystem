@@ -5,7 +5,6 @@ on:
   pull_request:
   push:
     paths-ignore:
-      - .github/**/*
       - ./**/*.json
       - .stylelintrc.js
       - .stylelintignore
