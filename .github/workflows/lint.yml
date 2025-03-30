@@ -19,7 +19,6 @@ jobs:
   lintTs:
     name: Lint TypeScript
     runs-on: ubuntu-latest
-    needs: prepare
     concurrency:
       group: lint
     steps:
@@ -30,7 +29,6 @@ jobs:
   lintStyle:
     name: Lint Style
     runs-on: ubuntu-latest
-    needs: prepare
     concurrency:
         group: lint
     steps:
