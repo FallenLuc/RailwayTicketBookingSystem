@@ -12,7 +12,7 @@ import {
 	useSetInitialPassengers,
 	validatePassengerForm
 } from "@features/FillingFormPassengers"
-import { createQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
+import { createLinkWithQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { ContainerLayout } from "@ui/layout"
 import { Page } from "@ui/Page"
@@ -58,7 +58,7 @@ const PassengersPage = TypedMemo(() => {
 		verifyFields({ isAllValid, validatedPassengers })
 
 		if (isAllValid) {
-			navigate(createQueryParams(getRoutePay().route, params))
+			navigate(createLinkWithQueryParams(getRoutePay().route, params))
 		}
 	}, [currentDirection?._id, formParametres, navigate, passengers, verifyFields])
 

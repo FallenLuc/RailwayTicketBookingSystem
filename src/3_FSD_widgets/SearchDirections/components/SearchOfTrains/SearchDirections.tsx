@@ -70,7 +70,7 @@ export const SearchDirections = TypedMemo((props: SearchOfTrainsProps) => {
 			onSearch()
 		} else {
 			//eslint-disable-next-line
-			console.log("не заполнена форма") // To Hold обработать ошибку заполнения формы
+			console.log("не заполнена форма")
 		}
 	}, [formParametres, isValidForm, onSearch])
 

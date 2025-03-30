@@ -16,7 +16,7 @@ type PaginationProps = {
 export const Pagination = TypedMemo((props: PaginationProps) => {
 	const { className, quantity = 1, value = 1, onChange } = props
 
-	const availableQuantity = quantity > 5 ? 5 : quantity //To Feature придумать алгоритм для многоточия в пагинации (helper, который все рассчитывает)
+	const availableQuantity = quantity > 5 ? 5 : quantity
 
 	if (availableQuantity <= 1) {
 		return null

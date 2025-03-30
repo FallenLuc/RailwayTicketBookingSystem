@@ -140,5 +140,3 @@ export const DirectionDetails = TypedMemo((props: DirectionDetailsProps) => {
 		</VStack>
 	)
 })
-
-// To hold навести порядок

@@ -7,12 +7,21 @@ import { PayMethod } from "./PayMethod"
 const meta: Meta<typeof PayMethod> = {
 	title: "entities/Client/PayMethod",
 	component: PayMethod,
+	argTypes: {
+		payMethod: {
+			control: "inline-radio"
+		}
+	},
 	parameters: {
 		backgrounds: {
 			default: "Light"
 		},
 		controls: {
-			exclude: [...(preview?.parameters?.controls.exclude ?? undefined)]
+			exclude: [
+				...(preview?.parameters?.controls.exclude ?? undefined),
+				"isTestLoading",
+				"onClick"
+			]
 		}
 	},
 	decorators: [RestrictionDecorator("default"), CenterDecorator]
@@ -21,7 +30,9 @@ const meta: Meta<typeof PayMethod> = {
 type TypeStory = StoryObj<typeof PayMethod>
 
 export const Default: TypeStory = {
-	args: {}
+	args: {
+		payMethod: "online"
+	}
 }
 
 export default meta

@@ -1,0 +1,96 @@
+name: Deploy
+run-name: ${{ github.workflow }}; Trigger ${{ github.ref_name }}; Runner ${{ github.actor }}
+on:
+  workflow_dispatch:
+  pull_request:
+      paths-ignore:
+        - ./**/*.json
+        - .stylelintrc.js
+        - .stylelintignore
+        - .eslintignore
+        - .gitignore
+        - .prettierignore
+        - README.md
+        - yarn.lock
+        - config/**/*
+        - webpack.config.ts
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare environment
+        uses: ./.github/actions/prepare
+
+      - name: Build
+        id: build
+        run: pnpm build:prod
+        shell: bash
+
+      - name: Upload static files as artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@v3
+        with:
+            path: build/
+      - name: Upload build artifact for release
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-artifact
+          path: build/
+  deploy:
+    name: Deploy
+    needs: build
+    permissions:
+        pages: write
+        id-token: write
+    environment:
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Page
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  create-release:
+    name: Create Release
+    needs: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    if: github.ref == 'refs/heads/master'
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: release-artifact
+          path: release-files
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: Release ${{ github.run_number }}
+          body: |
+            Automated release from GitHub Actions
+            - Build: #${{ github.run_number }}
+            - Commit: ${{ github.sha }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./release-files/
+          asset_name: build-assets
+          asset_content_type: application/zip

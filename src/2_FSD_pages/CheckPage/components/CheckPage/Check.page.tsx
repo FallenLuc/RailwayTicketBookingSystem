@@ -23,7 +23,7 @@ import {
 import { OverlayLoader } from "@features/OverlayLoader"
 import { useToPayMutation } from "@features/PayOrder"
 import { classNamesHelp } from "@helpers/classNamesHelp/classNamesHelp"
-import { createQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
+import { createLinkWithQueryParams } from "@helpers/createLinkWithParams/createLinkWithParams.helper"
 import { TypedMemo } from "@sharedProviders/TypedMemo"
 import { ErrorScreen } from "@ui/ErrorScreen"
 import { ContainerLayout } from "@ui/layout"
@@ -79,7 +79,7 @@ const CheckPage = TypedMemo((props: CheckPageProps) => {
 				type={"link"}
 				text={"К поездам"}
 				title={"При оплате произошла ошибка, попробуйте снова"}
-				linkTo={createQueryParams(getRouteChooseTrain().route, formParametres)}
+				linkTo={createLinkWithQueryParams(getRouteChooseTrain().route, formParametres)}
 			/>
 		)
 	}

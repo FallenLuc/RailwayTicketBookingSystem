@@ -1,6 +1,6 @@
-import type { SliceCaseReducers, SliceSelectors, CreateSliceOptions } from "@reduxjs/toolkit"
-import { bindActionCreators, createSlice } from "@reduxjs/toolkit"
 import { useAppDispatch } from "@hooks/useAppDispatch.hook"
+import type { CreateSliceOptions, SliceCaseReducers, SliceSelectors } from "@reduxjs/toolkit"
+import { bindActionCreators, createSlice } from "@reduxjs/toolkit"
 import { useMemo } from "react"
 
 export function buildSlice<
@@ -25,5 +25,3 @@ export function buildSlice<
 
 	return { ...slice, useActions }
 }
-
-// To Feature Попробовать написать тест

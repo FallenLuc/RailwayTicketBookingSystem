@@ -3,9 +3,17 @@ import { HashPaths, RoutePaths } from "../constants/routePaths.constant"
 export const getRouteMain = () => {
 	return { route: RoutePaths.Main }
 }
-export const getRouteHeader = (pagePath: string) => {
+export const getRouteHeader = (pagePath: string, params?: string) => {
+	let route = ""
+
+	if (params && pagePath !== RoutePaths.Main && pagePath !== RoutePaths.Success) {
+		route = `${pagePath === RoutePaths.Main ? "" : pagePath}${params}${HashPaths.Header.replace(/.*\//gm, "")}`
+	} else {
+		route = `${pagePath === RoutePaths.Main ? "" : pagePath}${HashPaths.Header}`
+	}
+
 	return {
-		route: `${pagePath == "/" ? "" : pagePath}${HashPaths.Header}`,
+		route,
 		hash: `${HashPaths.Header.replace(/.*\/#/gm, "")}`
 	}
 }
@@ -21,9 +29,17 @@ export const getRouteHowItWorks = () => {
 export const getRouteReviews = () => {
 	return { route: HashPaths.Reviews, hash: HashPaths.Reviews.replace(/.*\/#/gm, "") }
 }
-export const getRouteContacts = () => {
+export const getRouteContacts = (pagePath: string, params?: string) => {
+	let route = ""
+
+	if (params && pagePath !== RoutePaths.Main && pagePath !== RoutePaths.Success) {
+		route = `${pagePath === RoutePaths.Main ? "" : pagePath}${params}${HashPaths.Contacts.replace(/.*\//gm, "")}`
+	} else {
+		route = `${pagePath === RoutePaths.Main ? "" : pagePath}${HashPaths.Contacts}`
+	}
+
 	return {
-		route: HashPaths.Contacts,
+		route: route,
 		hash: HashPaths.Contacts.replace(/.*\/#/gm, "")
 	}
 }

@@ -1,5 +1,6 @@
 import preview from "@_storybook/preview"
 import { CenterDecorator } from "@decorators/storybook/Center.decorator"
+import { RestrictionDecorator } from "@decorators/storybook/Restriction.decorator"
 import { type Meta, type StoryObj } from "@storybook/react"
 import { Text } from "./Text"
 
@@ -21,6 +22,9 @@ const meta: Meta<typeof Text> = {
 		},
 		TitleType: {
 			control: "inline-radio"
+		},
+		textTransform: {
+			control: "inline-radio"
 		}
 	},
 	parameters: {
@@ -28,11 +32,12 @@ const meta: Meta<typeof Text> = {
 			exclude: [
 				...(preview?.parameters?.controls.exclude ?? undefined),
 				"classNamesText",
-				"classNameTitle"
+				"classNameTitle",
+				"widthMax"
 			]
 		}
 	},
-	decorators: [CenterDecorator]
+	decorators: [RestrictionDecorator("default"), CenterDecorator]
 }
 
 export default meta
@@ -43,10 +48,12 @@ export const Default: TypeStory = {
 	args: {
 		title: "Title",
 		align: "left",
+		widthMax: true,
 		fontSizeTitle: "l",
 		fontWeightTitle: "fat",
 		TitleType: "h2",
-		colorTitle: "main-gray"
+		colorTitle: "main-gray",
+		textTransform: "capitalize"
 	},
 	parameters: {
 		controls: {
@@ -93,6 +100,7 @@ export const WithText: TypeStory = {
 		text: "text text text text text text text",
 		fontSizeText: "m",
 		fontWeightText: "medium",
-		colorText: "main-gray"
+		colorText: "main-gray",
+		textTransform: "capitalize"
 	}
 }
