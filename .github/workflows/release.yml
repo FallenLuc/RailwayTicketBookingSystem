@@ -1,4 +1,4 @@
-name: Deploy
+name: Release
 run-name: ${{ github.workflow }}; Trigger ${{ github.ref_name }}; Runner ${{ github.actor }}
 on:
   workflow_dispatch:
@@ -27,7 +27,7 @@ jobs:
           path: build/
   create-release:
     name: Create Release
-    needs: deploy
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: write
