@@ -3,6 +3,7 @@ run-name: ${{ github.workflow }}; Trigger ${{ github.ref_name }}; Runner ${{ git
 on:
   workflow_dispatch:
   pull_request:
+  push:
     paths-ignore:
       - .github/**/*
       - ./**/*.json
@@ -29,6 +30,10 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: latest
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
   lintTs:
@@ -38,14 +43,6 @@ jobs:
     concurrency:
       group: lint
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4.1.2
-      - name: Install Pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: latest
-      - name: Install dependencies
-        run: pnpm install
       - name: Lint TS
         run: pnpm lint:ts
   lintStyle:
@@ -55,13 +52,5 @@ jobs:
     concurrency:
         group: lint
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4.1.2
-      - name: Install Pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: latest
-      - name: Install dependencies
-        run: pnpm install
       - name: Lint style
         run: pnpm lint:style
