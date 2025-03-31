@@ -1,3 +1,4 @@
+import { PASSENGERS } from "@constants/localStorage.constant"
 import type { passengerDataType } from "@entities/Passenger"
 import { buildSlice } from "@helpers/buildSlice/buildSlice.helper"
 import { createEntityAdapter, type PayloadAction } from "@reduxjs/toolkit"
@@ -18,14 +19,14 @@ const formPassengersSlice = buildSlice({
 		initPassengers: (state, action: PayloadAction<number>) => {
 			const seatsCount = action.payload
 
-			const savedPassengers = localStorage.getItem("passengers") || "[]"
+			const savedPassengers = localStorage.getItem(PASSENGERS) || "[]"
 
 			let arrayPassengers: passengerDataType[] =
 				JSON.parse(savedPassengers) || passengersAdapter.getSelectors().selectAll(state)
 
 			if (!arrayPassengers.length || arrayPassengers.length !== seatsCount) {
 				const passengers = []
-				localStorage.removeItem("passengers")
+				localStorage.removeItem(PASSENGERS)
 
 				for (let count = 0; count < seatsCount; count++) {
 					const defaultPassenger: passengerDataType = {
@@ -58,7 +59,7 @@ const formPassengersSlice = buildSlice({
 			})
 
 			const passengers = passengersAdapter.getSelectors().selectAll(state)
-			localStorage.setItem("passengers", JSON.stringify(passengers))
+			localStorage.setItem(PASSENGERS, JSON.stringify(passengers))
 		},
 		verifyFields: (
 			state,
@@ -72,7 +73,7 @@ const formPassengersSlice = buildSlice({
 				passengersAdapter.updateMany(state, validatedPassengers)
 
 				const passengers = passengersAdapter.getSelectors().selectAll(state)
-				localStorage.setItem("passengers", JSON.stringify(passengers))
+				localStorage.setItem(PASSENGERS, JSON.stringify(passengers))
 			}
 		}
 	}
