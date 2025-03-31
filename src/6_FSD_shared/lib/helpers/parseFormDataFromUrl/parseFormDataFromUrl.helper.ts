@@ -1,6 +1,14 @@
 import type { directionDisplayParametres } from "@entities/Direction"
 import type { formDataType } from "@features/FillingFormForSearchOfDirections/store/storeTypes/formForSearchOfDirectionsState.map"
 
+/**
+ * Может распарсить строку типа URLSearchParams в три объекта
+ * @returns {formData: formDataType; displayData: directionDisplayParametres; additionalData: T} - возвращаемый объект:
+ * formData - объект с параметрами для поиска поездов.
+ * displayData - объект с параметрами для отображения списка поездов.
+ * additionalData - объект с остальными полями, которые получилось распарсить из url
+ */
+
 export function parseFormDataFromUrlHelper<T extends object>(
 	searchParams?: URLSearchParams
 ): { formData: formDataType; displayData: directionDisplayParametres; additionalData: T } {
