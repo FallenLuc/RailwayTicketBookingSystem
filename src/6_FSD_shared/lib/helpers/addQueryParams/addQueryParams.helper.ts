@@ -16,9 +16,15 @@ export function createQueryParams<T extends string | number | boolean | undefine
 	return `?${searchParams}`
 }
 
+/**
+ * Обновляет адрес страницы, добавляя поля переданного объекта в качестве url параметров.
+ * @param {paramsType<T>} params - объект поля которого станут url парамeтрами
+ * @param {string} link - базовая ссылка
+ */
+
 export function addQueryParams<T extends string | number | boolean | undefined>(
 	params?: paramsType<T>,
-	namePage?: string
+	link?: string
 ) {
-	window.history.pushState({}, "", `#${namePage || "/"}${createQueryParams(params)}`)
+	window.history.pushState({}, "", `#${link || "/"}${createQueryParams(params)}`)
 }

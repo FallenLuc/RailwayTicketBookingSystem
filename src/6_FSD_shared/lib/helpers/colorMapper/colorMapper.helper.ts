@@ -1,6 +1,12 @@
 import type { appColorType } from "@customTypes/style.types"
 
-export function colorMapper(color: appColorType) {
+/**
+ * Служит для использования системы цветов. Возвращает название css класса, который соответствует переданному цвету.
+ * @param {appColorType} color - цвет для которого нужен css класс
+ * @returns {string} - название класса.
+ */
+
+export function colorMapper(color: appColorType): string {
 	switch (color) {
 		case "accent-orange":
 			return "color-accent-orange"
