@@ -1,8 +1,5 @@
-import { type reducerManagerType } from "../reducerManager"
-import type { storeCreator } from "../store"
+import type { createReduxStore } from "../store"
 
-export type appStoreType = {
-	reducerManager: reducerManagerType
-} & ReturnType<typeof storeCreator>
+export type appStoreType = ReturnType<typeof createReduxStore>
 
 export type appDispatchType = appStoreType["dispatch"]

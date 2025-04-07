@@ -1,6 +1,13 @@
 import dayjs from "dayjs"
 
-export const convertSecondsToTime = (value: number, isUnix = false) => {
+/**
+ * Преобразует секунды в строку формата HH:MM
+ * @param {number} value - секунды
+ * @param {boolean} isUnix - true, если секунды формата unix.
+ * @returns {string} - строка формата HH:MM
+ */
+
+export const convertSecondsToTime = (value: number, isUnix?: boolean): string => {
 	if (isUnix) {
 		const date = dayjs.unix(value)
 

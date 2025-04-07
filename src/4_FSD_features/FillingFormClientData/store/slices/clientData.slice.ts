@@ -1,3 +1,4 @@
+import { CLIENT_DATA } from "@constants/localStorage.constant"
 import type { clientDataType } from "@entities/Client"
 import { buildSlice } from "@helpers/buildSlice/buildSlice.helper"
 import type { PayloadAction } from "@reduxjs/toolkit"
@@ -34,14 +35,14 @@ const clientDataSlice = buildSlice({
 	initialState,
 	reducers: {
 		initClientData: state => {
-			const savedClientData = localStorage.getItem("clientData")
+			const savedClientData = localStorage.getItem(CLIENT_DATA)
 			if (savedClientData) {
 				state.info = JSON.parse(savedClientData)
 			}
 		},
 		setClientData: (state, action: PayloadAction<Partial<clientDataType>>) => {
 			state.info = { ...state.info, ...action.payload }
-			localStorage.setItem("clientData", JSON.stringify(state.info))
+			localStorage.setItem(CLIENT_DATA, JSON.stringify(state.info))
 		}
 	}
 })

@@ -1,3 +1,4 @@
+import { CARRIAGE_INFO, SEATS_INFO } from "@constants/localStorage.constant"
 import type { carriageDataType } from "@entities/Carriage"
 import type { directionGeneralDataType } from "@entities/Direction"
 import { buildSlice } from "@helpers/buildSlice/buildSlice.helper"
@@ -19,8 +20,8 @@ const currentDirectionSlice = buildSlice({
 		initCurrentDirection: (state, action: PayloadAction<directionGeneralDataType>) => {
 			if (!state._inited) {
 				state._inited = true
-				const savedSeatsInfo = localStorage.getItem("seatsInfo")
-				const savedCarriageInfo = localStorage.getItem("carriageInfo")
+				const savedSeatsInfo = localStorage.getItem(SEATS_INFO)
+				const savedCarriageInfo = localStorage.getItem(CARRIAGE_INFO)
 
 				if (savedSeatsInfo) {
 					state.seatsInfo = parseInt(savedSeatsInfo)
@@ -38,17 +39,17 @@ const currentDirectionSlice = buildSlice({
 			state.directionInfo = action.payload?.departure
 		},
 		setCurrentCarriage: (state, action: PayloadAction<carriageDataType>) => {
-			localStorage.setItem("carriageInfo", JSON.stringify(state.carriageInfo))
+			localStorage.setItem(CARRIAGE_INFO, JSON.stringify(state.carriageInfo))
 
 			state.carriageInfo = action.payload
 		},
 		setChosenSeatsInfo: (state, action: PayloadAction<number>) => {
-			localStorage.setItem("seatsInfo", action.payload.toString())
+			localStorage.setItem(SEATS_INFO, action.payload.toString())
 
 			state.seatsInfo = action.payload
 		},
 		resetSeatsInfo: state => {
-			localStorage.removeItem("seatsInfo")
+			localStorage.removeItem(SEATS_INFO)
 			state.seatsInfo = 1
 		},
 		calculateSum: state => {
