@@ -1,6 +1,12 @@
 import type { fontSizeType, fontWeightType } from "@customTypes/style.types"
 
-export function fontSizeMapper(size: fontSizeType) {
+/**
+ * Служит для использования системы шрифтов. Возвращает название класса, которому соответствует размер шрифта
+ * @param {fontSizeType} size - размер шрифта
+ * @returns {string} - название класса
+ */
+
+export function fontSizeMapper(size: fontSizeType): string {
 	switch (size) {
 		case "xs":
 			return "font-xs"
@@ -15,7 +21,13 @@ export function fontSizeMapper(size: fontSizeType) {
 	}
 }
 
-export function fontWeightMapper(size: fontWeightType) {
+/**
+ * Служит для использования системы шрифтов. Возвращает название класса, которому соответствует толщина шрифта.
+ * @param {fontWeightType} size - толщина шрифта
+ * @returns {string} - название класса
+ */
+
+export function fontWeightMapper(size: fontWeightType): string {
 	switch (size) {
 		case "think":
 			return "font-think"
