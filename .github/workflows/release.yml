@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     tags:
-      - '.*_v\.\d.\d.\d'
+      - '.*_v\.\d\.\d\.\d'
 jobs:
   build:
     name: Build
