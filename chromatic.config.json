@@ -1,6 +1,7 @@
 {
 	"projectId": "Project:67c5d5923b070e7bf5bb63e1",
 	"zip": true,
+	"projectToken": "chpt_c009882e46137e8",
 	"buildScriptName": "storybook:build",
 	"storybookConfigDir": "config/storybook",
 	"onlyChanged": true,

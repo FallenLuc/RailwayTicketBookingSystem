@@ -17,9 +17,9 @@
 ![Ui](https://github.com/FallenLuc/RailwayTicketBookingSystem/actions/workflows/ui.yml/badge.svg?branch=dev)
 ![Deploy](https://github.com/FallenLuc/RailwayTicketBookingSystem/actions/workflows/deploy.yml/badge.svg?branch=dev)
 
-[![Storybook](https://img.shields.io/badge/-Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white)](https://dev--67c5d5923b070e7bf5bb63e1.chromatic.com)
+[![Storybook](https://img.shields.io/badge/-Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white)](https://dev--67c5d5923b070e7bf5bb63e1.chromatic.com)  <- **LINK**
 
-[![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)](https://fallenluc.github.io/RailwayTicketBookingSystem/)
+[![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)](https://fallenluc.github.io/RailwayTicketBookingSystem/)  <- **LINK**
 
 ## 🚀 Scripts
 
