@@ -5,3 +5,4 @@ backend
 .dependency-cruiser.js
 /src/dev/*
 /scripts/*
+/.jira
